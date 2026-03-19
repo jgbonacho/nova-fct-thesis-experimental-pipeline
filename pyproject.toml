@@ -9,7 +9,9 @@ description = "Thesis experimental pipeline project"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-
+    "numpy",
+    "networkx",
+    "cdlib"
 ]
 
 [project.scripts]
