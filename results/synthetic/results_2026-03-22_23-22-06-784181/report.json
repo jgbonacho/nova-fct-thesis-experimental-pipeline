@@ -1,0 +1,110 @@
+{
+  "network_families": [
+    {
+      "name": "test_family1",
+      "networks": [
+        {
+          "name": "n50mu0.1on0om0inst1",
+          "overlapping_ground_truth": false
+        },
+        {
+          "name": "n50mu0.1on0om0inst2",
+          "overlapping_ground_truth": false
+        },
+        {
+          "name": "n50mu0.3on0om0inst1",
+          "overlapping_ground_truth": false
+        },
+        {
+          "name": "n50mu0.3on0om0inst2",
+          "overlapping_ground_truth": false
+        }
+      ]
+    },
+    {
+      "name": "test_family2",
+      "networks": [
+        {
+          "name": "n50mu0.1on5om2inst1",
+          "overlapping_ground_truth": true
+        },
+        {
+          "name": "n50mu0.1on5om2inst2",
+          "overlapping_ground_truth": true
+        },
+        {
+          "name": "n50mu0.1on25om2inst1",
+          "overlapping_ground_truth": true
+        },
+        {
+          "name": "n50mu0.1on25om2inst2",
+          "overlapping_ground_truth": true
+        }
+      ]
+    }
+  ],
+  "thresholds": {
+    "test_family1": 0.0002,
+    "test_family2": 0.0004
+  },
+  "affinity_designs": [
+    "Default",
+    "Kul",
+    "Dice",
+    "Ochiai",
+    "IP_beta0",
+    "IP_beta05",
+    "IP_beta1",
+    "CosIP_beta0",
+    "CosIP_beta05",
+    "CosIP_beta1"
+  ],
+  "execution_modes": [
+    {
+      "label": "LAPIN-off",
+      "apply_lapin": false,
+      "laplacian_variant": "-"
+    },
+    {
+      "label": "LAPIN-on",
+      "apply_lapin": true,
+      "laplacian_variant": "Lsym"
+    },
+    {
+      "label": "LAPIN-on",
+      "apply_lapin": true,
+      "laplacian_variant": "Lrw"
+    },
+    {
+      "label": "LAPIN-on",
+      "apply_lapin": true,
+      "laplacian_variant": "L"
+    }
+  ],
+  "defuzzification_rules": [
+    {
+      "gamma": 0.3,
+      "conditionally_discard_first_cluster": true
+    },
+    {
+      "gamma": 0.3,
+      "conditionally_discard_first_cluster": false
+    },
+    {
+      "gamma": 0.5,
+      "conditionally_discard_first_cluster": true
+    },
+    {
+      "gamma": 0.5,
+      "conditionally_discard_first_cluster": false
+    },
+    {
+      "gamma": 0.7,
+      "conditionally_discard_first_cluster": true
+    },
+    {
+      "gamma": 0.7,
+      "conditionally_discard_first_cluster": false
+    }
+  ]
+}

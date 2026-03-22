@@ -24,8 +24,8 @@ def compute_extrinsic_metrics(graph, ground_truth_labels, predicted_labels, k, k
             Default is True.
 
     Returns:
-        evaluation_scores : (dict)
-            Dictionary containing evaluation scores.
+        evaluation_scores : (ExtrinsicMetrics)
+            Extrinsic metrics.
     """
 
     if not overlapping:

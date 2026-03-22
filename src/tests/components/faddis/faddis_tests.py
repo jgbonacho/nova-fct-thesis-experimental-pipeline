@@ -15,7 +15,7 @@ class Test(unittest.TestCase):
              [.1, .4, .6, 1]]
         )
 
-        sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters = faddis(
+        sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = faddis(
             W, epsilon=1 / 40, tau=0.005, k_max=50
         )
 
@@ -37,6 +37,9 @@ class Test(unittest.TestCase):
         print("=== Number of clusters ===")
         print(number_of_clusters)
         self.assertEqual(number_of_clusters, 3)
+        print("=== Stop condition ===")
+        print(stop_condition)
+        self.assertTrue(stop_condition == 'epsilon')
 
     def test_faddis_with_desired_k(self):
         W = np.matrix(
@@ -46,7 +49,7 @@ class Test(unittest.TestCase):
              [.1, .4, .6, 1]]
         )
 
-        sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters = faddis(
+        sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = faddis(
             W, desired_k=3
         )
 
@@ -68,6 +71,9 @@ class Test(unittest.TestCase):
         print("=== Number of clusters ===")
         print(number_of_clusters)
         self.assertEqual(number_of_clusters, 3)
+        print("=== Stop condition ===")
+        print(stop_condition)
+        self.assertTrue(stop_condition == 'desiredK')
 
     def test_invalid_parameters(self):
         W = np.matrix(

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "test_family1",
+    "networks": [
+      {
+        "name": "n50mu0.1on0om0inst1",
+        "overlapping_ground_truth": false
+      },
+      {
+        "name": "n50mu0.1on0om0inst2",
+        "overlapping_ground_truth": false
+      },
+      {
+        "name": "n50mu0.3on0om0inst1",
+        "overlapping_ground_truth": false
+      },
+      {
+        "name": "n50mu0.3on0om0inst2",
+        "overlapping_ground_truth": false
+      }
+    ]
+  },
+  {
+    "name": "test_family2",
+    "networks": [
+      {
+        "name": "n50mu0.1on5om2inst1",
+        "overlapping_ground_truth": true
+      },
+      {
+        "name": "n50mu0.1on5om2inst2",
+        "overlapping_ground_truth": true
+      },
+      {
+        "name": "n50mu0.1on25om2inst1",
+        "overlapping_ground_truth": true
+      },
+      {
+        "name": "n50mu0.1on25om2inst2",
+        "overlapping_ground_truth": true
+      }
+    ]
+  }
+]

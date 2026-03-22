@@ -12,7 +12,7 @@ ZERO_BOUND = 10 ** (-8)
 ENTITY_BOUND = 10 ** (-4)
 
 
-def lapin(W, laplacian_variant='symmetric_normalized_laplacian'):
+def lapin(W, laplacian_variant='Lsym'):
     """
     LAPIN: Laplacian Pseudo-Inverse transformation.
 
@@ -21,8 +21,8 @@ def lapin(W, laplacian_variant='symmetric_normalized_laplacian'):
             nxn symmetric similarity/affinity matrix.
         laplacian_variant : (str, optional)
             Variant of Laplacian to use.
-            Default is 'symmetric_normalized_laplacian'.
-            Other options are 'random_walk_normalized_laplacian' or 'unnormalized_laplacian'.
+            Default is 'Lsym' (Symmetric Normalized Laplacian).
+            Other options are 'Lrw' (Random Walk-Normalized Laplacian) or 'L' (Unnormalized Laplacian).
 
     Returns:
         Ln+ : (np.matrix)
@@ -32,9 +32,7 @@ def lapin(W, laplacian_variant='symmetric_normalized_laplacian'):
         ValueError : If laplacian_variant is not supported.
     """
 
-    if (laplacian_variant not in
-            ['symmetric_normalized_laplacian', 'random_walk_normalized_laplacian', 'unnormalized_laplacian']
-    ):
+    if laplacian_variant not in ['Lsym', 'Lrw', 'L']:
         raise ValueError(f"[ERROR] Laplacian variant {laplacian_variant} not supported.")
 
     # W = (W + W.T) / 2
@@ -49,11 +47,11 @@ def lapin(W, laplacian_variant='symmetric_normalized_laplacian'):
 
     matrix_rows, _ = W.shape
 
-    if laplacian_variant == 'unnormalized_laplacian':
+    if laplacian_variant == 'L':
         # L = D - W
         L = np.diag(w_sums) - W
     else:
-        is_symmetric_normalized_laplacian = laplacian_variant == 'symmetric_normalized_laplacian'
+        is_symmetric_normalized_laplacian = laplacian_variant == 'Lsym'
         C = np.empty((matrix_rows, matrix_rows))
         for i in range(matrix_rows):
             for j in range(matrix_rows):

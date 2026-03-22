@@ -8,7 +8,7 @@ from pipeline.components.loaders.synthetic_data_loader import load_lfr_benchmark
 class Test(unittest.TestCase):
 
     def test_load_lfr_network_with_non_overlapping_ground_truth(self):
-        dir_name = "network1"
+        dir_name = "test_family1"
         filename = "n50mu0.1on0om0inst1"
         graph, ground_truth_labels, k = load_lfr_benchmark_network(
             dir_path=os.path.join(os.path.dirname(__file__), dir_name),
@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
         self.assertEqual(len(set(ground_truth_labels)), k)
 
     def test_load_lfr_network_with_overlapping_ground_truth(self):
-        dir_name = "network2"
+        dir_name = "test_family2"
         filename = "n50mu0.1on5om2inst1"
         graph, ground_truth_labels, k = load_lfr_benchmark_network(
             dir_path=os.path.join(os.path.dirname(__file__), dir_name),

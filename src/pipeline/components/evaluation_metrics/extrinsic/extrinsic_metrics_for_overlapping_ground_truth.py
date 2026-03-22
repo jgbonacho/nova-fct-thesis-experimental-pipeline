@@ -1,6 +1,8 @@
 from cdlib import NodeClustering
 from cdlib import evaluation as ev
 
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
+
 
 def compute_extrinsic_metrics_for_overlapping_ground_truth(
         graph,
@@ -25,21 +27,19 @@ def compute_extrinsic_metrics_for_overlapping_ground_truth(
             The number of communities predicted.
 
     Returns:
-        evaluation_scores : (dict)
-            Dictionary containing evaluation scores.
+        evaluation_scores : (ExtrinsicMetrics)
+            Extrinsic metrics.
     """
 
     ground_truth_node_clustering = _to_node_clustering(ground_truth_labels, graph, method_name="ground_truth")
     predicted_node_clustering = _to_node_clustering(predicted_labels, graph, method_name="predicted")
 
-    evaluation_scores = {
-        "K' | K": f"{k_predicted} | {k}",
-        "|K'-K|/K": abs(k_predicted - k) / k,
-        "ONMI": _compute_onmi(ground_truth_node_clustering, predicted_node_clustering),
-        "Omega": _compute_omega_index(ground_truth_node_clustering, predicted_node_clustering)
-    }
-
-    return evaluation_scores
+    return ExtrinsicMetrics(
+        diff_of_k=f"{k_predicted} | {k}",
+        relative_error_of_k=abs(k_predicted - k) / k,
+        onmi=_compute_onmi(ground_truth_node_clustering, predicted_node_clustering),
+        omega=_compute_omega_index(ground_truth_node_clustering, predicted_node_clustering)
+    )
 
 
 def _compute_onmi(ground_truth_node_clustering, predicted_node_clustering):

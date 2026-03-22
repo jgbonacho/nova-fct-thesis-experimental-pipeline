@@ -17,14 +17,14 @@ class Test(unittest.TestCase):
             overlapping=False
         )
 
-        self.assertEqual(results.get("K' | K"), "2 | 2")
-        self.assertEqual(results.get("|K'-K|/K"), 0.0)
-        self.assertEqual(results.get("AMI"), 1.0)
-        self.assertEqual(results.get("F-measure"), 1.0)
-        self.assertEqual(results.get("ARI"), 1.0)
-        self.assertEqual(results.get("FMI"), 1.0)
-        self.assertEqual(results.get("NMI"), 1.0)
-        self.assertEqual(results.get("VI"), 0.0)
+        self.assertEqual(results.diff_of_k, "2 | 2")
+        self.assertEqual(results.relative_error_of_k, 0.0)
+        self.assertEqual(results.ami, 1.0)
+        self.assertEqual(results.f_measure, 1.0)
+        self.assertEqual(results.ari, 1.0)
+        self.assertEqual(results.fmi, 1.0)
+        self.assertEqual(results.nmi, 1.0)
+        self.assertEqual(results.vi, 0.0)
 
     def test_extrinsic_metrics_for_overlapping_ground_truth(self):
         graph = nx.Graph()
@@ -42,10 +42,10 @@ class Test(unittest.TestCase):
             overlapping=True
         )
 
-        self.assertEqual(results.get("K' | K"), "2 | 2")
-        self.assertEqual(results.get("|K'-K|/K"), 0.0)
-        self.assertEqual(results.get("ONMI"), 1.0)
-        self.assertEqual(results.get("Omega"), 1.0)
+        self.assertEqual(results.diff_of_k, "2 | 2")
+        self.assertEqual(results.relative_error_of_k, 0.0)
+        self.assertEqual(results.onmi, 1.0)
+        self.assertEqual(results.omega, 1.0)
 
 
 if __name__ == "__main__":

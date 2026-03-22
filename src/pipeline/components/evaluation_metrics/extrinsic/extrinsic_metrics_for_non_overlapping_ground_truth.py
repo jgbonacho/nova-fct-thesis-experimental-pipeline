@@ -3,9 +3,10 @@ Evaluation Metrics - Extrinsic: Compute extrinsic metrics for non-overlapping gr
 """
 
 import numpy as np
-
 from sklearn.metrics import adjusted_rand_score, adjusted_mutual_info_score, normalized_mutual_info_score, \
     fowlkes_mallows_score, mutual_info_score
+
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 
 
 def compute_extrinsic_metrics_for_non_overlapping_ground_truth(
@@ -28,22 +29,20 @@ def compute_extrinsic_metrics_for_non_overlapping_ground_truth(
             The number of communities predicted.
 
     Returns:
-        evaluation_scores : (dict)
-            Dictionary containing evaluation scores.
+        evaluation_scores : (ExtrinsicMetrics)
+            Extrinsic metrics.
     """
 
-    evaluation_scores = {
-        "K' | K": f"{k_predicted} | {k}",
-        "|K'-K|/K": abs(k_predicted - k) / k,
-        "AMI": _compute_ami(ground_truth_labels, predicted_labels),
-        "F-measure": _compute_f_measure(ground_truth_labels, predicted_labels),
-        "ARI": _compute_ari(ground_truth_labels, predicted_labels),
-        "FMI": _compute_fmi(ground_truth_labels, predicted_labels),
-        "NMI": _compute_nmi(ground_truth_labels, predicted_labels),
-        "VI": _compute_vi(ground_truth_labels, predicted_labels),
-    }
-
-    return evaluation_scores
+    return ExtrinsicMetrics(
+        diff_of_k=f"{k_predicted} | {k}",
+        relative_error_of_k=abs(k_predicted - k) / k,
+        ami=_compute_ami(ground_truth_labels, predicted_labels),
+        f_measure=_compute_f_measure(ground_truth_labels, predicted_labels),
+        ari=_compute_ari(ground_truth_labels, predicted_labels),
+        fmi=_compute_fmi(ground_truth_labels, predicted_labels),
+        nmi=_compute_nmi(ground_truth_labels, predicted_labels),
+        vi=_compute_vi(ground_truth_labels, predicted_labels),
+    )
 
 
 def _compute_ami(ground_truth_labels, predicted_labels):

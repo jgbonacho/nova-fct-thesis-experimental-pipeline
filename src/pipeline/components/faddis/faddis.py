@@ -40,6 +40,8 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
             1xK vector of eigenvalues corresponding to clusters.
         number_of_clusters : (int)
             Number of clusters extracted.
+        stop_condition : (str)
+            The stop condition that caused the algorithm to stop.
     """
 
     # Validate inputs.
@@ -151,7 +153,8 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
 
         # Check stop condition 1: Eigenvalues of the residual matrix Wt are not positives.
         if max_contribution <= ZERO_BOUND:
-            print("[INFO] No positive weights at spectral clusters.")
+            stop_condition = "W"
+            # print("[INFO] No positive weights at spectral clusters.")
             break
 
         # Compute square root and value of lambda intensity of cluster.
@@ -166,7 +169,8 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
 
         # Check stop condition 2: Individual cluster contribution is less or equal than 'epsilon'.
         if desired_k is None and individual_cluster_contribution <= epsilon:
-            print("[INFO] Cluster contribution is too small.")
+            stop_condition = 'epsilon'
+            # print("[INFO] Cluster contribution is too small.")
             break
 
         # Update the total clusters' contribution.
@@ -174,7 +178,8 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
 
         # Check stop condition 3: 'residual_scatter' is less or equal than tau.
         if desired_k is None and residual_data_scatter <= tau:
-            print("[INFO] Residual is too small.")
+            stop_condition = 'tau'
+            # print("[INFO] Residual is too small.")
             break
 
         # Append the membership vector, contribution, intensity and eigenvalue of the cluster to the results.
@@ -186,11 +191,13 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
 
         # Check stop condition 4: 'number_of_clusters' is equal to 'k_max'.
         if desired_k is None and number_of_clusters == k_max:
-            print("[INFO] Maximum number of clusters reached.")
+            stop_condition = 'Kmax'
+            # print("[INFO] Maximum number of clusters reached.")
             break
 
         if desired_k is not None and number_of_clusters == desired_k:
-            print("[INFO] Desired number of clusters reached.")
+            stop_condition = 'desiredK'
+            # print("[INFO] Desired number of clusters reached.")
             break
 
         # Compute residual similarity matrix, removing the present cluster (i.e. intensity* membership) from similarity matrix.
@@ -198,7 +205,7 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
         Wt = (Wt + Wt.T) / 2
         sequence_of_matrices.append(Wt)
 
-    return sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters
+    return sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition
 
 
 def _validate_inputs(epsilon, tau, k_max, desired_k):
