@@ -10,7 +10,7 @@ class Result:
     Dataclass for results.
 
     Attributes:
-        id : int
+        id : str
             Identifier for the result.
         network_family : str
             The family of the network.
@@ -44,7 +44,7 @@ class Result:
             The computational metrics results, if computed.
     """
 
-    id: int = field(metadata={"label": "ID"})
+    id: str = field(metadata={"label": "ID"})
     network_family: str = field(metadata={"label": "Network Family"})
     network: str = field(metadata={"label": "Network"})
     overlapping: bool = field(metadata={"label": "Overlapping?"})

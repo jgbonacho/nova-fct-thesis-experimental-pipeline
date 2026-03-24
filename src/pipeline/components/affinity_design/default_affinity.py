@@ -1,4 +1,7 @@
-def default_affinity(A):
+import numpy as np
+
+
+def default_affinity(A: np.ndarray) -> np.ndarray:
     """
     Default affinity design that returns a copy of the input adjacency matrix A as the affinity matrix W.
 

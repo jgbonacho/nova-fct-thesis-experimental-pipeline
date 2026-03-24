@@ -1,16 +1,20 @@
 import csv
 import json
 import os
+from collections.abc import Callable
 from dataclasses import asdict, fields
 from datetime import datetime
 from typing import get_args
 
+import numpy as np
 from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
+from pipeline.config.config import ExecutionMode, DefuzzificationRule
+from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 from pipeline.scripts.utils.result_dataclass import Result
 
 
-def create_results_dir(base_dir):
+def create_results_dir(base_dir: str) -> str:
     """
     Create a directory to store results, named with the current timestamp.
 
@@ -36,7 +40,7 @@ def create_results_dir(base_dir):
     return results_dir
 
 
-def create_network_results_dir(results_dir, network_family, network):
+def create_network_results_dir(results_dir: str, network_family: str, network: str) -> str:
     """
     Create a directory to store results for a specific network.
 
@@ -62,7 +66,13 @@ def create_network_results_dir(results_dir, network_family, network):
     return results_network_dir
 
 
-def log_progress(current_step, total_steps, item_label, indent_level, empty_line=False):
+def log_progress(
+        current_step: int,
+        total_steps: int,
+        item_label: str,
+        indent_level: int,
+        empty_line: bool = False
+) -> None:
     """
     Log a progress message to the console with a specific format.
 
@@ -83,7 +93,7 @@ def log_progress(current_step, total_steps, item_label, indent_level, empty_line
     print(f"{"\n" if empty_line else ""}{indent_level * '#'} [{current_step}/{total_steps}] '{item_label}'")
 
 
-def initialize_results_file(results_dir, output_filename="results.csv"):
+def initialize_results_file(results_dir: str, output_filename: str = "_results") -> Callable[[Result], None]:
     """
     Initialize the results file and write it to the output directory.
 
@@ -92,17 +102,17 @@ def initialize_results_file(results_dir, output_filename="results.csv"):
             Path to the created results' directory.
         output_filename : (str, optional)
             The name of the output CSV file.
-            Default is "results.csv".
+            Default is "results".
 
     Returns:
-        _append_result : (function)
+        append_result : (Callable[[Result], None])
             A function that takes a Result object and appends its data to the results CSV file.
 
     Saves:
-        A new CSV file within 'results_dir' named "{output_filename}" with results.
+        A new CSV file within 'results_dir' named "{output_filename}.csv" with results.
     """
 
-    file_path = os.path.join(results_dir, output_filename)
+    file_path = os.path.join(results_dir, f"{output_filename}.csv")
 
     selected_base_fields = None
     selected_extrinsic_fields = None
@@ -129,7 +139,7 @@ def initialize_results_file(results_dir, output_filename="results.csv"):
     def _get_row_values(obj, selected_fields):
         return [_format_value(getattr(obj, dataclass_field.name)) for dataclass_field in selected_fields]
 
-    def _append_result(result):
+    def append_result(result: Result) -> None:
         nonlocal selected_base_fields
         nonlocal selected_extrinsic_fields
         nonlocal selected_computational_fields
@@ -168,10 +178,15 @@ def initialize_results_file(results_dir, output_filename="results.csv"):
         with open(file_path, "a", newline="", encoding="utf-8") as append_file:
             csv.writer(append_file).writerow(row)
 
-    return _append_result
+    return append_result
 
 
-def save_faddis_clustering_results(results_dir, results_id, faddis_results):
+def save_faddis_clustering_results(
+        results_dir: str,
+        results_id: str,
+        faddis_results: tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, int, str],
+        output_filename: str = "faddis-clusters"
+) -> None:
     """
     Save the results of the FADDIS clustering algorithm.
 
@@ -180,7 +195,7 @@ def save_faddis_clustering_results(results_dir, results_id, faddis_results):
             Path to the directory where the results will be saved.
         results_id : (str)
             An identifier for the results, used in the filename.
-        faddis_results : (list)
+        faddis_results : (tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, int, str])
             A list containing the results of the FADDIS algorithm, expected to include:
                 - membership_matrix
                 - contributions
@@ -188,13 +203,17 @@ def save_faddis_clustering_results(results_dir, results_id, faddis_results):
                 - eigenvalues
                 - number_of_clusters
                 - stop_condition
+        output_filename : (str, optional)
+            The name of the output CSV file.
+            Default is "results-faddis-clusters.csv".
 
     Saves:
-        A CSV file within 'results_dir' named "id{results_id}.csv" containing the clustering results.
+        A CSV file within 'results_dir' named "{output_filename}_{results_id}.csv" containing the clustering results.
     """
 
     _, _, contributions, intensities, eigenvalues, number_of_clusters, _ = faddis_results
-    with open(os.path.join(results_dir, f"id{results_id}.csv"), mode="w", newline="", encoding="utf-8") as csvfile:
+    with open(os.path.join(results_dir, f"{output_filename}_{results_id}.csv"), mode="w", newline="",
+              encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Cluster", "Contribution", "Eigenvalue", "Intensity", "Weight"])
 
@@ -209,36 +228,36 @@ def save_faddis_clustering_results(results_dir, results_id, faddis_results):
 
 
 def save_report(
-        results_dir,
-        network_families,
-        thresholds,
-        affinity_designs,
-        execution_modes,
-        defuzzification_rules,
-        output_filename="report.json"
-):
+        results_dir: str,
+        network_families: list[NetworkFamily],
+        thresholds: dict[str, float],
+        affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
+        execution_modes: list[ExecutionMode],
+        defuzzification_rules: list[DefuzzificationRule],
+        output_filename: str = "report"
+) -> None:
     """
     Save a report of the experiment configurations to a JSON file in the results' directory.
 
     Parameters:
         results_dir : (str)
-            Path to the results directory.
-        network_families : (list)
+            Path to the results' directory.
+        network_families : (list[NetworkFamily])
             List of network families to be processed.
-        thresholds : (dict)
+        thresholds : (dict[str, float])
             Dictionary containing threshold values, keyed by network family name.
-        affinity_designs : (dict)
+        affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
             Dictionary of affinity designs to be applied, keyed by design label.
-        execution_modes : (list)
+        execution_modes : (list[ExecutionMode])
             List of execution modes to be applied.
-        defuzzification_rules : (list)
+        defuzzification_rules : (list[DefuzzificationRule])
             List of defuzzification rules to be applied.
         output_filename : (str, optional)
             The name of the output JSON file.
             Default is "report.json".
 
     Saves:
-        A JSON file within 'results_dir' named "{output_filename}".
+        A JSON file within 'results_dir' named "{output_filename}.json".
     """
 
     report = {
@@ -249,16 +268,16 @@ def save_report(
         "defuzzification_rules": [asdict(defuzzification_rule) for defuzzification_rule in defuzzification_rules],
     }
 
-    with open(os.path.join(results_dir, output_filename), "w", encoding="utf-8") as out_file:
+    with open(os.path.join(results_dir, f"{output_filename}.json"), "w", encoding="utf-8") as out_file:
         json.dump(report, out_file, indent=2)
 
 
-def _format_value(value):
+def _format_value(value: str | int | bool | float) -> str:
     """
     Format a value into a human-readable string.
 
     Parameters:
-        value : (any)
+        value : (str | int | bool | float)
             Value to be formatted.
 
     Returns:
@@ -276,7 +295,7 @@ def _format_value(value):
     return value
 
 
-def _int_to_roman(num):
+def _int_to_roman(num: int) -> str:
     """
     Convert an integer to a Roman numeral.
 

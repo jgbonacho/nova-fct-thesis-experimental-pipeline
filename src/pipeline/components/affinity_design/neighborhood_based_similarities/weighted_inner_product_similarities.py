@@ -1,7 +1,10 @@
 import numpy as np
 
+from pipeline.components.loaders.adjacency_matrix import ensure_square_matrix, ensure_binary_matrix, \
+    ensure_symmetric_matrix, ensure_zero_diagonal_matrix
 
-def compute_ip(A, beta=0.0):
+
+def compute_ip(A: np.ndarray, beta: float = 0.0) -> np.ndarray:
     """
     Compute the affinity matrix using the weighted inner product similarity measure.
     The symmetry and zero diagonal properties are ensured by design.
@@ -21,6 +24,11 @@ def compute_ip(A, beta=0.0):
             nxn symmetric zero diagonal affinity matrix.
     """
 
+    ensure_square_matrix(A)
+    ensure_binary_matrix(A)
+    ensure_symmetric_matrix(A)
+    ensure_zero_diagonal_matrix(A)
+
     n = A.shape[0]
     degrees = A.sum(axis=1).astype(float)
     weights = _compute_weights_from_degrees(degrees, beta)
@@ -37,7 +45,7 @@ def compute_ip(A, beta=0.0):
     return W_ip
 
 
-def compute_cosip(A, beta=0.0):
+def compute_cosip(A: np.ndarray, beta: float = 0.0) -> np.ndarray:
     """
     Compute the affinity matrix using the cosine-normalized weighted inner product similarity.
     The symmetry and zero diagonal properties are ensured by design.
@@ -57,6 +65,11 @@ def compute_cosip(A, beta=0.0):
             nxn symmetric zero diagonal affinity matrix.
     """
 
+    ensure_square_matrix(A)
+    ensure_binary_matrix(A)
+    ensure_symmetric_matrix(A)
+    ensure_zero_diagonal_matrix(A)
+
     n = A.shape[0]
     degrees = A.sum(axis=1).astype(float)
     weights = _compute_weights_from_degrees(degrees, beta)
@@ -75,7 +88,7 @@ def compute_cosip(A, beta=0.0):
     return W_cosip
 
 
-def _compute_weights_from_degrees(degrees, beta):
+def _compute_weights_from_degrees(degrees: np.ndarray, beta: float) -> np.ndarray:
     """
     Compute weights from degrees.
 
@@ -86,7 +99,6 @@ def _compute_weights_from_degrees(degrees, beta):
             Degree vector where degrees[i] = |N(i)| = sum of the i-th row of A.
         beta : (float)
             Weight exponent in [0, 1]. beta=0 gives Common Neighbors, beta=1 gives Resource Allocation index.
-            Default is 0.
 
     Returns:
         w : (np.ndarray, shape[n])

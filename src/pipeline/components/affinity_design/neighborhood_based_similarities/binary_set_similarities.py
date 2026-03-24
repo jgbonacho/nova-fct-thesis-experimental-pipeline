@@ -1,7 +1,10 @@
 import numpy as np
 
+from pipeline.components.loaders.adjacency_matrix import ensure_binary_matrix, ensure_symmetric_matrix, \
+    ensure_square_matrix, ensure_zero_diagonal_matrix
 
-def compute_kul(A):
+
+def compute_kul(A: np.ndarray) -> np.ndarray:
     """
     Compute the affinity matrix using the Kulczynski binary similarity coefficient.
     The symmetry and zero diagonal properties are ensured by design.
@@ -17,6 +20,11 @@ def compute_kul(A):
         W_kul : (np.ndarray, shape[n,n])
             nxn symmetric zero diagonal affinity matrix.
     """
+
+    ensure_square_matrix(A)
+    ensure_binary_matrix(A)
+    ensure_symmetric_matrix(A)
+    ensure_zero_diagonal_matrix(A)
 
     n = A.shape[0]
     degrees = A.sum(axis=1)
@@ -34,7 +42,7 @@ def compute_kul(A):
     return W_kul
 
 
-def compute_dice(A):
+def compute_dice(A: np.ndarray) -> np.ndarray:
     """
     Compute the affinity matrix using the Dice binary similarity coefficient.
     The symmetry and zero diagonal properties are ensured by design.
@@ -50,6 +58,11 @@ def compute_dice(A):
         W_dice : (np.ndarray, shape[n,n])
             nxn symmetric zero diagonal affinity matrix.
     """
+
+    ensure_square_matrix(A)
+    ensure_binary_matrix(A)
+    ensure_symmetric_matrix(A)
+    ensure_zero_diagonal_matrix(A)
 
     n = A.shape[0]
     degrees = A.sum(axis=1)
@@ -67,7 +80,7 @@ def compute_dice(A):
     return W_dice
 
 
-def compute_ochiai(A):
+def compute_ochiai(A: np.ndarray) -> np.ndarray:
     """
     Compute the affinity matrix using the Ochiai binary similarity coefficient.
     The symmetry and zero diagonal properties are ensured by design.
@@ -83,6 +96,11 @@ def compute_ochiai(A):
         W_ochiai : (np.ndarray, shape[n,n])
             nxn symmetric zero diagonal affinity matrix.
     """
+
+    ensure_square_matrix(A)
+    ensure_binary_matrix(A)
+    ensure_symmetric_matrix(A)
+    ensure_zero_diagonal_matrix(A)
 
     n = A.shape[0]
     degrees = A.sum(axis=1)

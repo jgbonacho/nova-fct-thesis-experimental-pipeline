@@ -16,7 +16,7 @@ RESULTS_BASE_DIR = os.path.join(ROOT_DIR, 'results', 'synthetic')
 CONFIG_DIR = os.path.join(os.path.dirname(__file__))
 
 
-def load_network_families(config_dir, input_filename="networks_families.json"):
+def load_network_families(config_dir: str, input_filename: str = "networks_families.json") -> list[NetworkFamily]:
     """
     Load network families from JSON file.
 
@@ -41,11 +41,11 @@ def load_network_families(config_dir, input_filename="networks_families.json"):
 
 
 def load_thresholds(
-        config_dir,
-        input_filename="thresholds.csv",
-        network_families_key="Network Family",
-        thresholds_key="Threshold"
-):
+        config_dir: str,
+        input_filename: str = "thresholds.csv",
+        network_families_key: str = "Network Family",
+        thresholds_key: str = "Threshold"
+) -> dict[str, float]:
     """
     Load thresholds from JSON file.
 
@@ -63,7 +63,7 @@ def load_thresholds(
             Default is "Threshold".
 
     Returns:
-        thresholds : object
+        thresholds : dict[str, float]
             Dictionary of thresholds keyed by network family.
     """
 
@@ -97,6 +97,18 @@ AFFINITY_DESIGNS = {
 
 @dataclass
 class ExecutionMode:
+    """
+    Dataclass for execution mode.
+
+    Attributes:
+        label : str
+            The label for the execution mode.
+        apply_lapin : bool
+            Whether to apply LAPIN or not.
+        laplacian_variant : str
+            The variant of the Laplacian to apply if apply_lapin is True.
+    """
+
     label: str
     apply_lapin: bool
     laplacian_variant: str
@@ -115,6 +127,17 @@ EXECUTION_MODES = [
 
 @dataclass
 class DefuzzificationRule:
+    """
+    Dataclass for defuzzification rule.
+
+    Attributes:
+        gamma : float
+            Hyperparameter for the defuzzification rule.
+        conditionally_discard_first_cluster : bool
+            If True, discard the first cluster if all membership values in the first column are positive.
+            If False, include all clusters in the defuzzification process.
+    """
+
     gamma: float
     conditionally_discard_first_cluster: bool
 

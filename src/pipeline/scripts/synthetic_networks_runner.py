@@ -1,5 +1,7 @@
 import os.path
+from collections.abc import Callable
 
+import numpy as np
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.computational.computational_metrics import compute_computational_metrics, \
     get_computation_start_time, get_computation_end_time
@@ -9,19 +11,21 @@ from pipeline.components.lapin.lapin import lapin
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.synthetic_data_loader import load_lfr_benchmark_network
 from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
+from pipeline.config.config import ExecutionMode, DefuzzificationRule
+from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 from pipeline.scripts.utils.result_dataclass import Result
 from pipeline.scripts.utils.utils import create_results_dir, create_network_results_dir, log_progress, \
     initialize_results_file, save_report, save_faddis_clustering_results
 
 
 def run_synthetic_networks_experiments(
-        networks_base_dir,
-        results_base_dir,
-        network_families,
-        thresholds,
-        affinity_designs,
-        execution_modes,
-        defuzzification_rules
+        networks_base_dir: str,
+        results_base_dir: str,
+        network_families: list[NetworkFamily],
+        thresholds: dict[str, float],
+        affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
+        execution_modes: list[ExecutionMode],
+        defuzzification_rules: list[DefuzzificationRule]
 ):
     """
     Run synthetic networks experiments.
@@ -31,15 +35,15 @@ def run_synthetic_networks_experiments(
             Path to the base directory containing the synthetic networks.
         results_base_dir : (str)
             Path to the base directory where results will be saved.
-        network_families : (list)
+        network_families : (list[NetworkFamily])
             List of network families to be processed.
-        thresholds : (dict)
+        thresholds : (dict[str, float])
             Dictionary containing threshold values, keyed by network family name.
-        affinity_designs : (dict)
+        affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
             Dictionary of affinity designs to be applied, keyed by design label.
-        execution_modes : (list)
+        execution_modes : (list[ExecutionMode])
             List of execution modes to be applied.
-        defuzzification_rules : (list)
+        defuzzification_rules : (list[DefuzzificationRule])
             List of defuzzification rules to be applied.
     """
 
@@ -54,7 +58,7 @@ def run_synthetic_networks_experiments(
             results_network_dir = create_network_results_dir(results_dir, network_family.name, network.name)
 
             append_result = initialize_results_file(results_network_dir)
-            results_id = 0
+            number_of_results = 0
 
             try:
                 # 0. Load network.
@@ -70,7 +74,7 @@ def run_synthetic_networks_experiments(
                         log_progress(idx4, len(execution_modes), execution_mode.label, 2)
 
                         for idx5, defuzzification_rule in enumerate(defuzzification_rules, 1):
-                            log_progress(idx5, len(defuzzification_rules), defuzzification_rule, 1)
+                            log_progress(idx5, len(defuzzification_rules), str(defuzzification_rule), 1)
 
                             # --- Start of the computation ---
                             start_time = get_computation_start_time()
@@ -117,7 +121,8 @@ def run_synthetic_networks_experiments(
                                 overlapping=network.overlapping_ground_truth
                             )
 
-                            results_id += 1
+                            number_of_results += 1
+                            results_id = f"{number_of_results:03d}"
                             append_result(Result(
                                 id=results_id,
                                 network_family=network_family.name,

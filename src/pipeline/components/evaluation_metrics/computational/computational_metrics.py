@@ -3,7 +3,7 @@ import time
 from pipeline.components.evaluation_metrics.computational.computational_metrics_dataclass import ComputationalMetrics
 
 
-def get_computation_start_time():
+def get_computation_start_time() -> float:
     """
     Retrieve the start time of the computation.
 
@@ -15,7 +15,7 @@ def get_computation_start_time():
     return _get_current_time()
 
 
-def get_computation_end_time():
+def get_computation_end_time() -> float:
     """
     Retrieve the end time of the computation.
 
@@ -27,7 +27,7 @@ def get_computation_end_time():
     return _get_current_time()
 
 
-def compute_computational_metrics(start_time, end_time):
+def compute_computational_metrics(start_time: float, end_time: float) -> ComputationalMetrics:
     """
     Compute computational metrics.
 
@@ -47,7 +47,7 @@ def compute_computational_metrics(start_time, end_time):
     )
 
 
-def _get_current_time():
+def _get_current_time() -> float:
     """
     Retrieve the current time.
 
@@ -59,7 +59,7 @@ def _get_current_time():
     return time.perf_counter()
 
 
-def _compute_runtime(start_time, end_time):
+def _compute_runtime(start_time: float, end_time: float) -> float:
     """
     Compute the runtime of the computation (in seconds).
 

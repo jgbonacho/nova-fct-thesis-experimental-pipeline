@@ -9,21 +9,27 @@ import numpy.linalg as LA
 ZERO_BOUND = 10 ** (-9)
 
 
-def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
+def faddis(
+        W: np.ndarray | np.matrix,
+        epsilon: float | None = None,
+        tau: float | None = None,
+        k_max: int | None = None,
+        desired_k: int | None = None
+) -> tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, int, str]:
     """
     FADDIS: Fuzzy Additive Spectral clustering.
     Stop criterion is ('epsilon', 'tau', 'k_max') or 'desired_k'.
 
     Parameters:
-        W : (np.ndarray, shape[n,n])
+        W : (np.ndarray | np.matrix, shape[n,n])
             nxn symmetric similarity/affinity matrix.
-        epsilon : (float)
+        epsilon : (float | None)
             Threshold of the individual cluster contribution.
-        tau : (float)
+        tau : (float | None)
             Threshold of the total clusters contribution.
-        k_max : (int)
+        k_max : (int | None)
             Maximum number of clusters.
-        desired_k : (int)
+        desired_k : (int | None)
             Number of clusters to extract.
             If not None, it is used as the stop criterion instead of 'epsilon', 'tau' and 'k_max'.
 
@@ -32,11 +38,11 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
             List of residual similarity matrices at each iteration.
         membership_matrix : (np.matrix)
             nxK membership matrix of clustering.
-        contributions : (np.array)
+        contributions : (np.ndarray)
             1xK vector of relative contributions to the data scatter.
-        intensities : (np.matrix)
+        intensities : (np.ndarray)
             Kx2 matrix of weights (cluster intensities^0.5) and intensities.
-        eigenvalues : (np.array)
+        eigenvalues : (np.ndarray)
             1xK vector of eigenvalues corresponding to clusters.
         number_of_clusters : (int)
             Number of clusters extracted.
@@ -208,18 +214,23 @@ def faddis(W, epsilon=None, tau=None, k_max=None, desired_k=None):
     return sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition
 
 
-def _validate_inputs(epsilon, tau, k_max, desired_k):
+def _validate_inputs(
+        epsilon: float | None,
+        tau: float | None,
+        k_max: int | None,
+        desired_k: int | None,
+) -> None:
     """
     Validate the inputs.
 
     Parameters:
-        epsilon : (float)
+        epsilon : (float | None)
             Threshold of the individual cluster contribution.
-        tau : (float)
+        tau : (float | None)
             Threshold of the total clusters contribution.
-        k_max : (int)
+        k_max : (int | None)
             Maximum number of clusters.
-        desired_k : (int)
+        desired_k : (int | None)
             Number of clusters to extract.
 
     Exceptions:
@@ -240,12 +251,12 @@ def _validate_inputs(epsilon, tau, k_max, desired_k):
         raise ValueError("[ERROR] 'k_max' must be a positive integer.")
 
 
-def _ensure_np_matrix(W):
+def _ensure_np_matrix(W: np.ndarray | np.matrix) -> np.matrix:
     """
     Ensure that the input W is a numpy matrix.
 
     Parameters:
-        W : (array or matrix)
+        W : (np.ndarray | np.matrix)
             The input array or matrix.
 
     Returns:

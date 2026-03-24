@@ -3,25 +3,24 @@ Evaluation Metrics - Extrinsic: Compute extrinsic metrics for non-overlapping gr
 """
 
 import numpy as np
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from sklearn.metrics import adjusted_rand_score, adjusted_mutual_info_score, normalized_mutual_info_score, \
     fowlkes_mallows_score, mutual_info_score
 
-from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
-
 
 def compute_extrinsic_metrics_for_non_overlapping_ground_truth(
-        ground_truth_labels,
-        predicted_labels,
-        k,
-        k_predicted
-):
+        ground_truth_labels: list[int],
+        predicted_labels: list[int],
+        k: int,
+        k_predicted: int
+) -> ExtrinsicMetrics:
     """
     Compute extrinsic metrics for non-overlapping ground-truth.
 
     Parameters:
-        ground_truth_labels : (list[int], length n) or (list[list[int]], length n)
+        ground_truth_labels : (list[int], length n)
             Ground truth labels.
-        predicted_labels : (list[int], length n) or (list[list[int]], length n)
+        predicted_labels : (list[int], length n)
             Predicted labels.
         k : (int)
             The number of communities in the ground truth.
@@ -45,7 +44,7 @@ def compute_extrinsic_metrics_for_non_overlapping_ground_truth(
     )
 
 
-def _compute_ami(ground_truth_labels, predicted_labels):
+def _compute_ami(ground_truth_labels: list[int], predicted_labels: list[int]) -> float:
     """
     Compute the Adjusted Mutual Information (AMI) between ground truth labels and predicted labels.
     AMI ranges from _ to 1. The higher, the better.
@@ -64,7 +63,7 @@ def _compute_ami(ground_truth_labels, predicted_labels):
     return adjusted_mutual_info_score(ground_truth_labels, predicted_labels)
 
 
-def _compute_f_measure(ground_truth_labels, predicted_labels):
+def _compute_f_measure(ground_truth_labels: list[int], predicted_labels: list[int]) -> float:
     """
     Compute the F-measure between ground truth labels and predicted labels.
     F-measure ranges from 0 to 1. The higher, the better.
@@ -87,7 +86,7 @@ def _compute_f_measure(ground_truth_labels, predicted_labels):
     return ((2.0 * purity * inverse_purity) / denominator) if denominator > 0 else 0.0
 
 
-def _compute_ari(ground_truth_labels, predicted_labels):
+def _compute_ari(ground_truth_labels: list[int], predicted_labels: list[int]) -> float:
     """
     Compute the Adjusted Rand Index (ARI) between ground truth labels and predicted labels.
     ARI ranges from -0.5 to 1. The higher, the better.
@@ -106,7 +105,7 @@ def _compute_ari(ground_truth_labels, predicted_labels):
     return adjusted_rand_score(ground_truth_labels, predicted_labels)
 
 
-def _compute_fmi(ground_truth_labels, predicted_labels):
+def _compute_fmi(ground_truth_labels: list[int], predicted_labels: list[int]) -> float:
     """
     Compute the Fowlkes-Mallows Index (FMI) between ground truth labels and predicted labels.
     FMI ranges from 0 to 1. The higher, the better.
@@ -125,7 +124,7 @@ def _compute_fmi(ground_truth_labels, predicted_labels):
     return fowlkes_mallows_score(ground_truth_labels, predicted_labels)
 
 
-def _compute_nmi(ground_truth_labels, predicted_labels):
+def _compute_nmi(ground_truth_labels: list[int], predicted_labels: list[int]) -> float:
     """
     Compute the Normalized Mutual Information (NMI) between ground truth labels and predicted labels.
     NMI ranges from 0 to 1. The higher, the better.
@@ -144,7 +143,7 @@ def _compute_nmi(ground_truth_labels, predicted_labels):
     return normalized_mutual_info_score(ground_truth_labels, predicted_labels)
 
 
-def _compute_vi(ground_truth_labels, predicted_labels):
+def _compute_vi(ground_truth_labels: list[int], predicted_labels: list[int]) -> float:
     """
     Compute the Variation of Information (VI) between ground truth labels and predicted labels.
     VI ranges from 0 to log(n). The lower, the better.
@@ -167,7 +166,7 @@ def _compute_vi(ground_truth_labels, predicted_labels):
     return predicted_labels_entropy + ground_truth_labels_entropy - (2 * mutual_information)
 
 
-def _compute_purity(labels_a, labels_b):
+def _compute_purity(labels_a: list[int], labels_b: list[int]) -> float:
     """
     Compute the purity between two partitions of the same set of elements.
 
@@ -194,7 +193,7 @@ def _compute_purity(labels_a, labels_b):
     return purity_sum / labels_a.size
 
 
-def _compute_entropy(labels):
+def _compute_entropy(labels: list[int]) -> float:
     """
     Compute the entropy of a partition of the elements.
 

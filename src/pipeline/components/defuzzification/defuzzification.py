@@ -1,12 +1,17 @@
 import numpy as np
 
 
-def apply_defuzzification_rule(U, gamma=0.5, conditionally_discard_first_cluster=True, overlapping=True):
+def apply_defuzzification_rule(
+        U: np.ndarray | np.matrix,
+        gamma: float = 0.5,
+        conditionally_discard_first_cluster: bool = True,
+        overlapping: bool = True
+) -> tuple[list[int] | list[list[int]], bool]:
     """
     Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
 
     Parameters:
-        U : (np.ndarray, shape[n,k])
+        U : (np.ndarray | np.matrix, shape[n,k])
             Fuzzy memberships per node per community.
         gamma : (float, optional)
             Hyperparameter for the defuzzification rule.
@@ -21,13 +26,13 @@ def apply_defuzzification_rule(U, gamma=0.5, conditionally_discard_first_cluster
             Default is True.
 
     Returns:
-        predicted_labels : (list[list[int]], length n) or (list[int], length n)
+        predicted_labels : (list[list[int]], length n | list[int], length n)
             List of predicted labels for each node.
         first_cluster_discarded : (bool)
             Whether the first cluster was discarded.
 
     Exceptions:
-        ValueError : If gamma is not in the range [0, 1].
+        ValueError : If gamma is not in the range [0, 1], when overlapping is True.
     """
 
     if conditionally_discard_first_cluster and np.all(U[:, 0] > 0):

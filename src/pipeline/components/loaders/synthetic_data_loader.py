@@ -3,7 +3,11 @@ import os
 import networkx as nx
 
 
-def load_lfr_benchmark_network(dir_path, filename, overlapping_ground_truth=True):
+def load_lfr_benchmark_network(
+        dir_path: str,
+        filename: str,
+        overlapping_ground_truth: bool = True
+) -> tuple[nx.Graph, list[int] | list[list[int]], int]:
     """
      Load a LFR benchmark network, preprocess it, and extract ground-truth labels.
 
@@ -17,9 +21,9 @@ def load_lfr_benchmark_network(dir_path, filename, overlapping_ground_truth=True
                 Default is True.
 
      Returns:
-         graph : (networkx.Graph)
+         graph : (nx.Graph)
              The preprocessed graph.
-         ground_truth : (list[list[int]], size n) or (list[int], size n)
+         ground_truth : (list[list[int]], size n | list[int], size n)
              List of ground-truth labels.
          k : (int)
                 Number of communities.
@@ -60,7 +64,7 @@ def load_lfr_benchmark_network(dir_path, filename, overlapping_ground_truth=True
     return graph, ground_truth_labels, k
 
 
-def _read_edges_nse(nse_path):
+def _read_edges_nse(nse_path: str) -> nx.Graph:
     """
     Read edges from an NSE file and construct a graph.
 
@@ -69,7 +73,7 @@ def _read_edges_nse(nse_path):
             Path to the NSE file.
 
     Returns:
-        graph : (networkx.Graph)
+        graph : (nx.Graph)
             The constructed undirected graph.
     """
 
@@ -89,7 +93,7 @@ def _read_edges_nse(nse_path):
     return graph
 
 
-def _read_memberships_nmc(nmc_path, overlapping_ground_truth):
+def _read_memberships_nmc(nmc_path: str, overlapping_ground_truth: bool) -> dict[int, int] | dict[int, list[int]]:
     """
     Read node memberships from an NMC file.
 
@@ -100,7 +104,7 @@ def _read_memberships_nmc(nmc_path, overlapping_ground_truth):
             Whether nodes can belong to multiple communities in the ground-truth labels.
 
     Returns:
-        node_to_ground_truth_labels : (dict)
+        node_to_ground_truth_labels : (dict[int, int] | dict[int, list[int]])
             Mapping from node to its ground-truth labels.
     """
 

@@ -1,19 +1,28 @@
+import networkx as nx
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_for_non_overlapping_ground_truth import \
     compute_extrinsic_metrics_for_non_overlapping_ground_truth
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_for_overlapping_ground_truth import \
     compute_extrinsic_metrics_for_overlapping_ground_truth
 
 
-def compute_extrinsic_metrics(graph, ground_truth_labels, predicted_labels, k, k_predicted, overlapping=True):
+def compute_extrinsic_metrics(
+        graph: nx.Graph,
+        ground_truth_labels: list[int] | list[list[int]],
+        predicted_labels: list[int] | list[list[int]],
+        k: int,
+        k_predicted: int,
+        overlapping: bool = True
+) -> ExtrinsicMetrics:
     """
     Compute extrinsic metrics.
 
     Parameters:
-        graph : (networkx.Graph)
+        graph : (nx.Graph)
             The graph.
-        ground_truth_labels : (list[int], length n) or (list[list[int]], length n)
+        ground_truth_labels : (list[int], length n | list[list[int]], length n)
             Ground truth labels.
-        predicted_labels : (list[int], length n) or (list[list[int]], length n)
+        predicted_labels : (list[int], length n | list[list[int]], length n)
             Predicted labels.
         k : (int)
             The number of communities in the ground truth.
