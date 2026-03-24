@@ -1,6 +1,0 @@
-{
-  "n50mu0.1on5om2inst1": "d_avg=10; d_max=25; c_min=10; c_max=50; t1=2.0; t2=1.0; n=50; mu=0.1; on=5; om=2; instance=1",
-  "n50mu0.1on5om2inst2": "d_avg=10; d_max=25; c_min=10; c_max=50; t1=2.0; t2=1.0; n=50; mu=0.1; on=5; om=2; instance=2",
-  "n50mu0.1on25om2inst1": "d_avg=10; d_max=25; c_min=10; c_max=50; t1=2.0; t2=1.0; n=50; mu=0.1; on=25; om=2; instance=1",
-  "n50mu0.1on25om2inst2": "d_avg=10; d_max=25; c_min=10; c_max=50; t1=2.0; t2=1.0; n=50; mu=0.1; on=25; om=2; instance=2"
-}

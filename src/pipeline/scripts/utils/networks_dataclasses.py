@@ -7,12 +7,18 @@ class Network:
     Dataclass for networks.
 
     Attributes:
+        description : str
+            The description of the network.
+        instance : int
+            The instance number of the network.
         name : str
             The name of the network.
         overlapping_ground_truth : bool
             Whether the ground truth is overlapping.
     """
 
+    description: str
+    instance: int
     name: str
     overlapping_ground_truth: bool
 
@@ -31,6 +37,8 @@ class Network:
         """
 
         return Network(
+            description=data["description"],
+            instance=data["instance"],
             name=data["name"],
             overlapping_ground_truth=data["overlapping_ground_truth"],
         )
