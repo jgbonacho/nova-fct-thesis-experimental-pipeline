@@ -9,6 +9,7 @@ from typing import get_args
 import numpy as np
 from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
+from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import IntrinsicMetrics
 from pipeline.config.config import ExecutionMode, DefuzzificationRule
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 from pipeline.scripts.utils.result_dataclass import Result
@@ -116,6 +117,7 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
 
     selected_base_fields = None
     selected_extrinsic_fields = None
+    selected_intrinsic_fields = None
     selected_computational_fields = None
     header_written = False
 
@@ -142,25 +144,31 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
     def append_result(result: Result) -> None:
         nonlocal selected_base_fields
         nonlocal selected_extrinsic_fields
+        nonlocal selected_intrinsic_fields
         nonlocal selected_computational_fields
         nonlocal header_written
 
         if not header_written:
-            selected_base_fields = _select_fields(result, Result, (ExtrinsicMetrics, ComputationalMetrics))
+            selected_base_fields = _select_fields(
+                result, Result, (ExtrinsicMetrics, IntrinsicMetrics, ComputationalMetrics)
+            )
             selected_extrinsic_fields = (
                 _select_fields(result.extrinsic_results, ExtrinsicMetrics)
-                if result.extrinsic_results is not None
-                else []
+                if result.extrinsic_results is not None else []
+            )
+            selected_intrinsic_fields = (
+                _select_fields(result.intrinsic_results, IntrinsicMetrics)
+                if result.intrinsic_results is not None else []
             )
             selected_computational_fields = (
                 _select_fields(result.computational_results, ComputationalMetrics)
-                if result.computational_results is not None
-                else []
+                if result.computational_results is not None else []
             )
 
             headers = (
                     _get_headers(selected_base_fields)
                     + _get_headers(selected_extrinsic_fields)
+                    + _get_headers(selected_intrinsic_fields)
                     + _get_headers(selected_computational_fields)
             )
 
@@ -172,6 +180,7 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
         row = (
                 _get_row_values(result, selected_base_fields)
                 + _get_row_values(result.extrinsic_results, selected_extrinsic_fields)
+                + _get_row_values(result.intrinsic_results, selected_intrinsic_fields)
                 + _get_row_values(result.computational_results, selected_computational_fields)
         )
 

@@ -6,6 +6,7 @@ from pipeline.components.defuzzification.defuzzification import apply_defuzzific
 from pipeline.components.evaluation_metrics.computational.computational_metrics import compute_computational_metrics, \
     get_computation_start_time, get_computation_end_time
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import compute_extrinsic_metrics
+from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics
 from pipeline.components.faddis.faddis import faddis
 from pipeline.components.lapin.lapin import lapin
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
@@ -113,12 +114,16 @@ def run_synthetic_networks_experiments(
                             # --- End of the computation ---
 
                             # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
-                            computational_results = compute_computational_metrics(
-                                start_time, end_time
-                            )
                             extrinsic_results = compute_extrinsic_metrics(
                                 graph, ground_truth_labels, predicted_labels, k, k_predicted,
                                 overlapping=network.overlapping_ground_truth
+                            )
+                            intrinsic_results = compute_intrinsic_metrics(
+                                graph, A, membership_matrix, predicted_labels,
+                                overlapping=network.overlapping_ground_truth
+                            )
+                            computational_results = compute_computational_metrics(
+                                start_time, end_time
                             )
 
                             number_of_results += 1
@@ -139,6 +144,7 @@ def run_synthetic_networks_experiments(
                                 conditionally_discard_first_cluster=defuzzification_rule.conditionally_discard_first_cluster,
                                 first_cluster_discarded=first_cluster_discarded,
                                 extrinsic_results=extrinsic_results,
+                                intrinsic_results=intrinsic_results,
                                 computational_results=computational_results
                             ))
 

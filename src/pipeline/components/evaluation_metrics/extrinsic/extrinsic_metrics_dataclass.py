@@ -11,22 +11,22 @@ class ExtrinsicMetrics:
             A string representing the number of communities in the ground truth and the number of communities predicted, formatted as "K' | K".
         relative_error_of_k : float
             Relative error of the number of communities, computed as |K'-K|/K.
-        ami : float
-            Adjusted Mutual Information (AMI) score.
-        f_measure : float
-            F-measure score.
-        ari : float
-            Adjusted Rand Index (ARI) score.
-        fmi : float
-            Fowlkes-Mallows Index (FMI) score.
-        nmi : float
-            Normalized Mutual Information (NMI) score.
-        vi : float
-            Variation of Information (VI) score.
-        onmi : float
-            Overlapping Normalized Mutual Information (ONMI) score.
-        omega : float
-            Omega index score.
+        ami : float | None
+            Adjusted Mutual Information (AMI) score. None if not applicable.
+        f_measure : float | None
+            F-measure score. None if not applicable.
+        ari : float | None
+            Adjusted Rand Index (ARI) score. None if not applicable.
+        fmi : float | None
+            Fowlkes-Mallows Index (FMI) score. None if not applicable.
+        nmi : float | None
+            Normalized Mutual Information (NMI) score. None if not applicable.
+        vi : float | None
+            Variation of Information (VI) score. None if not applicable.
+        onmi : float | None
+            Overlapping Normalized Mutual Information (ONMI) score. None if not applicable.
+        omega : float | None
+            Omega index score. None if not applicable.
     """
 
     diff_of_k: str = field(metadata={"label": "K' | K"})

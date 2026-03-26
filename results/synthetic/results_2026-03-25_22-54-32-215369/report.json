@@ -4,18 +4,26 @@
       "name": "test_family1",
       "networks": [
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.1;on=0;om=0",
+          "instance": 1,
           "name": "n50mu0.1on0om0inst1",
           "overlapping_ground_truth": false
         },
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.1;on=0;om=0",
+          "instance": 2,
           "name": "n50mu0.1on0om0inst2",
           "overlapping_ground_truth": false
         },
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.3;on=0;om=0",
+          "instance": 1,
           "name": "n50mu0.3on0om0inst1",
           "overlapping_ground_truth": false
         },
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.3;on=0;om=0",
+          "instance": 2,
           "name": "n50mu0.3on0om0inst2",
           "overlapping_ground_truth": false
         }
@@ -25,18 +33,26 @@
       "name": "test_family2",
       "networks": [
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.1;on=5;om=2",
+          "instance": 1,
           "name": "n50mu0.1on5om2inst1",
           "overlapping_ground_truth": true
         },
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.1;on=5;om=2",
+          "instance": 2,
           "name": "n50mu0.1on5om2inst2",
           "overlapping_ground_truth": true
         },
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.1;on=25;om=2",
+          "instance": 1,
           "name": "n50mu0.1on25om2inst1",
           "overlapping_ground_truth": true
         },
         {
+          "description": "d_avg=10;d_max=25;c_min=10;c_max=50;t1=2.0;t2=1.0;n=50;mu=0.1;on=25;om=2",
+          "instance": 2,
           "name": "n50mu0.1on25om2inst2",
           "overlapping_ground_truth": true
         }
