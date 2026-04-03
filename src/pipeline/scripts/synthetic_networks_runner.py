@@ -102,13 +102,12 @@ def run_synthetic_networks_experiments(
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
                             _, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = results
-                            predicted_labels, first_cluster_discarded = apply_defuzzification_rule(
+                            predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                                 membership_matrix,
                                 defuzzification_rule.gamma,
                                 defuzzification_rule.conditionally_discard_first_cluster,
                                 overlapping=network.overlapping_ground_truth
                             )
-                            k_predicted = number_of_clusters - 1 if first_cluster_discarded else number_of_clusters
 
                             end_time = get_computation_end_time()
                             # --- End of the computation ---

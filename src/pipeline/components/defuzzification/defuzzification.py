@@ -6,7 +6,7 @@ def apply_defuzzification_rule(
         gamma: float = 0.5,
         conditionally_discard_first_cluster: bool = True,
         overlapping: bool = True
-) -> tuple[list[int] | list[list[int]], bool]:
+) -> tuple[list[int] | list[list[int]], int, bool]:
     """
     Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
 
@@ -28,6 +28,8 @@ def apply_defuzzification_rule(
     Returns:
         predicted_labels : (list[list[int]], length n | list[int], length n)
             List of predicted labels for each node.
+        k_predicted : (int)
+            Number of predicted communities.
         first_cluster_discarded : (bool)
             Whether the first cluster was discarded.
 
@@ -49,7 +51,9 @@ def apply_defuzzification_rule(
     if not overlapping:
         # Maximum membership assignment.
         predicted_labels = np.argmax(U_copy, axis=1) + labels_offset
-        return predicted_labels.tolist(), first_cluster_discarded
+        predicted_labels = predicted_labels.tolist()
+        k_predicted = len(set(predicted_labels))
+        return predicted_labels, k_predicted, first_cluster_discarded
     else:
         if not (0.0 <= gamma <= 1.0):
             raise ValueError("[ERROR] Gamma must be in the range [0, 1].")
@@ -59,4 +63,5 @@ def apply_defuzzification_rule(
         threshold_per_node = gamma * max_membership_per_node
         B = (U_copy >= threshold_per_node).astype(int)
         predicted_labels = [list(np.flatnonzero(B[i]) + labels_offset) for i in range(B.shape[0])]
-        return predicted_labels, first_cluster_discarded
+        k_predicted = len({label for labels in predicted_labels for label in labels})
+        return predicted_labels, k_predicted, first_cluster_discarded
