@@ -10,7 +10,7 @@ def compute_intrinsic_metrics(
         graph: nx.Graph,
         A: np.ndarray,
         U: np.ndarray,
-        predicted_labels: list[int] | list[list[int]],
+        predicted_labels: list,
         overlapping: bool = True
 ) -> IntrinsicMetrics:
     """
@@ -176,7 +176,7 @@ def _compute_conductance_of_boundary_nodes(A: np.ndarray, communities: dict[int,
 
 def _build_communities_from_labels(
         graph: nx.Graph,
-        labels: list[int] | list[list[int]],
+        labels: list,
         overlapping: bool
 ) -> dict[int, list[int]]:
     """

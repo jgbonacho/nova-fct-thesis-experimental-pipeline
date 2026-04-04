@@ -2,11 +2,11 @@ import numpy as np
 
 
 def apply_defuzzification_rule(
-        U: np.ndarray | np.matrix,
+        U: np.matrix,
         gamma: float = 0.5,
         conditionally_discard_first_cluster: bool = True,
         overlapping: bool = True
-) -> tuple[list[int] | list[list[int]], int, bool]:
+) -> tuple[list, int, bool]:
     """
     Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
 

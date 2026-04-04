@@ -10,11 +10,11 @@ ZERO_BOUND = 10 ** (-9)
 
 
 def faddis(
-        W: np.ndarray | np.matrix,
-        epsilon: float | None = None,
-        tau: float | None = None,
-        k_max: int | None = None,
-        desired_k: int | None = None
+        W: np.ndarray,
+        epsilon: float = None,
+        tau: float = None,
+        k_max: int = None,
+        desired_k: int = None
 ) -> tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, int, str]:
     """
     FADDIS: Fuzzy Additive Spectral clustering.
@@ -215,10 +215,10 @@ def faddis(
 
 
 def _validate_inputs(
-        epsilon: float | None,
-        tau: float | None,
-        k_max: int | None,
-        desired_k: int | None,
+        epsilon: float,
+        tau: float,
+        k_max: int,
+        desired_k: int,
 ) -> None:
     """
     Validate the inputs.
@@ -251,7 +251,7 @@ def _validate_inputs(
         raise ValueError("[ERROR] 'k_max' must be a positive integer.")
 
 
-def _ensure_np_matrix(W: np.ndarray | np.matrix) -> np.matrix:
+def _ensure_np_matrix(W: np.ndarray) -> np.matrix:
     """
     Ensure that the input W is a numpy matrix.
 

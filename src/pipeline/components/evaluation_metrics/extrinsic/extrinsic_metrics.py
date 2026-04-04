@@ -8,8 +8,8 @@ from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_for_over
 
 def compute_extrinsic_metrics(
         graph: nx.Graph,
-        ground_truth_labels: list[int] | list[list[int]],
-        predicted_labels: list[int] | list[list[int]],
+        ground_truth_labels: list,
+        predicted_labels: list,
         k: int,
         k_predicted: int,
         overlapping: bool = True

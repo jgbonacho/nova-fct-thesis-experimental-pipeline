@@ -1,0 +1,437 @@
+{
+  "name": "16_nM_uM_onnM_omM",
+  "networks": [
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=240;om=4",
+      "instance": 1,
+      "name": "n800mu0.4on240om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=240;om=4",
+      "instance": 2,
+      "name": "n800mu0.4on240om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=240;om=5",
+      "instance": 1,
+      "name": "n800mu0.4on240om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=240;om=5",
+      "instance": 2,
+      "name": "n800mu0.4on240om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=320;om=4",
+      "instance": 1,
+      "name": "n800mu0.4on320om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=320;om=4",
+      "instance": 2,
+      "name": "n800mu0.4on320om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=320;om=5",
+      "instance": 1,
+      "name": "n800mu0.4on320om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.4;on=320;om=5",
+      "instance": 2,
+      "name": "n800mu0.4on320om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=240;om=4",
+      "instance": 1,
+      "name": "n800mu0.5on240om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=240;om=4",
+      "instance": 2,
+      "name": "n800mu0.5on240om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=240;om=5",
+      "instance": 1,
+      "name": "n800mu0.5on240om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=240;om=5",
+      "instance": 2,
+      "name": "n800mu0.5on240om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=320;om=4",
+      "instance": 1,
+      "name": "n800mu0.5on320om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=320;om=4",
+      "instance": 2,
+      "name": "n800mu0.5on320om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=320;om=5",
+      "instance": 1,
+      "name": "n800mu0.5on320om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.5;on=320;om=5",
+      "instance": 2,
+      "name": "n800mu0.5on320om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=240;om=4",
+      "instance": 1,
+      "name": "n800mu0.6on240om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=240;om=4",
+      "instance": 2,
+      "name": "n800mu0.6on240om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=240;om=5",
+      "instance": 1,
+      "name": "n800mu0.6on240om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=240;om=5",
+      "instance": 2,
+      "name": "n800mu0.6on240om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=320;om=4",
+      "instance": 1,
+      "name": "n800mu0.6on320om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=320;om=4",
+      "instance": 2,
+      "name": "n800mu0.6on320om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=320;om=5",
+      "instance": 1,
+      "name": "n800mu0.6on320om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=800;mu=0.6;on=320;om=5",
+      "instance": 2,
+      "name": "n800mu0.6on320om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=270;om=4",
+      "instance": 1,
+      "name": "n900mu0.4on270om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=270;om=4",
+      "instance": 2,
+      "name": "n900mu0.4on270om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=270;om=5",
+      "instance": 1,
+      "name": "n900mu0.4on270om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=270;om=5",
+      "instance": 2,
+      "name": "n900mu0.4on270om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=360;om=4",
+      "instance": 1,
+      "name": "n900mu0.4on360om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=360;om=4",
+      "instance": 2,
+      "name": "n900mu0.4on360om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=360;om=5",
+      "instance": 1,
+      "name": "n900mu0.4on360om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.4;on=360;om=5",
+      "instance": 2,
+      "name": "n900mu0.4on360om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=270;om=4",
+      "instance": 1,
+      "name": "n900mu0.5on270om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=270;om=4",
+      "instance": 2,
+      "name": "n900mu0.5on270om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=270;om=5",
+      "instance": 1,
+      "name": "n900mu0.5on270om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=270;om=5",
+      "instance": 2,
+      "name": "n900mu0.5on270om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=360;om=4",
+      "instance": 1,
+      "name": "n900mu0.5on360om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=360;om=4",
+      "instance": 2,
+      "name": "n900mu0.5on360om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=360;om=5",
+      "instance": 1,
+      "name": "n900mu0.5on360om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.5;on=360;om=5",
+      "instance": 2,
+      "name": "n900mu0.5on360om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=270;om=4",
+      "instance": 1,
+      "name": "n900mu0.6on270om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=270;om=4",
+      "instance": 2,
+      "name": "n900mu0.6on270om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=270;om=5",
+      "instance": 1,
+      "name": "n900mu0.6on270om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=270;om=5",
+      "instance": 2,
+      "name": "n900mu0.6on270om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=360;om=4",
+      "instance": 1,
+      "name": "n900mu0.6on360om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=360;om=4",
+      "instance": 2,
+      "name": "n900mu0.6on360om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=360;om=5",
+      "instance": 1,
+      "name": "n900mu0.6on360om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=900;mu=0.6;on=360;om=5",
+      "instance": 2,
+      "name": "n900mu0.6on360om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=4",
+      "instance": 1,
+      "name": "n1000mu0.4on300om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=4",
+      "instance": 2,
+      "name": "n1000mu0.4on300om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=5",
+      "instance": 1,
+      "name": "n1000mu0.4on300om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=5",
+      "instance": 2,
+      "name": "n1000mu0.4on300om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=4",
+      "instance": 1,
+      "name": "n1000mu0.4on400om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=4",
+      "instance": 2,
+      "name": "n1000mu0.4on400om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=5",
+      "instance": 1,
+      "name": "n1000mu0.4on400om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=5",
+      "instance": 2,
+      "name": "n1000mu0.4on400om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=300;om=4",
+      "instance": 1,
+      "name": "n1000mu0.5on300om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=300;om=4",
+      "instance": 2,
+      "name": "n1000mu0.5on300om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=300;om=5",
+      "instance": 1,
+      "name": "n1000mu0.5on300om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=300;om=5",
+      "instance": 2,
+      "name": "n1000mu0.5on300om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=400;om=4",
+      "instance": 1,
+      "name": "n1000mu0.5on400om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=400;om=4",
+      "instance": 2,
+      "name": "n1000mu0.5on400om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=400;om=5",
+      "instance": 1,
+      "name": "n1000mu0.5on400om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.5;on=400;om=5",
+      "instance": 2,
+      "name": "n1000mu0.5on400om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=300;om=4",
+      "instance": 1,
+      "name": "n1000mu0.6on300om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=300;om=4",
+      "instance": 2,
+      "name": "n1000mu0.6on300om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=300;om=5",
+      "instance": 1,
+      "name": "n1000mu0.6on300om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=300;om=5",
+      "instance": 2,
+      "name": "n1000mu0.6on300om5inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=400;om=4",
+      "instance": 1,
+      "name": "n1000mu0.6on400om4inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=400;om=4",
+      "instance": 2,
+      "name": "n1000mu0.6on400om4inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=400;om=5",
+      "instance": 1,
+      "name": "n1000mu0.6on400om5inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.6;on=400;om=5",
+      "instance": 2,
+      "name": "n1000mu0.6on400om5inst2",
+      "overlapping_ground_truth": true
+    }
+  ]
+}

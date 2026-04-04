@@ -7,7 +7,7 @@ name = "pipeline"
 version = "0.1.0"
 description = "Thesis experimental pipeline project"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.9"
 dependencies = [
     "numpy",
     "networkx",

@@ -17,7 +17,7 @@ class IntrinsicMetrics:
             Conductance of Boundary Nodes score. None if not applicable.
     """
 
-    modularity: float | None = field(default=None, metadata={"label": "Modularity"})
-    conductance: float | None = field(default=None, metadata={"label": "Conductance"})
-    fuzzy_modularity: float | None = field(default=None, metadata={"label": "Fuzzy-Modularity"})
-    conductance_bn: float | None = field(default=None, metadata={"label": "Conductance-BN"})
+    modularity: float = field(default=None, metadata={"label": "Modularity"})
+    conductance: float = field(default=None, metadata={"label": "Conductance"})
+    fuzzy_modularity: float = field(default=None, metadata={"label": "Fuzzy-Modularity"})
+    conductance_bn: float = field(default=None, metadata={"label": "Conductance-BN"})

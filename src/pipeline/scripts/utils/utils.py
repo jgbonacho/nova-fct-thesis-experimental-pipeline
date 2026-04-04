@@ -91,7 +91,8 @@ def log_progress(
             Default is False.
     """
 
-    print(f"{"\n" if empty_line else ""}{indent_level * '#'} [{current_step}/{total_steps}] '{item_label}'")
+    prefix = "\n" if empty_line else ""
+    print(f"{prefix}{indent_level * '#'} [{current_step}/{total_steps}] '{item_label}'")
 
 
 def initialize_results_file(results_dir: str, output_filename: str = "_results") -> Callable[[Result], None]:
@@ -281,7 +282,7 @@ def save_report(
         json.dump(report, out_file, indent=2)
 
 
-def _format_value(value: str | int | bool | float) -> str:
+def _format_value(value: any) -> str:
     """
     Format a value into a human-readable string.
 

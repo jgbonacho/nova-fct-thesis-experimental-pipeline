@@ -80,15 +80,15 @@ def load_thresholds(
 
 AFFINITY_DESIGNS = {
     'Default': lambda A: default_affinity(A),
-    'Kul': lambda A: compute_kul(A),
-    'Dice': lambda A: compute_dice(A),
-    'Ochiai': lambda A: compute_ochiai(A),
-    'IP_beta0': lambda A: compute_ip(A, beta=0),
-    'IP_beta05': lambda A: compute_ip(A, beta=0.5),
-    'IP_beta1': lambda A: compute_ip(A, beta=1),
-    'CosIP_beta0': lambda A: compute_cosip(A, beta=0),
-    'CosIP_beta05': lambda A: compute_cosip(A, beta=0.5),
-    'CosIP_beta1': lambda A: compute_cosip(A, beta=1)
+    # 'Kul': lambda A: compute_kul(A),
+    # 'Dice': lambda A: compute_dice(A),
+    # 'Ochiai': lambda A: compute_ochiai(A),
+    # 'IP_beta0': lambda A: compute_ip(A, beta=0),
+    # 'IP_beta05': lambda A: compute_ip(A, beta=0.5),
+    # 'IP_beta1': lambda A: compute_ip(A, beta=1),
+    # 'CosIP_beta0': lambda A: compute_cosip(A, beta=0),
+    # 'CosIP_beta05': lambda A: compute_cosip(A, beta=0.5),
+    # 'CosIP_beta1': lambda A: compute_cosip(A, beta=1)
 }
 
 
@@ -117,8 +117,8 @@ class ExecutionMode:
 EXECUTION_MODES = [
     ExecutionMode('LAPIN-off', False, '-'),
     ExecutionMode('LAPIN-on', True, 'Lsym'),
-    ExecutionMode('LAPIN-on', True, 'Lrw'),
-    ExecutionMode('LAPIN-on', True, 'L'),
+    # ExecutionMode('LAPIN-on', True, 'Lrw'),
+    # ExecutionMode('LAPIN-on', True, 'L'),
 ]
 
 
