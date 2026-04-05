@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-off,-,0.000053,0.05,100,epsilon,0.3,Yes,Yes,19 | 16,0.1875,0.637242,0.573223,0.017386,0.217230
+002,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-off,-,0.000053,0.05,100,epsilon,0.3,No,No,20 | 16,0.25,0.571108,0.208568,0.017386,0.217230
+003,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-off,-,0.000053,0.05,100,epsilon,0.5,Yes,Yes,19 | 16,0.1875,0.720449,0.658169,0.017386,0.218454
+004,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-off,-,0.000053,0.05,100,epsilon,0.5,No,No,20 | 16,0.25,0.699394,0.654745,0.017386,0.218454
+005,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-off,-,0.000053,0.05,100,epsilon,0.7,Yes,Yes,19 | 16,0.1875,0.778508,0.789157,0.017386,0.219866
+006,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-off,-,0.000053,0.05,100,epsilon,0.7,No,No,20 | 16,0.25,0.768045,0.788854,0.017386,0.219866
+007,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.3,Yes,No,16 | 16,0,0.313681,0.161163,0.013224,0.207114
+008,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.3,No,No,16 | 16,0,0.313681,0.161163,0.013224,0.207114
+009,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.5,Yes,No,16 | 16,0,0.487860,0.435440,0.013224,0.215309
+010,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.5,No,No,16 | 16,0,0.487860,0.435440,0.013224,0.215309
+011,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.7,Yes,No,16 | 16,0,0.649089,0.665176,0.013224,0.219966
+012,09_nM_uL_onnL_omL,n800mu0.2on80om2inst1,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.7,No,No,16 | 16,0,0.649089,0.665176,0.013224,0.219966

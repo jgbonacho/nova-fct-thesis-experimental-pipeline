@@ -3,8 +3,6 @@ from collections.abc import Callable
 
 import numpy as np
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
-from pipeline.components.evaluation_metrics.computational.computational_metrics import compute_computational_metrics, \
-    get_computation_start_time, get_computation_end_time
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import compute_extrinsic_metrics
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics
 from pipeline.components.faddis.faddis import faddis
@@ -68,49 +66,43 @@ def run_synthetic_networks_experiments(
                     overlapping_ground_truth=network.overlapping_ground_truth
                 )
 
+                # 1. Compute adjacency matrix A.
+                A = compute_adjacency_matrix(graph)
+
                 for idx3, (affinity_design_label, affinity_matrix_lambda) in enumerate(affinity_designs.items(), 1):
                     log_progress(idx3, len(affinity_designs), affinity_design_label, 3)
+
+                    # 2. Compute the affinity matrix W from the matrix A.
+                    W = affinity_matrix_lambda(A)
+
+                    # 3. Apply sparsification to matrix W to obtain the matrix Ws.
+                    Ws = W.copy()
 
                     for idx4, execution_mode in enumerate(execution_modes, 1):
                         log_progress(idx4, len(execution_modes), execution_mode.label, 2)
 
+                        # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
+                        Ln = lapin(Ws, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
+
+                        # 5. Fine-tune the stop criterion for FADDIS.
+                        epsilon, tau, k_max = set_stop_criterion(
+                            graph.number_of_nodes(), network_family.name, thresholds
+                        )
+
+                        # 6. Execute FADDIS.
+                        results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
+
                         for idx5, defuzzification_rule in enumerate(defuzzification_rules, 1):
                             log_progress(idx5, len(defuzzification_rules), str(defuzzification_rule), 1)
 
-                            # --- Start of the computation ---
-                            start_time = get_computation_start_time()
-
-                            # 1. Compute adjacency matrix A.
-                            A = compute_adjacency_matrix(graph)
-
-                            # 2. Compute the affinity matrix W from the matrix A.
-                            W = affinity_matrix_lambda(A)
-
-                            # 3. Apply sparsification to matrix W to obtain the matrix Ws.
-                            Ws = W.copy()
-
-                            # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
-                            Ln = lapin(Ws, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
-
-                            # 5. Fine-tune the stop criterion for FADDIS.
-                            epsilon, tau, k_max = set_stop_criterion(
-                                graph.number_of_nodes(), network_family.name, thresholds
-                            )
-
-                            # 6. Execute FADDIS.
-                            results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
-
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
-                            _, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = results
+                            _, membership_matrix, _, _, _, _, stop_condition = results
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                                 membership_matrix,
                                 defuzzification_rule.gamma,
                                 defuzzification_rule.conditionally_discard_first_cluster,
                                 overlapping=network.overlapping_ground_truth
                             )
-
-                            end_time = get_computation_end_time()
-                            # --- End of the computation ---
 
                             # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
                             extrinsic_results = compute_extrinsic_metrics(
@@ -120,9 +112,6 @@ def run_synthetic_networks_experiments(
                             intrinsic_results = compute_intrinsic_metrics(
                                 graph, A, membership_matrix, predicted_labels,
                                 overlapping=network.overlapping_ground_truth
-                            )
-                            computational_results = compute_computational_metrics(
-                                start_time, end_time
                             )
 
                             number_of_results += 1
@@ -143,8 +132,7 @@ def run_synthetic_networks_experiments(
                                 conditionally_discard_first_cluster=defuzzification_rule.conditionally_discard_first_cluster,
                                 first_cluster_discarded=first_cluster_discarded,
                                 extrinsic_results=extrinsic_results,
-                                intrinsic_results=intrinsic_results,
-                                computational_results=computational_results
+                                intrinsic_results=intrinsic_results
                             ))
 
                             save_faddis_clustering_results(results_network_dir, results_id, results)
