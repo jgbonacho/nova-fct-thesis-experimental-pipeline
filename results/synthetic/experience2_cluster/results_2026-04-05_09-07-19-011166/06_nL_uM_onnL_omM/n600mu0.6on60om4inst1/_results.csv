@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,epsilon,0.3,Yes,Yes,19 | 16,0.1875,0.052239,0.023986,0.010228,0.472756
+002,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,epsilon,0.3,No,No,20 | 16,0.25,0.051989,0.014955,0.010228,0.282411
+003,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,epsilon,0.5,Yes,Yes,19 | 16,0.1875,0.090877,0.112268,0.010228,0.563249
+004,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,epsilon,0.5,No,No,20 | 16,0.25,0.086949,0.113056,0.010228,0.563249
+005,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,epsilon,0.7,Yes,Yes,19 | 16,0.1875,0.116402,0.209419,0.010228,0.617133
+006,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,epsilon,0.7,No,No,20 | 16,0.25,0.114539,0.209800,0.010228,0.617133
+007,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.3,Yes,No,24 | 16,0.5,0.016330,0.008956,0.009786,0.499310
+008,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.3,No,No,24 | 16,0.5,0.016330,0.008956,0.009786,0.499310
+009,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.5,Yes,No,24 | 16,0.5,0.007554,0.057580,0.009786,0.581936
+010,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.5,No,No,24 | 16,0.5,0.007554,0.057580,0.009786,0.581936
+011,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.7,Yes,No,24 | 16,0.5,0.011306,0.118162,0.009786,0.627963
+012,06_nL_uM_onnL_omM,n600mu0.6on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.7,No,No,24 | 16,0.5,0.011306,0.118162,0.009786,0.627963

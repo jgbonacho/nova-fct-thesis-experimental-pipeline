@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-off,-,0.000016,0.05,100,W,0.3,Yes,Yes,27 | 25,0.08,0.462356,0.414499,0.017199,0.285157
+002,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-off,-,0.000016,0.05,100,W,0.3,No,No,28 | 25,0.12,0.435082,0.292849,0.017199,0.285157
+003,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-off,-,0.000016,0.05,100,W,0.5,Yes,Yes,27 | 25,0.08,0.687331,0.686252,0.017199,0.295204
+004,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-off,-,0.000016,0.05,100,W,0.5,No,No,28 | 25,0.12,0.670994,0.681562,0.017199,0.295204
+005,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-off,-,0.000016,0.05,100,W,0.7,Yes,Yes,27 | 25,0.08,0.765507,0.729975,0.017199,0.293703
+006,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-off,-,0.000016,0.05,100,W,0.7,No,No,28 | 25,0.12,0.762520,0.729930,0.017199,0
+007,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000016,0.05,100,epsilon,0.3,Yes,No,20 | 25,0.2,0.187168,0.079644,0.011424,0.274923
+008,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000016,0.05,100,epsilon,0.3,No,No,20 | 25,0.2,0.187168,0.079644,0.011424,0.274923
+009,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000016,0.05,100,epsilon,0.5,Yes,No,20 | 25,0.2,0.296500,0.302152,0.011424,0.287618
+010,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000016,0.05,100,epsilon,0.5,No,No,20 | 25,0.2,0.296500,0.302152,0.011424,0.287618
+011,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000016,0.05,100,epsilon,0.7,Yes,No,20 | 25,0.2,0.452030,0.492721,0.011424,0.287404
+012,11_nM_uL_onnM_omL,n1000mu0.2on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000016,0.05,100,epsilon,0.7,No,No,20 | 25,0.2,0.452030,0.492721,0.011424,0.287404

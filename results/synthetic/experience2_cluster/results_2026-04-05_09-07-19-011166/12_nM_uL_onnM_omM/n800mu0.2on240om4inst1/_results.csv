@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.3,Yes,Yes,30 | 30,0,0.308610,0.301265,0.019190,0.345508
+002,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.3,No,No,31 | 30,0.033333,0.296320,0.257450,0.019190,0.345508
+003,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.5,Yes,Yes,30 | 30,0,0.374773,0.394132,0.019190,0.359143
+004,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.5,No,No,31 | 30,0.033333,0.365178,0.395455,0.019190,0.359143
+005,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.7,Yes,Yes,30 | 30,0,0.399557,0.389431,0.019190,0.356495
+006,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.7,No,No,31 | 30,0.033333,0.399557,0.389365,0.019190,0
+007,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.3,Yes,No,29 | 30,0.033333,0.199568,0.124611,0.016708,0.342538
+008,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.3,No,No,29 | 30,0.033333,0.199568,0.124611,0.016708,0.342538
+009,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.5,Yes,No,29 | 30,0.033333,0.362895,0.370832,0.016708,0.346749
+010,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.5,No,No,29 | 30,0.033333,0.362895,0.370832,0.016708,0.346749
+011,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.7,Yes,No,29 | 30,0.033333,0.435309,0.430131,0.016708,0.361406
+012,12_nM_uL_onnM_omM,n800mu0.2on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,epsilon,0.7,No,No,29 | 30,0.033333,0.435309,0.430131,0.016708,0.361406

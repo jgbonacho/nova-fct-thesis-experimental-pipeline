@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.3,Yes,Yes,32 | 36,0.111111,0.297767,0.246353,0.020697,0.235732
+002,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.3,No,No,33 | 36,0.083333,0.286561,0.212604,0.020697,0.235732
+003,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.5,Yes,Yes,32 | 36,0.111111,0.445536,0.449502,0.020697,0.245826
+004,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.5,No,No,33 | 36,0.083333,0.430219,0.446078,0.020697,0.245826
+005,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.7,Yes,Yes,32 | 36,0.111111,0.434931,0.447702,0.020697,0.256316
+006,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-off,-,0.000008,0.05,100,W,0.7,No,No,33 | 36,0.083333,0.434931,0.447630,0.020697,0.256316
+007,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,W,0.3,Yes,No,39 | 36,0.083333,0.261980,0.188931,0.023893,0.233196
+008,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,W,0.3,No,No,39 | 36,0.083333,0.261980,0.188931,0.023893,0.233196
+009,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,W,0.5,Yes,No,39 | 36,0.083333,0.376170,0.349057,0.023893,0.250693
+010,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,W,0.5,No,No,39 | 36,0.083333,0.376170,0.349057,0.023893,0.250693
+011,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,W,0.7,Yes,No,39 | 36,0.083333,0.450758,0.382814,0.023893,0.254443
+012,12_nM_uL_onnM_omM,n900mu0.1on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000008,0.05,100,W,0.7,No,No,39 | 36,0.083333,0.450758,0.382814,0.023893,0.254443

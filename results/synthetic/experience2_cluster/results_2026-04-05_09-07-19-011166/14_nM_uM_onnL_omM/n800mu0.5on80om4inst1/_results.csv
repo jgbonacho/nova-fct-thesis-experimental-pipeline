@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,W,0.3,Yes,Yes,21 | 19,0.105263,0.145506,0.073919,0.010994,0.436060
+002,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,W,0.3,No,No,22 | 19,0.157895,0.138702,0.039097,0.010994,0.303969
+003,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,W,0.5,Yes,Yes,21 | 19,0.105263,0.250344,0.253887,0.010994,0.502588
+004,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,W,0.5,No,No,22 | 19,0.157895,0.241568,0.247474,0.010994,0.502588
+005,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,W,0.7,Yes,Yes,21 | 19,0.105263,0.347038,0.414538,0.010994,0.528756
+006,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,W,0.7,No,No,22 | 19,0.157895,0.336360,0.412071,0.010994,0.528965
+007,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.3,Yes,No,24 | 19,0.263158,0.066625,0.014285,0.009908,0.422943
+008,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.3,No,No,24 | 19,0.263158,0.066625,0.014285,0.009908,0.422943
+009,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.5,Yes,No,24 | 19,0.263158,0.129008,0.146370,0.009908,0.507651
+010,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.5,No,No,24 | 19,0.263158,0.129008,0.146370,0.009908,0.507651
+011,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.7,Yes,No,24 | 19,0.263158,0.207899,0.278400,0.009908,0.525075
+012,14_nM_uM_onnL_omM,n800mu0.5on80om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.7,No,No,24 | 19,0.263158,0.207899,0.278400,0.009908,0.525075

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,epsilon,0.3,Yes,Yes,21 | 25,0.16,0.043313,0.021639,0.008409,0.501965
+002,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,epsilon,0.3,No,No,22 | 25,0.12,0.046059,0.013979,0.008409,0.337542
+003,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,epsilon,0.5,Yes,Yes,21 | 25,0.16,0.059766,0.117613,0.008409,0.561400
+004,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,epsilon,0.5,No,No,22 | 25,0.12,0.057219,0.117071,0.008409,0.561400
+005,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,epsilon,0.7,Yes,Yes,21 | 25,0.16,0.099266,0.228223,0.008409,0.603304
+006,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-off,-,0.000005,0.05,100,epsilon,0.7,No,No,22 | 25,0.12,0.097655,0.228257,0.008409,0.603304
+007,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.3,Yes,No,25 | 25,0,0.009467,0.000438,0.007861,0.482421
+008,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.3,No,No,25 | 25,0,0.009467,0.000438,0.007861,0.482421
+009,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.5,Yes,No,25 | 25,0,0.007007,0.063425,0.007861,0.533691
+010,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.5,No,No,25 | 25,0,0.007007,0.063425,0.007861,0.533691
+011,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.7,Yes,No,25 | 25,0,0.019193,0.155739,0.007861,0.608024
+012,14_nM_uM_onnL_omM,n900mu0.6on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000005,0.05,100,epsilon,0.7,No,No,25 | 25,0,0.019193,0.155739,0.007861,0.608024
