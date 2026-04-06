@@ -16,6 +16,7 @@ class Test(unittest.TestCase):
         A = self.get_adjacency_matrix()
         W_Kul = compute_kul(A)
 
+        self.assertTrue(W_Kul.ndim == 2 and W_Kul.shape[0] == W_Kul.shape[1])
         self.assertTrue(np.allclose(W_Kul, W_Kul.T))
         self.assertTrue(np.all(np.diag(W_Kul) == 0))
 
@@ -23,6 +24,7 @@ class Test(unittest.TestCase):
         A = self.get_adjacency_matrix()
         W_Dice = compute_dice(A)
 
+        self.assertTrue(W_Dice.ndim == 2 and W_Dice.shape[0] == W_Dice.shape[1])
         self.assertTrue(np.allclose(W_Dice, W_Dice.T))
         self.assertTrue(np.all(np.diag(W_Dice) == 0))
 
@@ -30,6 +32,7 @@ class Test(unittest.TestCase):
         A = self.get_adjacency_matrix()
         W_Ochiai = compute_ochiai(A)
 
+        self.assertTrue(W_Ochiai.ndim == 2 and W_Ochiai.shape[0] == W_Ochiai.shape[1])
         self.assertTrue(np.allclose(W_Ochiai, W_Ochiai.T))
         self.assertTrue(np.all(np.diag(W_Ochiai) == 0))
 

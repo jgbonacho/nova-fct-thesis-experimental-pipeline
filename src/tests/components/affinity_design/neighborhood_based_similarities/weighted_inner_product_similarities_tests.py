@@ -17,6 +17,8 @@ class Test(unittest.TestCase):
 
         for beta in [0.0, 0.5, 1.0]:
             W_IP = compute_ip(A, beta=beta)
+
+            self.assertTrue(W_IP.ndim == 2 and W_IP.shape[0] == W_IP.shape[1])
             self.assertTrue(np.allclose(W_IP, W_IP.T))
             self.assertTrue(np.all(np.diag(W_IP) == 0))
 
@@ -25,8 +27,10 @@ class Test(unittest.TestCase):
 
         for beta in [0.0, 0.5, 1.0]:
             W_CosIP = compute_ip(A, beta=beta)
-            self.assertTrue(np.allclose(W_CosIP, W_CosIP.T), "W_CosIP is not symmetric")
-            self.assertTrue(np.all(np.diag(W_CosIP) == 0), "W_CosIP does not have a zero diagonal.")
+
+            self.assertTrue(W_CosIP.ndim == 2 and W_CosIP.shape[0] == W_CosIP.shape[1])
+            self.assertTrue(np.allclose(W_CosIP, W_CosIP.T))
+            self.assertTrue(np.all(np.diag(W_CosIP) == 0))
 
     def test_ip_invalid_beta(self):
         A = self.get_adjacency_matrix()

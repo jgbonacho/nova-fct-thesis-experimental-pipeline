@@ -2,6 +2,7 @@ import os.path
 from collections.abc import Callable
 
 import numpy as np
+
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import compute_extrinsic_metrics
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics
@@ -44,6 +45,10 @@ def run_synthetic_networks_experiments(
             List of execution modes to be applied.
         defuzzification_rules : (list[DefuzzificationRule])
             List of defuzzification rules to be applied.
+
+    Returns:
+        results_dir : str
+            The path to the results' directory.
     """
 
     results_dir = create_results_dir(results_base_dir)
@@ -141,3 +146,5 @@ def run_synthetic_networks_experiments(
                 continue
 
     save_report(results_dir, network_families, thresholds, affinity_designs, execution_modes, defuzzification_rules)
+
+    return results_dir

@@ -13,8 +13,9 @@ class Test(unittest.TestCase):
         graph.add_edges_from([(0, 0), (0, 1), (1, 2), (2, 0), (2, 3)])
         A = compute_adjacency_matrix(graph)
 
-        self.assertTrue(np.allclose(A, A.T))
+        self.assertTrue(A.ndim == 2 and A.shape[0] == A.shape[1])
         self.assertTrue(np.all((A == 0) | (A == 1)))
+        self.assertTrue(np.allclose(A, A.T))
         self.assertTrue(np.all(np.diag(A) == 0))
 
 
