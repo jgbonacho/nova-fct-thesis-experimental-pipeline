@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.3,Yes,Yes,23 | 30,0.233333,0.047633,0.024783,0.010996,0.459489
+002,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.3,No,No,24 | 30,0.2,0.052654,0.014977,0.010996,0.331211
+003,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.5,Yes,Yes,23 | 30,0.233333,0.031434,0.140639,0.010996,0.551325
+004,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.5,No,No,24 | 30,0.2,0.030140,0.141390,0.010996,0.551325
+005,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.7,Yes,Yes,23 | 30,0.233333,0.036864,0.189878,0.010996,0.549607
+006,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.7,No,No,24 | 30,0.2,0.036864,0.189330,0.010996,0.549607
+007,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.3,Yes,No,25 | 30,0.166667,0.030781,0.038574,0.010707,0.484529
+008,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.3,No,No,25 | 30,0.166667,0.030781,0.038574,0.010707,0.484529
+009,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.5,Yes,No,25 | 30,0.166667,0.032998,0.169332,0.010707,0.530891
+010,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.5,No,No,25 | 30,0.166667,0.032998,0.169332,0.010707,0.530891
+011,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.7,Yes,No,25 | 30,0.166667,0.079387,0.208342,0.010707,0.562355
+012,08_nL_uM_onnM_omM,n700mu0.4on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.7,No,No,25 | 30,0.166667,0.079387,0.208342,0.010707,0.562355

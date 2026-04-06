@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.3,Yes,Yes,23 | 32,0.281250,0,0.005551,0.009524,0.497314
+002,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.3,No,No,24 | 32,0.25,0.003327,0.002703,0.009524,0.263134
+003,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.5,Yes,Yes,23 | 32,0.281250,0.006834,0.048687,0.009524,0.598146
+004,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.5,No,No,24 | 32,0.25,0.006594,0.049107,0.009524,0.598146
+005,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.7,Yes,Yes,23 | 32,0.281250,0,0.064107,0.009524,0.634635
+006,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.7,No,No,24 | 32,0.25,0,0.064102,0.009524,0
+007,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.3,Yes,No,26 | 32,0.1875,0,0.003222,0.008434,0.510431
+008,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.3,No,No,26 | 32,0.1875,0,0.003222,0.008434,0.510431
+009,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.5,Yes,No,26 | 32,0.1875,0,0.031163,0.008434,0.599240
+010,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.5,No,No,26 | 32,0.1875,0,0.031163,0.008434,0.599240
+011,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.7,Yes,No,26 | 32,0.1875,0,0.048019,0.008434,0.631822
+012,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.7,No,No,26 | 32,0.1875,0,0.048019,0.008434,0.631822
