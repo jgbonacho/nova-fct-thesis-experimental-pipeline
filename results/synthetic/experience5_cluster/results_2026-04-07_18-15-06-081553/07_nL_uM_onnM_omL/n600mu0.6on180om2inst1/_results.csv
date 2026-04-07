@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-off,-,0.000075,0.05,100,epsilon,0.3,Yes,Yes,14 | 16,0.125,0.047802,0.018887,0.007148,0.485755
+002,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-off,-,0.000075,0.05,100,epsilon,0.3,No,No,15 | 16,0.0625,0.047111,-0.002171,0.007148,0.141343
+003,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-off,-,0.000075,0.05,100,epsilon,0.5,Yes,Yes,14 | 16,0.125,0.029763,0.083691,0.007148,0.567269
+004,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-off,-,0.000075,0.05,100,epsilon,0.5,No,No,15 | 16,0.0625,0.027599,0.080243,0.007148,0.567269
+005,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-off,-,0.000075,0.05,100,epsilon,0.7,Yes,Yes,14 | 16,0.125,0.037301,0.143337,0.007148,0.617145
+006,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-off,-,0.000075,0.05,100,epsilon,0.7,No,No,15 | 16,0.0625,0.036054,0.143398,0.007148,0.617145
+007,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000075,0.05,100,epsilon,0.3,Yes,No,16 | 16,0,0.017385,0.015022,0.006424,0.486291
+008,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000075,0.05,100,epsilon,0.3,No,No,16 | 16,0,0.017385,0.015022,0.006424,0.486291
+009,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000075,0.05,100,epsilon,0.5,Yes,No,16 | 16,0,0.009360,0.066735,0.006424,0.564742
+010,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000075,0.05,100,epsilon,0.5,No,No,16 | 16,0,0.009360,0.066735,0.006424,0.564742
+011,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000075,0.05,100,epsilon,0.7,Yes,No,16 | 16,0,0.026773,0.105296,0.006424,0.617774
+012,07_nL_uM_onnM_omL,n600mu0.6on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000075,0.05,100,epsilon,0.7,No,No,16 | 16,0,0.026773,0.105296,0.006424,0.617774

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-off,-,0.000060,0.05,100,epsilon,0.3,Yes,Yes,18 | 22,0.181818,0.073494,0.048827,0.010126,0.493929
+002,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-off,-,0.000060,0.05,100,epsilon,0.3,No,No,19 | 22,0.136364,0.073350,0.035291,0.010126,0.326226
+003,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-off,-,0.000060,0.05,100,epsilon,0.5,Yes,Yes,18 | 22,0.181818,0.050397,0.171868,0.010126,0.556331
+004,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-off,-,0.000060,0.05,100,epsilon,0.5,No,No,19 | 22,0.136364,0.047747,0.174105,0.010126,0.556331
+005,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-off,-,0.000060,0.05,100,epsilon,0.7,Yes,Yes,18 | 22,0.181818,0.111187,0.236998,0.010126,0.586319
+006,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-off,-,0.000060,0.05,100,epsilon,0.7,No,No,19 | 22,0.136364,0.109691,0.236042,0.010126,0.586319
+007,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000060,0.05,100,epsilon,0.3,Yes,No,18 | 22,0.181818,0.011759,0.029560,0.007953,0.476652
+008,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000060,0.05,100,epsilon,0.3,No,No,18 | 22,0.181818,0.011759,0.029560,0.007953,0.476652
+009,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000060,0.05,100,epsilon,0.5,Yes,No,18 | 22,0.181818,0.028868,0.109815,0.007953,0.563544
+010,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000060,0.05,100,epsilon,0.5,No,No,18 | 22,0.181818,0.028868,0.109815,0.007953,0.563544
+011,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000060,0.05,100,epsilon,0.7,Yes,No,18 | 22,0.181818,0.026643,0.136114,0.007953,0.588799
+012,08_nL_uM_onnM_omM,n600mu0.5on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000060,0.05,100,epsilon,0.7,No,No,18 | 22,0.181818,0.026643,0.136114,0.007953,0.588799

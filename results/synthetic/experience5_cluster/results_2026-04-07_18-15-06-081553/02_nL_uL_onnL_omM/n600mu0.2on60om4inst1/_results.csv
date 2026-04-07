@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-off,-,0.000523,0.05,100,epsilon,0.3,Yes,Yes,15 | 15,0,0.760994,0.796066,0.017459,0.245114
+002,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-off,-,0.000523,0.05,100,epsilon,0.3,No,No,16 | 15,0.066667,0.673724,0.409219,0.017459,0.237979
+003,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-off,-,0.000523,0.05,100,epsilon,0.5,Yes,Yes,15 | 15,0,0.769682,0.780673,0.017459,0.251466
+004,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-off,-,0.000523,0.05,100,epsilon,0.5,No,No,16 | 15,0.066667,0.781913,0.787872,0.017459,0.251466
+005,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-off,-,0.000523,0.05,100,epsilon,0.7,Yes,Yes,15 | 15,0,0.730127,0.732010,0.017459,0.252878
+006,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-off,-,0.000523,0.05,100,epsilon,0.7,No,No,16 | 15,0.066667,0.725971,0.729179,0.017459,0.252878
+007,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000523,0.05,100,epsilon,0.3,Yes,No,15 | 15,0,0.469481,0.427212,0.015664,0.241333
+008,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000523,0.05,100,epsilon,0.3,No,No,15 | 15,0,0.469481,0.427212,0.015664,0.241333
+009,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000523,0.05,100,epsilon,0.5,Yes,No,15 | 15,0,0.683357,0.670299,0.015664,0.241728
+010,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000523,0.05,100,epsilon,0.5,No,No,15 | 15,0,0.683357,0.670299,0.015664,0.241728
+011,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000523,0.05,100,epsilon,0.7,Yes,No,15 | 15,0,0.682079,0.692239,0.015664,0.251603
+012,02_nL_uL_onnL_omM,n600mu0.2on60om4inst1,Yes,Default,LAPIN-on,Lsym,0.000523,0.05,100,epsilon,0.7,No,No,15 | 15,0,0.682079,0.692239,0.015664,0.251603

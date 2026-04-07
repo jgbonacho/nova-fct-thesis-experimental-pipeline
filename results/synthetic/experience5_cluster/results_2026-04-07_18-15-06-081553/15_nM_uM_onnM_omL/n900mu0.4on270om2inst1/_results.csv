@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-off,-,0.000091,0.05,100,epsilon,0.3,Yes,Yes,21 | 25,0.16,0.153532,0.093831,0.010878,0.424749
+002,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-off,-,0.000091,0.05,100,epsilon,0.3,No,No,22 | 25,0.12,0.145809,0.052261,0.010878,0.317200
+003,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-off,-,0.000091,0.05,100,epsilon,0.5,Yes,Yes,21 | 25,0.16,0.289194,0.283236,0.010878,0.456506
+004,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-off,-,0.000091,0.05,100,epsilon,0.5,No,No,22 | 25,0.12,0.275621,0.276429,0.010878,0.456506
+005,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-off,-,0.000091,0.05,100,epsilon,0.7,Yes,Yes,21 | 25,0.16,0.428493,0.453990,0.010878,0.467406
+006,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-off,-,0.000091,0.05,100,epsilon,0.7,No,No,22 | 25,0.12,0.421414,0.453605,0.010878,0.467406
+007,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000091,0.05,100,epsilon,0.3,Yes,No,18 | 25,0.28,0.133324,0.081415,0.008670,0.405370
+008,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000091,0.05,100,epsilon,0.3,No,No,18 | 25,0.28,0.133324,0.081415,0.008670,0.405370
+009,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000091,0.05,100,epsilon,0.5,Yes,No,18 | 25,0.28,0.249916,0.227973,0.008670,0.447107
+010,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000091,0.05,100,epsilon,0.5,No,No,18 | 25,0.28,0.249916,0.227973,0.008670,0.447107
+011,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000091,0.05,100,epsilon,0.7,Yes,No,18 | 25,0.28,0.315837,0.337027,0.008670,0.463510
+012,15_nM_uM_onnM_omL,n900mu0.4on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000091,0.05,100,epsilon,0.7,No,No,18 | 25,0.28,0.315837,0.337027,0.008670,0.463510

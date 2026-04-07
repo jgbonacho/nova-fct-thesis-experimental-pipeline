@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-off,-,0.000549,0.05,100,epsilon,0.3,Yes,Yes,12 | 10,0.2,0.312343,0.156424,0.012258,0.302923
+002,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-off,-,0.000549,0.05,100,epsilon,0.3,No,No,13 | 10,0.3,0.288987,0.045323,0.012258,0.190089
+003,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-off,-,0.000549,0.05,100,epsilon,0.5,Yes,Yes,12 | 10,0.2,0.498064,0.454875,0.012258,0.345718
+004,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-off,-,0.000549,0.05,100,epsilon,0.5,No,No,13 | 10,0.3,0.459346,0.432916,0.012258,0.345718
+005,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-off,-,0.000549,0.05,100,epsilon,0.7,Yes,Yes,12 | 10,0.2,0.623985,0.664681,0.012258,0.360538
+006,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-off,-,0.000549,0.05,100,epsilon,0.7,No,No,13 | 10,0.3,0.607974,0.664050,0.012258,0.360538
+007,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000549,0.05,100,epsilon,0.3,Yes,No,10 | 10,0,0.348157,0.189263,0.010061,0.278614
+008,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000549,0.05,100,epsilon,0.3,No,No,10 | 10,0,0.348157,0.189263,0.010061,0.278614
+009,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000549,0.05,100,epsilon,0.5,Yes,No,10 | 10,0,0.444048,0.386660,0.010061,0.328773
+010,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000549,0.05,100,epsilon,0.5,No,No,10 | 10,0,0.444048,0.386660,0.010061,0.328773
+011,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000549,0.05,100,epsilon,0.7,Yes,No,10 | 10,0,0.537842,0.553962,0.010061,0.367113
+012,01_nL_uL_onnL_omL,n500mu0.3on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000549,0.05,100,epsilon,0.7,No,No,10 | 10,0,0.537842,0.553962,0.010061,0.367113
