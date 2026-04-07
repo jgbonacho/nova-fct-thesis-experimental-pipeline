@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-off,-,0.000007,0.05,100,W,0.3,Yes,Yes,24 | 18,0.333333,0.200602,0.075926,0.011404,0.438997
+002,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-off,-,0.000007,0.05,100,W,0.3,No,No,25 | 18,0.388889,0.191395,0.041567,0.011404,0.336568
+003,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-off,-,0.000007,0.05,100,W,0.5,Yes,Yes,24 | 18,0.333333,0.345003,0.273044,0.011404,0.512867
+004,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-off,-,0.000007,0.05,100,W,0.5,No,No,25 | 18,0.388889,0.333579,0.270152,0.011404,0.512867
+005,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-off,-,0.000007,0.05,100,W,0.7,Yes,Yes,24 | 18,0.333333,0.460349,0.524280,0.011404,0.502715
+006,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-off,-,0.000007,0.05,100,W,0.7,No,No,25 | 18,0.388889,0.457047,0.524282,0.011404,0
+007,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.3,Yes,No,22 | 18,0.222222,0.110272,0.020715,0.008726,0.435593
+008,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.3,No,No,22 | 18,0.222222,0.110272,0.020715,0.008726,0.435593
+009,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.5,Yes,No,22 | 18,0.222222,0.197867,0.151432,0.008726,0.482556
+010,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.5,No,No,22 | 18,0.222222,0.197867,0.151432,0.008726,0.482556
+011,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.7,Yes,No,22 | 18,0.222222,0.273584,0.332469,0.008726,0.499363
+012,13_nM_uM_onnL_omL,n900mu0.5on90om2inst1,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.7,No,No,22 | 18,0.222222,0.273584,0.332469,0.008726,0.499363

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,Yes,Yes,17 | 8,1.125,0.105453,0.024723,0.010508,0.450739
+002,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,No,No,18 | 8,1.25,0.100950,-0.004666,0.010508,0.175332
+003,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,Yes,Yes,17 | 8,1.125,0.139752,0.182426,0.010508,0.538792
+004,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,No,No,18 | 8,1.25,0.131848,0.173210,0.010508,0.538792
+005,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,Yes,Yes,17 | 8,1.125,0.163784,0.299873,0.010508,0.595585
+006,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,No,No,18 | 8,1.25,0.160597,0.299908,0.010508,0.595585
+007,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,Yes,No,27 | 8,2.375,0.057311,0.018931,0.012306,0.497383
+008,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,No,27 | 8,2.375,0.057311,0.018931,0.012306,0.497383
+009,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,Yes,No,27 | 8,2.375,0.079843,0.129958,0.012306,0.559406
+010,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,No,27 | 8,2.375,0.079843,0.129958,0.012306,0.559406
+011,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,Yes,No,27 | 8,2.375,0.102790,0.196860,0.012306,0.577694
+012,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,No,27 | 8,2.375,0.102790,0.196860,0.012306,0.577694

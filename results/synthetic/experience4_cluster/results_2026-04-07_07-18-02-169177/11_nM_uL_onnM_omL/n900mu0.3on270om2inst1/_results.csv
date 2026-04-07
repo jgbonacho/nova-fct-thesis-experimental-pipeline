@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-off,-,0.000010,0.05,100,epsilon,0.3,Yes,Yes,24 | 25,0.04,0.313006,0.208994,0.014755,0.361073
+002,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-off,-,0.000010,0.05,100,epsilon,0.3,No,No,25 | 25,0,0.294607,0.152441,0.014755,0.361073
+003,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-off,-,0.000010,0.05,100,epsilon,0.5,Yes,Yes,24 | 25,0.04,0.506728,0.484591,0.014755,0.384498
+004,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-off,-,0.000010,0.05,100,epsilon,0.5,No,No,25 | 25,0,0.491451,0.479992,0.014755,0.384498
+005,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-off,-,0.000010,0.05,100,epsilon,0.7,Yes,Yes,24 | 25,0.04,0.625938,0.624551,0.014755,0.399511
+006,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-off,-,0.000010,0.05,100,epsilon,0.7,No,No,25 | 25,0,0.621864,0.624524,0.014755,0
+007,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000010,0.05,100,epsilon,0.3,Yes,No,22 | 25,0.12,0.110336,0.017999,0.011268,0.327833
+008,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000010,0.05,100,epsilon,0.3,No,No,22 | 25,0.12,0.110336,0.017999,0.011268,0.327833
+009,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000010,0.05,100,epsilon,0.5,Yes,No,22 | 25,0.12,0.172508,0.149217,0.011268,0.384034
+010,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000010,0.05,100,epsilon,0.5,No,No,22 | 25,0.12,0.172508,0.149217,0.011268,0.384034
+011,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000010,0.05,100,epsilon,0.7,Yes,No,22 | 25,0.12,0.276458,0.341194,0.011268,0.368779
+012,11_nM_uL_onnM_omL,n900mu0.3on270om2inst1,Yes,Default,LAPIN-on,Lsym,0.000010,0.05,100,epsilon,0.7,No,No,22 | 25,0.12,0.276458,0.341194,0.011268,0.368779

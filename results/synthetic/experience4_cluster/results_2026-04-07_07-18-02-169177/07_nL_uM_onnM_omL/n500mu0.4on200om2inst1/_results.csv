@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.3,Yes,Yes,19 | 12,0.583333,0.135370,0.036584,0.013421,0.444570
+002,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.3,No,No,20 | 12,0.666667,0.129128,0.004146,0.013421,0.197382
+003,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.5,Yes,Yes,19 | 12,0.583333,0.179941,0.187114,0.013421,0.460012
+004,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.5,No,No,20 | 12,0.666667,0.172417,0.182490,0.013421,0.460012
+005,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.7,Yes,Yes,19 | 12,0.583333,0.203196,0.337532,0.013421,0.463096
+006,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.7,No,No,20 | 12,0.666667,0.200632,0.337611,0.013421,0.463096
+007,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,Yes,No,30 | 12,1.5,0.080866,0.025107,0.015332,0.451510
+008,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,No,30 | 12,1.5,0.080866,0.025107,0.015332,0.451510
+009,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,Yes,No,30 | 12,1.5,0.100812,0.133855,0.015332,0.461544
+010,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,No,30 | 12,1.5,0.100812,0.133855,0.015332,0.461544
+011,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,Yes,No,30 | 12,1.5,0.117234,0.211389,0.015332,0.465623
+012,07_nL_uM_onnM_omL,n500mu0.4on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,No,30 | 12,1.5,0.117234,0.211389,0.015332,0.465623

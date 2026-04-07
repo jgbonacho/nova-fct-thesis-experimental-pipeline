@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-off,-,0.000017,0.05,100,epsilon,0.3,Yes,Yes,18 | 15,0.2,0.489528,0.449009,0.018316,0.270784
+002,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-off,-,0.000017,0.05,100,epsilon,0.3,No,No,19 | 15,0.266667,0.449654,0.175796,0.018316,0.235907
+003,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-off,-,0.000017,0.05,100,epsilon,0.5,Yes,Yes,18 | 15,0.2,0.659349,0.625736,0.018316,0.270544
+004,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-off,-,0.000017,0.05,100,epsilon,0.5,No,No,19 | 15,0.266667,0.623775,0.612899,0.018316,0.270544
+005,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-off,-,0.000017,0.05,100,epsilon,0.7,Yes,Yes,18 | 15,0.2,0.741981,0.674634,0.018316,0.272250
+006,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-off,-,0.000017,0.05,100,epsilon,0.7,No,No,19 | 15,0.266667,0.730352,0.673464,0.018316,0.272250
+007,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000017,0.05,100,epsilon,0.3,Yes,No,17 | 15,0.133333,0.357132,0.248030,0.016004,0.268320
+008,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000017,0.05,100,epsilon,0.3,No,No,17 | 15,0.133333,0.357132,0.248030,0.016004,0.268320
+009,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000017,0.05,100,epsilon,0.5,Yes,No,17 | 15,0.133333,0.582683,0.580464,0.016004,0.268640
+010,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000017,0.05,100,epsilon,0.5,No,No,17 | 15,0.133333,0.582683,0.580464,0.016004,0.268640
+011,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000017,0.05,100,epsilon,0.7,Yes,No,17 | 15,0.133333,0.727983,0.712581,0.016004,0.271495
+012,03_nL_uL_onnM_omL,n600mu0.2on180om2inst1,Yes,Default,LAPIN-on,Lsym,0.000017,0.05,100,epsilon,0.7,No,No,17 | 15,0.133333,0.727983,0.712581,0.016004,0.271495

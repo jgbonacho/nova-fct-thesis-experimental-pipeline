@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-off,-,0.000041,0.05,100,epsilon,0.3,Yes,Yes,29 | 25,0.16,0.475155,0.443823,0.021043,0.275229
+002,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-off,-,0.000041,0.05,100,epsilon,0.3,No,No,30 | 25,0.2,0.451352,0.371884,0.021043,0.275229
+003,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-off,-,0.000041,0.05,100,epsilon,0.5,Yes,Yes,29 | 25,0.16,0.563747,0.530541,0.021043,0.276670
+004,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-off,-,0.000041,0.05,100,epsilon,0.5,No,No,30 | 25,0.2,0.542797,0.532879,0.021043,0.276670
+005,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-off,-,0.000041,0.05,100,epsilon,0.7,Yes,Yes,29 | 25,0.16,0.616668,0.520049,0.021043,0.285950
+006,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-off,-,0.000041,0.05,100,epsilon,0.7,No,No,30 | 25,0.2,0.610531,0.518815,0.021043,0.285950
+007,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000041,0.05,100,epsilon,0.3,Yes,No,24 | 25,0.04,0.281086,0.200846,0.015718,0.274424
+008,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000041,0.05,100,epsilon,0.3,No,No,24 | 25,0.04,0.281086,0.200846,0.015718,0.274424
+009,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000041,0.05,100,epsilon,0.5,Yes,No,24 | 25,0.04,0.407371,0.405052,0.015718,0.276409
+010,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000041,0.05,100,epsilon,0.5,No,No,24 | 25,0.04,0.407371,0.405052,0.015718,0.276409
+011,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000041,0.05,100,epsilon,0.7,Yes,No,24 | 25,0.04,0.491333,0.455378,0.015718,0.279265
+012,10_nM_uL_onnL_omM,n900mu0.2on180om4inst1,Yes,Default,LAPIN-on,Lsym,0.000041,0.05,100,epsilon,0.7,No,No,24 | 25,0.04,0.491333,0.455378,0.015718,0.279265

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.3,Yes,Yes,15 | 8,0.875,0.121139,0.034493,0.009442,0.450739
+002,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.3,No,No,16 | 8,1,0.115937,-0.004653,0.009442,0.163593
+003,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.5,Yes,Yes,15 | 8,0.875,0.154905,0.194702,0.009442,0.533153
+004,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.5,No,No,16 | 8,1,0.144526,0.183392,0.009442,0.533153
+005,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.7,Yes,Yes,15 | 8,0.875,0.181997,0.314858,0.009442,0.581211
+006,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.7,No,No,16 | 8,1,0.177283,0.314960,0.009442,0.581211
+007,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.3,Yes,No,18 | 8,1.25,0.088127,0.040229,0.008905,0.473944
+008,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.3,No,No,18 | 8,1.25,0.088127,0.040229,0.008905,0.473944
+009,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.5,Yes,No,18 | 8,1.25,0.118240,0.167094,0.008905,0.544551
+010,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.5,No,No,18 | 8,1.25,0.118240,0.167094,0.008905,0.544551
+011,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.7,Yes,No,18 | 8,1.25,0.136383,0.246621,0.008905,0.565801
+012,05_nL_uM_onnL_omL,n500mu0.5on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.7,No,No,18 | 8,1.25,0.136383,0.246621,0.008905,0.565801

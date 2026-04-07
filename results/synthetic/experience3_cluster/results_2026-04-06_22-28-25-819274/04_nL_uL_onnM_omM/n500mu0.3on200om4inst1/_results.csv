@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-off,-,0.000031,0.05,100,epsilon,0.3,Yes,Yes,20 | 20,0,0.305078,0.298370,0.016243,0.443767
+002,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-off,-,0.000031,0.05,100,epsilon,0.3,No,No,21 | 20,0.05,0.286217,0.252175,0.016243,0.443767
+003,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-off,-,0.000031,0.05,100,epsilon,0.5,Yes,Yes,20 | 20,0,0.389055,0.429110,0.016243,0.458211
+004,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-off,-,0.000031,0.05,100,epsilon,0.5,No,No,21 | 20,0.05,0.373059,0.434894,0.016243,0.458211
+005,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-off,-,0.000031,0.05,100,epsilon,0.7,Yes,Yes,20 | 20,0,0.350402,0.360656,0.016243,0.486768
+006,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-off,-,0.000031,0.05,100,epsilon,0.7,No,No,21 | 20,0.05,0.350402,0.362839,0.016243,0.486768
+007,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-on,Lsym,0.000031,0.05,100,epsilon,0.3,Yes,No,18 | 20,0.1,0.193069,0.218736,0.012854,0.436935
+008,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-on,Lsym,0.000031,0.05,100,epsilon,0.3,No,No,18 | 20,0.1,0.193069,0.218736,0.012854,0.436935
+009,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-on,Lsym,0.000031,0.05,100,epsilon,0.5,Yes,No,18 | 20,0.1,0.224113,0.312381,0.012854,0.467642
+010,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-on,Lsym,0.000031,0.05,100,epsilon,0.5,No,No,18 | 20,0.1,0.224113,0.312381,0.012854,0.467642
+011,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-on,Lsym,0.000031,0.05,100,epsilon,0.7,Yes,No,18 | 20,0.1,0.189684,0.287139,0.012854,0.481438
+012,04_nL_uL_onnM_omM,n500mu0.3on200om4inst1,Yes,Default,LAPIN-on,Lsym,0.000031,0.05,100,epsilon,0.7,No,No,18 | 20,0.1,0.189684,0.287139,0.012854,0.481438

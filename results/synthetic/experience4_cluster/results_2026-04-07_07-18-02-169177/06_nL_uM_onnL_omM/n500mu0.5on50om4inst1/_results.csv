@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,Yes,Yes,17 | 13,0.307692,0.179805,0.092675,0.013563,0.461048
+002,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,No,No,18 | 13,0.384615,0.170573,0.036318,0.013563,0.261574
+003,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,Yes,Yes,17 | 13,0.307692,0.265640,0.267595,0.013563,0.507786
+004,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,No,No,18 | 13,0.384615,0.249358,0.267541,0.013563,0.507786
+005,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,Yes,Yes,17 | 13,0.307692,0.331465,0.399176,0.013563,0.524329
+006,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,No,No,18 | 13,0.384615,0.321358,0.396721,0.013563,0.524329
+007,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,W,0.3,Yes,No,25 | 13,0.923077,0.083664,0.011143,0.014564,0.449537
+008,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,W,0.3,No,No,25 | 13,0.923077,0.083664,0.011143,0.014564,0.449537
+009,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,W,0.5,Yes,No,25 | 13,0.923077,0.107520,0.113076,0.014564,0.502753
+010,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,W,0.5,No,No,25 | 13,0.923077,0.107520,0.113076,0.014564,0.502753
+011,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,W,0.7,Yes,No,25 | 13,0.923077,0.139944,0.228716,0.014564,0.541543
+012,06_nL_uM_onnL_omM,n500mu0.5on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,W,0.7,No,No,25 | 13,0.923077,0.139944,0.228716,0.014564,0.541543

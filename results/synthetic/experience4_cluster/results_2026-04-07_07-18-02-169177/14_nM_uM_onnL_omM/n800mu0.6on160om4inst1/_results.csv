@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,Yes,Yes,25 | 26,0.038462,0.008678,0.005815,0.009831,0.505008
+002,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,No,No,26 | 26,0,0.012108,0.003172,0.009831,0.314784
+003,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,Yes,Yes,25 | 26,0.038462,0.007111,0.074967,0.009831,0.566270
+004,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,No,No,26 | 26,0,0.006884,0.075028,0.009831,0.566270
+005,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,Yes,Yes,25 | 26,0.038462,0.008897,0.154520,0.009831,0.602874
+006,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,No,No,26 | 26,0,0.008793,0.154548,0.009831,0.605415
+007,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,Yes,No,25 | 26,0.038462,0,-0.001178,0.008025,0.498868
+008,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,No,25 | 26,0.038462,0,-0.001178,0.008025,0.498868
+009,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,Yes,No,25 | 26,0.038462,0,0.042446,0.008025,0.565227
+010,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,No,25 | 26,0.038462,0,0.042446,0.008025,0.565227
+011,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,Yes,No,25 | 26,0.038462,0,0.092652,0.008025,0.604828
+012,14_nM_uM_onnL_omM,n800mu0.6on160om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,No,25 | 26,0.038462,0,0.092652,0.008025,0.604828

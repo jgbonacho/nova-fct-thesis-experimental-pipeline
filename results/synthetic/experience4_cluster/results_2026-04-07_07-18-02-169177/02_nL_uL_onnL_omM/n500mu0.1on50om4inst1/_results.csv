@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-off,-,0.000045,0.05,100,W,0.3,Yes,Yes,16 | 13,0.230769,0.672204,0.719492,0.023412,0.138845
+002,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-off,-,0.000045,0.05,100,W,0.3,No,No,17 | 13,0.307692,0.607290,0.472963,0.023412,0.138845
+003,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-off,-,0.000045,0.05,100,W,0.5,Yes,Yes,16 | 13,0.230769,0.710185,0.745966,0.023412,0.140166
+004,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-off,-,0.000045,0.05,100,W,0.5,No,No,17 | 13,0.307692,0.679352,0.707207,0.023412,0.135146
+005,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-off,-,0.000045,0.05,100,W,0.7,Yes,Yes,16 | 13,0.230769,0.685988,0.664624,0.023412,0.140166
+006,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-off,-,0.000045,0.05,100,W,0.7,No,No,17 | 13,0.307692,0.674171,0.665432,0.023412,0.140166
+007,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000045,0.05,100,epsilon,0.3,Yes,No,19 | 13,0.461538,0.406955,0.272232,0.026726,0.138306
+008,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000045,0.05,100,epsilon,0.3,No,No,19 | 13,0.461538,0.406955,0.272232,0.026726,0.138306
+009,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000045,0.05,100,epsilon,0.5,Yes,No,19 | 13,0.461538,0.569953,0.485483,0.026726,0.139701
+010,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000045,0.05,100,epsilon,0.5,No,No,19 | 13,0.461538,0.569953,0.485483,0.026726,0.139701
+011,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000045,0.05,100,epsilon,0.7,Yes,No,19 | 13,0.461538,0.646968,0.567043,0.026726,0.140166
+012,02_nL_uL_onnL_omM,n500mu0.1on50om4inst1,Yes,Default,LAPIN-on,Lsym,0.000045,0.05,100,epsilon,0.7,No,No,19 | 13,0.461538,0.646968,0.567043,0.026726,0.140166

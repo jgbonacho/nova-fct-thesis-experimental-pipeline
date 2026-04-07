@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.3,Yes,Yes,22 | 20,0.1,0.291327,0.229046,0.016280,0.396546
+002,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.3,No,No,23 | 20,0.15,0.274388,0.167563,0.016280,0.373892
+003,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.5,Yes,Yes,22 | 20,0.1,0.469381,0.472134,0.016280,0.420921
+004,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.5,No,No,23 | 20,0.15,0.451992,0.472969,0.016280,0.420921
+005,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.7,Yes,Yes,22 | 20,0.1,0.619274,0.615114,0.016280,0.420832
+006,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.7,No,No,23 | 20,0.15,0.612484,0.616475,0.016280,0.420832
+007,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,Yes,No,29 | 20,0.45,0.067125,0.016222,0.015277,0.362712
+008,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,No,29 | 20,0.45,0.067125,0.016222,0.015277,0.362712
+009,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,Yes,No,29 | 20,0.45,0.124835,0.138598,0.015277,0.409964
+010,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,No,29 | 20,0.45,0.124835,0.138598,0.015277,0.409964
+011,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,Yes,No,29 | 20,0.45,0.213558,0.288767,0.015277,0.407971
+012,06_nL_uM_onnL_omM,n700mu0.4on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,No,29 | 20,0.45,0.213558,0.288767,0.015277,0.407971

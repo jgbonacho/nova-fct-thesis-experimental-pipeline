@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,Yes,Yes,20 | 25,0.2,0.021881,0.032129,0.010281,0.515898
+002,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,No,No,21 | 25,0.16,0.027188,0.024460,0.010281,0.283326
+003,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,Yes,Yes,20 | 25,0.2,0.023192,0.102028,0.010281,0.577424
+004,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,No,No,21 | 25,0.16,0.022112,0.102956,0.010281,0.577424
+005,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,Yes,Yes,20 | 25,0.2,0.028058,0.133423,0.010281,0.598428
+006,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,No,No,21 | 25,0.16,0.028058,0.134163,0.010281,0.598428
+007,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,Yes,No,27 | 25,0.08,0,0.007408,0.010584,0.518728
+008,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,No,27 | 25,0.08,0,0.007408,0.010584,0.518728
+009,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,Yes,No,27 | 25,0.08,0,0.062444,0.010584,0.588806
+010,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,No,27 | 25,0.08,0,0.062444,0.010584,0.588806
+011,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,Yes,No,27 | 25,0.08,0.017821,0.085526,0.010584,0.624563
+012,08_nL_uM_onnM_omM,n600mu0.5on240om4inst1,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,No,27 | 25,0.08,0.017821,0.085526,0.010584,0.624563
