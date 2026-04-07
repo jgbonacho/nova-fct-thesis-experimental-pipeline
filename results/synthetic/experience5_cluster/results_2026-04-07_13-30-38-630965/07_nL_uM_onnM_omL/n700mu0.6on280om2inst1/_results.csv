@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.3,Yes,Yes,12 | 20,0.4,0.029305,0.011065,0.005248,0.463713
+002,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.3,No,No,13 | 20,0.35,0.027825,0.001254,0.005248,0.141855
+003,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.5,Yes,Yes,12 | 20,0.4,0.011052,0.056682,0.005248,0.567153
+004,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.5,No,No,13 | 20,0.35,0.010138,0.052732,0.005248,0.567153
+005,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.7,Yes,Yes,12 | 20,0.4,0.030171,0.093578,0.005248,0.627001
+006,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.7,No,No,13 | 20,0.35,0.028813,0.093664,0.005248,0.627001
+007,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.3,Yes,No,11 | 20,0.45,0,0.008886,0.003716,0.467556
+008,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.3,No,No,11 | 20,0.45,0,0.008886,0.003716,0.467556
+009,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.5,Yes,No,11 | 20,0.45,0,0.040675,0.003716,0.549698
+010,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.5,No,No,11 | 20,0.45,0,0.040675,0.003716,0.549698
+011,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.7,Yes,No,11 | 20,0.45,0,0.059316,0.003716,0.618623
+012,07_nL_uM_onnM_omL,n700mu0.6on280om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.7,No,No,11 | 20,0.45,0,0.059316,0.003716,0.618623

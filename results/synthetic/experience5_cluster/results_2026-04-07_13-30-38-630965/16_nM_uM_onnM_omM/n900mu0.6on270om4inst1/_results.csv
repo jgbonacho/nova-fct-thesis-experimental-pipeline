@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-off,-,0.000066,0.05,100,epsilon,0.3,Yes,Yes,17 | 36,0.527778,0.006900,0.012059,0.006236,0.488559
+002,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-off,-,0.000066,0.05,100,epsilon,0.3,No,No,18 | 36,0.5,0.012106,0.006433,0.006236,0.232968
+003,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-off,-,0.000066,0.05,100,epsilon,0.5,Yes,Yes,17 | 36,0.527778,0.008454,0.049335,0.006236,0.570865
+004,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-off,-,0.000066,0.05,100,epsilon,0.5,No,No,18 | 36,0.5,0.007945,0.049377,0.006236,0.570865
+005,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-off,-,0.000066,0.05,100,epsilon,0.7,Yes,Yes,17 | 36,0.527778,0,0.081170,0.006236,0.630498
+006,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-off,-,0.000066,0.05,100,epsilon,0.7,No,No,18 | 36,0.5,0,0.081240,0.006236,0.630498
+007,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000066,0.05,100,epsilon,0.3,Yes,No,17 | 36,0.527778,0,0.008915,0.004736,0.488096
+008,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000066,0.05,100,epsilon,0.3,No,No,17 | 36,0.527778,0,0.008915,0.004736,0.488096
+009,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000066,0.05,100,epsilon,0.5,Yes,No,17 | 36,0.527778,0,0.041347,0.004736,0.566382
+010,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000066,0.05,100,epsilon,0.5,No,No,17 | 36,0.527778,0,0.041347,0.004736,0.566382
+011,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000066,0.05,100,epsilon,0.7,Yes,No,17 | 36,0.527778,0,0.069604,0.004736,0.610759
+012,16_nM_uM_onnM_omM,n900mu0.6on270om4inst1,Yes,Default,LAPIN-on,Lsym,0.000066,0.05,100,epsilon,0.7,No,No,17 | 36,0.527778,0,0.069604,0.004736,0.610759

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-off,-,0.000201,0.05,100,epsilon,0.3,Yes,Yes,23 | 25,0.08,0.295873,0.253217,0.013108,0.407331
+002,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-off,-,0.000201,0.05,100,epsilon,0.3,No,No,24 | 25,0.04,0.277783,0.172598,0.013108,0.347272
+003,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-off,-,0.000201,0.05,100,epsilon,0.5,Yes,Yes,23 | 25,0.08,0.477525,0.486147,0.013108,0.410325
+004,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-off,-,0.000201,0.05,100,epsilon,0.5,No,No,24 | 25,0.04,0.459979,0.468318,0.013108,0.410325
+005,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-off,-,0.000201,0.05,100,epsilon,0.7,Yes,Yes,23 | 25,0.08,0.562771,0.562732,0.013108,0.422604
+006,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-off,-,0.000201,0.05,100,epsilon,0.7,No,No,24 | 25,0.04,0.551534,0.559374,0.013108,0.422604
+007,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000201,0.05,100,epsilon,0.3,Yes,No,15 | 25,0.4,0.114703,0.031556,0.007301,0.338990
+008,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000201,0.05,100,epsilon,0.3,No,No,15 | 25,0.4,0.114703,0.031556,0.007301,0.338990
+009,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000201,0.05,100,epsilon,0.5,Yes,No,15 | 25,0.4,0.156957,0.130644,0.007301,0.371082
+010,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000201,0.05,100,epsilon,0.5,No,No,15 | 25,0.4,0.156957,0.130644,0.007301,0.371082
+011,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000201,0.05,100,epsilon,0.7,Yes,No,15 | 25,0.4,0.199590,0.265049,0.007301,0.410822
+012,14_nM_uM_onnL_omM,n900mu0.4on90om4inst1,Yes,Default,LAPIN-on,Lsym,0.000201,0.05,100,epsilon,0.7,No,No,15 | 25,0.4,0.199590,0.265049,0.007301,0.410822

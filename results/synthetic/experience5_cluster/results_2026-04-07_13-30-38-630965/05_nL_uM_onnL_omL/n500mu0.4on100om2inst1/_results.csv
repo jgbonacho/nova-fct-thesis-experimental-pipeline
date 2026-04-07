@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-off,-,0.000412,0.05,100,epsilon,0.3,Yes,Yes,10 | 11,0.090909,0.294896,0.217392,0.009179,0.396416
+002,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-off,-,0.000412,0.05,100,epsilon,0.3,No,No,11 | 11,0,0.270080,0.038454,0.009179,0.162018
+003,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-off,-,0.000412,0.05,100,epsilon,0.5,Yes,Yes,10 | 11,0.090909,0.433041,0.452997,0.009179,0.422477
+004,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-off,-,0.000412,0.05,100,epsilon,0.5,No,No,11 | 11,0,0.386864,0.420526,0.009179,0.422310
+005,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-off,-,0.000412,0.05,100,epsilon,0.7,Yes,Yes,10 | 11,0.090909,0.539494,0.586926,0.009179,0.429481
+006,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-off,-,0.000412,0.05,100,epsilon,0.7,No,No,11 | 11,0,0.507155,0.582046,0.009179,0.429481
+007,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000412,0.05,100,epsilon,0.3,Yes,No,11 | 11,0,0.257407,0.167911,0.009264,0.357333
+008,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000412,0.05,100,epsilon,0.3,No,No,11 | 11,0,0.257407,0.167911,0.009264,0.357333
+009,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000412,0.05,100,epsilon,0.5,Yes,No,11 | 11,0,0.387183,0.396251,0.009264,0.416411
+010,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000412,0.05,100,epsilon,0.5,No,No,11 | 11,0,0.387183,0.396251,0.009264,0.416411
+011,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000412,0.05,100,epsilon,0.7,Yes,No,11 | 11,0,0.490982,0.555075,0.009264,0.429410
+012,05_nL_uM_onnL_omL,n500mu0.4on100om2inst1,Yes,Default,LAPIN-on,Lsym,0.000412,0.05,100,epsilon,0.7,No,No,11 | 11,0,0.490982,0.555075,0.009264,0.429410

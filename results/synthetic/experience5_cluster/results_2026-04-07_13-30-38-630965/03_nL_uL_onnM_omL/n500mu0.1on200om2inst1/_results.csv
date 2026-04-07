@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-off,-,0.000507,0.05,100,epsilon,0.3,Yes,Yes,12 | 12,0,0.305934,0.173922,0.013222,0.255084
+002,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-off,-,0.000507,0.05,100,epsilon,0.3,No,No,13 | 12,0.083333,0.283140,0.008732,0.013222,0.162579
+003,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-off,-,0.000507,0.05,100,epsilon,0.5,Yes,Yes,12 | 12,0,0.514299,0.553500,0.013222,0.284663
+004,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-off,-,0.000507,0.05,100,epsilon,0.5,No,No,13 | 12,0.083333,0.470863,0.518451,0.013222,0.284663
+005,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-off,-,0.000507,0.05,100,epsilon,0.7,Yes,Yes,12 | 12,0,0.650525,0.686232,0.013222,0.246071
+006,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-off,-,0.000507,0.05,100,epsilon,0.7,No,No,13 | 12,0.083333,0.650326,0.685589,0.013222,0.246071
+007,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000507,0.05,100,epsilon,0.3,Yes,No,12 | 12,0,0.391311,0.285264,0.013685,0.233969
+008,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000507,0.05,100,epsilon,0.3,No,No,12 | 12,0,0.391311,0.285264,0.013685,0.233969
+009,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000507,0.05,100,epsilon,0.5,Yes,No,12 | 12,0,0.583046,0.632169,0.013685,0.232941
+010,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000507,0.05,100,epsilon,0.5,No,No,12 | 12,0,0.583046,0.632169,0.013685,0.232941
+011,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000507,0.05,100,epsilon,0.7,Yes,No,12 | 12,0,0.664615,0.704240,0.013685,0.245351
+012,03_nL_uL_onnM_omL,n500mu0.1on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000507,0.05,100,epsilon,0.7,No,No,12 | 12,0,0.664615,0.704240,0.013685,0.245351

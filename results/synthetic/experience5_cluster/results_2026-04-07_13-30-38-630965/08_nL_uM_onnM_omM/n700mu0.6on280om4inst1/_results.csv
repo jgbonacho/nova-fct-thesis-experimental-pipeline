@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000090,0.05,100,epsilon,0.3,Yes,Yes,15 | 32,0.531250,0.008638,0.017243,0.006507,0.481349
+002,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000090,0.05,100,epsilon,0.3,No,No,16 | 32,0.5,0.013666,0.010234,0.006507,0.189899
+003,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000090,0.05,100,epsilon,0.5,Yes,Yes,15 | 32,0.531250,0.009217,0.054132,0.006507,0.565486
+004,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000090,0.05,100,epsilon,0.5,No,No,16 | 32,0.5,0.008698,0.053890,0.006507,0.566823
+005,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000090,0.05,100,epsilon,0.7,Yes,Yes,15 | 32,0.531250,0.009931,0.067448,0.006507,0.624061
+006,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-off,-,0.000090,0.05,100,epsilon,0.7,No,No,16 | 32,0.5,0.009410,0.065921,0.006507,0.625794
+007,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000090,0.05,100,epsilon,0.3,Yes,No,14 | 32,0.5625,0,0.011835,0.004774,0.487650
+008,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000090,0.05,100,epsilon,0.3,No,No,14 | 32,0.5625,0,0.011835,0.004774,0.487650
+009,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000090,0.05,100,epsilon,0.5,Yes,No,14 | 32,0.5625,0,0.038210,0.004774,0.567458
+010,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000090,0.05,100,epsilon,0.5,No,No,14 | 32,0.5625,0,0.038210,0.004774,0.567458
+011,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000090,0.05,100,epsilon,0.7,Yes,No,14 | 32,0.5625,0,0.041381,0.004774,0.623979
+012,08_nL_uM_onnM_omM,n700mu0.6on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000090,0.05,100,epsilon,0.7,No,No,14 | 32,0.5625,0,0.041381,0.004774,0.623979

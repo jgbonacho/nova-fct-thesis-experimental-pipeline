@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-off,-,0.000276,0.05,100,epsilon,0.3,Yes,Yes,19 | 32,0.406250,0.160161,0.144391,0.011423,0.411865
+002,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-off,-,0.000276,0.05,100,epsilon,0.3,No,No,20 | 32,0.375,0.162276,0.112511,0.011423,0.368905
+003,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-off,-,0.000276,0.05,100,epsilon,0.5,Yes,Yes,19 | 32,0.406250,0.155929,0.285158,0.011423,0.392135
+004,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-off,-,0.000276,0.05,100,epsilon,0.5,No,No,20 | 32,0.375,0.155444,0.287492,0.011423,0.392135
+005,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-off,-,0.000276,0.05,100,epsilon,0.7,Yes,Yes,19 | 32,0.406250,0.141405,0.286745,0.011423,0.403078
+006,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-off,-,0.000276,0.05,100,epsilon,0.7,No,No,20 | 32,0.375,0.141405,0.286869,0.011423,0.403078
+007,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000276,0.05,100,epsilon,0.3,Yes,No,18 | 32,0.4375,0.163195,0.155296,0.010298,0.391434
+008,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000276,0.05,100,epsilon,0.3,No,No,18 | 32,0.4375,0.163195,0.155296,0.010298,0.391434
+009,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000276,0.05,100,epsilon,0.5,Yes,No,18 | 32,0.4375,0.178646,0.283507,0.010298,0.400016
+010,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000276,0.05,100,epsilon,0.5,No,No,18 | 32,0.4375,0.178646,0.283507,0.010298,0.400016
+011,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000276,0.05,100,epsilon,0.7,Yes,No,18 | 32,0.4375,0.160836,0.289197,0.010298,0.411100
+012,04_nL_uL_onnM_omM,n700mu0.3on280om4inst1,Yes,Default,LAPIN-on,Lsym,0.000276,0.05,100,epsilon,0.7,No,No,18 | 32,0.4375,0.160836,0.289197,0.010298,0.411100

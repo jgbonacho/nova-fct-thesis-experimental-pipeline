@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.3,Yes,Yes,12 | 13,0.076923,0.131678,0.030623,0.007883,0.447560
+002,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.3,No,No,13 | 13,0,0.126307,-0.001697,0.007883,0.175483
+003,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.5,Yes,Yes,12 | 13,0.076923,0.182372,0.154055,0.007883,0.503418
+004,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.5,No,No,13 | 13,0,0.169177,0.146779,0.007883,0.504785
+005,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.7,Yes,Yes,12 | 13,0.076923,0.207292,0.267112,0.007883,0.547928
+006,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-off,-,0.000194,0.05,100,epsilon,0.7,No,No,13 | 13,0,0.198073,0.269959,0.007883,0.549496
+007,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.3,Yes,No,13 | 13,0,0.161381,0.083565,0.008210,0.470459
+008,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.3,No,No,13 | 13,0,0.161381,0.083565,0.008210,0.470459
+009,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.5,Yes,No,13 | 13,0,0.222198,0.230698,0.008210,0.521356
+010,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.5,No,No,13 | 13,0,0.222198,0.230698,0.008210,0.521356
+011,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.7,Yes,No,13 | 13,0,0.292071,0.345124,0.008210,0.553196
+012,07_nL_uM_onnM_omL,n500mu0.5on150om2inst1,Yes,Default,LAPIN-on,Lsym,0.000194,0.05,100,epsilon,0.7,No,No,13 | 13,0,0.292071,0.345124,0.008210,0.553196

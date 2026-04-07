@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop condition,Gamma,Conditionally discard C0?,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-off,-,0.000321,0.05,100,epsilon,0.3,Yes,Yes,12 | 14,0.142857,0.090101,0.048241,0.005835,0.452419
+002,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-off,-,0.000321,0.05,100,epsilon,0.3,No,No,13 | 14,0.071429,0.088272,0.012617,0.005835,0.191724
+003,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-off,-,0.000321,0.05,100,epsilon,0.5,Yes,Yes,12 | 14,0.142857,0.107144,0.144689,0.005835,0.541085
+004,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-off,-,0.000321,0.05,100,epsilon,0.5,No,No,13 | 14,0.071429,0.105281,0.137324,0.005835,0.543802
+005,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-off,-,0.000321,0.05,100,epsilon,0.7,Yes,Yes,12 | 14,0.142857,0.136525,0.208305,0.005835,0.579221
+006,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-off,-,0.000321,0.05,100,epsilon,0.7,No,No,13 | 14,0.071429,0.128878,0.209670,0.005835,0.582021
+007,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000321,0.05,100,epsilon,0.3,Yes,No,9 | 14,0.357143,0.040372,0.033693,0.003629,0.452163
+008,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000321,0.05,100,epsilon,0.3,No,No,9 | 14,0.357143,0.040372,0.033693,0.003629,0.452163
+009,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000321,0.05,100,epsilon,0.5,Yes,No,9 | 14,0.357143,0.036076,0.083010,0.003629,0.508279
+010,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000321,0.05,100,epsilon,0.5,No,No,9 | 14,0.357143,0.036076,0.083010,0.003629,0.508279
+011,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000321,0.05,100,epsilon,0.7,Yes,No,9 | 14,0.357143,0.043031,0.111424,0.003629,0.542585
+012,06_nL_uM_onnL_omM,n700mu0.6on70om4inst1,Yes,Default,LAPIN-on,Lsym,0.000321,0.05,100,epsilon,0.7,No,No,9 | 14,0.357143,0.043031,0.111424,0.003629,0.542585
