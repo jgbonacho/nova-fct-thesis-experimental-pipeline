@@ -4,9 +4,10 @@ import os
 from collections.abc import Callable
 from dataclasses import asdict, fields
 from datetime import datetime
-from typing import get_args
+from typing import get_args, Any
 
 import numpy as np
+
 from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import IntrinsicMetrics
@@ -104,7 +105,7 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
             Path to the created results' directory.
         output_filename : (str, optional)
             The name of the output CSV file.
-            Default is "results".
+            Default is "_results".
 
     Returns:
         append_result : (Callable[[Result], None])
@@ -282,7 +283,7 @@ def save_report(
         json.dump(report, out_file, indent=2)
 
 
-def _format_value(value: any) -> str:
+def _format_value(value: Any) -> str:
     """
     Format a value into a human-readable string.
 
@@ -311,7 +312,7 @@ def _int_to_roman(num: int) -> str:
 
     Parameters:
         num : (int)
-            The integer to convert (0 <= num < 4000).
+            The integer to convert (0 <= num <= 4000).
 
     Returns:
         roman_num : (str)

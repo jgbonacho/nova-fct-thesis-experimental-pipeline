@@ -29,7 +29,7 @@ class Result:
             The epsilon parameter used in the experiment.
         tau : float
             The tau parameter used in the experiment.
-        k_max : float
+        k_max : int
             The k_max parameter used in the experiment.
         stop_condition : str
             The stop condition used in the experiment.
@@ -56,7 +56,7 @@ class Result:
     laplacian_variant: str = field(metadata={"label": "Laplacian"})
     epsilon: float = field(metadata={"label": "Epsilon"})
     tau: float = field(metadata={"label": "Tau"})
-    k_max: float = field(metadata={"label": "Kmax"})
+    k_max: int = field(metadata={"label": "Kmax"})
     stop_condition: str = field(metadata={"label": "Stop condition"})
     gamma: float = field(metadata={"label": "Gamma"})
     conditionally_discard_first_cluster: bool = field(metadata={"label": "Conditionally discard C0?"})
