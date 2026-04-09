@@ -1,0 +1,125 @@
+{
+  "name": "15_nM_uM_onnM_omL",
+  "networks": [
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 1,
+      "name": "n1000mu0.4on300om2inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 2,
+      "name": "n1000mu0.4on300om2inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 3,
+      "name": "n1000mu0.4on300om2inst3",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 4,
+      "name": "n1000mu0.4on300om2inst4",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 5,
+      "name": "n1000mu0.4on300om2inst5",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 6,
+      "name": "n1000mu0.4on300om2inst6",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 7,
+      "name": "n1000mu0.4on300om2inst7",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 8,
+      "name": "n1000mu0.4on300om2inst8",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 9,
+      "name": "n1000mu0.4on300om2inst9",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=300;om=2",
+      "instance": 10,
+      "name": "n1000mu0.4on300om2inst10",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 1,
+      "name": "n1000mu0.4on400om2inst1",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 2,
+      "name": "n1000mu0.4on400om2inst2",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 3,
+      "name": "n1000mu0.4on400om2inst3",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 4,
+      "name": "n1000mu0.4on400om2inst4",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 5,
+      "name": "n1000mu0.4on400om2inst5",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 6,
+      "name": "n1000mu0.4on400om2inst6",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 7,
+      "name": "n1000mu0.4on400om2inst7",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 8,
+      "name": "n1000mu0.4on400om2inst8",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 9,
+      "name": "n1000mu0.4on400om2inst9",
+      "overlapping_ground_truth": true
+    },
+    {
+      "description": "d_avg=20;d_max=50;c_min=20;c_max=100;t1=2.0;t2=1.0;n=1000;mu=0.4;on=400;om=2",
+      "instance": 10,
+      "name": "n1000mu0.4on400om2inst10",
+      "overlapping_ground_truth": true
+    }
+  ]
+}
