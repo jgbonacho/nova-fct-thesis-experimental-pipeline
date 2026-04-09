@@ -105,7 +105,6 @@ def run_synthetic_networks_experiments(
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                                 membership_matrix,
                                 defuzzification_rule.gamma,
-                                defuzzification_rule.conditionally_discard_first_cluster,
                                 overlapping=network.overlapping_ground_truth
                             )
 
@@ -134,7 +133,6 @@ def run_synthetic_networks_experiments(
                                 k_max=k_max,
                                 stop_condition=stop_condition,
                                 gamma=defuzzification_rule.gamma,
-                                conditionally_discard_first_cluster=defuzzification_rule.conditionally_discard_first_cluster,
                                 first_cluster_discarded=first_cluster_discarded,
                                 extrinsic_results=extrinsic_results,
                                 intrinsic_results=intrinsic_results

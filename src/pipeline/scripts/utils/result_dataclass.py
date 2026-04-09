@@ -35,8 +35,6 @@ class Result:
             The stop condition used in the experiment.
         gamma : float
             The gamma parameter used in the experiment.
-        conditionally_discard_first_cluster : bool
-            Whether the first cluster is conditionally discarded in the experiment.
         first_cluster_discarded : bool
             Whether the first cluster was discarded in the experiment.
         extrinsic_results : ExtrinsicMetrics | None
@@ -57,9 +55,8 @@ class Result:
     epsilon: float = field(metadata={"label": "Epsilon"})
     tau: float = field(metadata={"label": "Tau"})
     k_max: int = field(metadata={"label": "Kmax"})
-    stop_condition: str = field(metadata={"label": "Stop condition"})
+    stop_condition: str = field(metadata={"label": "Stop Condition"})
     gamma: float = field(metadata={"label": "Gamma"})
-    conditionally_discard_first_cluster: bool = field(metadata={"label": "Conditionally discard C0?"})
     first_cluster_discarded: bool = field(metadata={"label": "C0 discarded?"})
     extrinsic_results: ExtrinsicMetrics = field(default=None)
     intrinsic_results: IntrinsicMetrics = field(default=None)

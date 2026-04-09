@@ -20,9 +20,9 @@ def main():
         defuzzification_rules=DEFUZZIFICATION_RULES
     )
 
-    draw_line_plots_per_network(results_dir=results_path)
-    draw_line_plots_per_network_family(results_dir=results_path)
-    draw_global_line_plots_per_network_family(results_dir=results_path)
+    # draw_line_plots_per_network(results_dir=results_path)
+    # draw_line_plots_per_network_family(results_dir=results_path)
+    # draw_global_line_plots_per_network_family(results_dir=results_path)
 
 
 if __name__ == "__main__":

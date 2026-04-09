@@ -133,20 +133,13 @@ class DefuzzificationRule:
     Attributes:
         gamma : float
             Hyperparameter for the defuzzification rule.
-        conditionally_discard_first_cluster : bool
-            If True, discard the first cluster if all membership values in the first column are positive.
-            If False, include all clusters in the defuzzification process.
     """
 
     gamma: float
-    conditionally_discard_first_cluster: bool
 
 
 DEFUZZIFICATION_RULES = [
-    DefuzzificationRule(0.3, True),
-    DefuzzificationRule(0.3, False),
-    DefuzzificationRule(0.5, True),
-    DefuzzificationRule(0.5, False),
-    DefuzzificationRule(0.7, True),
-    DefuzzificationRule(0.7, False),
+    DefuzzificationRule(0.3),
+    DefuzzificationRule(0.5),
+    DefuzzificationRule(0.7),
 ]
