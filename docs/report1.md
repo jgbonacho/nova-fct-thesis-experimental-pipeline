@@ -59,7 +59,7 @@
 
 ### Extrinsic Results
 
-[Open Folder](../results/synthetic/experience1_cluster/results_2026-04-04_18-01-39-080614)
+[Open Folder](../results/synthetic/1_4_seen_networks/experience1_cluster/results_2026-04-04_18-01-39-080614)
 
 
 
@@ -88,7 +88,7 @@
 
 ### Extrinsic Results
 
-[Open Folder](../results/synthetic/experience2_cluster/results_2026-04-05_09-07-19-011166)
+[Open Folder](../results/synthetic/1_4_seen_networks/experience2_cluster/results_2026-04-05_09-07-19-011166)
 
 
 
@@ -117,7 +117,7 @@
 
 ### Extrinsic Results
 
-[Open Folder](../results/synthetic/experience3_cluster/results_2026-04-06_22-28-25-819274)
+[Open Folder](../results/synthetic/1_4_seen_networks/experience3_cluster/results_2026-04-06_22-28-25-819274)
 
 
 
@@ -146,58 +146,4 @@
 
 ### Extrinsic Results
 
-[Open Folder](../results/synthetic/experience4_cluster/results_2026-04-07_07-18-02-169177)
-
-
-
-## Experience 5 (Normalization by Network Family) - *Experience 1 (LAPIN-off + Extraction of K desired clusters) - Thresholds
-
-| Network Family    | Selected Metric | Threshold |
-|-------------------|-----------------|-----------|
-| 01_nL_uL_onnL_omL | Median          | 0.000736  |
-| 02_nL_uL_onnL_omM | Median          | 0.000612  |
-| 03_nL_uL_onnM_omL | Median          | 0.000507  |
-| 04_nL_uL_onnM_omM | Median          | 0.000276  |
-| 05_nL_uM_onnL_omL | Median          | 0.000412  |
-| 06_nL_uM_onnL_omM | Median          | 0.000321  |
-| 07_nL_uM_onnM_omL | Median          | 0.000194  |
-| 08_nL_uM_onnM_omM | Median          | 9e-05     |
-| 09_nM_uL_onnL_omL | Median          | 0.000532  |
-| 10_nM_uL_onnL_omM | Median          | 0.000418  |
-| 11_nM_uL_onnM_omL | Median          | 0.000331  |
-| 12_nM_uL_onnM_omM | Median          | 0.000151  |
-| 13_nM_uM_onnL_omL | Median          | 0.000281  |
-| 14_nM_uM_onnL_omM | Median          | 0.000201  |
-| 15_nM_uM_onnM_omL | Median          | 0.00012   |
-| 16_nM_uM_onnM_omM | Median          | 6.6e-05   |
-
-### Extrinsic Results
-
-[Open Folder](../results/synthetic/experience5_cluster/results_2026-04-07_13-30-38-630965)
-
-
-
-### Experience 5 (Normalization by Network Family) - *Experience 2 (LAPIN-off + Extraction of clusters until the end) - Thresholds
-
-| Network Family    | Selected Metric | Threshold |
-|-------------------|-----------------|-----------|
-| 01_nL_uL_onnL_omL | Median          | 0.000549  |
-| 02_nL_uL_onnL_omM | Median          | 0.000523  |
-| 03_nL_uL_onnM_omL | Median          | 0.000379  |
-| 04_nL_uL_onnM_omM | Median          | 0.000213  |
-| 05_nL_uM_onnL_omL | Median          | 0.000136  |
-| 06_nL_uM_onnL_omM | Median          | 0.000165  |
-| 07_nL_uM_onnM_omL | Median          | 7.5e-05   |
-| 08_nL_uM_onnM_omM | Median          | 6e-05     |
-| 09_nM_uL_onnL_omL | Median          | 0.000438  |
-| 10_nM_uL_onnL_omM | Median          | 0.000332  |
-| 11_nM_uL_onnM_omL | Median          | 0.000246  |
-| 12_nM_uL_onnM_omM | Median          | 0.000135  |
-| 13_nM_uM_onnL_omL | Median          | 0.000163  |
-| 14_nM_uM_onnL_omM | Median          | 0.000144  |
-| 15_nM_uM_onnM_omL | Median          | 9.1e-05   |
-| 16_nM_uM_onnM_omM | Median          | 5.4e-05   |
-
-### Extrinsic Results
-
-[Open Folder](../results/synthetic/experience5_cluster/results_2026-04-07_18-15-06-081553)
+[Open Folder](../results/synthetic/1_4_seen_networks/experience4_cluster/results_2026-04-07_07-18-02-169177)

@@ -748,10 +748,12 @@ def draw_global_line_plots_per_network_family(
     if len(metrics_to_plot) == 1:
         axes = [axes]
 
+    colors = plt.get_cmap("tab20")(np.linspace(0, 1, len(family_data_list)))
     for ax, metric in zip(axes, metrics_to_plot):
         plotted_mean_values = []
 
-        for family_data in family_data_list:
+        for i, family_data in enumerate(family_data_list):
+            color = colors[i]
             metric_matrix = []
 
             for series in family_data["network_series"]:
@@ -766,7 +768,7 @@ def draw_global_line_plots_per_network_family(
 
             metric_matrix = np.array(metric_matrix, dtype=float)
             mean_y = np.nanmean(metric_matrix, axis=0)
-            std_y = _sample_nanstd(metric_matrix, axis=0)
+            # std_y = _sample_nanstd(metric_matrix, axis=0)
 
             plotted_mean_values.append(mean_y)
 
@@ -775,6 +777,8 @@ def draw_global_line_plots_per_network_family(
             #    mean_y,
             #    yerr=std_y,
             #    fmt=f"-{GLOBAL_MEAN_MARKER}",
+            #    color=color,
+            #    ecolor=color,
             #    linewidth=MEAN_LINEWIDTH,
             #    capsize=MEAN_ERRORBAR_CAPSIZE,
             #    elinewidth=MEAN_ERRORBAR_LINEWIDTH,
@@ -786,6 +790,7 @@ def draw_global_line_plots_per_network_family(
                 x,
                 mean_y,
                 f"-{GLOBAL_MEAN_MARKER}",
+                color=color,
                 linewidth=MEAN_LINEWIDTH,
                 zorder=3,
                 label=family_data["family_name"],
