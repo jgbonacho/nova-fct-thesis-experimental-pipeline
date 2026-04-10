@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-off,-,0.000053,0.05,100,W,0.3,Yes,28 | 24,0.166667,0.384271,0.278224,0.019049,0.248531
+002,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-off,-,0.000053,0.05,100,W,0.5,Yes,28 | 24,0.166667,0.609943,0.563228,0.019049,0.250401
+003,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-off,-,0.000053,0.05,100,W,0.6,Yes,28 | 24,0.166667,0.682949,0.649755,0.019049,0.254656
+004,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-off,-,0.000053,0.05,100,W,0.7,Yes,28 | 24,0.166667,0.728983,0.695586,0.019049,0.254656
+005,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-off,-,0.000053,0.05,100,W,0.8,Yes,28 | 24,0.166667,0.774736,0.750862,0.019049,0.254656
+006,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-off,-,0.000053,0.05,100,W,0.9,Yes,28 | 24,0.166667,0.783095,0.764926,0.019049,0
+007,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.3,No,21 | 24,0.125,0.225715,0.090434,0.012742,0.226508
+008,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.5,No,21 | 24,0.125,0.381588,0.338569,0.012742,0.240929
+009,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.6,No,21 | 24,0.125,0.448961,0.440002,0.012742,0.257470
+010,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.7,No,21 | 24,0.125,0.522534,0.554042,0.012742,0.256479
+011,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.8,No,21 | 24,0.125,0.588491,0.631249,0.012742,0.256140
+012,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000053,0.05,100,epsilon,0.9,No,21 | 24,0.125,0.583470,0.646979,0.012742,0.256140

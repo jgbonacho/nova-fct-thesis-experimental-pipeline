@@ -11,7 +11,7 @@ from pipeline.components.affinity_design.neighborhood_based_similarities.weighte
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 
 ROOT_DIR = os.path.join(os.path.dirname(__file__), '..', '..', '..')
-SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic')
+SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic', 'variation_sets', 'boundary_variation_set')
 RESULTS_BASE_DIR = os.path.join(ROOT_DIR, 'results', 'synthetic')
 CONFIG_DIR = os.path.join(os.path.dirname(__file__))
 
@@ -141,5 +141,8 @@ class DefuzzificationRule:
 DEFUZZIFICATION_RULES = [
     DefuzzificationRule(0.3),
     DefuzzificationRule(0.5),
+    DefuzzificationRule(0.6),
     DefuzzificationRule(0.7),
+    DefuzzificationRule(0.8),
+    DefuzzificationRule(0.9)
 ]

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.3,Yes,20 | 25,0.2,0.026186,0.005716,0.006834,0.490726
+002,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.5,Yes,20 | 25,0.2,0.039492,0.069317,0.006834,0.554678
+003,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.6,Yes,20 | 25,0.2,0.048536,0.117270,0.006834,0.579111
+004,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.7,Yes,20 | 25,0.2,0.045071,0.160810,0.006834,0.595229
+005,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.8,Yes,20 | 25,0.2,0.088024,0.189528,0.006834,0.611645
+006,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.9,Yes,20 | 25,0.2,0.090059,0.195522,0.006834,0.617867
+007,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.3,No,21 | 25,0.16,0,0.003538,0.005533,0.483026
+008,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.5,No,21 | 25,0.16,0,0.053949,0.005533,0.547216
+009,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.6,No,21 | 25,0.16,0.008980,0.085400,0.005533,0.567131
+010,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.7,No,21 | 25,0.16,0.009794,0.118712,0.005533,0.578355
+011,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.8,No,21 | 25,0.16,0.023424,0.141183,0.005533,0.598050
+012,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.9,No,21 | 25,0.16,0.041625,0.145810,0.005533,0.608872

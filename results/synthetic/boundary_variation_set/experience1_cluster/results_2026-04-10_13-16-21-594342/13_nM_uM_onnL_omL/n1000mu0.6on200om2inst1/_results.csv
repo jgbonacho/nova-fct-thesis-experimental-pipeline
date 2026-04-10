@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.3,Yes,22 | 21,0.047619,0.060686,0.016318,0.007698,0.504819
+002,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.5,Yes,22 | 21,0.047619,0.076204,0.111493,0.007698,0.587261
+003,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.6,Yes,22 | 21,0.047619,0.092894,0.171317,0.007698,0.596793
+004,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.7,Yes,22 | 21,0.047619,0.094477,0.218407,0.007698,0.617126
+005,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.8,Yes,22 | 21,0.047619,0.159611,0.249744,0.007698,0.621424
+006,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.9,Yes,22 | 21,0.047619,0.177000,0.257009,0.007698,0.621398
+007,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.3,No,22 | 21,0.047619,0.016247,0.004234,0.005826,0.481602
+008,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.5,No,22 | 21,0.047619,0.006950,0.059127,0.005826,0.568281
+009,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.6,No,22 | 21,0.047619,0.017708,0.096349,0.005826,0.586673
+010,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.7,No,22 | 21,0.047619,0.039660,0.128077,0.005826,0.599495
+011,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.8,No,22 | 21,0.047619,0.073830,0.152128,0.005826,0.619670
+012,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst1,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.9,No,22 | 21,0.047619,0.075857,0.157400,0.005826,0.638677
