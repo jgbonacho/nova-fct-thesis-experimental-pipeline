@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-off,-,0.000044,0.05,100,epsilon,0.3,Yes,22 | 20,0.1,0.283387,0.137241,0.012489,0.336240
+002,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-off,-,0.000044,0.05,100,epsilon,0.5,Yes,22 | 20,0.1,0.466407,0.385658,0.012489,0.339390
+003,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-off,-,0.000044,0.05,100,epsilon,0.6,Yes,22 | 20,0.1,0.550728,0.516764,0.012489,0.346109
+004,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-off,-,0.000044,0.05,100,epsilon,0.7,Yes,22 | 20,0.1,0.606589,0.603319,0.012489,0.346109
+005,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-off,-,0.000044,0.05,100,epsilon,0.8,Yes,22 | 20,0.1,0.644550,0.665569,0.012489,0.346109
+006,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-off,-,0.000044,0.05,100,epsilon,0.9,Yes,22 | 20,0.1,0.672935,0.709244,0.012489,0.346109
+007,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000044,0.05,100,epsilon,0.3,No,18 | 20,0.1,0.201107,0.084153,0.009646,0.323341
+008,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000044,0.05,100,epsilon,0.5,No,18 | 20,0.1,0.369216,0.320035,0.009646,0.334280
+009,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000044,0.05,100,epsilon,0.6,No,18 | 20,0.1,0.448649,0.447252,0.009646,0.343489
+010,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000044,0.05,100,epsilon,0.7,No,18 | 20,0.1,0.526652,0.549858,0.009646,0.342044
+011,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000044,0.05,100,epsilon,0.8,No,18 | 20,0.1,0.593899,0.608558,0.009646,0.342872
+012,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000044,0.05,100,epsilon,0.9,No,18 | 20,0.1,0.593877,0.640554,0.009646,0.347752

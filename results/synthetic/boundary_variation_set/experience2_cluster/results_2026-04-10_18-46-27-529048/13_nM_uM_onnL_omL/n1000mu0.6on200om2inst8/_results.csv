@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.3,Yes,23 | 27,0.148148,0.030589,0.005596,0.007714,0.502108
+002,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.5,Yes,23 | 27,0.148148,0.041278,0.079488,0.007714,0.578757
+003,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.6,Yes,23 | 27,0.148148,0.057860,0.133175,0.007714,0.603549
+004,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.7,Yes,23 | 27,0.148148,0.057152,0.181526,0.007714,0.605843
+005,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.8,Yes,23 | 27,0.148148,0.081289,0.224018,0.007714,0.609625
+006,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.9,Yes,23 | 27,0.148148,0.080214,0.242163,0.007714,0.614931
+007,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.3,No,26 | 27,0.037037,0.008655,-0.000978,0.007085,0.493249
+008,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.5,No,26 | 27,0.037037,0.006820,0.052794,0.007085,0.563582
+009,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.6,No,26 | 27,0.037037,0.015489,0.091127,0.007085,0.588887
+010,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.7,No,26 | 27,0.037037,0.028683,0.134533,0.007085,0.590352
+011,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.8,No,26 | 27,0.037037,0.042411,0.156177,0.007085,0.604281
+012,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst8,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.9,No,26 | 27,0.037037,0.038707,0.160930,0.007085,0.614283
