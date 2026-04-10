@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.3,Yes,18 | 20,0.1,0.048704,0.010106,0.006116,0.491177
+002,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.5,Yes,18 | 20,0.1,0.049977,0.086635,0.006116,0.578500
+003,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.6,Yes,18 | 20,0.1,0.062261,0.138463,0.006116,0.604283
+004,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.7,Yes,18 | 20,0.1,0.072952,0.178381,0.006116,0.612991
+005,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.8,Yes,18 | 20,0.1,0.112771,0.212152,0.006116,0.628193
+006,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.9,Yes,18 | 20,0.1,0.140733,0.218471,0.006116,0.630855
+007,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.3,No,23 | 20,0.15,0.015671,0.003436,0.006101,0.484866
+008,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.5,No,23 | 20,0.15,0,0.062187,0.006101,0.552529
+009,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.6,No,23 | 20,0.15,0.016980,0.098694,0.006101,0.592604
+010,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.7,No,23 | 20,0.15,0.042079,0.129419,0.006101,0.629576
+011,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.8,No,23 | 20,0.15,0.061990,0.149965,0.006101,0.636128
+012,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst2,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.9,No,23 | 20,0.15,0.078094,0.152695,0.006101,0.638932

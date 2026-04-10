@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.3,Yes,22 | 22,0,0.017349,0.001622,0.007332,0.485087
+002,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.5,Yes,22 | 22,0,0,0.056940,0.007332,0.566069
+003,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.6,Yes,22 | 22,0,0.016694,0.095275,0.007332,0.607593
+004,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.7,Yes,22 | 22,0,0.021301,0.131094,0.007332,0.605092
+005,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.8,Yes,22 | 22,0,0.024952,0.147541,0.007332,0.604322
+006,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.9,Yes,22 | 22,0,0.029059,0.145574,0.007332,0.605186
+007,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.3,No,24 | 22,0.090909,0.016188,0.007211,0.006390,0.507624
+008,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.5,No,24 | 22,0.090909,0.007538,0.061189,0.006390,0.582954
+009,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.6,No,24 | 22,0.090909,0.008492,0.090545,0.006390,0.607853
+010,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.7,No,24 | 22,0.090909,0.029741,0.122833,0.006390,0.619475
+011,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.8,No,24 | 22,0.090909,0.046656,0.130946,0.006390,0.622918
+012,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst7,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.9,No,24 | 22,0.090909,0.068252,0.129869,0.006390,0.624515

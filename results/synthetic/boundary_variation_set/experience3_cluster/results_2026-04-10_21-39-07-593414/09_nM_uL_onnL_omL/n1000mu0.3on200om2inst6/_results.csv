@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-off,-,0.000043,0.05,100,epsilon,0.3,Yes,26 | 25,0.04,0.401540,0.288671,0.015726,0.318942
+002,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-off,-,0.000043,0.05,100,epsilon,0.5,Yes,26 | 25,0.04,0.615154,0.560622,0.015726,0.334830
+003,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-off,-,0.000043,0.05,100,epsilon,0.6,Yes,26 | 25,0.04,0.714638,0.685744,0.015726,0.335517
+004,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-off,-,0.000043,0.05,100,epsilon,0.7,Yes,26 | 25,0.04,0.784242,0.748401,0.015726,0.336754
+005,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-off,-,0.000043,0.05,100,epsilon,0.8,Yes,26 | 25,0.04,0.796930,0.758240,0.015726,0.337729
+006,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-off,-,0.000043,0.05,100,epsilon,0.9,Yes,26 | 25,0.04,0.768304,0.760588,0.015726,0.337729
+007,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000043,0.05,100,epsilon,0.3,No,22 | 25,0.12,0.179493,0.061621,0.011543,0.321889
+008,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000043,0.05,100,epsilon,0.5,No,22 | 25,0.12,0.266200,0.221251,0.011543,0.320470
+009,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000043,0.05,100,epsilon,0.6,No,22 | 25,0.12,0.318834,0.307845,0.011543,0.320617
+010,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000043,0.05,100,epsilon,0.7,No,22 | 25,0.12,0.361587,0.401897,0.011543,0.329597
+011,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000043,0.05,100,epsilon,0.8,No,22 | 25,0.12,0.421598,0.493736,0.011543,0.332400
+012,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000043,0.05,100,epsilon,0.9,No,22 | 25,0.12,0.482862,0.570818,0.011543,0.334887
