@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,Yes,24 | 25,0.04,0.032414,0.003204,0.007928,0.488316
+002,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,Yes,24 | 25,0.04,0.020682,0.065953,0.007928,0.576366
+003,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.6,Yes,24 | 25,0.04,0.024944,0.113975,0.007928,0.600432
+004,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,Yes,24 | 25,0.04,0.029794,0.160510,0.007928,0.615116
+005,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.8,Yes,24 | 25,0.04,0.074340,0.193092,0.007928,0.635540
+006,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.9,Yes,24 | 25,0.04,0.089306,0.196938,0.007928,0.644798
+007,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,29 | 25,0.16,0.011037,0.001945,0.007482,0.491763
+008,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,29 | 25,0.16,0.006009,0.048828,0.007482,0.576230
+009,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.6,No,29 | 25,0.16,0.006945,0.086523,0.007482,0.600463
+010,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,29 | 25,0.16,0.008944,0.114802,0.007482,0.614426
+011,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.8,No,29 | 25,0.16,0.031966,0.125740,0.007482,0.615615
+012,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.9,No,29 | 25,0.16,0.038981,0.122484,0.007482,0.615347

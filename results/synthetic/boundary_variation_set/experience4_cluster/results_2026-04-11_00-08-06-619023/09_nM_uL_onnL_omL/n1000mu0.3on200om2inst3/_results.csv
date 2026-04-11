@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.3,Yes,27 | 25,0.08,0.333741,0.226749,0.015972,0.336908
+002,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.5,Yes,27 | 25,0.08,0.519483,0.494225,0.015972,0.344082
+003,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.6,Yes,27 | 25,0.08,0.604914,0.575718,0.015972,0.345174
+004,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.7,Yes,27 | 25,0.08,0.678742,0.630436,0.015972,0.347286
+005,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.8,Yes,27 | 25,0.08,0.722906,0.681403,0.015972,0.347286
+006,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.9,Yes,27 | 25,0.08,0.728909,0.707881,0.015972,0.347286
+007,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.3,No,24 | 25,0.04,0.118036,0.033388,0.011850,0.319082
+008,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.5,No,24 | 25,0.04,0.210002,0.175593,0.011850,0.352969
+009,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.6,No,24 | 25,0.04,0.261096,0.258076,0.011850,0.354944
+010,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.7,No,24 | 25,0.04,0.309553,0.343516,0.011850,0.366584
+011,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.8,No,24 | 25,0.04,0.356013,0.418905,0.011850,0.361729
+012,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.9,No,24 | 25,0.04,0.408193,0.462428,0.011850,0.349483

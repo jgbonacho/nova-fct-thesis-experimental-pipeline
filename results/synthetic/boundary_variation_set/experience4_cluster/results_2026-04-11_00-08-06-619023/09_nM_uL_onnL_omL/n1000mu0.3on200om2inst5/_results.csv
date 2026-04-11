@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.3,Yes,24 | 24,0,0.264162,0.127941,0.014117,0.327739
+002,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.5,Yes,24 | 24,0,0.395302,0.313991,0.014117,0.334039
+003,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.6,Yes,24 | 24,0,0.461065,0.400399,0.014117,0.331691
+004,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.7,Yes,24 | 24,0,0.527980,0.497153,0.014117,0.338900
+005,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.8,Yes,24 | 24,0,0.589826,0.586382,0.014117,0.369110
+006,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.9,Yes,24 | 24,0,0.635514,0.650206,0.014117,0.369629
+007,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.3,No,21 | 24,0.125,0.161191,0.017041,0.010973,0.305962
+008,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.5,No,21 | 24,0.125,0.265972,0.160734,0.010973,0.328612
+009,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.6,No,21 | 24,0.125,0.324807,0.263826,0.010973,0.349625
+010,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.7,No,21 | 24,0.125,0.364226,0.357731,0.010973,0.341473
+011,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.8,No,21 | 24,0.125,0.417054,0.462826,0.010973,0.341912
+012,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst5,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.9,No,21 | 24,0.125,0.459141,0.538132,0.010973,0.341372

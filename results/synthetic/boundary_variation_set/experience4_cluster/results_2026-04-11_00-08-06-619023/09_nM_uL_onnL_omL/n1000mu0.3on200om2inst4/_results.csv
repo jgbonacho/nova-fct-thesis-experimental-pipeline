@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.3,Yes,24 | 24,0,0.290319,0.193718,0.014299,0.329954
+002,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.5,Yes,24 | 24,0,0.468577,0.456787,0.014299,0.348458
+003,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.6,Yes,24 | 24,0,0.571821,0.574291,0.014299,0.348119
+004,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.7,Yes,24 | 24,0,0.637275,0.639051,0.014299,0.355288
+005,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.8,Yes,24 | 24,0,0.663139,0.671244,0.014299,0.350064
+006,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-off,-,0.000021,0.05,100,epsilon,0.9,Yes,24 | 24,0,0.657879,0.684879,0.014299,0.350261
+007,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.3,No,21 | 24,0.125,0.150940,0.046648,0.010604,0.329489
+008,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.5,No,21 | 24,0.125,0.271505,0.251038,0.010604,0.349183
+009,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.6,No,21 | 24,0.125,0.331040,0.341111,0.010604,0.340475
+010,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.7,No,21 | 24,0.125,0.381211,0.416861,0.010604,0.342586
+011,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.8,No,21 | 24,0.125,0.443570,0.475512,0.010604,0.342762
+012,09_nM_uL_onnL_omL,n1000mu0.3on200om2inst4,Yes,Default,LAPIN-on,Lsym,0.000021,0.05,100,epsilon,0.9,No,21 | 24,0.125,0.489466,0.511359,0.010604,0.345263

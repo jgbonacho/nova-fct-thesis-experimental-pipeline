@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,Yes,21 | 25,0.16,0.040277,0.008903,0.007274,0.492886
+002,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,Yes,21 | 25,0.16,0.053789,0.085399,0.007274,0.570733
+003,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.6,Yes,21 | 25,0.16,0.066565,0.142501,0.007274,0.598464
+004,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,Yes,21 | 25,0.16,0.090621,0.192577,0.007274,0.605290
+005,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.8,Yes,21 | 25,0.16,0.115406,0.231400,0.007274,0.609821
+006,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.9,Yes,21 | 25,0.16,0.160965,0.248623,0.007274,0.610899
+007,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,27 | 25,0.08,0.012209,0.001182,0.006788,0.502107
+008,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,27 | 25,0.08,0.007201,0.045520,0.006788,0.570101
+009,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.6,No,27 | 25,0.08,0.023126,0.080848,0.006788,0.597597
+010,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,27 | 25,0.08,0.034500,0.108643,0.006788,0.616952
+011,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.8,No,27 | 25,0.08,0.031220,0.126691,0.006788,0.629084
+012,13_nM_uM_onnL_omL,n1000mu0.6on200om2inst6,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.9,No,27 | 25,0.08,0.039383,0.128399,0.006788,0.634782
