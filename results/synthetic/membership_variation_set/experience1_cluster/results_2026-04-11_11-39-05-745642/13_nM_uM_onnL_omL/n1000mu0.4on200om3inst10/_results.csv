@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.3,Yes,31 | 30,0.033333,0.202862,0.162289,0.015613,0.428929
+002,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.5,Yes,31 | 30,0.033333,0.385410,0.371073,0.015613,0.438783
+003,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.6,Yes,31 | 30,0.033333,0.456170,0.449460,0.015613,0.441700
+004,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.7,Yes,31 | 30,0.033333,0.519047,0.488764,0.015613,0.447083
+005,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.8,Yes,31 | 30,0.033333,0.523980,0.501710,0.015613,0.456475
+006,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.9,Yes,31 | 30,0.033333,0.496536,0.510118,0.015613,0.462475
+007,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.3,No,24 | 30,0.2,0.100473,0.046239,0.010142,0.407592
+008,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.5,No,24 | 30,0.2,0.179403,0.212048,0.010142,0.431703
+009,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.6,No,24 | 30,0.2,0.209752,0.289759,0.010142,0.449834
+010,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.7,No,24 | 30,0.2,0.285333,0.349445,0.010142,0.459230
+011,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.8,No,24 | 30,0.2,0.300939,0.390667,0.010142,0.462584
+012,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst10,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.9,No,24 | 30,0.2,0.313982,0.403422,0.010142,0.462899

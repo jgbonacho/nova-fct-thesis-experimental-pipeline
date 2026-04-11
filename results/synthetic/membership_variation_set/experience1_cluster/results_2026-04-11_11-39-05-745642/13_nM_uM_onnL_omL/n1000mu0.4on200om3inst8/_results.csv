@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.3,Yes,27 | 27,0,0.180567,0.135684,0.012909,0.411215
+002,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.5,Yes,27 | 27,0,0.394853,0.400222,0.012909,0.453716
+003,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.6,Yes,27 | 27,0,0.470516,0.484243,0.012909,0.471774
+004,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.7,Yes,27 | 27,0,0.536333,0.530806,0.012909,0.474906
+005,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.8,Yes,27 | 27,0,0.551914,0.553750,0.012909,0.473047
+006,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.9,Yes,27 | 27,0,0.532753,0.537997,0.012909,0.466965
+007,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.3,No,22 | 27,0.185185,0.093882,0.042207,0.008772,0.394352
+008,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.5,No,22 | 27,0.185185,0.166280,0.197084,0.008772,0.453825
+009,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.6,No,22 | 27,0.185185,0.222592,0.270175,0.008772,0.470388
+010,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.7,No,22 | 27,0.185185,0.264746,0.321395,0.008772,0.476139
+011,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.8,No,22 | 27,0.185185,0.297441,0.354846,0.008772,0.462571
+012,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.9,No,22 | 27,0.185185,0.275746,0.351383,0.008772,0.470233
