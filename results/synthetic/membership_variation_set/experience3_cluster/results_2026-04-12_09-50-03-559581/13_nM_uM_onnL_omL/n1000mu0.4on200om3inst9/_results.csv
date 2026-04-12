@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.3,Yes,34 | 30,0.133333,0.190161,0.126367,0.016293,0.437179
+002,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.5,Yes,34 | 30,0.133333,0.379515,0.383860,0.016293,0.453544
+003,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.6,Yes,34 | 30,0.133333,0.445757,0.464541,0.016293,0.455745
+004,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.7,Yes,34 | 30,0.133333,0.492257,0.522888,0.016293,0.460794
+005,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.8,Yes,34 | 30,0.133333,0.540665,0.554802,0.016293,0.461914
+006,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-off,-,0.000007,0.05,100,epsilon,0.9,Yes,34 | 30,0.133333,0.537931,0.555221,0.016293,0.463465
+007,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.3,No,27 | 30,0.1,0.089872,0.017253,0.011013,0.401964
+008,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.5,No,27 | 30,0.1,0.166762,0.156342,0.011013,0.447121
+009,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.6,No,27 | 30,0.1,0.184651,0.245429,0.011013,0.452669
+010,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.7,No,27 | 30,0.1,0.270772,0.334244,0.011013,0.455011
+011,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.8,No,27 | 30,0.1,0.314967,0.375904,0.011013,0.455011
+012,13_nM_uM_onnL_omL,n1000mu0.4on200om3inst9,Yes,Default,LAPIN-on,Lsym,0.000007,0.05,100,epsilon,0.9,No,27 | 30,0.1,0.309326,0.395859,0.011013,0.464924
