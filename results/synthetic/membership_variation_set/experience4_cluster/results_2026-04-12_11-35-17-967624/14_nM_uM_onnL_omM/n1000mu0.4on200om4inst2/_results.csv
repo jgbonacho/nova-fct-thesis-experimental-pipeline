@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.3,Yes,27 | 30,0.1,0.187559,0.175556,0.012940,0.453025
+002,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.5,Yes,27 | 30,0.1,0.332440,0.360880,0.012940,0.459703
+003,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.6,Yes,27 | 30,0.1,0.413196,0.426427,0.012940,0.463417
+004,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.7,Yes,27 | 30,0.1,0.439096,0.456503,0.012940,0.456764
+005,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.8,Yes,27 | 30,0.1,0.432064,0.460586,0.012940,0.445144
+006,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-off,-,0.000002,0.05,100,epsilon,0.9,Yes,27 | 30,0.1,0.424354,0.446464,0.012940,0.441051
+007,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,33 | 30,0.1,0.107036,0.068659,0.014029,0.423328
+008,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,33 | 30,0.1,0.241823,0.261886,0.014029,0.433020
+009,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.6,No,33 | 30,0.1,0.299747,0.344485,0.014029,0.434925
+010,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,33 | 30,0.1,0.366969,0.394683,0.014029,0.435610
+011,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.8,No,33 | 30,0.1,0.410958,0.418959,0.014029,0.439999
+012,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst2,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.9,No,33 | 30,0.1,0.392207,0.410759,0.014029,0.441336
