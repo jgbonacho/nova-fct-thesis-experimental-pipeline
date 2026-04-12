@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.3,Yes,21 | 25,0.16,0.186687,0.087755,0.009859,0.436630
+002,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.5,Yes,21 | 25,0.16,0.307527,0.321547,0.009859,0.454872
+003,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.6,Yes,21 | 25,0.16,0.392523,0.423682,0.009859,0.454872
+004,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.7,Yes,21 | 25,0.16,0.467671,0.499783,0.009859,0.463607
+005,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.8,Yes,21 | 25,0.16,0.496919,0.539694,0.009859,0.466882
+006,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-off,-,0.000003,0.05,100,epsilon,0.9,Yes,21 | 25,0.16,0.471807,0.556952,0.009859,0.473319
+007,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.3,No,24 | 25,0.04,0.115926,0.019625,0.009778,0.414621
+008,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.5,No,24 | 25,0.04,0.229049,0.169748,0.009778,0.437269
+009,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.6,No,24 | 25,0.04,0.260040,0.264728,0.009778,0.440807
+010,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.7,No,24 | 25,0.04,0.295928,0.347542,0.009778,0.443550
+011,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.8,No,24 | 25,0.04,0.354486,0.420106,0.009778,0.449619
+012,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst1,Yes,Default,LAPIN-on,Lsym,0.000003,0.05,100,epsilon,0.9,No,24 | 25,0.04,0.328777,0.442888,0.009778,0.467130
