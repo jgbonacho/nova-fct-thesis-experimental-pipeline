@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.3,Yes,29 | 25,0.16,0.259357,0.170317,0.014519,0.431907
+002,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.5,Yes,29 | 25,0.16,0.477559,0.493056,0.014519,0.434284
+003,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.6,Yes,29 | 25,0.16,0.576153,0.612879,0.014519,0.437808
+004,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.7,Yes,29 | 25,0.16,0.653008,0.677842,0.014519,0.439480
+005,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.8,Yes,29 | 25,0.16,0.720684,0.717226,0.014519,0.439480
+006,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.9,Yes,29 | 25,0.16,0.739591,0.731207,0.014519,0
+007,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.3,No,28 | 25,0.12,0.134889,0.014122,0.012013,0.384630
+008,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.5,No,28 | 25,0.12,0.280358,0.190694,0.012013,0.435535
+009,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.6,No,28 | 25,0.12,0.349174,0.302302,0.012013,0.428863
+010,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.7,No,28 | 25,0.12,0.413619,0.418559,0.012013,0.427579
+011,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.8,No,28 | 25,0.12,0.460618,0.505771,0.012013,0.429340
+012,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.9,No,28 | 25,0.12,0.496943,0.558970,0.012013,0.429161
