@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.3,Yes,23 | 25,0.08,0.248954,0.166054,0.011081,0.433948
+002,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.5,Yes,23 | 25,0.08,0.407713,0.389126,0.011081,0.463469
+003,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.6,Yes,23 | 25,0.08,0.467697,0.475404,0.011081,0.449409
+004,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.7,Yes,23 | 25,0.08,0.532587,0.547518,0.011081,0.458336
+005,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.8,Yes,23 | 25,0.08,0.572379,0.586644,0.011081,0.448129
+006,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.9,Yes,23 | 25,0.08,0.561799,0.580749,0.011081,0.452188
+007,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.3,No,24 | 25,0.04,0.131269,0.027986,0.009760,0.423544
+008,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.5,No,24 | 25,0.04,0.189094,0.174785,0.009760,0.437602
+009,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.6,No,24 | 25,0.04,0.233775,0.264069,0.009760,0.461357
+010,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.7,No,24 | 25,0.04,0.267702,0.347011,0.009760,0.438439
+011,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.8,No,24 | 25,0.04,0.294397,0.400707,0.009760,0.444030
+012,15_nM_uM_onnM_omL,n1000mu0.4on300om2inst4,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.9,No,24 | 25,0.04,0.342961,0.416418,0.009760,0.453541

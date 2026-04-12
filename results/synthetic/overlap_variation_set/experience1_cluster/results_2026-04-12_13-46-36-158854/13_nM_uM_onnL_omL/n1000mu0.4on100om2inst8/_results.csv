@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.3,Yes,21 | 20,0.05,0.268891,0.121962,0.011301,0.364378
+002,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.5,Yes,21 | 20,0.05,0.440583,0.386839,0.011301,0.398316
+003,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.6,Yes,21 | 20,0.05,0.517169,0.507988,0.011301,0.402099
+004,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.7,Yes,21 | 20,0.05,0.600173,0.623997,0.011301,0.414293
+005,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.8,Yes,21 | 20,0.05,0.676958,0.727609,0.011301,0.416178
+006,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-off,-,0.000011,0.05,100,epsilon,0.9,Yes,21 | 20,0.05,0.719707,0.774017,0.011301,0.417564
+007,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.3,No,19 | 20,0.05,0.147162,0.022829,0.008632,0.351553
+008,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.5,No,19 | 20,0.05,0.251115,0.181684,0.008632,0.391266
+009,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.6,No,19 | 20,0.05,0.310222,0.295744,0.008632,0.409118
+010,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.7,No,19 | 20,0.05,0.366214,0.392775,0.008632,0.419972
+011,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.8,No,19 | 20,0.05,0.431684,0.485013,0.008632,0.423631
+012,13_nM_uM_onnL_omL,n1000mu0.4on100om2inst8,Yes,Default,LAPIN-on,Lsym,0.000011,0.05,100,epsilon,0.9,No,19 | 20,0.05,0.462043,0.521508,0.008632,0.407111

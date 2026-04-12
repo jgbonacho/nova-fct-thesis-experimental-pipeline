@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.3,Yes,28 | 30,0.066667,0.110469,0.034683,0.011966,0.446369
+002,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.5,Yes,28 | 30,0.066667,0.192610,0.190584,0.011966,0.480206
+003,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.6,Yes,28 | 30,0.066667,0.244652,0.288319,0.011966,0.492585
+004,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.7,Yes,28 | 30,0.066667,0.319776,0.372274,0.011966,0.496234
+005,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.8,Yes,28 | 30,0.066667,0.384034,0.443372,0.011966,0.513965
+006,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.9,Yes,28 | 30,0.066667,0.387320,0.462436,0.011966,0.520217
+007,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.3,No,27 | 30,0.1,0.070221,0.012698,0.010278,0.429188
+008,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.5,No,27 | 30,0.1,0.143017,0.162604,0.010278,0.471081
+009,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.6,No,27 | 30,0.1,0.191217,0.258005,0.010278,0.484851
+010,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.7,No,27 | 30,0.1,0.248943,0.336795,0.010278,0.493583
+011,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.8,No,27 | 30,0.1,0.316937,0.388585,0.010278,0.493207
+012,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst7,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.9,No,27 | 30,0.1,0.307931,0.388947,0.010278,0.494483

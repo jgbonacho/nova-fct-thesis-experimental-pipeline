@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.3,Yes,28 | 30,0.066667,0.137527,0.061415,0.012031,0.466246
+002,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.5,Yes,28 | 30,0.066667,0.276262,0.286640,0.012031,0.475817
+003,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.6,Yes,28 | 30,0.066667,0.380247,0.401326,0.012031,0.469181
+004,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.7,Yes,28 | 30,0.066667,0.437214,0.482705,0.012031,0.469603
+005,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.8,Yes,28 | 30,0.066667,0.477225,0.508227,0.012031,0.471984
+006,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-off,-,0.000004,0.05,100,epsilon,0.9,Yes,28 | 30,0.066667,0.449556,0.501800,0.012031,0.471984
+007,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.3,No,24 | 30,0.2,0.092718,0.023397,0.009190,0.426049
+008,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.5,No,24 | 30,0.2,0.135035,0.145538,0.009190,0.439668
+009,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.6,No,24 | 30,0.2,0.159559,0.231348,0.009190,0.449871
+010,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.7,No,24 | 30,0.2,0.181899,0.299481,0.009190,0.481994
+011,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.8,No,24 | 30,0.2,0.194886,0.333965,0.009190,0.490163
+012,15_nM_uM_onnM_omL,n1000mu0.4on400om2inst9,Yes,Default,LAPIN-on,Lsym,0.000004,0.05,100,epsilon,0.9,No,24 | 30,0.2,0.206835,0.352470,0.009190,0.491559
