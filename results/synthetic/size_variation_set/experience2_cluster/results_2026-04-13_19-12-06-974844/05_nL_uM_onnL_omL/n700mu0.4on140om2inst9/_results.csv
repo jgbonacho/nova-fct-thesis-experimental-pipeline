@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,W,0.3,Yes,24 | 22,0.090909,0.263637,0.135461,0.016095,0.421849
+002,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,W,0.5,Yes,24 | 22,0.090909,0.455266,0.449338,0.016095,0.441117
+003,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,W,0.6,Yes,24 | 22,0.090909,0.557568,0.579246,0.016095,0.441875
+004,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,W,0.7,Yes,24 | 22,0.090909,0.615546,0.647495,0.016095,0.442796
+005,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,W,0.8,Yes,24 | 22,0.090909,0.674251,0.680200,0.016095,0.442796
+006,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,W,0.9,Yes,24 | 22,0.090909,0.677856,0.680222,0.016095,0.443521
+007,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.3,No,21 | 22,0.045455,0.167350,0.065379,0.012855,0.413077
+008,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.5,No,21 | 22,0.045455,0.349514,0.327714,0.012855,0.421389
+009,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.6,No,21 | 22,0.045455,0.405754,0.429938,0.012855,0.440435
+010,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.7,No,21 | 22,0.045455,0.470608,0.504190,0.012855,0.440478
+011,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.8,No,21 | 22,0.045455,0.486451,0.533678,0.012855,0.440635
+012,05_nL_uM_onnL_omL,n700mu0.4on140om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.9,No,21 | 22,0.045455,0.501995,0.557043,0.012855,0.440889

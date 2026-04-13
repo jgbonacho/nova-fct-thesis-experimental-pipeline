@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.3,Yes,29 | 25,0.16,0.259357,0.170317,0.014519,0.431907
+002,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.5,Yes,29 | 25,0.16,0.477559,0.493056,0.014519,0.434284
+003,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.6,Yes,29 | 25,0.16,0.576153,0.612879,0.014519,0.437808
+004,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.7,Yes,29 | 25,0.16,0.653008,0.677842,0.014519,0.439480
+005,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.8,Yes,29 | 25,0.16,0.720684,0.717226,0.014519,0.439480
+006,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.9,Yes,29 | 25,0.16,0.739591,0.731207,0.014519,0
+007,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.3,No,30 | 25,0.2,0.130703,0.008382,0.012843,0.384630
+008,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.5,No,30 | 25,0.2,0.271117,0.171852,0.012843,0.435535
+009,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.6,No,30 | 25,0.2,0.338735,0.281935,0.012843,0.429841
+010,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.7,No,30 | 25,0.2,0.397426,0.397450,0.012843,0.428541
+011,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.8,No,30 | 25,0.2,0.438961,0.492744,0.012843,0.428596
+012,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst3,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.9,No,30 | 25,0.2,0.469736,0.546002,0.012843,0.429161

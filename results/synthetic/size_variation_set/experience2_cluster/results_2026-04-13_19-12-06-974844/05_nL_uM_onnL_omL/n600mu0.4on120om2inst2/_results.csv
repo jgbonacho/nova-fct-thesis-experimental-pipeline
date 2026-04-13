@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.3,Yes,15 | 12,0.25,0.270737,0.166018,0.011720,0.419778
+002,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.5,Yes,15 | 12,0.25,0.396629,0.423494,0.011720,0.424499
+003,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.6,Yes,15 | 12,0.25,0.479599,0.552343,0.011720,0.425934
+004,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.7,Yes,15 | 12,0.25,0.525043,0.614783,0.011720,0.429313
+005,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.8,Yes,15 | 12,0.25,0.552102,0.619862,0.011720,0.429031
+006,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.9,Yes,15 | 12,0.25,0.580060,0.601051,0.011720,0.432023
+007,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.3,No,21 | 12,0.75,0.154402,0.067630,0.011983,0.393451
+008,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.5,No,21 | 12,0.75,0.218287,0.245686,0.011983,0.430218
+009,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.6,No,21 | 12,0.75,0.254204,0.322814,0.011983,0.434972
+010,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.7,No,21 | 12,0.75,0.280090,0.357275,0.011983,0.434972
+011,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.8,No,21 | 12,0.75,0.306789,0.384828,0.011983,0.437713
+012,05_nL_uM_onnL_omL,n600mu0.4on120om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.9,No,21 | 12,0.75,0.331253,0.378166,0.011983,0.440685

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.3,Yes,23 | 24,0.041667,0.215338,0.109742,0.011530,0.407482
+002,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.5,Yes,23 | 24,0.041667,0.392529,0.355365,0.011530,0.441302
+003,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.6,Yes,23 | 24,0.041667,0.482872,0.491544,0.011530,0.441978
+004,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.7,Yes,23 | 24,0.041667,0.572397,0.600550,0.011530,0.437822
+005,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.8,Yes,23 | 24,0.041667,0.636583,0.650652,0.011530,0.440271
+006,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.9,Yes,23 | 24,0.041667,0.646776,0.664995,0.011530,0.440466
+007,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.3,No,24 | 24,0,0.112637,0.030259,0.009789,0.391079
+008,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.5,No,24 | 24,0,0.235048,0.226323,0.009789,0.443842
+009,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.6,No,24 | 24,0,0.293404,0.342968,0.009789,0.448327
+010,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.7,No,24 | 24,0,0.351475,0.420266,0.009789,0.452913
+011,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.8,No,24 | 24,0,0.406416,0.464719,0.009789,0.449727
+012,13_nM_uM_onnL_omL,n1000mu0.4on200om2inst9,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.9,No,24 | 24,0,0.451625,0.480909,0.009789,0.443187

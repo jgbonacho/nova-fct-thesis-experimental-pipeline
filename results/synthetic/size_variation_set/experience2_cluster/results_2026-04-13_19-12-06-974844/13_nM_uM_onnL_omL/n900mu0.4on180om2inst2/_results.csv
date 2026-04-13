@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.3,Yes,21 | 21,0,0.171144,0.059652,0.011266,0.381235
+002,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.5,Yes,21 | 21,0,0.314064,0.265177,0.011266,0.415073
+003,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.6,Yes,21 | 21,0,0.387648,0.380814,0.011266,0.439168
+004,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.7,Yes,21 | 21,0,0.451094,0.484462,0.011266,0.448914
+005,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.8,Yes,21 | 21,0,0.515910,0.568136,0.011266,0.449463
+006,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-off,-,0.000006,0.05,100,epsilon,0.9,Yes,21 | 21,0,0.560624,0.614874,0.011266,0.451308
+007,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.3,No,22 | 21,0.047619,0.092468,0.005017,0.009603,0.351063
+008,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.5,No,22 | 21,0.047619,0.123203,0.093221,0.009603,0.408022
+009,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.6,No,22 | 21,0.047619,0.149621,0.169518,0.009603,0.438831
+010,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.7,No,22 | 21,0.047619,0.169551,0.239833,0.009603,0.457367
+011,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.8,No,22 | 21,0.047619,0.198593,0.303624,0.009603,0.463820
+012,13_nM_uM_onnL_omL,n900mu0.4on180om2inst2,Yes,Default,LAPIN-on,Lsym,0.000006,0.05,100,epsilon,0.9,No,22 | 21,0.047619,0.250950,0.336394,0.009603,0.461734
