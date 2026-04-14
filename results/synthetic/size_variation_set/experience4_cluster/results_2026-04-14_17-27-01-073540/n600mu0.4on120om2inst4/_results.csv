@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.3,Yes,17 | 13,0.307692,0.288487,0.152868,0.012715,0.419188
+002,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.5,Yes,17 | 13,0.307692,0.458476,0.473154,0.012715,0.442012
+003,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.6,Yes,17 | 13,0.307692,0.539269,0.609505,0.012715,0.447864
+004,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.7,Yes,17 | 13,0.307692,0.589142,0.686173,0.012715,0.448257
+005,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.8,Yes,17 | 13,0.307692,0.612122,0.715481,0.012715,0.461329
+006,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-off,-,0.000002,0.05,100,W,0.9,Yes,17 | 13,0.307692,0.640349,0.698674,0.012715,0.467886
+007,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.3,No,25 | 13,0.923077,0.113263,0.023632,0.012800,0.414127
+008,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.5,No,25 | 13,0.923077,0.155475,0.160747,0.012800,0.436775
+009,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.6,No,25 | 13,0.923077,0.173948,0.243281,0.012800,0.484177
+010,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.7,No,25 | 13,0.923077,0.195008,0.309117,0.012800,0.504663
+011,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.8,No,25 | 13,0.923077,0.200744,0.328427,0.012800,0.497501
+012,05_nL_uM_onnL_omL,n600mu0.4on120om2inst4,Yes,Default,LAPIN-on,Lsym,0.000002,0.05,100,epsilon,0.9,No,25 | 13,0.923077,0.205975,0.309524,0.012800,0.501277

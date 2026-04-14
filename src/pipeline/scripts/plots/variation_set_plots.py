@@ -330,7 +330,7 @@ if __name__ == "__main__":
         ("experience1_cluster", "results_2026-04-12_20-42-10-997187"),
         ("experience2_cluster", "results_2026-04-13_19-12-06-974844"),
         ("experience3_cluster", "results_2026-04-14_10-15-07-924997"),
-        # ("experience4_cluster", ""),
+        ("experience4_cluster", "results_2026-04-14_17-27-01-073540"),
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(
