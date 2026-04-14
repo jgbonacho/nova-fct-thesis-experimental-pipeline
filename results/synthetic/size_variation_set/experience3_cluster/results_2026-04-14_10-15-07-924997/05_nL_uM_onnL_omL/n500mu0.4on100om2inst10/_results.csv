@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN
+001,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.3,Yes,13 | 10,0.3,0.317726,0.228210,0.011291,0.392149
+002,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.5,Yes,13 | 10,0.3,0.457044,0.505717,0.011291,0.443184
+003,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.6,Yes,13 | 10,0.3,0.497329,0.579596,0.011291,0.436238
+004,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.7,Yes,13 | 10,0.3,0.533568,0.614182,0.011291,0.435604
+005,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.8,Yes,13 | 10,0.3,0.546544,0.620680,0.011291,0.437418
+006,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-off,-,0.000020,0.05,100,epsilon,0.9,Yes,13 | 10,0.3,0.591911,0.613698,0.011291,0.443776
+007,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.3,No,19 | 10,0.9,0.180665,0.089329,0.012605,0.406767
+008,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.5,No,19 | 10,0.9,0.271047,0.344834,0.012605,0.427117
+009,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.6,No,19 | 10,0.9,0.317443,0.434585,0.012605,0.431287
+010,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.7,No,19 | 10,0.9,0.347293,0.486772,0.012605,0.450482
+011,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.8,No,19 | 10,0.9,0.362846,0.477289,0.012605,0.469707
+012,05_nL_uM_onnL_omL,n500mu0.4on100om2inst10,Yes,Default,LAPIN-on,Lsym,0.000020,0.05,100,epsilon,0.9,No,19 | 10,0.9,0.376477,0.437302,0.012605,0.476511
