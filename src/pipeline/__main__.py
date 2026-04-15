@@ -17,7 +17,9 @@ def main():
         thresholds=load_thresholds(CONFIG_DIR),
         affinity_designs=AFFINITY_DESIGNS,
         execution_modes=EXECUTION_MODES,
-        defuzzification_rules=DEFUZZIFICATION_RULES
+        defuzzification_rules=DEFUZZIFICATION_RULES,
+        # sample_fraction=0.5,
+        # random_seed=99
     )
 
     # draw_line_plots_per_network(results_dir=results_path)

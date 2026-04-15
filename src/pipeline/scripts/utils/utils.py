@@ -1,4 +1,5 @@
 import csv
+import hashlib
 import json
 import os
 from collections.abc import Callable
@@ -94,6 +95,25 @@ def log_progress(
 
     prefix = "\n" if empty_line else ""
     print(f"{prefix}{indent_level * '#'} [{current_step}/{total_steps}] '{item_label}'")
+
+
+def stable_seed(base_seed: int, family_name: str) -> int:
+    """
+    Generate a random seed for a specific family.
+
+    Parameters:
+        base_seed : (int)
+            The base seed for generating the seed.
+        family_name : (str)
+            The name of the family for which to generate the seed.
+
+    Returns:
+        seed : (int)
+            A stable seed generated from the base seed and family name.
+    """
+
+    s = f"{base_seed}::{family_name}"
+    return int(hashlib.sha256(s.encode("utf-8")).hexdigest()[:16], 16)
 
 
 def initialize_results_file(results_dir: str, output_filename: str = "_results") -> Callable[[Result], None]:

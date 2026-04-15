@@ -15,7 +15,7 @@
 
 ### Script 2
 
-- Apply the pipeline to 1/4 of the seen LFR networks per family (72/4 = 18 networks) and save the results for each network in a .csv file:
+- For each experience (set of thresholds), apply the pipeline to 1/4 of the seen LFR networks per family (72/4 = 18 networks) and save the results for each network in a .csv file:
 
 ![Pipeline](./imgs/pipeline.svg)
 
@@ -28,9 +28,9 @@
 7. `gamma = [0.3, 0.5, 0.7]; conditional discard of first cluster = [True, False]`
 8. `Extrinsic metrics = [Relative Error of K, ONMI, Omega]`
 
-- Draw three line plots for each network, showing the extrinsic results (Relative Error of K, ONMI, Omega) by the tested variant.
-- Draw three line plots for each network family, showing the mean extrinsic results (Relative Error of K, ONMI, Omega) by the tested variant.
-- Draw three global line plots, showing all mean extrinsic results (Relative Error of K, ONMI, Omega) by the tested variant.
+- For each experience (set of thresholds), draw three line plots for each network, showing the extrinsic results (Relative Error of K, ONMI, Omega) by the tested variant.
+- For each experience (set of thresholds), draw three line plots for each network family, showing the mean extrinsic results (Relative Error of K, ONMI, Omega) by the tested variant.
+- For each experience (set of thresholds), draw three global line plots, showing all mean extrinsic results (Relative Error of K, ONMI, Omega) by the tested variant.
 
 
 

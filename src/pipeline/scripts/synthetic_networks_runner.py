@@ -1,4 +1,6 @@
+import math
 import os.path
+import random
 from collections.abc import Callable
 
 import numpy as np
@@ -15,7 +17,7 @@ from pipeline.config.config import ExecutionMode, DefuzzificationRule
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 from pipeline.scripts.utils.result_dataclass import Result
 from pipeline.scripts.utils.utils import create_results_dir, create_network_results_dir, log_progress, \
-    initialize_results_file, save_report, save_faddis_clustering_results
+    initialize_results_file, save_report, save_faddis_clustering_results, stable_seed
 
 
 def run_synthetic_networks_experiments(
@@ -25,7 +27,9 @@ def run_synthetic_networks_experiments(
         thresholds: dict[str, float],
         affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
         execution_modes: list[ExecutionMode],
-        defuzzification_rules: list[DefuzzificationRule]
+        defuzzification_rules: list[DefuzzificationRule],
+        sample_fraction: float = None,
+        random_seed: int = None,
 ):
     """
     Run synthetic networks experiments.
@@ -45,6 +49,12 @@ def run_synthetic_networks_experiments(
             List of execution modes to be applied.
         defuzzification_rules : (list[DefuzzificationRule])
             List of defuzzification rules to be applied.
+        sample_fraction : (float, optional)
+            Fraction of networks to sample from each family for processing. If None, all networks are processed
+            Default is None.
+        random_seed : (int, optional)
+            Random seed for reproducibility when sampling networks.
+            Default is None.
 
     Returns:
         results_dir : str
@@ -56,8 +66,16 @@ def run_synthetic_networks_experiments(
     for idx1, network_family in enumerate(network_families, 1):
         log_progress(idx1, len(network_families), network_family.name, 5, True)
 
-        for idx2, network in enumerate(network_family.networks, 1):
-            log_progress(idx2, len(network_family.networks), network.name, 4, True)
+        networks = sorted(network_family.networks, key=lambda n: n.name)
+        if sample_fraction is None:
+            sampled_networks = networks
+        else:
+            k = max(1, math.ceil(len(networks) * sample_fraction))
+            rng = random.Random(stable_seed(random_seed, network_family.name))
+            sampled_networks = rng.sample(networks, k=k)
+
+        for idx2, network in enumerate(sampled_networks, 1):
+            log_progress(idx2, len(sampled_networks), network.name, 4, True)
 
             results_network_dir = create_network_results_dir(results_dir, network_family.name, network.name)
 

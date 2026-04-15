@@ -11,7 +11,7 @@ from pipeline.components.affinity_design.neighborhood_based_similarities.weighte
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 
 ROOT_DIR = os.path.join(os.path.dirname(__file__), '..', '..', '..')
-SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic', 'variation_sets', 'size_variation_set')
+SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic', 'seen_networks')
 RESULTS_BASE_DIR = os.path.join(ROOT_DIR, 'results', 'synthetic')
 CONFIG_DIR = os.path.join(os.path.dirname(__file__))
 

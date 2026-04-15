@@ -275,6 +275,9 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
         ax2.legend(loc="upper right", fontsize=10)
         ax2.margins(x=0.03)
 
+        ax1.grid(True, alpha=0.3)
+        ax2.grid(True, alpha=0.3)
+
         fig.tight_layout()
         fig.savefig(
             os.path.join(results_dir, f"{variation_parameter}_variation_set_{idx}.pdf"), dpi=300, bbox_inches="tight"
