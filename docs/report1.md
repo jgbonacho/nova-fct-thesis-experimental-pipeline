@@ -8,7 +8,7 @@
 - [Experiment 2 (LAPIN-off + Extraction of clusters until the end) - Thresholds](#experiment-2-lapin-off--extraction-of-clusters-until-the-end---thresholds)
 - [Experiment 3 (LAPIN-on + Extraction of K desired clusters) - Thresholds](#experiment-3-lapin-on--extraction-of-k-desired-clusters---thresholds)
 - [Experiment 4 (LAPIN-on + Extraction of clusters until the end) - Thresholds](#experiment-4-lapin-on--extraction-of-clusters-until-the-end---thresholds)
-
+- [Discussion](#discussion)
 
 
 ## Scripts
@@ -147,3 +147,27 @@
 ### Extrinsic Results
 
 [Open Folder](../results/synthetic/1_4_seen_networks/experience4_cluster/results_2026-04-07_07-18-02-169177)
+
+
+
+### Discussion
+
+- **Observations**
+    - Stopping condition: 
+        - epsilon or W;
+    - Conditional removal of the first cluster:
+        - Without LAPIN, the first cluster is always discarded and the results improve, indicating that it behaves like a global/background component;
+        - With LAPIN, the first cluster is never discarded, indicating that it does not behave like a global/background component;
+    - "Best" results:
+        - LAPIN-off; Gamma = 0.7; Conditional removal of the first cluster;
+    - Experiments:
+        - The same trends were observed because the thresholds are identical;
+        - Little influence from parameter `n`;
+        - Moderate influence from parameters `om` and `on`;
+        - Strong influence from `mu`;
+    - Initial comparison with the reference paper:
+        - Possibly competitive results;
+        - Some families, where the results are very low, may not be realistic.
+
+- **TODO**
+  - Use different markers in the line plot.

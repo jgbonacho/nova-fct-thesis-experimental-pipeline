@@ -198,6 +198,31 @@
 
 ![Experience 1 Results 1](../results/synthetic/boundary_variation_set/experience1_cluster/results_2026-04-10_13-16-21-594342/mu_variation_set_1.png)
 
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - $\mu$ = 0.1
+        - [ONMI] Copra
+        - [Omega] Copra
+    - $\mu$ = 0.2
+        - [ONMI] Copra
+        - [Omega] Copra
+    - $\mu$ = 0.3 
+        - [ONMI] **FADDIS**/Copra
+        - [Omega] **FADDIS**/Copra
+    - $\mu$ = 0.4 
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $\mu$ = 0.5
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $\mu$ = 0.6 
+        - [ONMI] **FADDIS**/CFinder
+        - [Omega] **FADDIS**
+
 
 ### Experience 2 (LAPIN-off + Extraction of clusters until the end) Results
 
@@ -241,6 +266,25 @@
 ![Experience 1 Results 0](../results/synthetic/membership_variation_set/experience1_cluster/results_2026-04-11_11-39-05-745642/om_variation_set_0.png)
 
 ![Experience 1 Results 1](../results/synthetic/membership_variation_set/experience1_cluster/results_2026-04-11_11-39-05-745642/om_variation_set_1.png)
+
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - $o_{m}$ = 2
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 3
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 4
+        - [ONMI] **FADDIS**/CFinder
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 5 
+        - [ONMI] CFinder
+        - [Omega] **FADDIS**
 
 
 ### Experience 2 (LAPIN-off + Extraction of clusters until the end) Results
@@ -286,6 +330,25 @@
 
 ![Experience 1 Results 1](../results/synthetic/overlap_variation_set/experience1_cluster/results_2026-04-12_13-46-36-158854/on_variation_set_1.png)
 
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - $o_{n}/n$ = 0.1
+        - [ONMI] **FADDIS**
+        - [Omega]  **FADDIS**
+    - $o_{n}/n$ = 0.2
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{n}/n$ = 0.3
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{n}/n$ = 0.4 
+        - [ONMI] **FADDIS**/CFinder
+        - [Omega] **FADDIS**
+
 
 ### Experience 2 (LAPIN-off + Extraction of clusters until the end) Results
 
@@ -329,6 +392,16 @@
 ![Experience 1 Results 0](../results/synthetic/size_variation_set/experience1_cluster/results_2026-04-12_20-42-10-997187/n_variation_set_0.png)
 
 ![Experience 1 Results 1](../results/synthetic/size_variation_set/experience1_cluster/results_2026-04-12_20-42-10-997187/n_variation_set_1.png)
+
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - $n$ = 1000
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**  
 
 
 ### Experience 2 (LAPIN-off + Extraction of clusters until the end) Results
