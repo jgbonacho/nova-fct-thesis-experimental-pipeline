@@ -1,17 +1,1 @@
 Network Family,Selected Metric,Threshold
-01_nL_uL_onnL_omL,Median,7.7e-05
-02_nL_uL_onnL_omM,Median,7e-05
-03_nL_uL_onnM_omL,Median,3.9e-05
-04_nL_uL_onnM_omM,Median,2e-05
-05_nL_uM_onnL_omL,Median,1.9e-05
-06_nL_uM_onnL_omM,Median,1.6e-05
-07_nL_uM_onnM_omL,Median,8e-06
-08_nL_uM_onnM_omM,Median,3e-06
-09_nM_uL_onnL_omL,Median,5.3e-05
-10_nM_uL_onnL_omM,Median,4.4e-05
-11_nM_uL_onnM_omL,Median,2.1e-05
-12_nM_uL_onnM_omM,Median,8e-06
-13_nM_uM_onnL_omL,Median,1.1e-05
-14_nM_uM_onnL_omM,Median,8e-06
-15_nM_uM_onnM_omL,Median,4e-06
-16_nM_uM_onnM_omM,Median,2e-06

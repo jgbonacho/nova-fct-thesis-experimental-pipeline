@@ -141,3 +141,48 @@
   'list_on_percentages=(30 40)' \
   'list_om=(4 5)' \
   't=2'
+
+# 39_nM_uM_onnL_omH
+../synthetic_networks_lfr_generator.sh \
+  'network_family_name="39_nM_uM_onnL_omH"' \
+  'list_n=(800 900 1000)' \
+  'list_mu=(0.4 0.5 0.6)' \
+  'list_on_percentages=(10 20)' \
+  'list_om=(6 8)' \
+  't=2'
+
+# 43_nM_uM_onnH_omL
+../synthetic_networks_lfr_generator.sh \
+  'network_family_name="43_nM_uM_onnH_omL"' \
+  'list_n=(800 900 1000)' \
+  'list_mu=(0.4 0.5 0.6)' \
+  'list_on_percentages=(50 60)' \
+  'list_om=(2 3)' \
+  't=2'
+
+# 46_nM_uH_onnL_omL
+../synthetic_networks_lfr_generator.sh \
+  'network_family_name="46_nM_uH_onnL_omL"' \
+  'list_n=(800 900 1000)' \
+  'list_mu=(0.7 0.75 0.8)' \
+  'list_on_percentages=(10 20)' \
+  'list_om=(2 3)' \
+  't=2'
+
+# 64_nH_uM_onnL_omL
+../synthetic_networks_lfr_generator.sh \
+  'network_family_name="64_nH_uM_onnL_omL"' \
+  'list_n=(2000 3000 5000)' \
+  'list_mu=(0.4 0.5 0.6)' \
+  'list_on_percentages=(10 20)' \
+  'list_om=(2 3)' \
+  't=2'
+
+# 91_nVH_uM_onnL_omL
+../synthetic_networks_lfr_generator.sh \
+  'network_family_name="91_nVH_uM_onnL_omL"' \
+  'list_n=(6000 8000 10000)' \
+  'list_mu=(0.4 0.5 0.6)' \
+  'list_on_percentages=(10 20)' \
+  'list_om=(2 3)' \
+  't=2'

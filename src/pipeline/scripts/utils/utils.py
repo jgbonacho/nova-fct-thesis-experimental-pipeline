@@ -215,7 +215,7 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
 def save_faddis_clustering_results(
         results_dir: str,
         results_id: str,
-        faddis_results: tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, int, str],
+        faddis_results: tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, list[str], int, str],
         output_filename: str = "faddis-clusters"
 ) -> None:
     """
@@ -232,6 +232,7 @@ def save_faddis_clustering_results(
                 - contributions
                 - intensities
                 - eigenvalues
+                - eigenvalue_ranks
                 - number_of_clusters
                 - stop_condition
         output_filename : (str, optional)
@@ -242,17 +243,18 @@ def save_faddis_clustering_results(
         A CSV file within 'results_dir' named "{output_filename}_{results_id}.csv" containing the clustering results.
     """
 
-    _, _, contributions, intensities, eigenvalues, number_of_clusters, _ = faddis_results
+    _, _, contributions, intensities, eigenvalues, eigenvalue_ranks, number_of_clusters, _ = faddis_results
     with open(os.path.join(results_dir, f"{output_filename}_{results_id}.csv"), mode="w", newline="",
               encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Cluster", "Contribution", "Eigenvalue", "Intensity", "Weight"])
+        writer.writerow(["Cluster", "Contribution", "Eigenvalue", "Eigenvalue Rank", "Intensity", "Weight"])
 
         for i in range(0, number_of_clusters):
             writer.writerow([
                 _int_to_roman(i),
                 round((contributions[i] * 100), 4),
                 round((eigenvalues[i]), 4),
+                eigenvalue_ranks[i],
                 round((intensities[i, 0]), 4),
                 round((intensities[i, 1]), 4),
             ])

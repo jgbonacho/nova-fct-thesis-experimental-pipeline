@@ -27,11 +27,12 @@ GAMMA_COL = "Gamma"
 KERR_COL = "|K'-K|/K"
 ONMI_COL = "ONMI"
 OMEGA_COL = "Omega"
+FADDIS_RUNTIME_COL = "FADDIS Runtime"
 
 # Variant name column and limits for plots.
 VARIANT_COL = "Variation"
 VARIANT_LIMITS = {
-    NETWORK_PROPERTY_N: (500 - 20, 1000 + 20),
+    NETWORK_PROPERTY_N: (1000 - 200, 10000 + 200),
     NETWORK_PROPERTY_MU: (0.1 - 0.02, 0.8 + 0.02),
     NETWORK_PROPERTY_ON: (100 - 20, 600 + 20),
     NETWORK_PROPERTY_OM: (1 - 0.2, 8 + 0.2),
@@ -80,6 +81,7 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
                 NETWORK_PROPERTY_INST: properties[NETWORK_PROPERTY_INST],
                 ONMI_COL: pd.to_numeric(res[ONMI_COL], errors="coerce"),
                 OMEGA_COL: pd.to_numeric(res[OMEGA_COL], errors="coerce"),
+                FADDIS_RUNTIME_COL: pd.to_numeric(res[FADDIS_RUNTIME_COL], errors="coerce")
             })
 
     raw_df = (pd.DataFrame(rows).sort_values([variation_parameter, VARIANT_COL, NETWORK_PROPERTY_INST])
@@ -97,11 +99,14 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
                 "Omega Results": (OMEGA_COL, results_as_json),
                 "Mean Omega": (OMEGA_COL, "mean"),
                 "Sample Std Omega": (OMEGA_COL, lambda s: s.std(ddof=1)),
+                "Mean FADDIS Runtime": (FADDIS_RUNTIME_COL, "mean"),
+                "Sample Std FADDIS Runtime": (FADDIS_RUNTIME_COL, lambda s: s.std(ddof=1)),
             }
         )
     )
 
-    for col in ["Mean ONMI", "Sample Std ONMI", "Mean Omega", "Sample Std Omega"]:
+    for col in ["Mean ONMI", "Sample Std ONMI", "Mean Omega", "Sample Std Omega", "Mean FADDIS Runtime",
+                "Sample Std FADDIS Runtime"]:
         summary_df[col] = summary_df[col].round(6)
 
     raw_df.to_csv(os.path.join(results_dir, f"{variation_parameter}_variation_set.csv"), index=False)
@@ -225,7 +230,8 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
             The network property that was varied in the experiment, used for labeling the plots.
     
     Saves:
-        Plots of ONMI and Omega against the variation parameter for each variant, saved as PDF files in the results directory.
+        Plots of ONMI, Omega, and FADDIS Runtime against the variation parameter for each variant,
+        saved as PDF files in the results directory.
     """
 
     plot_variants = [
@@ -241,8 +247,12 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
 
         variants = list(plot_df[VARIANT_COL].drop_duplicates())
 
-        fig, axes = plt.subplots(1, 2, figsize=(13.5, 5.2))
-        ax1, ax2 = axes
+        fig = plt.figure(figsize=(13.5, 9.0))
+        gs = fig.add_gridspec(2, 2)
+
+        ax1 = fig.add_subplot(gs[0, 0])
+        ax2 = fig.add_subplot(gs[0, 1])
+        ax3 = fig.add_subplot(gs[1, :])  # Runtime plot below both
 
         variant_markers = cycle(["x", "^", "s", "*", "D", "o", "v", "P", ">", "<", "h", "+"])
         variant_colors = {variant: plt.cm.tab20(i % 20) for i, variant in enumerate(variants)}
@@ -260,6 +270,17 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
                 d[variation_parameter], d["Mean Omega"],
                 marker=marker, color=color, linewidth=1.8, markersize=7, label=variant
             )
+            ax3.errorbar(
+                d[variation_parameter],
+                d["Mean FADDIS Runtime"],
+                yerr=d["Sample Std FADDIS Runtime"],
+                marker=marker,
+                color=color,
+                linewidth=1.8,
+                markersize=7,
+                capsize=4,
+                label=variant
+            )
 
         ax1.set_xlabel(variation_parameter)
         ax1.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
@@ -275,8 +296,15 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
         ax2.legend(loc="upper right", fontsize=10)
         ax2.margins(x=0.03)
 
+        ax3.set_xlabel(variation_parameter)
+        ax3.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
+        ax3.set_ylabel("FADDIS Runtime (in seconds)")
+        ax3.legend(loc="upper right", fontsize=10)
+        ax3.margins(x=0.03)
+
         ax1.grid(True, alpha=0.3)
         ax2.grid(True, alpha=0.3)
+        ax3.grid(True, alpha=0.3)
 
         fig.tight_layout()
         fig.savefig(
@@ -293,7 +321,7 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-10_18-46-27-529048"),
         ("experience3_cluster", "results_2026-04-10_21-39-07-593414"),
         ("experience4_cluster", "results_2026-04-11_00-08-06-619023"),
-
+        ("experience5_cluster", "results_2026-04-19_12-06-10-999135")
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(RESULTS_BASE_DIR, "boundary_variation_set", folders[0], folders[1]),
@@ -306,6 +334,7 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-11_23-31-55-403981"),
         ("experience3_cluster", "results_2026-04-12_09-50-03-559581"),
         ("experience4_cluster", "results_2026-04-12_11-35-17-967624"),
+        ("experience5_cluster", "results_2026-04-19_18-21-44-389254")
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(
@@ -320,6 +349,7 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-12_15-41-47-330370"),
         ("experience3_cluster", "results_2026-04-12_17-17-12-630419"),
         ("experience4_cluster", "results_2026-04-12_18-47-18-341627"),
+        ("experience5_cluster", "results_2026-04-19_22-29-26-629180")
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(
@@ -334,6 +364,7 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-13_19-12-06-974844"),
         ("experience3_cluster", "results_2026-04-14_10-15-07-924997"),
         ("experience4_cluster", "results_2026-04-14_17-27-01-073540"),
+        ("experience6_cluster", "results_2026-04-20_08-40-19-143228")
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(

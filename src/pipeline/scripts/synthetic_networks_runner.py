@@ -6,8 +6,9 @@ from collections.abc import Callable
 import numpy as np
 
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
+from pipeline.components.evaluation_metrics.computational.computational_metrics import get_computation_start_time, \
+    get_computation_end_time, compute_computational_metrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import compute_extrinsic_metrics
-from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics
 from pipeline.components.faddis.faddis import faddis
 from pipeline.components.lapin.lapin import lapin
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
@@ -113,13 +114,16 @@ def run_synthetic_networks_experiments(
                         )
 
                         # 6. Execute FADDIS.
-                        results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
+                        start_time = get_computation_start_time()
+                        # results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
+                        results = faddis(W=Ws if not execution_mode.apply_lapin else Ln, desired_k=k + 1 if not execution_mode.apply_lapin else k)
+                        end_time = get_computation_end_time()
 
                         for idx5, defuzzification_rule in enumerate(defuzzification_rules, 1):
                             log_progress(idx5, len(defuzzification_rules), str(defuzzification_rule), 1)
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
-                            _, membership_matrix, _, _, _, _, stop_condition = results
+                            _, membership_matrix, _, _, _, _, _, stop_condition = results
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                                 membership_matrix,
                                 defuzzification_rule.gamma,
@@ -131,10 +135,11 @@ def run_synthetic_networks_experiments(
                                 graph, ground_truth_labels, predicted_labels, k, k_predicted,
                                 overlapping=network.overlapping_ground_truth
                             )
-                            intrinsic_results = compute_intrinsic_metrics(
-                                graph, A, membership_matrix, predicted_labels,
-                                overlapping=network.overlapping_ground_truth
-                            )
+                            # intrinsic_results = compute_intrinsic_metrics(
+                            #     graph, A, membership_matrix, predicted_labels,
+                            #     overlapping=network.overlapping_ground_truth
+                            # )
+                            computational_results = compute_computational_metrics(start_time, end_time)
 
                             number_of_results += 1
                             results_id = f"{number_of_results:03d}"
@@ -153,7 +158,8 @@ def run_synthetic_networks_experiments(
                                 gamma=defuzzification_rule.gamma,
                                 first_cluster_discarded=first_cluster_discarded,
                                 extrinsic_results=extrinsic_results,
-                                intrinsic_results=intrinsic_results
+                                # intrinsic_results=intrinsic_results
+                                computational_results=computational_results,
                             ))
 
                             save_faddis_clustering_results(results_network_dir, results_id, results)

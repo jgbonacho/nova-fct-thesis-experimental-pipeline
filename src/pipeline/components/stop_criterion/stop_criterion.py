@@ -27,6 +27,6 @@ def set_stop_criterion(n: int, network_family: str, thresholds: dict[str, float]
     threshold = thresholds.get(network_family)
     epsilon = threshold if threshold is not None else 1 / n
     tau = 0.05
-    k_max = min(100, n // 2)
+    k_max = min(500, n // 2)
 
     return epsilon, tau, k_max

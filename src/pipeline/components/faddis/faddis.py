@@ -15,7 +15,7 @@ def faddis(
         tau: float = None,
         k_max: int = None,
         desired_k: int = None
-) -> tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, int, str]:
+) -> tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, list[str], int, str]:
     """
     FADDIS: Fuzzy Additive Spectral clustering.
     Stop criterion is ('epsilon', 'tau', 'k_max') or 'desired_k'.
@@ -44,6 +44,8 @@ def faddis(
             Kx2 matrix of weights (cluster intensities^0.5) and intensities.
         eigenvalues : (np.ndarray)
             1xK vector of eigenvalues corresponding to clusters.
+        eigenvalue_ranks : (list[str])
+            List of ranks of the eigenvalues corresponding to clusters.
         number_of_clusters : (int)
             Number of clusters extracted.
         stop_condition : (str)
@@ -70,6 +72,7 @@ def faddis(
     contributions = np.array([])
     intensities = np.empty((0, 2))
     eigenvalues = np.array([])
+    eigenvalue_ranks = []
 
     # Compute total data scatter.
     data_scatter = np.power(W, 2)
@@ -92,6 +95,7 @@ def faddis(
 
         # Get indices of only positive eigenvalues.
         eigenvalues_pos = np.argwhere(curr_eigenvalues > ZERO_BOUND).ravel()
+        eigenvalues_pos = eigenvalues_pos[np.argsort(curr_eigenvalues[eigenvalues_pos])[::-1]]
         size_positive_eigenvalues = eigenvalues_pos.size
 
         # Store intensities and corresponding membership vectors.
@@ -193,6 +197,7 @@ def faddis(
         contributions = np.append(contributions, individual_cluster_contribution)
         intensities = np.append(intensities, np.matrix([np.sqrt(max_contribution), max_contribution]), axis=0)
         eigenvalues = np.append(eigenvalues, curr_eigenvalues[eigenvalues_pos[max_contribution_index]])
+        eigenvalue_ranks.append(f"{max_contribution_index + 1}/{size_positive_eigenvalues}")
         number_of_clusters += 1
 
         # Check stop condition 4: 'number_of_clusters' is equal to 'k_max'.
@@ -211,7 +216,7 @@ def faddis(
         Wt = (Wt + Wt.T) / 2
         sequence_of_matrices.append(Wt)
 
-    return sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition
+    return sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, eigenvalue_ranks, number_of_clusters, stop_condition
 
 
 def _validate_inputs(

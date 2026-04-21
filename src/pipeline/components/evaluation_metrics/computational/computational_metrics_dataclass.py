@@ -11,4 +11,4 @@ class ComputationalMetrics:
             Runtime in seconds.
     """
 
-    runtime: float = field(metadata={"label": "Runtime"})
+    runtime: float = field(metadata={"label": "FADDIS Runtime"})

@@ -15,3 +15,12 @@
   'list_on_percentages=(20)' \
   'list_om=(4 5)' \
   't=10'
+
+# 39_nM_uM_onnL_omH
+../../synthetic_networks_lfr_generator.sh \
+  'network_family_name="39_nM_uM_onnL_omH"' \
+  'list_n=(1000)' \
+  'list_mu=(0.4)' \
+  'list_on_percentages=(20)' \
+  'list_om=(6 7 8)' \
+  't=10'
