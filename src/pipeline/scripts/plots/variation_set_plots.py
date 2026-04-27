@@ -364,7 +364,10 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-13_19-12-06-974844"),
         ("experience3_cluster", "results_2026-04-14_10-15-07-924997"),
         ("experience4_cluster", "results_2026-04-14_17-27-01-073540"),
-        ("experience6_cluster", "results_2026-04-20_08-40-19-143228")
+        ("faddis_version_a_got", "results_2026-04-20_08-40-19-143228"),
+        ("faddis_version_a_improved", "results_2026-04-26_12-11-17-239250"),
+        ("faddis_version_a_top_10", "results_2026-04-26_08-24-20-677914"),
+        ("faddis_version_m", "results_2026-04-26_00-05-03-708303"),
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(

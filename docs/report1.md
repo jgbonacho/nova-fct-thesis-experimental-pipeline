@@ -170,4 +170,5 @@
         - Some families, where the results are very low, may not be realistic.
 
 - **TODO**
-  - Use different markers in the line plot.
+  - [DONE] Use different markers in the line plot.
+  - Use 1/2 pseudo-random sample of the seen LFR networks per family (72/2 = 36 networks) instead of 1/4 (72/4 = 18 networks).

@@ -115,8 +115,8 @@ def run_synthetic_networks_experiments(
 
                         # 6. Execute FADDIS.
                         start_time = get_computation_start_time()
-                        # results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
-                        results = faddis(W=Ws if not execution_mode.apply_lapin else Ln, desired_k=k + 1 if not execution_mode.apply_lapin else k)
+                        # results = faddis(W=Ws if not execution_mode.apply_lapin else Ln, desired_k=k + 1 if not execution_mode.apply_lapin else k)
+                        results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
                         end_time = get_computation_end_time()
 
                         for idx5, defuzzification_rule in enumerate(defuzzification_rules, 1):
