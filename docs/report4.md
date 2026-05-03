@@ -1,14 +1,16 @@
-# Report 4 - Question (Part III): Can we obtain competitive results compared to the reference paper Vieira et al. Applied Network Science (2020) in large-scale networks?
+# Report 4 - Preliminary experiments of FADDIS versions on large-networks
 
 ## Table of Contents
+
 - [Setup](#setup)
-    - [Reference Networks](#reference-networks)
-    - [Networks](#networks)
 - [Scripts](#scripts)
-    - [Script 2](#script-2)
-- [Overlap Variation Set](#overlap-variation-set)
-    - [Reference Results](#reference-results-2)
-    - [Experience 6](#experience-6)
+- [Size Variation Set](#size-variation-set)
+  - [Reference Results](#reference-results)
+  - [Experience with FADDIS version-a (GOT)](#experience-with-faddis-version-a-got)
+  - [Experience with FADDIS version-m](#experience-with-faddis-version-m)
+  - [Experience with FADDIS version-a top-10](#experience-with-faddis-version-a-top-10)
+  - [Experience with FADDIS version-a (Improved)](#experience-with-faddis-version-a-improved)
+- [Hardware](#hardware)
 - [References](#references)
 
 
@@ -33,23 +35,20 @@
     - $o_{n}/n$ = 0.2
     - $o_{m}$ = 2
 - Instances per set of parameters: 10
-- Boundary Variation Set: $\mu$ $\in$ [0.1, 0.8], step 0.1
-- Membership Variation Set: $o_{m}$ $\in$ [1, 8], step 1
-- Overlap Variation Set: $o_{n}/n$ $\in$ [0.1, 0.6], step 0.1
 - Size Variation Set: $n$ $\in$ [1000, 10000], step 1000
 
 
 ### Networks
 
 - Same base parameters as the reference setup
-- Instances per set of parameters: **3**
+- Instances per set of parameters: **2** and **3**
 - Same Variation Set
 
 
 
 ## Scripts
 
-### Script 2
+### Script 1
 
 - For each experience (set of thresholds), apply the pipeline to each network of each variation set and save the results for each network in a .csv file:
 
@@ -80,7 +79,7 @@
 
 ```python
 sequence_of_matrices = []
-curr_eigenvalues, curr_eigenvectors = LA.eig(Wt)
+curr_eigenvalues, curr_eigenvectors = numpy.linalg.eig(Wt)
 ```
 
 [Open Folder](../results/synthetic/size_variation_set/faddis_version_a_got/results_2026-04-20_08-40-19-143228/)
@@ -90,25 +89,28 @@ curr_eigenvalues, curr_eigenvectors = LA.eig(Wt)
 ![Experience with FADDIS version-a (GOT) Results 1](../results/synthetic/size_variation_set/faddis_version_a_got/results_2026-04-20_08-40-19-143228/n_variation_set_1.png)
 
 
-### Experience with FADDIS version-a (Improved)
+
+### Experience with FADDIS version-m
 
 ```python
 # sequence_of_matrices = []
-curr_eigenvalues, curr_eigenvectors = LA.eigh(Wt)
+curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigsh(np.asarray(Wt), k=1, which="LA")
 ```
 
-[Open Folder](../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-26_12-11-17-239250/)
 
-![Experience with FADDIS version-a (Improved) Results 0](../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-26_12-11-17-239250/n_variation_set_0.png)
+[Open Folder](../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/)
 
-![Experience with FADDIS version-a (Improved) Results 1](../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-26_12-11-17-239250/n_variation_set_1.png)
+![Experience with FADDIS version-m Results 0](../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/n_variation_set_0.png)
+
+![Experience with FADDIS version-m Results 1](../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/n_variation_set_1.png)
+
 
 
 ### Experience with FADDIS version-a top-10
 
 ```python
 # sequence_of_matrices = []
-curr_eigenvalues, curr_eigenvectors = eigsh(np.asarray(Wt), k=10, which="LA")
+curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigsh(np.asarray(Wt), k=10, which="LA")
 ```
 
 [Open Folder](../results/synthetic/size_variation_set/faddis_version_a_top_10/results_2026-04-26_08-24-20-677914/)
@@ -118,19 +120,26 @@ curr_eigenvalues, curr_eigenvectors = eigsh(np.asarray(Wt), k=10, which="LA")
 ![Experience with FADDIS version-a (Top-10) Results 1](../results/synthetic/size_variation_set/faddis_version_a_top_10/results_2026-04-26_08-24-20-677914/n_variation_set_1.png)
 
 
-### Experience with FADDIS version-m
+
+### Experience with FADDIS version-a (Improved)
 
 ```python
 # sequence_of_matrices = []
-curr_eigenvalues, curr_eigenvectors = eigsh(np.asarray(Wt), k=1, which="LA")
+curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigh(Wt)
 ```
 
+[Open Folder](../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-30_00-23-38-440972/)
 
-[Open Folder](../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/)
+![Experience with FADDIS version-a (Improved) Results 0](../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-30_00-23-38-440972/n_variation_set_0.png)
 
-![Experience with FADDIS version-m Results 0](../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/n_variation_set_0.png)
+![Experience with FADDIS version-a (Improved) Results 1](../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-30_00-23-38-440972/n_variation_set_1.png)
 
-![Experience with FADDIS version-m Results 1](../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/n_variation_set_1.png)
+
+
+## Hardware
+
+![](./imgs/hardware.png)
+
 
 
 ## References

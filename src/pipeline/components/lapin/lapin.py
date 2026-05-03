@@ -40,10 +40,11 @@ def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
     nonzero_sums_condition = np.array(w_sums > ENTITY_BOUND)
 
     if not nonzero_sums_condition.all():
-        print('[INFO] These entities are no good - remove them first.')
-        print([i for i, j in enumerate(nonzero_sums_condition, 1) if not j])
-        W = W[:, nonzero_sums_condition][nonzero_sums_condition, :]
-        w_sums = w_sums[nonzero_sums_condition]
+        # print('[INFO] These entities are no good - remove them first.')
+        # print([i for i, j in enumerate(nonzero_sums_condition, 1) if not j])
+        # W = W[:, nonzero_sums_condition][nonzero_sums_condition, :]
+        # w_sums = w_sums[nonzero_sums_condition]
+        raise Exception('[ERROR] Entities are no good - remove them first.')
 
     matrix_rows, _ = W.shape
 
@@ -68,4 +69,5 @@ def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
     nonzero_eigenvalues_diagonal = eigenvalues_diagonal[nonzero_condition, :][:, nonzero_condition]
     nonzero_eigenvectors = eigenvectors[:, nonzero_condition]
 
-    return nonzero_eigenvectors.dot(LA.inv(nonzero_eigenvalues_diagonal)).dot(nonzero_eigenvectors.T)
+    Ln = nonzero_eigenvectors.dot(LA.inv(nonzero_eigenvalues_diagonal)).dot(nonzero_eigenvectors.T)
+    return np.asarray(Ln, dtype=np.float64)

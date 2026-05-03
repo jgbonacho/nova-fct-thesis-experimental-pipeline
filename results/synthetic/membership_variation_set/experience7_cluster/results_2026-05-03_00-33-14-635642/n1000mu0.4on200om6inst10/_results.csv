@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,3.443713e-06,0.05,500,epsilon,0.3,Yes,35 | 41,0.146341,0.089315,0.141858,15.526679
+002,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,3.443713e-06,0.05,500,epsilon,0.5,Yes,35 | 41,0.146341,0.166734,0.279416,15.526679
+003,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,3.443713e-06,0.05,500,epsilon,0.6,Yes,35 | 41,0.146341,0.208224,0.306658,15.526679
+004,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,3.443713e-06,0.05,500,epsilon,0.7,Yes,35 | 41,0.146341,0.215061,0.313178,15.526679
+005,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,3.443713e-06,0.05,500,epsilon,0.8,Yes,35 | 41,0.146341,0.192832,0.305551,15.526679
+006,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,3.443713e-06,0.05,500,epsilon,0.9,Yes,35 | 41,0.146341,0.205925,0.302049,15.526679
+007,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,3.443713e-06,0.05,500,epsilon,0.3,No,27 | 41,0.341463,0,0.034118,17.362179
+008,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,3.443713e-06,0.05,500,epsilon,0.5,No,27 | 41,0.341463,0.007574,0.145615,17.362179
+009,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,3.443713e-06,0.05,500,epsilon,0.6,No,27 | 41,0.341463,0.026154,0.196077,17.362179
+010,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,3.443713e-06,0.05,500,epsilon,0.7,No,27 | 41,0.341463,0.041200,0.230865,17.362179
+011,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,3.443713e-06,0.05,500,epsilon,0.8,No,27 | 41,0.341463,0.060782,0.239790,17.362179
+012,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,3.443713e-06,0.05,500,epsilon,0.9,No,27 | 41,0.341463,0.065739,0.239828,17.362179

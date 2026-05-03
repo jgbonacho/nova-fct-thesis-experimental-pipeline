@@ -15,13 +15,10 @@ class Test(unittest.TestCase):
              [.1, .4, .6, 1]]
         )
 
-        sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = faddis(
+        membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = faddis(
             W, epsilon=1 / 40, tau=0.005, k_max=50
         )
 
-        print("=== Sequence of matrices===")
-        print(sequence_of_matrices)
-        self.assertTrue(len(sequence_of_matrices) == number_of_clusters + 1)
         print("=== Membership matrix ===")
         print(membership_matrix)
         self.assertTrue(membership_matrix.shape == (4, number_of_clusters))
@@ -49,13 +46,10 @@ class Test(unittest.TestCase):
              [.1, .4, .6, 1]]
         )
 
-        sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = faddis(
+        membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, stop_condition = faddis(
             W, desired_k=3
         )
 
-        print("=== Sequence of matrices===")
-        print(sequence_of_matrices)
-        self.assertTrue(len(sequence_of_matrices) == number_of_clusters)
         print("=== Membership matrix ===")
         print(membership_matrix)
         self.assertTrue(membership_matrix.shape == (4, number_of_clusters))

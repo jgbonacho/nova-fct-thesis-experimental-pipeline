@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-off,-,5.688901e-06,0.05,450,epsilon,0.3,Yes,26 | 19,0.368421,0.211167,0.061458,10.290421
+002,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-off,-,5.688901e-06,0.05,450,epsilon,0.5,Yes,26 | 19,0.368421,0.323231,0.247917,10.290421
+003,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-off,-,5.688901e-06,0.05,450,epsilon,0.6,Yes,26 | 19,0.368421,0.386947,0.363179,10.290421
+004,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-off,-,5.688901e-06,0.05,450,epsilon,0.7,Yes,26 | 19,0.368421,0.437489,0.452647,10.290421
+005,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-off,-,5.688901e-06,0.05,450,epsilon,0.8,Yes,26 | 19,0.368421,0.483338,0.532139,10.290421
+006,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-off,-,5.688901e-06,0.05,450,epsilon,0.9,Yes,26 | 19,0.368421,0.503133,0.575454,10.290421
+007,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-on,Lsym,5.688901e-06,0.05,450,epsilon,0.3,No,22 | 19,0.157895,0.181177,0.043236,11.759426
+008,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-on,Lsym,5.688901e-06,0.05,450,epsilon,0.5,No,22 | 19,0.157895,0.310750,0.280356,11.759426
+009,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-on,Lsym,5.688901e-06,0.05,450,epsilon,0.6,No,22 | 19,0.157895,0.372125,0.429591,11.759426
+010,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-on,Lsym,5.688901e-06,0.05,450,epsilon,0.7,No,22 | 19,0.157895,0.435501,0.547474,11.759426
+011,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-on,Lsym,5.688901e-06,0.05,450,epsilon,0.8,No,22 | 19,0.157895,0.503750,0.614430,11.759426
+012,13_nM_uM_onnL_omL,n900mu0.4on180om2inst4,Yes,Default,LAPIN-on,Lsym,5.688901e-06,0.05,450,epsilon,0.9,No,22 | 19,0.157895,0.543001,0.613921,11.759426

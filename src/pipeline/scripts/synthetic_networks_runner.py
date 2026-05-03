@@ -100,13 +100,13 @@ def run_synthetic_networks_experiments(
                     W = affinity_matrix_lambda(A)
 
                     # 3. Apply sparsification to matrix W to obtain the matrix Ws.
-                    Ws = W.copy()
+                    # Ws =
 
                     for idx4, execution_mode in enumerate(execution_modes, 1):
                         log_progress(idx4, len(execution_modes), execution_mode.label, 2)
 
                         # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
-                        Ln = lapin(Ws, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
+                        Ln = lapin(W, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
 
                         # 5. Fine-tune the stop criterion for FADDIS.
                         epsilon, tau, k_max = set_stop_criterion(
@@ -115,15 +115,18 @@ def run_synthetic_networks_experiments(
 
                         # 6. Execute FADDIS.
                         start_time = get_computation_start_time()
-                        # results = faddis(W=Ws if not execution_mode.apply_lapin else Ln, desired_k=k + 1 if not execution_mode.apply_lapin else k)
-                        results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
+                        # results = faddis(
+                        #     W=W if not execution_mode.apply_lapin else Ln,
+                        #     desired_k=k + 1 if not execution_mode.apply_lapin else k
+                        # )
+                        results = faddis(W if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
                         end_time = get_computation_end_time()
 
                         for idx5, defuzzification_rule in enumerate(defuzzification_rules, 1):
                             log_progress(idx5, len(defuzzification_rules), str(defuzzification_rule), 1)
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
-                            _, membership_matrix, _, _, _, _, _, stop_condition = results
+                            membership_matrix, _, _, _, _, stop_condition = results
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                                 membership_matrix,
                                 defuzzification_rule.gamma,
@@ -135,10 +138,6 @@ def run_synthetic_networks_experiments(
                                 graph, ground_truth_labels, predicted_labels, k, k_predicted,
                                 overlapping=network.overlapping_ground_truth
                             )
-                            # intrinsic_results = compute_intrinsic_metrics(
-                            #     graph, A, membership_matrix, predicted_labels,
-                            #     overlapping=network.overlapping_ground_truth
-                            # )
                             computational_results = compute_computational_metrics(start_time, end_time)
 
                             number_of_results += 1
@@ -158,7 +157,6 @@ def run_synthetic_networks_experiments(
                                 gamma=defuzzification_rule.gamma,
                                 first_cluster_discarded=first_cluster_discarded,
                                 extrinsic_results=extrinsic_results,
-                                # intrinsic_results=intrinsic_results
                                 computational_results=computational_results,
                             ))
 

@@ -67,12 +67,17 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
 
         results_csv_path = os.path.join(network_dir, input_filename)
         results_df = _read_csv(results_csv_path)
+        has_faddis_runtime = FADDIS_RUNTIME_COL in results_df.columns
+
         for col in [GAMMA_COL, KERR_COL, ONMI_COL, OMEGA_COL]:
             results_df[col] = pd.to_numeric(results_df[col], errors="coerce")
 
+        if has_faddis_runtime:
+            results_df[FADDIS_RUNTIME_COL] = pd.to_numeric(results_df[FADDIS_RUNTIME_COL], errors="coerce")
+
         results_df[VARIANT_COL] = results_df.apply(lambda r: _build_variant_name(r.to_dict()), axis=1)
         for _, res in results_df.iterrows():
-            rows.append({
+            row = {
                 VARIANT_COL: res[VARIANT_COL],
                 NETWORK_PROPERTY_N: properties[NETWORK_PROPERTY_N],
                 NETWORK_PROPERTY_MU: properties[NETWORK_PROPERTY_MU],
@@ -81,33 +86,44 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
                 NETWORK_PROPERTY_INST: properties[NETWORK_PROPERTY_INST],
                 ONMI_COL: pd.to_numeric(res[ONMI_COL], errors="coerce"),
                 OMEGA_COL: pd.to_numeric(res[OMEGA_COL], errors="coerce"),
-                FADDIS_RUNTIME_COL: pd.to_numeric(res[FADDIS_RUNTIME_COL], errors="coerce")
-            })
+            }
+
+            if has_faddis_runtime:
+                row[FADDIS_RUNTIME_COL] = pd.to_numeric(res[FADDIS_RUNTIME_COL], errors="coerce")
+
+            rows.append(row)
 
     raw_df = (pd.DataFrame(rows).sort_values([variation_parameter, VARIANT_COL, NETWORK_PROPERTY_INST])
               .reset_index(drop=True))
 
+    agg_dict = {
+        "#Instances": (NETWORK_PROPERTY_INST, "nunique"),
+        "ONMI Results": (ONMI_COL, results_as_json),
+        "Mean ONMI": (ONMI_COL, "mean"),
+        "Sample Std ONMI": (ONMI_COL, lambda s: s.std(ddof=1)),
+        "Omega Results": (OMEGA_COL, results_as_json),
+        "Mean Omega": (OMEGA_COL, "mean"),
+        "Sample Std Omega": (OMEGA_COL, lambda s: s.std(ddof=1)),
+    }
+
+    if FADDIS_RUNTIME_COL in raw_df.columns:
+        agg_dict.update({
+            "Mean FADDIS Runtime": (FADDIS_RUNTIME_COL, "mean"),
+            "Sample Std FADDIS Runtime": (FADDIS_RUNTIME_COL, lambda s: s.std(ddof=1)),
+        })
+
     summary_df = (
         raw_df
         .groupby([variation_parameter, VARIANT_COL], as_index=False)
-        .agg(
-            **{
-                "#Instances": (NETWORK_PROPERTY_INST, "nunique"),
-                "ONMI Results": (ONMI_COL, results_as_json),
-                "Mean ONMI": (ONMI_COL, "mean"),
-                "Sample Std ONMI": (ONMI_COL, lambda s: s.std(ddof=1)),
-                "Omega Results": (OMEGA_COL, results_as_json),
-                "Mean Omega": (OMEGA_COL, "mean"),
-                "Sample Std Omega": (OMEGA_COL, lambda s: s.std(ddof=1)),
-                "Mean FADDIS Runtime": (FADDIS_RUNTIME_COL, "mean"),
-                "Sample Std FADDIS Runtime": (FADDIS_RUNTIME_COL, lambda s: s.std(ddof=1)),
-            }
-        )
+        .agg(**agg_dict)
     )
 
-    for col in ["Mean ONMI", "Sample Std ONMI", "Mean Omega", "Sample Std Omega", "Mean FADDIS Runtime",
-                "Sample Std FADDIS Runtime"]:
-        summary_df[col] = summary_df[col].round(6)
+    for col in [
+        "Mean ONMI", "Sample Std ONMI", "Mean Omega", "Sample Std Omega", "Mean FADDIS Runtime",
+        "Sample Std FADDIS Runtime"
+    ]:
+        if col in summary_df.columns:
+            summary_df[col] = summary_df[col].round(6)
 
     raw_df.to_csv(os.path.join(results_dir, f"{variation_parameter}_variation_set.csv"), index=False)
     summary_df.to_csv(os.path.join(results_dir, f"{variation_parameter}_variation_set_summary.csv"), index=False)
@@ -247,12 +263,22 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
 
         variants = list(plot_df[VARIANT_COL].drop_duplicates())
 
-        fig = plt.figure(figsize=(13.5, 9.0))
-        gs = fig.add_gridspec(2, 2)
+        has_faddis_runtime = "Mean FADDIS Runtime" in df.columns
 
-        ax1 = fig.add_subplot(gs[0, 0])
-        ax2 = fig.add_subplot(gs[0, 1])
-        ax3 = fig.add_subplot(gs[1, :])  # Runtime plot below both
+        if has_faddis_runtime:
+            fig = plt.figure(figsize=(13.5, 9.0))
+            gs = fig.add_gridspec(2, 2)
+
+            ax1 = fig.add_subplot(gs[0, 0])
+            ax2 = fig.add_subplot(gs[0, 1])
+            ax3 = fig.add_subplot(gs[1, :])  # Runtime plot below both
+        else:
+            fig = plt.figure(figsize=(13.5, 4.5))
+            gs = fig.add_gridspec(1, 2)
+
+            ax1 = fig.add_subplot(gs[0, 0])
+            ax2 = fig.add_subplot(gs[0, 1])
+            ax3 = None
 
         variant_markers = cycle(["x", "^", "s", "*", "D", "o", "v", "P", ">", "<", "h", "+"])
         variant_colors = {variant: plt.cm.tab20(i % 20) for i, variant in enumerate(variants)}
@@ -270,17 +296,19 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
                 d[variation_parameter], d["Mean Omega"],
                 marker=marker, color=color, linewidth=1.8, markersize=7, label=variant
             )
-            ax3.errorbar(
-                d[variation_parameter],
-                d["Mean FADDIS Runtime"],
-                yerr=d["Sample Std FADDIS Runtime"],
-                marker=marker,
-                color=color,
-                linewidth=1.8,
-                markersize=7,
-                capsize=4,
-                label=variant
-            )
+
+            if has_faddis_runtime:
+                ax3.errorbar(
+                    d[variation_parameter],
+                    d["Mean FADDIS Runtime"],
+                    yerr=d["Sample Std FADDIS Runtime"],
+                    marker=marker,
+                    color=color,
+                    linewidth=1.8,
+                    markersize=7,
+                    capsize=4,
+                    label=variant
+                )
 
         ax1.set_xlabel(variation_parameter)
         ax1.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
@@ -288,6 +316,7 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
         ax1.set_ylim(0, 1.0)
         ax1.legend(loc="upper right", fontsize=10)
         ax1.margins(x=0.03)
+        ax1.grid(True, alpha=0.3)
 
         ax2.set_xlabel(variation_parameter)
         ax2.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
@@ -295,16 +324,15 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
         ax2.set_ylim(0, 1.0)
         ax2.legend(loc="upper right", fontsize=10)
         ax2.margins(x=0.03)
-
-        ax3.set_xlabel(variation_parameter)
-        ax3.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
-        ax3.set_ylabel("FADDIS Runtime (in seconds)")
-        ax3.legend(loc="upper right", fontsize=10)
-        ax3.margins(x=0.03)
-
-        ax1.grid(True, alpha=0.3)
         ax2.grid(True, alpha=0.3)
-        ax3.grid(True, alpha=0.3)
+
+        if has_faddis_runtime:
+            ax3.set_xlabel(variation_parameter)
+            ax3.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
+            ax3.set_ylabel("FADDIS Runtime (in seconds)")
+            ax3.legend(loc="upper right", fontsize=10)
+            ax3.margins(x=0.03)
+            ax3.grid(True, alpha=0.3)
 
         fig.tight_layout()
         fig.savefig(
@@ -321,7 +349,13 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-10_18-46-27-529048"),
         ("experience3_cluster", "results_2026-04-10_21-39-07-593414"),
         ("experience4_cluster", "results_2026-04-11_00-08-06-619023"),
-        ("experience5_cluster", "results_2026-04-19_12-06-10-999135")
+
+        ("experience5_cluster_0", "results_2026-04-19_12-06-10-999135"),
+
+        ("experience5_cluster", "results_2026-05-02_09-15-07-970979"),
+        ("experience6_cluster", "results_2026-05-02_11-26-20-488782"),
+        ("experience7_cluster", "results_2026-05-02_15-23-59-555680"),
+        ("experience8_cluster", "results_2026-05-02_16-46-53-100982")
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(RESULTS_BASE_DIR, "boundary_variation_set", folders[0], folders[1]),
@@ -334,7 +368,13 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-11_23-31-55-403981"),
         ("experience3_cluster", "results_2026-04-12_09-50-03-559581"),
         ("experience4_cluster", "results_2026-04-12_11-35-17-967624"),
-        ("experience5_cluster", "results_2026-04-19_18-21-44-389254")
+
+        ("experience5_cluster_0", "results_2026-04-19_18-21-44-389254"),
+
+        ("experience5_cluster", "results_2026-05-02_19-27-44-446056"),
+        ("experience6_cluster", "results_2026-05-02_22-55-58-140699"),
+        ("experience7_cluster", "results_2026-05-03_00-33-14-635642"),
+        ("experience8_cluster", "results_2026-05-03_08-11-41-388440"),
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(
@@ -349,7 +389,13 @@ if __name__ == "__main__":
         ("experience2_cluster", "results_2026-04-12_15-41-47-330370"),
         ("experience3_cluster", "results_2026-04-12_17-17-12-630419"),
         ("experience4_cluster", "results_2026-04-12_18-47-18-341627"),
-        ("experience5_cluster", "results_2026-04-19_22-29-26-629180")
+
+        ("experience5_cluster_0", "results_2026-04-19_22-29-26-629180"),
+
+        ("experience5_cluster", "results_2026-05-03_12-11-56-013021"),
+        ("experience6_cluster", "results_2026-05-03_14-23-08-858214"),
+        ("experience7_cluster", "results_2026-05-03_15-37-47-343899"),
+        ("experience8_cluster", "results_2026-05-03_16-44-48-087897"),
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(
@@ -360,14 +406,24 @@ if __name__ == "__main__":
 
     # Size variation set.
     for folders in [
-        ("experience1_cluster", "results_2026-04-12_20-42-10-997187"),
-        ("experience2_cluster", "results_2026-04-13_19-12-06-974844"),
-        ("experience3_cluster", "results_2026-04-14_10-15-07-924997"),
-        ("experience4_cluster", "results_2026-04-14_17-27-01-073540"),
+        # ("experience1_cluster", "results_2026-04-12_20-42-10-997187"),
+        # ("experience2_cluster", "results_2026-04-13_19-12-06-974844"),
+        # ("experience3_cluster", "results_2026-04-14_10-15-07-924997"),
+        # ("experience4_cluster", "results_2026-04-14_17-27-01-073540"),
+
         ("faddis_version_a_got", "results_2026-04-20_08-40-19-143228"),
-        ("faddis_version_a_improved", "results_2026-04-26_12-11-17-239250"),
-        ("faddis_version_a_top_10", "results_2026-04-26_08-24-20-677914"),
         ("faddis_version_m", "results_2026-04-26_00-05-03-708303"),
+        ("faddis_version_a_top_10", "results_2026-04-26_08-24-20-677914"),
+        ("faddis_version_a_improved", "results_2026-04-30_00-23-38-440972"),
+
+        ("faddis_numpy_eigh", "results_2026-05-01_22-11-08-231496"),
+        ("faddis_scipy_eigh_evd", "results_2026-05-01_19-11-52-478180"),
+        ("faddis_scipy_eigh_evr", "results_2026-05-01_16-12-18-640998"),
+
+        # ("experience5_cluster", "results_2026-05-03_19-16-46-640640"),
+        # ("experience6_cluster", "results_2026-05-03_19-52-19-167434"),
+        # ("experience7_cluster", "results_2026-05-03_20-32-31-224707"),
+        # ("experience8_cluster", "results_2026-05-03_21-25-59-359439"),
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(

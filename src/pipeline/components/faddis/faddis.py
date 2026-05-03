@@ -5,6 +5,8 @@ Implementation based on https://github.com/dmitsf/GOT/blob/master/got/relevance_
 import numpy as np
 import numpy.linalg as LA
 
+# from scipy.linalg import eigh
+
 # A small value to determine if a number is considered to be zero.
 ZERO_BOUND = 10 ** (-9)
 
@@ -15,13 +17,13 @@ def faddis(
         tau: float = None,
         k_max: int = None,
         desired_k: int = None
-) -> tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, list[str], int, str]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, int, str]:
     """
     FADDIS: Fuzzy Additive Spectral clustering.
     Stop criterion is ('epsilon', 'tau', 'k_max') or 'desired_k'.
 
     Parameters:
-        W : (np.ndarray | np.matrix, shape[n,n])
+        W : (np.ndarray, shape[n,n])
             nxn symmetric similarity/affinity matrix.
         epsilon : (float | None)
             Threshold of the individual cluster contribution.
@@ -34,9 +36,7 @@ def faddis(
             If not None, it is used as the stop criterion instead of 'epsilon', 'tau' and 'k_max'.
 
     Returns:
-        sequence_of_matrices : (list[np.matrix])
-            List of residual similarity matrices at each iteration.
-        membership_matrix : (np.matrix)
+        membership_matrix : (np.ndarray)
             nxK membership matrix of clustering.
         contributions : (np.ndarray)
             1xK vector of relative contributions to the data scatter.
@@ -44,8 +44,6 @@ def faddis(
             Kx2 matrix of weights (cluster intensities^0.5) and intensities.
         eigenvalues : (np.ndarray)
             1xK vector of eigenvalues corresponding to clusters.
-        eigenvalue_ranks : (list[str])
-            List of ranks of the eigenvalues corresponding to clusters.
         number_of_clusters : (int)
             Number of clusters extracted.
         stop_condition : (str)
@@ -54,9 +52,6 @@ def faddis(
 
     # Validate inputs.
     _validate_inputs(epsilon, tau, k_max, desired_k)
-
-    # Ensure similarity/affinity matrix W is a numpy matrix.
-    W = _ensure_np_matrix(W)
 
     # Auxiliary variables for comparisons.
     matrix_rows, _ = W.shape
@@ -69,19 +64,16 @@ def faddis(
 
     # Auxiliary variables to store results.
     membership_matrix = np.empty((matrix_rows, 0))
-    contributions = np.array([])
-    intensities = np.empty((0, 2))
-    eigenvalues = np.array([])
-    eigenvalue_ranks = []
-
-    # Compute total data scatter.
-    data_scatter = np.power(W, 2)
-    total_data_scatter = np.sum(data_scatter)
+    contributions = []
+    intensities = []
+    eigenvalues = []
 
     # Sets initial matrix W.
-    # Wt = (W + W.T) / 2
-    Wt = W.copy()
-    sequence_of_matrices = [Wt]
+    Wt = (W + W.T) / 2
+
+    # Compute total data scatter.
+    data_scatter = np.power(Wt, 2)
+    total_data_scatter = np.sum(data_scatter)
 
     # Stop conditions:
     #      1. Eigenvalues of the residual matrix Wt are not positives;
@@ -90,13 +82,36 @@ def faddis(
     #   or 4. 'number_of_clusters' is equal to 'k_max'.
     while True:
         # Compute eigenvalues and eigenvectors of Wt.
-        curr_eigenvalues, curr_eigenvectors = LA.eig(Wt)
-        # curr_eigenvalues_diagonal = np.diag(curr_eigenvalues)
+        curr_eigenvalues, curr_eigenvectors = LA.eigh(Wt)
 
-        # Get indices of only positive eigenvalues.
+        # curr_eigenvalues, curr_eigenvectors = eigh(
+        #    Wt,
+        #    lower=True,
+        #    driver="evd",
+        #    overwrite_a=False,
+        #    check_finite=False,
+        # )
+
+        # curr_eigenvalues, curr_eigenvectors = eigh(
+        #    Wt,
+        #    lower=True,
+        #    driver="evr",
+        #    overwrite_a=False,
+        #    check_finite=False,
+        #    subset_by_value=(ZERO_BOUND, np.inf)
+        # )
+
         eigenvalues_pos = np.argwhere(curr_eigenvalues > ZERO_BOUND).ravel()
-        eigenvalues_pos = eigenvalues_pos[np.argsort(curr_eigenvalues[eigenvalues_pos])[::-1]]
         size_positive_eigenvalues = eigenvalues_pos.size
+
+        # size_positive_eigenvalues = curr_eigenvalues.size
+
+        if size_positive_eigenvalues == 0:
+            stop_condition = "W"
+            # print("[INFO] No positive weights at spectral clusters.")
+            break
+
+        # eigenvalues_pos = np.argsort(curr_eigenvalues)[::-1]
 
         # Store intensities and corresponding membership vectors.
         curr_intensities = np.zeros((size_positive_eigenvalues, 1))
@@ -107,7 +122,7 @@ def faddis(
             # lt = curr_eigenvalues_diagonal[eigenvalues_pos[k]]
 
             # Compute the cluster membership vector.
-            vf = curr_eigenvectors[:, eigenvalues_pos[k]]
+            vf = np.asarray(curr_eigenvectors[:, eigenvalues_pos[k]]).reshape(-1, 1)
 
             # Calculate normalized membership vector belonging to [0, 1] by projection on the space.
             # The normalization factor is the Euclidean length of the vector.
@@ -193,12 +208,12 @@ def faddis(
             break
 
         # Append the membership vector, contribution, intensity and eigenvalue of the cluster to the results.
-        membership_matrix = np.append(membership_matrix, np.matrix(uf).T, axis=1)
-        contributions = np.append(contributions, individual_cluster_contribution)
-        intensities = np.append(intensities, np.matrix([np.sqrt(max_contribution), max_contribution]), axis=0)
-        eigenvalues = np.append(eigenvalues, curr_eigenvalues[eigenvalues_pos[max_contribution_index]])
-        eigenvalue_ranks.append(f"{max_contribution_index + 1}/{size_positive_eigenvalues}")
+        membership_matrix = np.append(membership_matrix, uf.reshape(-1, 1), axis=1)
+        contributions.append(individual_cluster_contribution)
+        intensities.append([np.sqrt(max_contribution), max_contribution])
+        eigenvalues.append(curr_eigenvalues[eigenvalues_pos[max_contribution_index]])
         number_of_clusters += 1
+        print(f"[DEBUG] K' = {number_of_clusters}")
 
         # Check stop condition 4: 'number_of_clusters' is equal to 'k_max'.
         if desired_k is None and number_of_clusters == k_max:
@@ -212,11 +227,15 @@ def faddis(
             break
 
         # Compute residual similarity matrix, removing the present cluster (i.e. intensity* membership) from similarity matrix.
-        Wt = Wt - max_contribution * np.matrix(uf).T * np.matrix(uf)
+        Wt = Wt - max_contribution * np.outer(uf, uf)
         Wt = (Wt + Wt.T) / 2
-        sequence_of_matrices.append(Wt)
 
-    return sequence_of_matrices, membership_matrix, contributions, intensities, eigenvalues, eigenvalue_ranks, number_of_clusters, stop_condition
+    return membership_matrix, \
+        np.asarray(contributions), \
+        np.asarray(intensities), \
+        np.asarray(eigenvalues), \
+        number_of_clusters, \
+        stop_condition
 
 
 def _validate_inputs(
@@ -254,21 +273,3 @@ def _validate_inputs(
         raise ValueError("[ERROR] 'desired_k' must be a positive integer.")
     if k_max is not None and k_max <= 0:
         raise ValueError("[ERROR] 'k_max' must be a positive integer.")
-
-
-def _ensure_np_matrix(W: np.ndarray) -> np.matrix:
-    """
-    Ensure that the input W is a numpy matrix.
-
-    Parameters:
-        W : (np.ndarray | np.matrix)
-            The input array or matrix.
-
-    Returns:
-        Matrix : (np.matrix)
-            The input W as a numpy matrix.
-    """
-
-    if not isinstance(W, np.matrix):
-        W = np.matrix(W)
-    return W

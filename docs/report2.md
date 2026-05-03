@@ -1,11 +1,11 @@
-# Report 2 - Question (Part I): Using the fine-tuned thresholds, can we obtain competitive results compared to the reference paper Vieira et al. Applied Network Science (2020)?
+# Report 2 - Question (Phase I): Using the fine-tuned thresholds, can we obtain competitive results compared to the reference paper Vieira et al. Applied Network Science (2020)?
+
+
 
 ## Table of Contents
+
 - [Setup](#setup)
-    - [Reference Networks](#reference-networks)
-    - [Networks](#networks)
 - [Scripts](#scripts)
-    - [Script 2](#script-2)
 - [Thresholds](#thresholds)
     - [Experience 1 (LAPIN-off + Extraction of K desired clusters)](#experience-1-lapin-off--extraction-of-k-desired-clusters)
     - [Experience 2 (LAPIN-off + Extraction of clusters until the end)](#experience-2-lapin-off--extraction-of-clusters-until-the-end)
@@ -29,6 +29,13 @@
     - [Experience 2 (LAPIN-off + Extraction of clusters until the end) Results](#experience-2-lapin-off--extraction-of-clusters-until-the-end-results-2)
     - [Experience 3 (LAPIN-on + Extraction of K desired clusters) Results](#experience-3-lapin-on--extraction-of-k-desired-clusters-results-2)
     - [Experience 4 (LAPIN-on + Extraction of clusters until the end) Results](#experience-4-lapin-on--extraction-of-clusters-until-the-end-results-2)
+- [Size Variation Set](#size-variation-set)
+    - [Reference Results](#reference-results-3)
+    - [Experience 1 (LAPIN-off + Extraction of K desired clusters) Results](#experience-1-lapin-off--extraction-of-k-desired-clusters-results-3)
+    - [Experience 2 (LAPIN-off + Extraction of clusters until the end) Results](#experience-2-lapin-off--extraction-of-clusters-until-the-end-results-3)
+    - [Experience 3 (LAPIN-on + Extraction of K desired clusters) Results](#experience-3-lapin-on--extraction-of-k-desired-clusters-results-3)
+    - [Experience 4 (LAPIN-on + Extraction of clusters until the end) Results](#experience-4-lapin-on--extraction-of-clusters-until-the-end-results-3)
+- [Hardware](#hardware)
 - [References](#references)
 
 
@@ -72,7 +79,7 @@
 
 ## Scripts
 
-### Script 2
+### Script 1
 
 - For each experience (set of thresholds), apply the pipeline to each network of each variation set and save the results for each network in a .csv file:
 
@@ -428,6 +435,12 @@
 ![Experience 4 Results 0](../results/synthetic/size_variation_set/experience4_cluster/results_2026-04-14_17-27-01-073540/n_variation_set_0.png)
 
 ![Experience 4 Results 1](../results/synthetic/size_variation_set/experience4_cluster/results_2026-04-14_17-27-01-073540/n_variation_set_1.png)
+
+
+
+## Hardware
+
+![](./imgs/hardware.png)
 
 
 

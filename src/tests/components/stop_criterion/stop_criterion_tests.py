@@ -10,7 +10,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(epsilon, 1 / 1000)
         self.assertEqual(tau, 0.05)
-        self.assertEqual(k_max, 100)
+        self.assertEqual(k_max, 500)
 
     def test_stop_criterion_invalid_number_of_nodes(self):
         self.assertRaises(ValueError, set_stop_criterion, 0, "", {})

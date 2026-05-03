@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-off,-,4.279169e-06,0.05,500,epsilon,0.3,Yes,29 | 33,0.121212,0.134763,0.135203,12.951253
+002,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-off,-,4.279169e-06,0.05,500,epsilon,0.5,Yes,29 | 33,0.121212,0.265665,0.319835,12.951253
+003,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-off,-,4.279169e-06,0.05,500,epsilon,0.6,Yes,29 | 33,0.121212,0.309990,0.376301,12.951253
+004,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-off,-,4.279169e-06,0.05,500,epsilon,0.7,Yes,29 | 33,0.121212,0.354937,0.418701,12.951253
+005,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-off,-,4.279169e-06,0.05,500,epsilon,0.8,Yes,29 | 33,0.121212,0.377634,0.436169,12.951253
+006,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-off,-,4.279169e-06,0.05,500,epsilon,0.9,Yes,29 | 33,0.121212,0.372060,0.431503,12.951253
+007,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-on,Lsym,4.279169e-06,0.05,500,epsilon,0.3,No,30 | 33,0.090909,0.066910,0.075268,19.071909
+008,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-on,Lsym,4.279169e-06,0.05,500,epsilon,0.5,No,30 | 33,0.090909,0.151836,0.214573,19.071909
+009,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-on,Lsym,4.279169e-06,0.05,500,epsilon,0.6,No,30 | 33,0.090909,0.216298,0.289921,19.071909
+010,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-on,Lsym,4.279169e-06,0.05,500,epsilon,0.7,No,30 | 33,0.090909,0.277294,0.332260,19.071909
+011,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-on,Lsym,4.279169e-06,0.05,500,epsilon,0.8,No,30 | 33,0.090909,0.294864,0.371648,19.071909
+012,14_nM_uM_onnL_omM,n1000mu0.4on200om4inst10,Yes,Default,LAPIN-on,Lsym,4.279169e-06,0.05,500,epsilon,0.9,No,30 | 33,0.090909,0.277860,0.367998,19.071909

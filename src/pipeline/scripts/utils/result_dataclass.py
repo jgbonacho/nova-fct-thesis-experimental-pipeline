@@ -2,7 +2,6 @@ from dataclasses import dataclass, field
 
 from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
-from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import IntrinsicMetrics
 
 
 @dataclass
@@ -39,8 +38,6 @@ class Result:
             Whether the first cluster was discarded in the experiment.
         extrinsic_results : ExtrinsicMetrics | None
             The extrinsic metrics results, if computed.
-        intrinsic_results : IntrinsicMetrics | None
-            The intrinsic metrics results, if computed.
         computational_results : ComputationalMetrics | None
             The computational metrics results, if computed.
     """
@@ -59,5 +56,4 @@ class Result:
     gamma: float = field(metadata={"label": "Gamma"})
     first_cluster_discarded: bool = field(metadata={"label": "C0 discarded?"})
     extrinsic_results: ExtrinsicMetrics = field(default=None)
-    intrinsic_results: IntrinsicMetrics = field(default=None)
     computational_results: ComputationalMetrics = field(default=None)

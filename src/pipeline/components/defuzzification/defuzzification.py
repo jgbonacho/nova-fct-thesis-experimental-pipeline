@@ -2,7 +2,7 @@ import numpy as np
 
 
 def apply_defuzzification_rule(
-        U: np.matrix,
+        U: np.ndarray,
         gamma: float = 0.5,
         conditionally_discard_first_cluster: bool = True,
         overlapping: bool = True
@@ -11,7 +11,7 @@ def apply_defuzzification_rule(
     Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
 
     Parameters:
-        U : (np.ndarray | np.matrix, shape[n,k])
+        U : (np.ndarray, shape[n,k])
             Fuzzy memberships per node per community.
         gamma : (float, optional)
             Hyperparameter for the defuzzification rule.

@@ -3,17 +3,20 @@
 
 
 ## Table of Contents
+
 - [Scripts](#scripts)
-- [Experiment 1 (LAPIN-off + Extraction of K desired clusters) - Thresholds](#experiment-1-lapin-off--extraction-of-k-desired-clusters---thresholds)
-- [Experiment 2 (LAPIN-off + Extraction of clusters until the end) - Thresholds](#experiment-2-lapin-off--extraction-of-clusters-until-the-end---thresholds)
-- [Experiment 3 (LAPIN-on + Extraction of K desired clusters) - Thresholds](#experiment-3-lapin-on--extraction-of-k-desired-clusters---thresholds)
-- [Experiment 4 (LAPIN-on + Extraction of clusters until the end) - Thresholds](#experiment-4-lapin-on--extraction-of-clusters-until-the-end---thresholds)
+- [Experience 1 (LAPIN-off + Extraction of K desired clusters) - Thresholds](#experience-1-lapin-off--extraction-of-k-desired-clusters---thresholds)
+- [Experience 2 (LAPIN-off + Extraction of clusters until the end) - Thresholds](#experience-2-lapin-off--extraction-of-clusters-until-the-end---thresholds)
+- [Experience 3 (LAPIN-on + Extraction of K desired clusters) - Thresholds](#experience-3-lapin-on--extraction-of-k-desired-clusters---thresholds)
+- [Experience 4 (LAPIN-on + Extraction of clusters until the end) - Thresholds](#experience-4-lapin-on--extraction-of-clusters-until-the-end---thresholds)
+- [Hardware](#hardware)
 - [Discussion](#discussion)
+
 
 
 ## Scripts
 
-### Script 2
+### Script 1
 
 - For each experience (set of thresholds), apply the pipeline to 1/4 of the seen LFR networks per family (72/4 = 18 networks) and save the results for each network in a .csv file:
 
@@ -61,6 +64,8 @@
 
 [Open Folder](../results/synthetic/1_4_seen_networks/experience1_cluster/results_2026-04-04_18-01-39-080614)
 
+![](../results/synthetic/1_4_seen_networks/experience1_cluster/results_2026-04-04_18-01-39-080614/_global_family_extrinsic_metrics_plots.png)
+
 
 
 ## Experience 2 (LAPIN-off + Extraction of clusters until the end) - Thresholds
@@ -89,6 +94,8 @@
 ### Extrinsic Results
 
 [Open Folder](../results/synthetic/1_4_seen_networks/experience2_cluster/results_2026-04-05_09-07-19-011166)
+
+![](../results/synthetic/1_4_seen_networks/experience2_cluster/results_2026-04-05_09-07-19-011166/_global_family_extrinsic_metrics_plots.png)
 
 
 
@@ -119,6 +126,8 @@
 
 [Open Folder](../results/synthetic/1_4_seen_networks/experience3_cluster/results_2026-04-06_22-28-25-819274)
 
+![](../results/synthetic/1_4_seen_networks/experience3_cluster/results_2026-04-06_22-28-25-819274/_global_family_extrinsic_metrics_plots.png)
+
 
 
 ## Experience 4 (LAPIN-on + Extraction of clusters until the end) - Thresholds
@@ -148,9 +157,17 @@
 
 [Open Folder](../results/synthetic/1_4_seen_networks/experience4_cluster/results_2026-04-07_07-18-02-169177)
 
+![](../results/synthetic/1_4_seen_networks/experience4_cluster/results_2026-04-07_07-18-02-169177/_global_family_extrinsic_metrics_plots.png)
 
 
-### Discussion
+
+## Hardware
+
+![](./imgs/hardware.png)
+
+
+
+## Discussion
 
 - **Observations**
     - Stopping condition: 
@@ -170,5 +187,5 @@
         - Some families, where the results are very low, may not be realistic.
 
 - **TODO**
-  - [DONE] Use different markers in the line plot.
+  - Use different markers in the line plot;
   - Use 1/2 pseudo-random sample of the seen LFR networks per family (72/2 = 36 networks) instead of 1/4 (72/4 = 18 networks).

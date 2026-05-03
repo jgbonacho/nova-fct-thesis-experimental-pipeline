@@ -11,7 +11,6 @@ import numpy as np
 
 from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
-from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import IntrinsicMetrics
 from pipeline.config.config import ExecutionMode, DefuzzificationRule
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 from pipeline.scripts.utils.result_dataclass import Result
@@ -139,7 +138,6 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
 
     selected_base_fields = None
     selected_extrinsic_fields = None
-    selected_intrinsic_fields = None
     selected_computational_fields = None
     header_written = False
 
@@ -166,21 +164,16 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
     def append_result(result: Result) -> None:
         nonlocal selected_base_fields
         nonlocal selected_extrinsic_fields
-        nonlocal selected_intrinsic_fields
         nonlocal selected_computational_fields
         nonlocal header_written
 
         if not header_written:
             selected_base_fields = _select_fields(
-                result, Result, (ExtrinsicMetrics, IntrinsicMetrics, ComputationalMetrics)
+                result, Result, (ExtrinsicMetrics, ComputationalMetrics)
             )
             selected_extrinsic_fields = (
                 _select_fields(result.extrinsic_results, ExtrinsicMetrics)
                 if result.extrinsic_results is not None else []
-            )
-            selected_intrinsic_fields = (
-                _select_fields(result.intrinsic_results, IntrinsicMetrics)
-                if result.intrinsic_results is not None else []
             )
             selected_computational_fields = (
                 _select_fields(result.computational_results, ComputationalMetrics)
@@ -190,7 +183,6 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
             headers = (
                     _get_headers(selected_base_fields)
                     + _get_headers(selected_extrinsic_fields)
-                    + _get_headers(selected_intrinsic_fields)
                     + _get_headers(selected_computational_fields)
             )
 
@@ -202,7 +194,6 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
         row = (
                 _get_row_values(result, selected_base_fields)
                 + _get_row_values(result.extrinsic_results, selected_extrinsic_fields)
-                + _get_row_values(result.intrinsic_results, selected_intrinsic_fields)
                 + _get_row_values(result.computational_results, selected_computational_fields)
         )
 
@@ -215,7 +206,7 @@ def initialize_results_file(results_dir: str, output_filename: str = "_results")
 def save_faddis_clustering_results(
         results_dir: str,
         results_id: str,
-        faddis_results: tuple[list[np.matrix], np.matrix, np.ndarray, np.ndarray, np.ndarray, list[str], int, str],
+        faddis_results: tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, int, str],
         output_filename: str = "faddis-clusters"
 ) -> None:
     """
@@ -243,18 +234,17 @@ def save_faddis_clustering_results(
         A CSV file within 'results_dir' named "{output_filename}_{results_id}.csv" containing the clustering results.
     """
 
-    _, _, contributions, intensities, eigenvalues, eigenvalue_ranks, number_of_clusters, _ = faddis_results
+    _, contributions, intensities, eigenvalues, number_of_clusters, _ = faddis_results
     with open(os.path.join(results_dir, f"{output_filename}_{results_id}.csv"), mode="w", newline="",
               encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Cluster", "Contribution", "Eigenvalue", "Eigenvalue Rank", "Intensity", "Weight"])
+        writer.writerow(["Cluster", "Contribution", "Eigenvalue", "Intensity", "Weight"])
 
         for i in range(0, number_of_clusters):
             writer.writerow([
                 _int_to_roman(i),
                 round((contributions[i] * 100), 4),
                 round((eigenvalues[i]), 4),
-                eigenvalue_ranks[i],
                 round((intensities[i, 0]), 4),
                 round((intensities[i, 1]), 4),
             ])
@@ -320,7 +310,11 @@ def _format_value(value: Any) -> str:
 
     if isinstance(value, bool):
         return "Yes" if value else "No"
-    if isinstance(value, float):
+    if isinstance(value, (float, np.floating)):
+        if value == 0:
+            return "0"
+        if abs(value) < 1e-4:
+            return f"{value:.6e}"
         text = f"{value:.15f}".rstrip("0").rstrip(".")
         if "." in text and len(text.split(".")[1]) > 4:
             return f"{value:.6f}"

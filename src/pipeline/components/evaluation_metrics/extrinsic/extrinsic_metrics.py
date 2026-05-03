@@ -1,4 +1,5 @@
 import networkx as nx
+
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_for_non_overlapping_ground_truth import \
     compute_extrinsic_metrics_for_non_overlapping_ground_truth

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,2.671817e-06,0.05,500,epsilon,0.3,Yes,36 | 41,0.121951,0.102942,0.141482,15.782436
+002,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,2.671817e-06,0.05,500,epsilon,0.5,Yes,36 | 41,0.121951,0.172229,0.288208,15.782436
+003,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,2.671817e-06,0.05,500,epsilon,0.6,Yes,36 | 41,0.121951,0.210645,0.315720,15.782436
+004,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,2.671817e-06,0.05,500,epsilon,0.7,Yes,36 | 41,0.121951,0.218700,0.318717,15.782436
+005,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,2.671817e-06,0.05,500,epsilon,0.8,Yes,36 | 41,0.121951,0.203017,0.308924,15.782436
+006,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-off,-,2.671817e-06,0.05,500,epsilon,0.9,Yes,36 | 41,0.121951,0.220392,0.306024,15.782436
+007,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,2.671817e-06,0.05,500,epsilon,0.3,No,27 | 41,0.341463,0,0.034118,16.832164
+008,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,2.671817e-06,0.05,500,epsilon,0.5,No,27 | 41,0.341463,0.007574,0.145615,16.832164
+009,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,2.671817e-06,0.05,500,epsilon,0.6,No,27 | 41,0.341463,0.026154,0.196077,16.832164
+010,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,2.671817e-06,0.05,500,epsilon,0.7,No,27 | 41,0.341463,0.041200,0.230865,16.832164
+011,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,2.671817e-06,0.05,500,epsilon,0.8,No,27 | 41,0.341463,0.060782,0.239790,16.832164
+012,39_nM_uM_onnL_omH,n1000mu0.4on200om6inst10,Yes,Default,LAPIN-on,Lsym,2.671817e-06,0.05,500,epsilon,0.9,No,27 | 41,0.341463,0.065739,0.239828,16.832164

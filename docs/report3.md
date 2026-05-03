@@ -1,11 +1,11 @@
-# Report 3 - Question (Part II): Using the fine-tuned thresholds, can we obtain competitive results compared to the reference paper Vieira et al. Applied Network Science (2020)?
+# Report 3 - Question (Phase II): Using the fine-tuned thresholds, can we obtain competitive results compared to the reference paper Vieira et al. Applied Network Science (2020) with large parameter values?
+
+
 
 ## Table of Contents
+
 - [Setup](#setup)
-    - [Reference Networks](#reference-networks)
-    - [Networks](#networks)
 - [Scripts](#scripts)
-    - [Script 2](#script-2)
 - [Thresholds](#thresholds)
     - [Experience 5 (LAPIN-off + Extraction of K desired clusters)](#experience-5-lapin-off--extraction-of-k-desired-clusters)
     - [Experience 6 (LAPIN-off + Extraction of clusters until the end)](#experience-6-lapin-off--extraction-of-clusters-until-the-end)
@@ -13,13 +13,14 @@
     - [Experience 8 (LAPIN-on + Extraction of clusters until the end)](#experience-8-lapin-on--extraction-of-clusters-until-the-end)
 - [Boundary Variation Set](#boundary-variation-set)
     - [Reference Results](#reference-results)
-    - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results)
+    - [Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-baseline-lapin-off--extraction-of-k-desired-clusters-results)
 - [Membership Variation Set](#membership-variation-set)
     - [Reference Results](#reference-results-1)
-    - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-1)
+    - [Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-baseline-lapin-off--extraction-of-k-desired-clusters-results-1)
 - [Overlap Variation Set](#overlap-variation-set)
     - [Reference Results](#reference-results-2)
-    - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-2)
+    - [Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-baseline-lapin-off--extraction-of-k-desired-clusters-results-2)
+- [Hardware](#hardware)
 - [References](#references)
 
 
@@ -63,7 +64,7 @@
 
 ## Scripts
 
-### Script 2
+### Script 1
 
 - For each experience (set of thresholds), apply the pipeline to each network of each variation set and save the results for each network in a .csv file:
 
@@ -79,7 +80,6 @@
 8. `Extrinsic metrics = [Relative Error of K, ONMI, Omega]`
 
 - For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper. Additionally, plot the mean runtime of FADDIS.
-
 
 
 
@@ -185,6 +185,7 @@
 | 46_nM_uH_onnL_omL | Median          | 6.224030661783513e-07  |
 
 
+
 ## Boundary Variation Set
 
 ### Reference Results
@@ -192,13 +193,13 @@
 ![Reference Results](./imgs/report3_reference_boundary_variation_set_results.png)
 
 
-### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
+### Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-04-19_12-06-10-999135/)
+[Open Folder](../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/)
 
-![Experience 5 Results 0](../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-04-19_12-06-10-999135/mu_variation_set_0.png)
+![Experience 5 (Baseline) Results 0](../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/mu_variation_set_0.png)
 
-![Experience 5 Results 1](../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-04-19_12-06-10-999135/mu_variation_set_1.png)
+![Experience 5 (Baseline) Results 1](../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/mu_variation_set_1.png)
 
 - **Observations**
     - "Best" variants
@@ -236,21 +237,6 @@
         - [Omega] -
 
 
-### Experience 6 (LAPIN-off + Extraction of clusters until the end) Results
-
-TODO
-
-
-### Experience 7 (LAPIN-on + Extraction of K desired clusters) Results
-
-TODO
-
-
-### Experience 8 (LAPIN-on + Extraction of clusters until the end) Results
-
-TODO
-
-
 
 ## Membership Variation Set
 
@@ -259,13 +245,13 @@ TODO
 ![Reference Results](./imgs/report3_reference_membership_variation_set_results.png)
 
 
-### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
+### Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../results/synthetic/membership_variation_set/experience5_cluster/results_2026-04-19_18-21-44-389254/)
+[Open Folder](../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/)
 
-![Experience 5 Results 0](../results/synthetic/membership_variation_set/experience5_cluster/results_2026-04-19_18-21-44-389254/om_variation_set_0.png)
+![Experience 5 (Baseline) Results 0](../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/om_variation_set_0.png)
 
-![Experience 5 Results 1](../results/synthetic/membership_variation_set/experience5_cluster/results_2026-04-19_18-21-44-389254/om_variation_set_1.png)
+![Experience 5 (Baseline) Results 1](../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/om_variation_set_1.png)
 
 - **Observations**
     - "Best" variants
@@ -300,21 +286,6 @@ TODO
         - [Omega] **FADDIS**
 
 
-### Experience 6 (LAPIN-off + Extraction of clusters until the end) Results
-
-TODO
-
-
-### Experience 7 (LAPIN-on + Extraction of K desired clusters) Results
-
-TODO
-
-
-### Experience 8 (LAPIN-on + Extraction of clusters until the end) Results
-
-TODO
-
-
 
 ## Overlap Variation Set
 
@@ -323,13 +294,13 @@ TODO
 ![Reference Results](./imgs/report3_reference_overlap_variation_set_results.png)
 
 
-### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
+### Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-04-19_22-29-26-629180/)
+[Open Folder](../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/)
 
-![Experience 5 Results 0](../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-04-19_22-29-26-629180/on_variation_set_0.png)
+![Experience 5 (Baseline) Results 0](../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/on_variation_set_0.png)
 
-![Experience 5 Results 1](../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-04-19_22-29-26-629180/on_variation_set_1.png)
+![Experience 5 (Baseline) Results 1](../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/on_variation_set_1.png)
 
 - **Observations**
     - "Best" variants
@@ -361,19 +332,10 @@ TODO
         - [Omega] **FADDIS**/Bigclam
 
 
-### Experience 6 (LAPIN-off + Extraction of clusters until the end) Results
 
-TODO
+## Hardware
 
-
-### Experience 7 (LAPIN-on + Extraction of K desired clusters) Results
-
-TODO
-
-
-### Experience 8 (LAPIN-on + Extraction of clusters until the end) Results
-
-TODO
+![](./imgs/hardware.png)
 
 
 
