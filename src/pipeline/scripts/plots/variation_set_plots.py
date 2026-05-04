@@ -52,13 +52,14 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
         variation_parameter : (str)
             The network property to vary in the experiment.
         input_filename : (str, optional)
-            The name of the CSV file containing the results for each network instance. 
+            The name of the CSV file containing the results for each network instance.
             Default is "_results.csv".
 
     Saves:
         - A CSV file with the raw results for all instances and variants, named "{variation_parameter}_variation_set.csv".
         - A CSV file with summary statistics for each variant, named "{variation_parameter}_variation_set_summary.csv".
-        - Plots of ONMI and Omega against the variation parameter for each variant, saved as PDF files in the results directory, named "{variation_parameter}_variation_set_{idx}.pdf".
+        - Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter for each variant,
+          saved as PDF files in the results directory, named "{variation_parameter}_variation_set_{idx}.pdf".
     """
 
     rows = []
@@ -76,6 +77,7 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
             results_df[FADDIS_RUNTIME_COL] = pd.to_numeric(results_df[FADDIS_RUNTIME_COL], errors="coerce")
 
         results_df[VARIANT_COL] = results_df.apply(lambda r: _build_variant_name(r.to_dict()), axis=1)
+
         for _, res in results_df.iterrows():
             row = {
                 VARIANT_COL: res[VARIANT_COL],
@@ -86,6 +88,7 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
                 NETWORK_PROPERTY_INST: properties[NETWORK_PROPERTY_INST],
                 ONMI_COL: pd.to_numeric(res[ONMI_COL], errors="coerce"),
                 OMEGA_COL: pd.to_numeric(res[OMEGA_COL], errors="coerce"),
+                KERR_COL: pd.to_numeric(res[KERR_COL], errors="coerce"),
             }
 
             if has_faddis_runtime:
@@ -93,17 +96,26 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
 
             rows.append(row)
 
-    raw_df = (pd.DataFrame(rows).sort_values([variation_parameter, VARIANT_COL, NETWORK_PROPERTY_INST])
-              .reset_index(drop=True))
+    raw_df = (
+        pd.DataFrame(rows)
+        .sort_values([variation_parameter, VARIANT_COL, NETWORK_PROPERTY_INST])
+        .reset_index(drop=True)
+    )
 
     agg_dict = {
         "#Instances": (NETWORK_PROPERTY_INST, "nunique"),
+
         "ONMI Results": (ONMI_COL, results_as_json),
         "Mean ONMI": (ONMI_COL, "mean"),
         "Sample Std ONMI": (ONMI_COL, lambda s: s.std(ddof=1)),
+
         "Omega Results": (OMEGA_COL, results_as_json),
         "Mean Omega": (OMEGA_COL, "mean"),
         "Sample Std Omega": (OMEGA_COL, lambda s: s.std(ddof=1)),
+
+        "Relative Error |K'-K|/K Results": (KERR_COL, results_as_json),
+        "Mean Relative Error |K'-K|/K": (KERR_COL, "mean"),
+        "Sample Std Relative Error |K'-K|/K": (KERR_COL, lambda s: s.std(ddof=1)),
     }
 
     if FADDIS_RUNTIME_COL in raw_df.columns:
@@ -119,8 +131,14 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
     )
 
     for col in [
-        "Mean ONMI", "Sample Std ONMI", "Mean Omega", "Sample Std Omega", "Mean FADDIS Runtime",
-        "Sample Std FADDIS Runtime"
+        "Mean ONMI",
+        "Sample Std ONMI",
+        "Mean Omega",
+        "Sample Std Omega",
+        "Mean Relative Error |K'-K|/K",
+        "Sample Std Relative Error |K'-K|/K",
+        "Mean FADDIS Runtime",
+        "Sample Std FADDIS Runtime",
     ]:
         if col in summary_df.columns:
             summary_df[col] = summary_df[col].round(6)
@@ -152,7 +170,7 @@ def _iter_sorted_dirs(directory: str) -> list[Path]:
 def _parse_network_name(network_name: str):
     """
     Parse a network name to extract its properties.
-    
+
     Parameters:
         network_name : (str)
             The name of the network.
@@ -219,7 +237,7 @@ def _build_variant_name(row: dict[str, str]) -> str:
 def results_as_json(series: pd.Series) -> str:
     """
     Convert a pandas Series of results to a JSON string, handling NaN values appropriately.
-    
+
     Parameters:
         series : (pd.Series)
             A pandas Series containing the results.
@@ -244,9 +262,9 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
             DataFrame containing the summary results for the variation set.
         variation_parameter : (str)
             The network property that was varied in the experiment, used for labeling the plots.
-    
+
     Saves:
-        Plots of ONMI, Omega, and FADDIS Runtime against the variation parameter for each variant,
+        Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter for each variant,
         saved as PDF files in the results directory.
     """
 
@@ -261,24 +279,19 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
         if selected_variants is not None:
             plot_df = plot_df[plot_df[VARIANT_COL].isin(selected_variants)].copy()
 
+        if plot_df.empty:
+            continue
+
         variants = list(plot_df[VARIANT_COL].drop_duplicates())
 
         has_faddis_runtime = "Mean FADDIS Runtime" in df.columns
 
-        if has_faddis_runtime:
-            fig = plt.figure(figsize=(13.5, 9.0))
-            gs = fig.add_gridspec(2, 2)
+        fig, axes = plt.subplots(2, 2, figsize=(13.5, 9.0))
 
-            ax1 = fig.add_subplot(gs[0, 0])
-            ax2 = fig.add_subplot(gs[0, 1])
-            ax3 = fig.add_subplot(gs[1, :])  # Runtime plot below both
-        else:
-            fig = plt.figure(figsize=(13.5, 4.5))
-            gs = fig.add_gridspec(1, 2)
-
-            ax1 = fig.add_subplot(gs[0, 0])
-            ax2 = fig.add_subplot(gs[0, 1])
-            ax3 = None
+        ax1 = axes[0, 0]
+        ax2 = axes[0, 1]
+        ax3 = axes[1, 0]
+        ax4 = axes[1, 1]
 
         variant_markers = cycle(["x", "^", "s", "*", "D", "o", "v", "P", ">", "<", "h", "+"])
         variant_colors = {variant: plt.cm.tab20(i % 20) for i, variant in enumerate(variants)}
@@ -289,16 +302,39 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
             color = variant_colors[variant]
 
             ax1.plot(
-                d[variation_parameter], d["Mean ONMI"],
-                marker=marker, color=color, linewidth=1.8, markersize=7, label=variant
+                d[variation_parameter],
+                d["Mean ONMI"],
+                marker=marker,
+                color=color,
+                linewidth=1.8,
+                markersize=7,
+                label=variant,
             )
+
             ax2.plot(
-                d[variation_parameter], d["Mean Omega"],
-                marker=marker, color=color, linewidth=1.8, markersize=7, label=variant
+                d[variation_parameter],
+                d["Mean Omega"],
+                marker=marker,
+                color=color,
+                linewidth=1.8,
+                markersize=7,
+                label=variant,
+            )
+
+            ax3.errorbar(
+                d[variation_parameter],
+                d["Mean Relative Error |K'-K|/K"],
+                yerr=d["Sample Std Relative Error |K'-K|/K"],
+                marker=marker,
+                color=color,
+                linewidth=1.8,
+                markersize=7,
+                capsize=4,
+                label=variant,
             )
 
             if has_faddis_runtime:
-                ax3.errorbar(
+                ax4.errorbar(
                     d[variation_parameter],
                     d["Mean FADDIS Runtime"],
                     yerr=d["Sample Std FADDIS Runtime"],
@@ -307,36 +343,43 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
                     linewidth=1.8,
                     markersize=7,
                     capsize=4,
-                    label=variant
+                    label=variant,
                 )
 
-        ax1.set_xlabel(variation_parameter)
-        ax1.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
+        if not has_faddis_runtime:
+            ax4.axis("off")
+
+        for ax in [ax1, ax2, ax3, ax4]:
+            if not ax.axison:
+                continue
+
+            ax.set_xlabel(variation_parameter)
+            ax.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
+            ax.margins(x=0.03)
+            ax.grid(True, alpha=0.3)
+
+            handles, labels = ax.get_legend_handles_labels()
+            if handles:
+                ax.legend(loc="upper right", fontsize=10)
+
         ax1.set_ylabel("ONMI")
         ax1.set_ylim(0, 1.0)
-        ax1.legend(loc="upper right", fontsize=10)
-        ax1.margins(x=0.03)
-        ax1.grid(True, alpha=0.3)
 
-        ax2.set_xlabel(variation_parameter)
-        ax2.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
         ax2.set_ylabel("Omega")
         ax2.set_ylim(0, 1.0)
-        ax2.legend(loc="upper right", fontsize=10)
-        ax2.margins(x=0.03)
-        ax2.grid(True, alpha=0.3)
+
+        ax3.set_ylabel("Relative Error |K'-K|/K")
+        ax3.set_ylim(bottom=0)
 
         if has_faddis_runtime:
-            ax3.set_xlabel(variation_parameter)
-            ax3.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
-            ax3.set_ylabel("FADDIS Runtime (in seconds)")
-            ax3.legend(loc="upper right", fontsize=10)
-            ax3.margins(x=0.03)
-            ax3.grid(True, alpha=0.3)
+            ax4.set_ylabel("FADDIS Runtime (in seconds)")
+            ax4.set_ylim(bottom=0)
 
         fig.tight_layout()
         fig.savefig(
-            os.path.join(results_dir, f"{variation_parameter}_variation_set_{idx}.pdf"), dpi=300, bbox_inches="tight"
+            os.path.join(results_dir, f"{variation_parameter}_variation_set_{idx}.pdf"),
+            dpi=300,
+            bbox_inches="tight",
         )
 
         plt.close(fig)
