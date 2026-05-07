@@ -89,12 +89,12 @@
 2. `Default (Adjacency matrix)`
 3. `Sparsification not applied`
 4. `LAPIN-off and LAPIN-on`
-5. `epsilon = threshold of the network family; tau = 0.05; k_max = min(100, n/2)`
+5. `epsilon = threshold of the network family; tau = 0.05; k_max = min(500, n/2)`
 6. `FADDIS with stop criterion (epsilon, tau, k_max)`
 7. `gamma = [0.3, 0.5, 0.6, 0.7, 0.8, 0.9]`
 8. `Extrinsic metrics = [Relative Error of K, ONMI, Omega]`
 
-- For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper.
+- For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper. Additionally, plot the relative error of K (number of communities) and the mean runtime of FADDIS.
 
 
 
@@ -216,6 +216,42 @@
 
 ![Experience 5 Results 1](../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-05-02_09-15-07-970979/mu_variation_set_1.png)
 
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - Relative Error |K'-K|/K
+        - Below 0.2
+    - FADDIS Runtime:
+        - Best variants:
+            - Best time: +/-10s ($\mu$=0.6)
+            - Worst time: +/-12s ($\mu$=0.2)
+    - $\mu$ = 0.1
+        - [ONMI] Copra
+        - [Omega] Copra
+    - $\mu$ = 0.2
+        - [ONMI] Copra
+        - [Omega] Copra
+    - $\mu$ = 0.3 
+        - [ONMI] **FADDIS**/Copra
+        - [Omega] **FADDIS**/Copra
+    - $\mu$ = 0.4 
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $\mu$ = 0.5
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $\mu$ = 0.6 
+        - [ONMI] **FADDIS**/CFinder
+        - [Omega] **FADDIS**
+    - $\mu$ = 0.7
+        - [ONMI] -
+        - [Omega] **FADDIS**
+    - $\mu$ = 0.8
+        - [ONMI] -
+        - [Omega] -
 
 ### Experience 6 (LAPIN-off + Extraction of clusters until the end) Results
 
@@ -260,6 +296,39 @@
 
 ![Experience 5 Results 1](../results/synthetic/membership_variation_set/experience5_cluster/results_2026-05-02_19-27-44-446056/om_variation_set_1.png)
 
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - Relative Error |K'-K|/K
+        - Below 0.2 until $o_{m}$ = 6
+    - FADDIS Runtime:
+        - Best variants:
+            - Best time: +/-12s ($o_{m}$=2)
+            - Worst time: +/-15s ($o_{m}$=8)
+    - $o_{m}$ = 2
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 3
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 4
+        - [ONMI] **FADDIS**/CFinder
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 5 
+        - [ONMI] CFinder
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 6
+        - [ONMI] CFinder
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 7
+        - [ONMI] CFinder
+        - [Omega] **FADDIS**
+    - $o_{m}$ = 8
+        - [ONMI] CFinder
+        - [Omega] **FADDIS**
 
 ### Experience 6 (LAPIN-off + Extraction of clusters until the end) Results
 
@@ -304,6 +373,36 @@
 
 ![Experience 5 Results 1](../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-05-03_12-11-56-013021/on_variation_set_1.png)
 
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - Relative Error |K'-K|/K
+        - Below 0.2 until $o_{n}/n$ = 0.5
+    - FADDIS Runtime:
+        - Best variants:
+            - Best time: +/-11s ($o_{n}/n$=0.1)
+            - Worst time: +/-12s ($o_{n}/n$=0.5)
+    - $o_{n}/n$ = 0.1
+        - [ONMI] **FADDIS**
+        - [Omega]  **FADDIS**
+    - $o_{n}/n$ = 0.2
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{n}/n$ = 0.3
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**
+    - $o_{n}/n$ = 0.4 
+        - [ONMI] **FADDIS**/CFinder
+        - [Omega] **FADDIS**
+    - $o_{n}/n$ = 0.5
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**/Bigclam
+    - $o_{n}/n$ = 0.6
+        - [ONMI] CFinder
+        - [Omega] **FADDIS**/Bigclam
 
 ### Experience 6 (LAPIN-off + Extraction of clusters until the end) Results
 
@@ -348,6 +447,20 @@
 
 ![Experience 5 Results 1](../results/synthetic/size_variation_set/experience5_cluster/results_2026-05-03_19-16-46-640640/n_variation_set_1.png)
 
+- **Observations**
+    - "Best" variants
+        - 005_default_lapin-off_-_g0.8
+        - 006_default_lapin-off_-_g0.9
+    - Stop Condition
+        - epsilon or W
+    - Relative Error |K'-K|/K
+        - Below 0.2
+    - FADDIS Runtime:
+        - Best variants:
+            - Time: +/-11s ($n$ = 1000)
+    - $n$ = 1000
+        - [ONMI] **FADDIS**
+        - [Omega] **FADDIS**  
 
 ### Experience 6 (LAPIN-off + Extraction of clusters until the end) Results
 

@@ -1,4 +1,4 @@
-# Report 4 - Preliminary experiments of eigendecompositions implementations on large-networks
+# Report 5 - Experiments of eigendecompositions implementations on large-networks
 
 
 
@@ -13,6 +13,7 @@
   - [Experience with scipy.linalg.eigh (driver='evd')](#experience-with-scipylinalgeigh-driverevd)
   - [Experience with scipy.linalg.eigh (driver='evr')](#experience-with-scipylinalgeigh-driverevr)
 - [Hardware](#hardware)
+- [Discussion](#discussion)
 - [References](#references)
 
 
@@ -87,6 +88,9 @@
 
 ```python
 curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigh(Wt)
+
+eigenvalues_pos = np.argwhere(curr_eigenvalues > ZERO_BOUND).ravel()
+size_positive_eigenvalues = eigenvalues_pos.size
 ```
 
 [Open Folder](../results/synthetic/size_variation_set/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/)
@@ -100,13 +104,16 @@ curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigh(Wt)
 ### Experience with scipy.linalg.eigh (driver='evd')
 
 ```python
-curr_eigenvalues, curr_eigenvectors = eigh(
+curr_eigenvalues, curr_eigenvectors = scipy.linalg.eigh(
     Wt,
-    lower=True,
-    driver="evd",
-    overwrite_a=False,
-    check_finite=False,
+    lower=True,             # the pertinent array data is taken from the lower triangle of Wt
+    driver="evd",   
+    overwrite_a=False,      # can save memory/time if Wt is no longer needed
+    check_finite=False,     # faster, but just safe if Wt has no NaN/Inf
 )
+
+eigenvalues_pos = np.argwhere(curr_eigenvalues > ZERO_BOUND).ravel()
+size_positive_eigenvalues = eigenvalues_pos.size
 ```
 
 [Open Folder](../results/synthetic/size_variation_set/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/)
@@ -120,27 +127,39 @@ curr_eigenvalues, curr_eigenvectors = eigh(
 ### Experience with scipy.linalg.eigh (driver='evr')
 
 ```python
-curr_eigenvalues, curr_eigenvectors = eigh(
+curr_eigenvalues, curr_eigenvectors = scipy.linalg.eigh(
     Wt,
-    lower=True,
+    lower=True,                             # the pertinent array data is taken from the lower triangle of Wt
     driver="evr",
-    overwrite_a=False,
-    check_finite=False,
-    subset_by_value=(ZERO_BOUND, np.inf)
+    overwrite_a=False,                      # can save memory/time if Wt is no longer needed
+    check_finite=False,                     # faster, but just safe if Wt has no NaN/Inf
+    subset_by_value=(ZERO_BOUND, np.inf)    # only the eigenvalues between the half-open interval (a, b] are returned
 )
+
+size_positive_eigenvalues = curr_eigenvalues.size
+eigenvalues_pos = np.argsort(curr_eigenvalues)[::-1]
 ```
 
 [Open Folder](../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/)
 
-![Experience with scipy.linalg.eigh (driver='evd') Results 0](../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_variation_set_0.png)
+![Experience with scipy.linalg.eigh (driver='evr') Results 0](../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_variation_set_0.png)
 
-![Experience with scipy.linalg.eigh (driver='evd') Results 1](../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_variation_set_1.png)
+![Experience with scipy.linalg.eigh (driver='evr') Results 1](../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_variation_set_1.png)
 
 
 
 ## Hardware
 
 ![](./imgs/hardware.png)
+
+
+
+## Discussion
+
+- **Observations**
+    - All eigendecomposition implementations (**numpy.linalg.eigh**, **scipy.linalg.eigh (driver='evd')**, **scipy.linalg.eigh (driver='evr')**) produced the same results, as expected, since the behaviour of FADDIS does not change;
+    - **scipy.linalg.eigh (driver='evr')** does not improve runtime, probably because the internal operations required to return only the positive eigenvalues introduce significant overhead compared to returning all eigenvalues and filtering them afterwards;
+    - **numpy.linalg.eigh** and **scipy.linalg.eigh (driver='evd')** are equivalent implementations from different libraries. **numpy.linalg.eigh** was slightly better on networks with 1000 nodes, while **scipy.linalg.eigh (driver='evd')** was slightly better on networks with 3000 nodes. However, this probably depends on the current experiments. **numpy.linalg.eigh** was chosen due to its simplicity, given that **scipy.linalg.eigh (driver='evd')** does not clearly improve runtime.
 
 
 

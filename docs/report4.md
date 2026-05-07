@@ -1,4 +1,4 @@
-# Report 4 - Preliminary experiments of FADDIS versions on large-networks
+# Report 4 - Experiments of FADDIS versions on large-networks
 
 ## Table of Contents
 
@@ -11,6 +11,7 @@
   - [Experience with FADDIS version-a top-10](#experience-with-faddis-version-a-top-10)
   - [Experience with FADDIS version-a (Improved)](#experience-with-faddis-version-a-improved)
 - [Hardware](#hardware)
+- [Discussion](#discussion)
 - [References](#references)
 
 
@@ -63,7 +64,7 @@
 7. `gamma = [0.3, 0.5, 0.6, 0.7, 0.8, 0.9]`
 8. `Extrinsic metrics = [Relative Error of K, ONMI, Omega]`
 
-- For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper. Additionally, plot the mean runtime of FADDIS.
+- For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper. Additionally, plot the relative error of K (number of communities) and the mean runtime of FADDIS.
 
 
 ## Size Variation Set
@@ -139,6 +140,15 @@ curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigh(Wt)
 ## Hardware
 
 ![](./imgs/hardware.png)
+
+
+
+## Discussion
+
+- **Observations**
+  - **FADDIS version-m** significantly reduced the runtime compared to **FADDIS version-a (GOT)**, but the results showed a substantial downgrade. Therefore, it was excluded;
+  - **FADDIS version-a top-e** reduced the runtime compared to **FADDIS version-a (GOT)** and slightly more than **FADDIS version-m**, but the results also showed a downgrade. However, it may perform well with further optimization improvements. Therefore, it will be considered as future work for optimizations: fine-tuning top-e, updating all FADDIS code to use recent and faster implementations and using GPUs;
+  - **FADDIS version-a (Improved)** maintained the results of **FADDIS version-a (GOT)**, as expected, since the behaviour of FADDIS does not change. The runtime was better than **FADDIS version-a (GOT)** and worse than **FADDIS version-m** and **FADDIS version-a top-e**. Therefore, it was the most balanced option and will be explored and used in the next stages.
 
 
 

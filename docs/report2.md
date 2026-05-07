@@ -94,7 +94,7 @@
 7. `gamma = [0.3, 0.5, 0.6, 0.7, 0.8, 0.9]`
 8. `Extrinsic metrics = [Relative Error of K, ONMI, Omega]`
 
-- For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper.
+- For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper. Additionally, plot the relative error of K (number of communities).
 
 
 

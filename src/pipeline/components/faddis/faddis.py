@@ -5,8 +5,6 @@ Implementation based on https://github.com/dmitsf/GOT/blob/master/got/relevance_
 import numpy as np
 import numpy.linalg as LA
 
-# from scipy.linalg import eigh
-
 # A small value to determine if a number is considered to be zero.
 ZERO_BOUND = 10 ** (-9)
 
@@ -84,34 +82,14 @@ def faddis(
         # Compute eigenvalues and eigenvectors of Wt.
         curr_eigenvalues, curr_eigenvectors = LA.eigh(Wt)
 
-        # curr_eigenvalues, curr_eigenvectors = eigh(
-        #    Wt,
-        #    lower=True,
-        #    driver="evd",
-        #    overwrite_a=False,
-        #    check_finite=False,
-        # )
-
-        # curr_eigenvalues, curr_eigenvectors = eigh(
-        #    Wt,
-        #    lower=True,
-        #    driver="evr",
-        #    overwrite_a=False,
-        #    check_finite=False,
-        #    subset_by_value=(ZERO_BOUND, np.inf)
-        # )
-
+        # Get indices of only positive eigenvalues.
         eigenvalues_pos = np.argwhere(curr_eigenvalues > ZERO_BOUND).ravel()
         size_positive_eigenvalues = eigenvalues_pos.size
-
-        # size_positive_eigenvalues = curr_eigenvalues.size
 
         if size_positive_eigenvalues == 0:
             stop_condition = "W"
             # print("[INFO] No positive weights at spectral clusters.")
             break
-
-        # eigenvalues_pos = np.argsort(curr_eigenvalues)[::-1]
 
         # Store intensities and corresponding membership vectors.
         curr_intensities = np.zeros((size_positive_eigenvalues, 1))
@@ -119,8 +97,6 @@ def faddis(
 
         # For each positive eigenvalue, compute the corresponding fuzzy cluster.
         for k in range(size_positive_eigenvalues):
-            # lt = curr_eigenvalues_diagonal[eigenvalues_pos[k]]
-
             # Compute the cluster membership vector.
             vf = np.asarray(curr_eigenvectors[:, eigenvalues_pos[k]]).reshape(-1, 1)
 

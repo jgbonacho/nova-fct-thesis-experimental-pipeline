@@ -7,7 +7,7 @@ from pipeline.components.affinity_design.default_affinity import default_affinit
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
 
 ROOT_DIR = os.path.join(os.path.dirname(__file__), '..', '..', '..')
-SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic', 'variation_sets', 'CHANGE_IT')
+SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic', 'variation_sets', 'updated_size_variation_set')
 RESULTS_BASE_DIR = os.path.join(ROOT_DIR, 'results', 'synthetic')
 CONFIG_DIR = os.path.join(os.path.dirname(__file__))
 
@@ -43,7 +43,7 @@ def load_thresholds(
         thresholds_key: str = "Threshold"
 ) -> dict[str, float]:
     """
-    Load thresholds from JSON file.
+    Load thresholds from CSV file.
 
     Parameters:
         config_dir : (str)
