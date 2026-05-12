@@ -14,21 +14,22 @@ from pipeline.components.lapin.lapin import lapin
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.synthetic_data_loader import load_lfr_benchmark_network
 from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
-from pipeline.config.config import ExecutionMode, DefuzzificationRule
-from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
+from pipeline.config.synthetic_runner.config import ExecutionMode, DefuzzificationRule
+from pipeline.scripts.utils.networks_dataclasses import LFRNetworkFamilyConfig
 from pipeline.scripts.utils.result_dataclass import Result
 from pipeline.scripts.utils.utils import create_results_dir, create_network_results_dir, log_progress, \
-    initialize_results_file, save_report, save_faddis_clustering_results, stable_seed
+    initialize_results_file, save_report_of_synthetic_runner, save_faddis_clustering_results, stable_seed
 
 
 def run_synthetic_networks_experiments(
         networks_base_dir: str,
         results_base_dir: str,
-        network_families: list[NetworkFamily],
+        network_families: list[LFRNetworkFamilyConfig],
         thresholds: dict[str, float],
         affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
         execution_modes: list[ExecutionMode],
         defuzzification_rules: list[DefuzzificationRule],
+        stop_criterion_until_k: bool = False,
         sample_fraction: float = None,
         random_seed: int = None,
 ):
@@ -40,7 +41,7 @@ def run_synthetic_networks_experiments(
             Path to the base directory containing the synthetic networks.
         results_base_dir : (str)
             Path to the base directory where results will be saved.
-        network_families : (list[NetworkFamily])
+        network_families : (list[LFRNetworkFamilyConfig])
             List of network families to be processed.
         thresholds : (dict[str, float])
             Dictionary containing threshold values, keyed by network family name.
@@ -50,6 +51,8 @@ def run_synthetic_networks_experiments(
             List of execution modes to be applied.
         defuzzification_rules : (list[DefuzzificationRule])
             List of defuzzification rules to be applied.
+        stop_criterion_until_k : (bool, optional)
+            Set the stop criterion of FADDIS for extracting k clusters.
         sample_fraction : (float, optional)
             Fraction of networks to sample from each family for processing. If None, all networks are processed
             Default is None.
@@ -58,7 +61,7 @@ def run_synthetic_networks_experiments(
             Default is None.
 
     Returns:
-        results_dir : str
+        results_dir : (str)
             The path to the results' directory.
     """
 
@@ -109,17 +112,22 @@ def run_synthetic_networks_experiments(
                         Ln = lapin(W, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
 
                         # 5. Fine-tune the stop criterion for FADDIS.
-                        epsilon, tau, k_max = set_stop_criterion(
-                            graph.number_of_nodes(), network_family.name, thresholds
-                        )
+                        if not stop_criterion_until_k:
+                            epsilon, tau, k_max = set_stop_criterion(
+                                graph.number_of_nodes(), network_family.name, thresholds
+                            )
+                        else:
+                            epsilon, tau, k_max = -1, -1, -1
 
                         # 6. Execute FADDIS.
                         start_time = get_computation_start_time()
-                        # results = faddis(
-                        #     W=W if not execution_mode.apply_lapin else Ln,
-                        #     desired_k=k + 1 if not execution_mode.apply_lapin else k
-                        # )
-                        results = faddis(W if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
+                        if not stop_criterion_until_k:
+                            results = faddis(W if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
+                        else:
+                            results = faddis(
+                                W=W if not execution_mode.apply_lapin else Ln,
+                                desired_k=k + 1 if not execution_mode.apply_lapin else k
+                            )
                         end_time = get_computation_end_time()
 
                         for idx5, defuzzification_rule in enumerate(defuzzification_rules, 1):
@@ -165,6 +173,8 @@ def run_synthetic_networks_experiments(
                 print(f"[ERROR] Network {network.name} processing failed with error: {e}")
                 continue
 
-    save_report(results_dir, network_families, thresholds, affinity_designs, execution_modes, defuzzification_rules)
+    save_report_of_synthetic_runner(
+        results_dir, network_families, thresholds, affinity_designs, execution_modes, defuzzification_rules
+    )
 
     return results_dir

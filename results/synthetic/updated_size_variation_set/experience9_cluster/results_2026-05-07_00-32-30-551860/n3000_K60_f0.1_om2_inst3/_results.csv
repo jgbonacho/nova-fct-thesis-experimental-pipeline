@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,49 | 56,0.125,0.065995,0.067969,1546.385016
+002,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,49 | 56,0.125,0.280040,0.226431,1546.385016
+003,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,49 | 56,0.125,0.383958,0.328935,1546.385016
+004,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,49 | 56,0.125,0.488556,0.442969,1546.385016
+005,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,49 | 56,0.125,0.568892,0.545957,1546.385016
+006,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,49 | 56,0.125,0.626296,0.629184,1546.385016
+007,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,32 | 56,0.428571,0,-0.001443,1760.459226
+008,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,32 | 56,0.428571,0.008338,0.049880,1760.459226
+009,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,32 | 56,0.428571,0.052928,0.103311,1760.459226
+010,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,32 | 56,0.428571,0.091229,0.179712,1760.459226
+011,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,32 | 56,0.428571,0.161175,0.283204,1760.459226
+012,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,32 | 56,0.428571,0.244656,0.382759,1760.459226

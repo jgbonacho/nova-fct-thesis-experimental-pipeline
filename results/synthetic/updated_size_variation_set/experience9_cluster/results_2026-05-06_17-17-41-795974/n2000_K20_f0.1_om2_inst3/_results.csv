@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,22 | 21,0.047619,0.214732,0.065262,188.946130
+002,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,22 | 21,0.047619,0.347648,0.245452,188.946130
+003,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,22 | 21,0.047619,0.433525,0.359976,188.946130
+004,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,22 | 21,0.047619,0.502871,0.493424,188.946130
+005,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,22 | 21,0.047619,0.557446,0.596851,188.946130
+006,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,22 | 21,0.047619,0.615809,0.653509,188.946130
+007,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,22 | 21,0.047619,0.170690,0.039063,343.577000
+008,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,22 | 21,0.047619,0.322993,0.284752,343.577000
+009,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,22 | 21,0.047619,0.432793,0.451953,343.577000
+010,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,22 | 21,0.047619,0.524514,0.591463,343.577000
+011,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,22 | 21,0.047619,0.609422,0.687534,343.577000
+012,64_nH_uM_onnL_omL,n2000_K20_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,22 | 21,0.047619,0.673093,0.741132,343.577000

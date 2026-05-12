@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,34 | 39,0.128205,0.130369,0.055020,1083.741447
+002,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,34 | 39,0.128205,0.287235,0.227481,1083.741447
+003,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,34 | 39,0.128205,0.368997,0.332637,1083.741447
+004,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,34 | 39,0.128205,0.417635,0.432266,1083.741447
+005,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,34 | 39,0.128205,0.501780,0.529316,1083.741447
+006,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,34 | 39,0.128205,0.570882,0.606135,1083.741447
+007,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,28 | 39,0.282051,0.058265,0.004324,1446.223109
+008,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,28 | 39,0.282051,0.148955,0.095466,1446.223109
+009,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,28 | 39,0.282051,0.218772,0.185227,1446.223109
+010,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,28 | 39,0.282051,0.258787,0.288532,1446.223109
+011,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,28 | 39,0.282051,0.312210,0.403368,1446.223109
+012,64_nH_uM_onnL_omL,n3000_K40_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,28 | 39,0.282051,0.364551,0.488700,1446.223109

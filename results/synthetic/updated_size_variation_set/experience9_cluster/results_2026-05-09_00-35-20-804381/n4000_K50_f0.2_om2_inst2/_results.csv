@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,39 | 47,0.170213,0.094639,0.062159,2902.579659
+002,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,39 | 47,0.170213,0.290384,0.259442,2902.579659
+003,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,39 | 47,0.170213,0.372970,0.362453,2902.579659
+004,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,39 | 47,0.170213,0.458646,0.459696,2902.579659
+005,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,39 | 47,0.170213,0.513653,0.536093,2902.579659
+006,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,39 | 47,0.170213,0.534308,0.593819,2902.579659
+007,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,30 | 47,0.361702,0.020593,0.001694,3866.054644
+008,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,30 | 47,0.361702,0.058217,0.082994,3866.054644
+009,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,30 | 47,0.361702,0.085561,0.157302,3866.054644
+010,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,30 | 47,0.361702,0.139091,0.249484,3866.054644
+011,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,30 | 47,0.361702,0.208133,0.336205,3866.054644
+012,64_nH_uM_onnL_omL,n4000_K50_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,30 | 47,0.361702,0.257052,0.406117,3866.054644

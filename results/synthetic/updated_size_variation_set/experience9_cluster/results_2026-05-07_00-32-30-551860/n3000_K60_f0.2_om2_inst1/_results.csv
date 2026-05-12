@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,43 | 65,0.338462,0.038000,0.049463,1315.351343
+002,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,43 | 65,0.338462,0.161274,0.197370,1315.351343
+003,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,43 | 65,0.338462,0.242643,0.295591,1315.351343
+004,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,43 | 65,0.338462,0.325983,0.388396,1315.351343
+005,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,43 | 65,0.338462,0.367826,0.460231,1315.351343
+006,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,43 | 65,0.338462,0.396150,0.514903,1315.351343
+007,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,30 | 65,0.538462,0,0.005073,1685.403496
+008,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,30 | 65,0.538462,0.013179,0.060511,1685.403496
+009,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,30 | 65,0.538462,0.031681,0.112542,1685.403496
+010,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,30 | 65,0.538462,0.046592,0.181083,1685.403496
+011,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,30 | 65,0.538462,0.081844,0.256690,1685.403496
+012,64_nH_uM_onnL_omL,n3000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,30 | 65,0.538462,0.104353,0.314499,1685.403496

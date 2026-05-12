@@ -1,0 +1,85 @@
+{
+  "network_families": [
+    {
+      "name": "network_family_1",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "networks": [
+        {
+          "name": "us-political-blogs",
+          "gml_filename": "us-political-blogs",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        },
+        {
+          "name": "books-about-us-politics",
+          "gml_filename": "polbooks",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        }
+      ]
+    },
+    {
+      "name": "network_family_2",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "networks": [
+        {
+          "name": "email-eu-core",
+          "gml_filename": "email-eu-core",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        },
+        {
+          "name": "zachary-karate-club",
+          "gml_filename": "zachary-karate-club",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "club"
+        }
+      ]
+    },
+    {
+      "name": "network_family_3",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "networks": [
+        {
+          "name": "american-college-football",
+          "gml_filename": "football",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        }
+      ]
+    }
+  ],
+  "thresholds": {
+    "network_family_1": 3.752235072877824e-05,
+    "network_family_2": 5.0491174634906215e-05,
+    "network_family_3": 1.747609306989205e-10,
+    "network_family_4": 6.5762288049067375e-06,
+    "network_family_5": 6.633326222394295e-06,
+    "network_family_6": 5.299879652326346e-05
+  },
+  "affinity_designs": [
+    "Default"
+  ],
+  "execution_modes": [
+    {
+      "label": "LAPIN-off",
+      "apply_lapin": false,
+      "laplacian_variant": "-"
+    },
+    {
+      "label": "LAPIN-on",
+      "apply_lapin": true,
+      "laplacian_variant": "Lsym"
+    }
+  ],
+  "defuzzification_rules": [
+    {
+      "gamma": 1
+    }
+  ]
+}

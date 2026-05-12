@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,27 | 30,0.1,0.165139,0.074236,2169.468925
+002,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,27 | 30,0.1,0.328349,0.304893,2169.468925
+003,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,27 | 30,0.1,0.429578,0.420319,2169.468925
+004,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,27 | 30,0.1,0.505044,0.507502,2169.468925
+005,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,27 | 30,0.1,0.550665,0.561761,2169.468925
+006,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,27 | 30,0.1,0.562796,0.596954,2169.468925
+007,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,23 | 30,0.233333,0.091126,0.017636,2936.846548
+008,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,23 | 30,0.233333,0.169300,0.158090,2936.846548
+009,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,23 | 30,0.233333,0.221732,0.252729,2936.846548
+010,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,23 | 30,0.233333,0.275903,0.353587,2936.846548
+011,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,23 | 30,0.233333,0.322868,0.432264,2936.846548
+012,64_nH_uM_onnL_omL,n4000_K30_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,23 | 30,0.233333,0.351016,0.486164,2936.846548

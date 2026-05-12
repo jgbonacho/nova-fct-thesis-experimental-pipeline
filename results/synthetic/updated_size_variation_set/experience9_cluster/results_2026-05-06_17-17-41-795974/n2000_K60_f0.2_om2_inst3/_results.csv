@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,44 | 57,0.228070,0.060445,0.078084,361.313723
+002,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,44 | 57,0.228070,0.277871,0.310431,361.313723
+003,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,44 | 57,0.228070,0.406059,0.433921,361.313723
+004,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,44 | 57,0.228070,0.477188,0.512252,361.313723
+005,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,44 | 57,0.228070,0.529932,0.567083,361.313723
+006,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,44 | 57,0.228070,0.534431,0.599486,361.313723
+007,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,32 | 57,0.438596,0.003850,0.005266,488.902824
+008,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,32 | 57,0.438596,0.034000,0.076646,488.902824
+009,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,32 | 57,0.438596,0.057642,0.138516,488.902824
+010,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,32 | 57,0.438596,0.065527,0.216819,488.902824
+011,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,32 | 57,0.438596,0.141062,0.284193,488.902824
+012,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,32 | 57,0.438596,0.194960,0.344779,488.902824

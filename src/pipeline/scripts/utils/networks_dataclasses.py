@@ -2,18 +2,18 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Network:
+class LFRNetworkConfig:
     """
-    Dataclass for networks.
+    Dataclass for LFR networks configurations.
 
     Attributes:
-        description : str
+        description : (str)
             The description of the network.
-        instance : int
+        instance : (int)
             The instance number of the network.
-        name : str
+        name : (str)
             The name of the network.
-        overlapping_ground_truth : bool
+        overlapping_ground_truth : (bool)
             Whether the ground truth is overlapping.
     """
 
@@ -25,18 +25,18 @@ class Network:
     @staticmethod
     def from_dict(data):
         """
-        Create a Network from a dictionary.
+        Create a LFRNetworkConfig object from a dictionary.
 
         Parameters:
-            data : dict
+            data : (dict)
                 The dictionary to create the Network from.
 
         Returns:
-            network : Network
-                The created Network.
+            network : (LFRNetworkConfig)
+                The created LFRNetworkConfig.
         """
 
-        return Network(
+        return LFRNetworkConfig(
             description=data["description"],
             instance=data["instance"],
             name=data["name"],
@@ -45,28 +45,28 @@ class Network:
 
 
 @dataclass
-class NetworkFamily:
+class LFRNetworkFamilyConfig:
     """
-    Dataclass for network family.
+    Dataclass for LFR network family configuration.
 
     Attributes:
-        name : str
+        name : (str)
             The name of the network family.
-        networks : list[Network]
+        networks : (list[LFRNetworkConfig])
             The list of networks in the family.
 
     Returns:
-        network_family : NetworkFamily
-            The created NetworkFamily.
+        network_family : (LFRNetworkFamilyConfig)
+            The created LFRNetworkFamilyConfig.
     """
 
     name: str
-    networks: list[Network]
+    networks: list[LFRNetworkConfig]
 
     @staticmethod
     def from_dict(data):
         """
-        Create a NetworkFamily from a dictionary.
+        Create a LFRNetworkFamilyConfig object from a dictionary.
 
         Parameters:
             data : dict
@@ -77,7 +77,101 @@ class NetworkFamily:
                 The created NetworkFamily.
         """
 
-        return NetworkFamily(
+        return LFRNetworkFamilyConfig(
             name=data["name"],
-            networks=[Network.from_dict(x) for x in data["networks"]],
+            networks=[LFRNetworkConfig.from_dict(x) for x in data["networks"]],
+        )
+
+
+@dataclass
+class NetworkConfig:
+    """
+    Dataclass for real-world network configurations.
+
+    Attributes:
+        name : (str)
+            The name of the network.
+        gml_filename : (str)
+            The name of the GML file associated with the network.
+        ground_truth : (bool)
+            Whether the network has ground-truth community labels.
+        overlapping_ground_truth : (bool)
+            Whether the ground-truth communities are overlapping.
+        ground_truth_attr : (str)
+            The node attribute containing the ground-truth community label.
+    """
+
+    name: str
+    gml_filename: str
+    ground_truth: bool
+    overlapping_ground_truth: bool
+    ground_truth_attr: str
+
+    @staticmethod
+    def from_dict(data):
+        """
+        Create a NetworkConfig object from a dictionary.
+
+        Parameters:
+            data : (dict)
+                The dictionary containing the network configuration.
+
+        Returns:
+            network : (NetworkConfig)
+                The created NetworkConfig.
+        """
+
+        return NetworkConfig(
+            name=data["name"],
+            gml_filename=data['gml_filename'],
+            ground_truth=data['ground_truth'],
+            overlapping_ground_truth=data['overlapping_ground_truth'],
+            ground_truth_attr=data['ground_truth_attr'],
+        )
+
+
+@dataclass
+class NetworkFamilyConfig:
+    """
+    Dataclass for network family configuration.
+
+    Attributes:
+        name : (str)
+            The name of the network family.
+        directory : (str)
+            The directory of the network family.
+        networks : (list[Network])
+            The list of networks in the family.
+
+    Returns:
+        network_family : NetworkFamily
+            The created NetworkFamily.
+    """
+
+    name: str
+    directory: str
+    networks: list[NetworkConfig]
+
+    @staticmethod
+    def from_dict(data, with_ground_truth_dir, without_ground_truth_dir):
+        """
+        Create a NetworkConfig object from a dictionary.
+
+        Parameters:
+            data : (dict)
+                The dictionary to create the NetworkFamily from.
+            with_ground_truth_dir : (str)
+                The directory of the networks with ground truth.
+            without_ground_truth_dir : (str)
+                The directory of the networks without ground truth.
+
+        Returns:
+            network_family : NetworkFamily
+                The created NetworkFamily.
+        """
+
+        return NetworkFamilyConfig(
+            name=data["name"],
+            directory=with_ground_truth_dir if data["ground_truth_family"] else without_ground_truth_dir,
+            networks=[NetworkConfig.from_dict(x) for x in data["networks"]],
         )

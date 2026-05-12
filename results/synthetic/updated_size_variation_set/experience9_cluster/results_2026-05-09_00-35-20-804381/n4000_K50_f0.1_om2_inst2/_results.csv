@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,43 | 55,0.218182,0.069513,0.060261,3220.049756
+002,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,43 | 55,0.218182,0.209202,0.193551,3220.049756
+003,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,43 | 55,0.218182,0.289227,0.282721,3220.049756
+004,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,43 | 55,0.218182,0.393714,0.400725,3220.049756
+005,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,43 | 55,0.218182,0.486596,0.521530,3220.049756
+006,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,43 | 55,0.218182,0.549282,0.598013,3220.049756
+007,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,35 | 55,0.363636,0.006064,-0.001919,4428.736941
+008,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,35 | 55,0.363636,0.037926,0.040198,4428.736941
+009,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,35 | 55,0.363636,0.066251,0.090771,4428.736941
+010,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,35 | 55,0.363636,0.117052,0.173675,4428.736941
+011,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,35 | 55,0.363636,0.184904,0.280694,4428.736941
+012,64_nH_uM_onnL_omL,n4000_K50_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,35 | 55,0.363636,0.234770,0.390190,4428.736941

@@ -1,0 +1,3 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,FADDIS Runtime
+001,network_family_2,email-eu-core,No,Default,LAPIN-off,-,5.049117e-05,0.05,493,epsilon,1,Yes,16 | 42,0.619048,0.536492,0.597204,0.413773,0.455157,0.584749,2.504945,28.659331
+002,network_family_2,email-eu-core,No,Default,LAPIN-on,Lsym,5.049117e-05,0.05,493,epsilon,1,No,49 | 42,0.166667,0.535857,0.568447,0.392095,0.419459,0.627375,2.533119,93.147758

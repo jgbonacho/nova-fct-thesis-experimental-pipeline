@@ -1,0 +1,23 @@
+[
+  {
+    "name": "american-college-football",
+    "gml_filename": "football",
+    "ground_truth": true,
+    "overlapping_ground_truth": false,
+    "ground_truth_attr": "value"
+  },
+  {
+    "name": "books-about-us-politics",
+    "gml_filename": "polbooks",
+    "ground_truth": true,
+    "overlapping_ground_truth": false,
+    "ground_truth_attr": "value"
+  },
+  {
+    "name": "zachary-karate-club",
+    "gml_filename": "zachary-karate-club",
+    "ground_truth": true,
+    "overlapping_ground_truth": false,
+    "ground_truth_attr": "club"
+  }
+]

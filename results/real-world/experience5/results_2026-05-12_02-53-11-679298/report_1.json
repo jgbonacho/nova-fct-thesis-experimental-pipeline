@@ -1,0 +1,78 @@
+{
+  "network_families": [
+    {
+      "name": "network_family_1",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "networks": [
+        {
+          "name": "american-college-football",
+          "gml_filename": "football",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        },
+        {
+          "name": "books-about-us-politics",
+          "gml_filename": "polbooks",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        },
+        {
+          "name": "zachary-karate-club",
+          "gml_filename": "zachary-karate-club",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "club"
+        }
+      ]
+    },
+    {
+      "name": "network_family_2",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "networks": [
+        {
+          "name": "email-eu-core",
+          "gml_filename": "email-eu-core",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        },
+        {
+          "name": "us-political-blogs",
+          "gml_filename": "us-political-blogs",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        }
+      ]
+    }
+  ],
+  "thresholds": {
+    "network_family_1": 0.003278856928143775,
+    "network_family_2": 0.00038565962107028304,
+    "network_family_3": 0.001300713641398777,
+    "network_family_4": 0.0004785411972475475,
+    "network_family_5": 0.00026785640938302966
+  },
+  "affinity_designs": [
+    "Default"
+  ],
+  "execution_modes": [
+    {
+      "label": "LAPIN-off",
+      "apply_lapin": false,
+      "laplacian_variant": "-"
+    },
+    {
+      "label": "LAPIN-on",
+      "apply_lapin": true,
+      "laplacian_variant": "Lsym"
+    }
+  ],
+  "defuzzification_rules": [
+    {
+      "gamma": 1
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,55 | 61,0.098361,0.157926,0.123912,445.226005
+002,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,55 | 61,0.098361,0.447280,0.363836,445.226005
+003,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,55 | 61,0.098361,0.543345,0.482329,445.226005
+004,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,55 | 61,0.098361,0.635393,0.604841,445.226005
+005,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,55 | 61,0.098361,0.691931,0.683023,445.226005
+006,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,55 | 61,0.098361,0.721191,0.729071,445.226005
+007,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,33 | 61,0.459016,0,0.001855,469.462918
+008,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,33 | 61,0.459016,0.004901,0.045203,469.462918
+009,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,33 | 61,0.459016,0.032787,0.096067,469.462918
+010,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,33 | 61,0.459016,0.058345,0.169367,469.462918
+011,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,33 | 61,0.459016,0.122997,0.254754,469.462918
+012,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,33 | 61,0.459016,0.170470,0.334679,469.462918

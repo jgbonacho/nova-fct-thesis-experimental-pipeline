@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,46 | 53,0.132075,0.070890,0.053343,1391.256342
+002,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,46 | 53,0.132075,0.270266,0.228450,1391.256342
+003,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,46 | 53,0.132075,0.342240,0.330414,1391.256342
+004,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,46 | 53,0.132075,0.446282,0.448275,1391.256342
+005,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,46 | 53,0.132075,0.521567,0.562970,1391.256342
+006,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,46 | 53,0.132075,0.608498,0.652049,1391.256342
+007,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,31 | 53,0.415094,0.002069,0.002404,1660.961648
+008,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,31 | 53,0.415094,0.017200,0.057638,1660.961648
+009,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,31 | 53,0.415094,0.076685,0.121466,1660.961648
+010,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,31 | 53,0.415094,0.116805,0.208325,1660.961648
+011,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,31 | 53,0.415094,0.178655,0.311457,1660.961648
+012,64_nH_uM_onnL_omL,n3000_K60_f0.1_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,31 | 53,0.415094,0.225110,0.390207,1660.961648

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,43 | 46,0.065217,0.132992,0.092903,1340.102171
+002,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,43 | 46,0.065217,0.366793,0.317542,1340.102171
+003,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,43 | 46,0.065217,0.457042,0.424254,1340.102171
+004,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,43 | 46,0.065217,0.535644,0.520002,1340.102171
+005,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,43 | 46,0.065217,0.619297,0.605804,1340.102171
+006,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,43 | 46,0.065217,0.663894,0.668515,1340.102171
+007,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,34 | 46,0.260870,0.022716,0.001785,1849.857821
+008,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,34 | 46,0.260870,0.079862,0.061349,1849.857821
+009,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,34 | 46,0.260870,0.130931,0.133173,1849.857821
+010,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,34 | 46,0.260870,0.212402,0.239511,1849.857821
+011,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,34 | 46,0.260870,0.274344,0.355583,1849.857821
+012,64_nH_uM_onnL_omL,n3000_K50_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,34 | 46,0.260870,0.318202,0.467795,1849.857821

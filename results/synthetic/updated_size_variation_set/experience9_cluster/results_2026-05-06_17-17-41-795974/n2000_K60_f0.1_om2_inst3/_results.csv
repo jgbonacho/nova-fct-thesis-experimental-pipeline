@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,54 | 59,0.084746,0.137030,0.132702,444.364753
+002,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,54 | 59,0.084746,0.423958,0.376136,444.364753
+003,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,54 | 59,0.084746,0.509653,0.483811,444.364753
+004,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,54 | 59,0.084746,0.591703,0.584327,444.364753
+005,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,54 | 59,0.084746,0.660819,0.660140,444.364753
+006,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,54 | 59,0.084746,0.706607,0.710301,444.364753
+007,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,33 | 59,0.440678,0,0.004642,521.886810
+008,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,33 | 59,0.440678,0.025588,0.064906,521.886810
+009,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,33 | 59,0.440678,0.084877,0.126293,521.886810
+010,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,33 | 59,0.440678,0.155208,0.212299,521.886810
+011,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,33 | 59,0.440678,0.197998,0.309552,521.886810
+012,64_nH_uM_onnL_omL,n2000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,33 | 59,0.440678,0.276314,0.392672,521.886810

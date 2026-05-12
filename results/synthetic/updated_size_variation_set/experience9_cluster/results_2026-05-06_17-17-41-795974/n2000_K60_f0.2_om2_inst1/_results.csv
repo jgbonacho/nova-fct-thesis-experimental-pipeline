@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,47 | 61,0.229508,0.087741,0.077620,378.813979
+002,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,47 | 61,0.229508,0.274387,0.272720,378.813979
+003,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,47 | 61,0.229508,0.379243,0.376762,378.813979
+004,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,47 | 61,0.229508,0.455388,0.464451,378.813979
+005,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,47 | 61,0.229508,0.519618,0.528591,378.813979
+006,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,47 | 61,0.229508,0.525531,0.580564,378.813979
+007,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,32 | 61,0.475410,0,0.004224,470.639432
+008,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,32 | 61,0.475410,0,0.045805,470.639432
+009,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,32 | 61,0.475410,0.020091,0.085539,470.639432
+010,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,32 | 61,0.475410,0.036462,0.143124,470.639432
+011,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,32 | 61,0.475410,0.061344,0.221145,470.639432
+012,64_nH_uM_onnL_omL,n2000_K60_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,32 | 61,0.475410,0.148657,0.301819,470.639432

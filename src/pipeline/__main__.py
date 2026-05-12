@@ -2,20 +2,32 @@
 Entry point.
 """
 
-from pipeline.config.config import SYNTHETIC_NETWORKS_BASE_DIR, CONFIG_DIR, RESULTS_BASE_DIR, load_network_families, \
-    load_thresholds, AFFINITY_DESIGNS, EXECUTION_MODES, DEFUZZIFICATION_RULES
+from pipeline.config.synthetic_runner import config as synthetic_runner
+from pipeline.config.real_world_runner import config as real_world_runner
+from pipeline.scripts.real_world_networks_runner import run_real_world_networks_experiments
 from pipeline.scripts.synthetic_networks_runner import run_synthetic_networks_experiments
 
 
 def main():
-    run_synthetic_networks_experiments(
-        networks_base_dir=SYNTHETIC_NETWORKS_BASE_DIR,
-        results_base_dir=RESULTS_BASE_DIR,
-        network_families=load_network_families(CONFIG_DIR),
-        thresholds=load_thresholds(CONFIG_DIR),
-        affinity_designs=AFFINITY_DESIGNS,
-        execution_modes=EXECUTION_MODES,
-        defuzzification_rules=DEFUZZIFICATION_RULES
+    # Synthetic Networks Experiments
+    # run_synthetic_networks_experiments(
+    #     networks_base_dir=synthetic_runner.SYNTHETIC_NETWORKS_BASE_DIR,
+    #     results_base_dir=synthetic_runner.RESULTS_BASE_DIR,
+    #     network_families=synthetic_runner.load_network_families(synthetic_runner.CONFIG_DIR),
+    #     thresholds=synthetic_runner.load_thresholds(synthetic_runner.CONFIG_DIR),
+    #     affinity_designs=synthetic_runner.AFFINITY_DESIGNS,
+    #     execution_modes=synthetic_runner.EXECUTION_MODES,
+    #     defuzzification_rules=synthetic_runner.DEFUZZIFICATION_RULES
+    # )
+
+    # Real-World Networks Experiments
+    run_real_world_networks_experiments(
+        results_base_dir=real_world_runner.RESULTS_BASE_DIR,
+        network_families=real_world_runner.load_network_families(real_world_runner.CONFIG_DIR),
+        thresholds=real_world_runner.load_thresholds(real_world_runner.CONFIG_DIR),
+        affinity_designs=real_world_runner.AFFINITY_DESIGNS,
+        execution_modes=real_world_runner.EXECUTION_MODES,
+        defuzzification_rules=real_world_runner.DEFUZZIFICATION_RULES
     )
 
 

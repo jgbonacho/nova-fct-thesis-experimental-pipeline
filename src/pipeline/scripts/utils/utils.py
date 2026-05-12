@@ -11,8 +11,8 @@ import numpy as np
 
 from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
-from pipeline.config.config import ExecutionMode, DefuzzificationRule
-from pipeline.scripts.utils.networks_dataclasses import NetworkFamily
+from pipeline.config.synthetic_runner.config import ExecutionMode, DefuzzificationRule
+from pipeline.scripts.utils.networks_dataclasses import LFRNetworkFamilyConfig, NetworkFamilyConfig
 from pipeline.scripts.utils.result_dataclass import Result
 
 
@@ -250,9 +250,9 @@ def save_faddis_clustering_results(
             ])
 
 
-def save_report(
+def save_report_of_synthetic_runner(
         results_dir: str,
-        network_families: list[NetworkFamily],
+        network_families: list[LFRNetworkFamilyConfig],
         thresholds: dict[str, float],
         affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
         execution_modes: list[ExecutionMode],
@@ -265,7 +265,52 @@ def save_report(
     Parameters:
         results_dir : (str)
             Path to the results' directory.
-        network_families : (list[NetworkFamily])
+        network_families : (list[LFRNetworkFamilyConfig])
+            List of network families to be processed.
+        thresholds : (dict[str, float])
+            Dictionary containing threshold values, keyed by network family name.
+        affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
+            Dictionary of affinity designs to be applied, keyed by design label.
+        execution_modes : (list[ExecutionMode])
+            List of execution modes to be applied.
+        defuzzification_rules : (list[DefuzzificationRule])
+            List of defuzzification rules to be applied.
+        output_filename : (str, optional)
+            The name of the output JSON file.
+            Default is "report.json".
+
+    Saves:
+        A JSON file within 'results_dir' named "{output_filename}.json".
+    """
+
+    report = {
+        "network_families": [asdict(network_family) for network_family in network_families],
+        "thresholds": thresholds,
+        "affinity_designs": list(affinity_designs.keys()),
+        "execution_modes": [asdict(execution_mode) for execution_mode in execution_modes],
+        "defuzzification_rules": [asdict(defuzzification_rule) for defuzzification_rule in defuzzification_rules],
+    }
+
+    with open(os.path.join(results_dir, f"{output_filename}.json"), "w", encoding="utf-8") as out_file:
+        json.dump(report, out_file, indent=2)
+
+
+def save_report_of_real_world_runner(
+        results_dir: str,
+        network_families: list[NetworkFamilyConfig],
+        thresholds: dict[str, float],
+        affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
+        execution_modes: list[ExecutionMode],
+        defuzzification_rules: list[DefuzzificationRule],
+        output_filename: str = "report"
+) -> None:
+    """
+    Save a report of the experiment configurations to a JSON file in the results' directory.
+
+    Parameters:
+        results_dir : (str)
+            Path to the results' directory.
+        network_families : (list[NetworkFamilyConfig])
             List of network families to be processed.
         thresholds : (dict[str, float])
             Dictionary containing threshold values, keyed by network family name.

@@ -1,0 +1,90 @@
+[
+  {
+    "name": "network_family_3",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego698",
+        "gml_filename": "facebook-network-ego698",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego3980",
+        "gml_filename": "facebook-network-ego3980",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_4",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego0",
+        "gml_filename": "facebook-network-ego0",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego348",
+        "gml_filename": "facebook-network-ego348",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego414",
+        "gml_filename": "facebook-network-ego414",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego686",
+        "gml_filename": "facebook-network-ego686",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego3437",
+        "gml_filename": "facebook-network-ego3437",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_5",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego107",
+        "gml_filename": "facebook-network-ego107",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego1684",
+        "gml_filename": "facebook-network-ego1684",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego1912",
+        "gml_filename": "facebook-network-ego1912",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,22 | 21,0.047619,0.210433,0.145288,732.548238
+002,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,22 | 21,0.047619,0.307681,0.321460,732.548238
+003,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,22 | 21,0.047619,0.372814,0.391272,732.548238
+004,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,22 | 21,0.047619,0.409626,0.436102,732.548238
+005,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,22 | 21,0.047619,0.448914,0.459157,732.548238
+006,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,22 | 21,0.047619,0.440985,0.454255,732.548238
+007,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,23 | 21,0.095238,0.133828,0.110107,1281.281130
+008,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,23 | 21,0.095238,0.247828,0.304237,1281.281130
+009,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,23 | 21,0.095238,0.305157,0.382940,1281.281130
+010,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,23 | 21,0.095238,0.338443,0.427037,1281.281130
+011,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,23 | 21,0.095238,0.362073,0.443910,1281.281130
+012,64_nH_uM_onnL_omL,n3000_K20_f0.2_om3_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,23 | 21,0.095238,0.381510,0.449046,1281.281130

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,36 | 42,0.142857,0.109742,0.060286,297.670249
+002,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,36 | 42,0.142857,0.251677,0.230969,297.670249
+003,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,36 | 42,0.142857,0.333695,0.327976,297.670249
+004,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,36 | 42,0.142857,0.398219,0.423090,297.670249
+005,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,36 | 42,0.142857,0.457761,0.498695,297.670249
+006,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,36 | 42,0.142857,0.490823,0.550294,297.670249
+007,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,30 | 42,0.285714,0.048792,0.011974,484.873089
+008,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,30 | 42,0.285714,0.121303,0.120902,484.873089
+009,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,30 | 42,0.285714,0.199016,0.213701,484.873089
+010,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,30 | 42,0.285714,0.268433,0.308975,484.873089
+011,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,30 | 42,0.285714,0.342858,0.388232,484.873089
+012,64_nH_uM_onnL_omL,n2000_K40_f0.2_om2_inst1,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,30 | 42,0.285714,0.368973,0.453669,484.873089

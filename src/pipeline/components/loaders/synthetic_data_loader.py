@@ -29,18 +29,9 @@ def load_lfr_benchmark_network(
                 Number of communities.
     """
 
-    # Load graph.
-    graph_raw = _read_edges_nse(os.path.join(dir_path, f"{filename}.nse"))
+    # Load an undirected, unweighted simple graph without self-loops.
+    graph = _read_edges_nse(os.path.join(dir_path, f"{filename}.nse"))
     memberships = _read_memberships_nmc(os.path.join(dir_path, f"{filename}.nmc"), overlapping_ground_truth)
-
-    # Ensure graph is undirected.
-    if graph_raw.is_directed():
-        raise ValueError("[ERROR] Only undirected graphs are supported.")
-    graph = graph_raw.to_undirected()
-
-    # Ensure graph is unweighted.
-    if nx.get_edge_attributes(graph, "weight") or nx.get_edge_attributes(graph, "value"):
-        raise ValueError("[ERROR] Only unweighted graphs are supported.")
 
     # Extract largest connected component.
     if not nx.is_connected(graph):
@@ -61,12 +52,17 @@ def load_lfr_benchmark_network(
     mapping = {node: idx for idx, node in enumerate(original_nodes)}
     graph = nx.relabel_nodes(graph, mapping)
 
+    # Check whether all nodes have ground-truth labels.
+    if graph.number_of_nodes() != len(ground_truth_labels):
+        number_of_nodes_without_ground_truth = graph.number_of_nodes() - len(ground_truth_labels)
+        print(f"[INFO] There are {number_of_nodes_without_ground_truth} nodes without ground-truth labels.")
+
     return graph, ground_truth_labels, k
 
 
 def _read_edges_nse(nse_path: str) -> nx.Graph:
     """
-    Read edges from an NSE file and construct a graph.
+    Read edges from an NSE file and construct an undirected, unweighted simple graph without self-loops.
 
     Parameters:
         nse_path : (str)
@@ -74,7 +70,7 @@ def _read_edges_nse(nse_path: str) -> nx.Graph:
 
     Returns:
         graph : (nx.Graph)
-            The constructed undirected graph.
+            The constructed undirected, unweighted simple graph without self-loops.
     """
 
     graph = nx.Graph()
@@ -90,7 +86,7 @@ def _read_edges_nse(nse_path: str) -> nx.Graph:
                 continue
             graph.add_edge(u, v)
 
-    return graph
+    return graph.to_undirected()
 
 
 def _read_memberships_nmc(nmc_path: str, overlapping_ground_truth: bool) -> dict:
