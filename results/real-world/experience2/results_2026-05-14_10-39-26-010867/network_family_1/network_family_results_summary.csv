@@ -1,0 +1,11 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_-,network_family_1,american-college-football,False,0.083333,0.814991,0.869478,0.763944,0.782967,0.861825,0.679823,,,0.136578
+002_default_lapin-on_lsym_-,network_family_1,american-college-football,False,0.25,0.710797,0.744428,0.586788,0.643929,0.767239,1.059506,,,0.168932
+001_default_lapin-off_-_-,network_family_1,books-about-us-politics,False,1.333333,0.318224,0.553431,0.227172,0.440909,0.348214,1.886903,,,0.084957
+002_default_lapin-on_lsym_-,network_family_1,books-about-us-politics,False,0.666667,0.485168,0.760012,0.53579,0.69613,0.502943,1.211245,,,0.098553
+001_default_lapin-off_-_-,network_family_1,email-eu-core,False,0.738095,0.546578,0.60571,0.410746,0.480232,0.581451,2.372444,,,14.405792
+002_default_lapin-on_lsym_-,network_family_1,email-eu-core,False,0.619048,0.511793,0.541328,0.295481,0.37897,0.55874,2.511671,,,33.688864
+001_default_lapin-off_-_-,network_family_1,us-political-blogs,False,1.0,0.388022,0.685316,0.344604,0.600931,0.388758,1.250924,,,12.651175
+002_default_lapin-on_lsym_-,network_family_1,us-political-blogs,False,7.0,0.37367,0.779798,0.475822,0.691494,0.377207,1.486244,,,45.113579
+001_default_lapin-off_-_-,network_family_1,zachary-karate-club,False,1.0,0.571094,0.797269,0.483076,0.691176,0.592527,0.810724,,,0.005335
+002_default_lapin-on_lsym_-,network_family_1,zachary-karate-club,False,2.0,0.320662,0.684274,0.28474,0.536172,0.373568,1.440313,,,0.013914

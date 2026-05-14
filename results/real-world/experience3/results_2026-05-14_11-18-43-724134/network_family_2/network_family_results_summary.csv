@@ -1,0 +1,3 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_-,network_family_2,american-college-football,False,0.0,0.822237,0.864147,0.74119,0.767965,0.864227,0.650848,,,0.120102
+002_default_lapin-on_lsym_-,network_family_2,american-college-football,False,0.25,0.710797,0.744428,0.586788,0.643929,0.767239,1.059506,,,0.1401

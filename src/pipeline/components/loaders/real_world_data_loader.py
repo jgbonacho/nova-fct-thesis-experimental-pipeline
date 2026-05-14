@@ -5,7 +5,7 @@ import networkx as nx
 from pipeline.scripts.utils.networks_dataclasses import NetworkConfig
 
 
-def load_network_from_gml(dir_path, network_config: NetworkConfig) -> tuple[nx.Graph, list, int]:
+def load_network_from_gml(dir_path: str, network_config: NetworkConfig) -> tuple[nx.Graph, list, int]:
     """
      Load a real-world network from a .gml file, preprocess it, and extract ground-truth labels.
 
@@ -46,8 +46,7 @@ def load_network_from_gml(dir_path, network_config: NetworkConfig) -> tuple[nx.G
     if nx.number_of_selfloops(graph) > 0:
         raise ValueError(f"[ERROR] Only graphs without self-loops are supported.")
 
-    print(f"[DEBUG] Nodes = {graph.number_of_nodes()}, Edges = {graph.number_of_edges()}")
-    print(f"[DEBUG] Number of connected components: {nx.number_connected_components(graph)}.")
+    print(f"[DEBUG] Nodes = {graph.number_of_nodes()}; Edges = {graph.number_of_edges()}; CCs = {nx.number_connected_components(graph)}")
 
     # Extract largest connected component.
     if not nx.is_connected(graph):
@@ -55,7 +54,7 @@ def load_network_from_gml(dir_path, network_config: NetworkConfig) -> tuple[nx.G
         graph = graph.subgraph(largest_cc).copy()
         print(f"[INFO] Extracted LCC with {graph.number_of_nodes()} nodes and {graph.number_of_edges()} edges.")
 
-    print(f"[DEBUG] Nodes LCC = {graph.number_of_nodes()}, Edges LCC = {graph.number_of_edges()}")
+    print(f"[DEBUG] Nodes LCC = {graph.number_of_nodes()}; Edges LCC = {graph.number_of_edges()}")
 
     # Extract ground-truth labels.
     ground_truth_labels, k = None, None

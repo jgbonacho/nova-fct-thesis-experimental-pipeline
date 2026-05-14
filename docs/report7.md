@@ -1,15 +1,29 @@
 # Report 7 - Experiments on large-networks with a new LFR setup
 
-## Networks
 
-### LFR Network Parameterization
+
+## Table of Contents
+
+- [Networks](#networks)
+- [Scripts](#scripts)
+- [Experience 9 (LAPIN-off + Extraction of K desired clusters)](#experience-9-lapin-off--extraction-of-k-desired-clusters)
+    - [Thresholds](#thresholds)
+    - [`n2000`](#n2000)
+    - [`n3000`](#n3000)
+    - [`n4000`](#n4000)
+- [Hardware](#hardware)
+- [Discussion](#discussion)
+
+
+
+## Networks
 
 - $\overline{d}$ = 20
 - $d_{max}$ = 50
 - $t1$ = -2
 - $t2$ = -1
 - $\mu$ = 0.4
-- $n$ = {2000, 3000, 4000, 5000}
+- $n$ = {2000, 3000, 4000}
 - ($o_{n}/n$, $o_{m}$) = ($f$, $o_{m}$) = {(0.1, 2), (0.2, 2), (0.2, 3)}
 - $K$ = {20, 30, 40, 50, 60}
 - $t$ = 3
@@ -18,8 +32,6 @@
     - $c_{avg}$ = $n * [1 + f * (o_{m} - 1)] / K$
     - $c_{min} = 0.4 * c_{avg}$
     - $c_{max} = 2 * c_{avg}$
-
-## Networks
 
 - Network Family: **64_nH_uM_onnL_omL**
 
@@ -70,23 +82,31 @@
 | `n4000_K60_f0.1_om2` | 60 | 0.10 | 2 | 73 | 29 | 147 |
 | `n4000_K60_f0.2_om2` | 60 | 0.20 | 2 | 80 | 32 | 160 |
 | `n4000_K60_f0.2_om3` | 60 | 0.20 | 3 | 93 | 37 | 187 |
-| `n5000_K20_f0.1_om2` | 20 | 0.10 | 2 | 275 | 110 | 550 |
-| `n5000_K20_f0.2_om2` | 20 | 0.20 | 2 | 300 | 120 | 600 |
-| `n5000_K20_f0.2_om3` | 20 | 0.20 | 3 | 350 | 140 | 700 |
-| `n5000_K30_f0.1_om2` | 30 | 0.10 | 2 | 183 | 73 | 367 |
-| `n5000_K30_f0.2_om2` | 30 | 0.20 | 2 | 200 | 80 | 400 |
-| `n5000_K30_f0.2_om3` | 30 | 0.20 | 3 | 233 | 93 | 467 |
-| `n5000_K40_f0.1_om2` | 40 | 0.10 | 2 | 138 | 55 | 275 |
-| `n5000_K40_f0.2_om2` | 40 | 0.20 | 2 | 150 | 60 | 300 |
-| `n5000_K40_f0.2_om3` | 40 | 0.20 | 3 | 175 | 70 | 350 |
-| `n5000_K50_f0.1_om2` | 50 | 0.10 | 2 | 110 | 44 | 220 |
-| `n5000_K50_f0.2_om2` | 50 | 0.20 | 2 | 120 | 48 | 240 |
-| `n5000_K50_f0.2_om3` | 50 | 0.20 | 3 | 140 | 56 | 280 |
-| `n5000_K60_f0.1_om2` | 60 | 0.10 | 2 | 92 | 37 | 183 |
-| `n5000_K60_f0.2_om2` | 60 | 0.20 | 2 | 100 | 40 | 200 |
-| `n5000_K60_f0.2_om3` | 60 | 0.20 | 3 | 117 | 47 | 233 |
 
 Based on [Recommendations Document](./imgs/FADDIS_LFR_Recommendations%20.pdf).
+
+
+
+## Scripts
+
+### Script 1
+
+- For experience 9 (thresholds), apply the pipeline to each network and save the results for each network in a .csv file:
+
+![Pipeline](./imgs/pipeline.svg)
+
+1. `LFR synthetic network`
+2. `Default (Adjacency matrix)`
+3. `Sparsification not applied`
+4. `LAPIN-off and LAPIN-on`
+5. `epsilon = threshold of the network family; tau = 0.05; k_max = min(100, n/2)`
+6. `FADDIS with stop criterion (epsilon, tau, k_max)`
+7. `gamma = [0.3, 0.5, 0.6, 0.7, 0.8, 0.9]`
+8. `Extrinsic metrics = [Relative Error of K, ONMI, Omega]`
+
+- For each scale of number of nodes, draw two plots showing the mean ONMI and Omega results by the tested network. Additionally, plot the relative error of K (number of communities) and the mean runtime of FADDIS.
+
+
 
 ## Experience 9 (LAPIN-off + Extraction of K desired clusters)
 
@@ -138,3 +158,16 @@ Based on [Recommendations Document](./imgs/FADDIS_LFR_Recommendations%20.pdf).
 ![Results 0](../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/network_results_0.png)
 
 ![Results 1](../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/network_results_1.png)
+
+
+
+## Hardware
+
+![](./imgs/hardware.png)
+
+
+
+## Discussion
+
+- **Observations**
+    - TODO

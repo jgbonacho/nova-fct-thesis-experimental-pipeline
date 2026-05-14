@@ -223,7 +223,6 @@ def save_faddis_clustering_results(
                 - contributions
                 - intensities
                 - eigenvalues
-                - eigenvalue_ranks
                 - number_of_clusters
                 - stop_condition
         output_filename : (str, optional)

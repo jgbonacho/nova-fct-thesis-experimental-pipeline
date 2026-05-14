@@ -12,7 +12,7 @@ RESULTS_BASE_DIR = os.path.join(ROOT_DIR, 'results', 'synthetic')
 CONFIG_DIR = os.path.join(os.path.dirname(__file__))
 
 
-def load_network_families(
+def load_network_family_configs(
         config_dir: str,
         input_filename: str = "networks_families.json"
 ) -> list[LFRNetworkFamilyConfig]:
@@ -27,7 +27,7 @@ def load_network_families(
             Default is "networks_families.json".
 
     Returns:
-        network_families_configs : list[LFRNetworkFamilyConfig]
+        network_families_configs : (list[LFRNetworkFamilyConfig])
             List of network  configs.
     """
     with open(os.path.join(config_dir, input_filename), "r", encoding="utf-8") as in_file:
@@ -62,7 +62,7 @@ def load_thresholds(
             Default is "Threshold".
 
     Returns:
-        thresholds : dict[str, float]
+        thresholds : (dict[str, float])
             Dictionary of thresholds keyed by network family.
     """
 
@@ -91,11 +91,11 @@ class ExecutionMode:
     Dataclass for execution mode.
 
     Attributes:
-        label : str
+        label : (str)
             The label for the execution mode.
-        apply_lapin : bool
+        apply_lapin : (bool)
             Whether to apply LAPIN or not.
-        laplacian_variant : str
+        laplacian_variant : (str)
             The variant of the Laplacian to apply if apply_lapin is True.
     """
 
@@ -121,7 +121,7 @@ class DefuzzificationRule:
     Dataclass for defuzzification rule.
 
     Attributes:
-        gamma : float
+        gamma : (float)
             Hyperparameter for the defuzzification rule.
     """
 

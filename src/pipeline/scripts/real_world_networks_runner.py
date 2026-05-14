@@ -23,7 +23,7 @@ from pipeline.scripts.utils.utils import save_report_of_real_world_runner
 
 def run_real_world_networks_experiments(
         results_base_dir: str,
-        network_families: list[NetworkFamilyConfig],
+        network_family_configs: list[NetworkFamilyConfig],
         thresholds: dict[str, float],
         affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
         execution_modes: list[ExecutionMode],
@@ -36,8 +36,8 @@ def run_real_world_networks_experiments(
     Parameters:
         results_base_dir : (str)
             Path to the base directory where results will be saved.
-        network_families : (list[NetworkFamilyConfig])
-            List of network families to be processed.
+        network_family_configs : (list[NetworkFamilyConfig])
+            List of network family configs to be processed.
         thresholds : (dict[str, float])
             Dictionary containing threshold values, keyed by network family name.
         affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
@@ -57,14 +57,16 @@ def run_real_world_networks_experiments(
 
     results_dir = create_results_dir(results_base_dir)
 
-    for idx1, network_family in enumerate(network_families, 1):
-        log_progress(idx1, len(network_families), network_family.name, 5, True)
+    for idx1, network_family_config in enumerate(network_family_configs, 1):
+        log_progress(idx1, len(network_family_configs), network_family_config.name, 5, True)
 
-        networks = sorted(network_family.networks, key=lambda n: n.name)
-        for idx2, network in enumerate(networks, 1):
-            log_progress(idx2, len(networks), network.name, 4, True)
+        network_configs = sorted(network_family_config.network_configs, key=lambda n: n.name)
+        for idx2, network_config in enumerate(network_configs, 1):
+            log_progress(idx2, len(network_configs), network_config.name, 4, True)
 
-            results_network_dir = create_network_results_dir(results_dir, network_family.name, network.name)
+            results_network_dir = create_network_results_dir(
+                results_dir, network_family_config.name, network_config.name
+            )
 
             append_result = initialize_results_file(results_network_dir)
             number_of_results = 0
@@ -72,8 +74,8 @@ def run_real_world_networks_experiments(
             try:
                 # 0. Load network.
                 graph, ground_truth_labels, k = load_network_from_gml(
-                    dir_path=os.path.join(network_family.directory, network_family.name),
-                    network_config=network
+                    dir_path=os.path.join(network_family_config.directory, network_family_config.name),
+                    network_config=network_config
                 )
 
                 # 1. Compute adjacency matrix A.
@@ -97,10 +99,10 @@ def run_real_world_networks_experiments(
                         # 5. Fine-tune the stop criterion for FADDIS.
                         if not stop_criterion_until_k:
                             epsilon, tau, k_max = set_stop_criterion(
-                                graph.number_of_nodes(), network_family.name, thresholds
+                                graph.number_of_nodes(), network_family_config.name, thresholds
                             )
                         else:
-                            epsilon, tau, k_max = -1, -1, -1
+                            epsilon, tau, k_max = None, None, None
 
                         # 6. Execute FADDIS.
                         start_time = get_computation_start_time()
@@ -113,31 +115,39 @@ def run_real_world_networks_experiments(
                             )
                         end_time = get_computation_end_time()
 
-                        for idx5, defuzzification_rule in enumerate(defuzzification_rules, 1):
+                        current_defuzzification_rules = (
+                            defuzzification_rules if network_config.overlapping_ground_truth else [None]
+                        )
+                        for idx5, defuzzification_rule in enumerate(current_defuzzification_rules, 1):
                             log_progress(idx5, len(defuzzification_rules), str(defuzzification_rule), 1)
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
                             membership_matrix, _, _, _, _, stop_condition = results
+                            gamma = defuzzification_rule.gamma if network_config.overlapping_ground_truth else None
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                                 membership_matrix,
-                                defuzzification_rule.gamma,
-                                overlapping=network.overlapping_ground_truth
+                                gamma,
+                                overlapping=network_config.overlapping_ground_truth
                             )
 
-                            # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
-                            extrinsic_results = compute_extrinsic_metrics(
-                                graph, ground_truth_labels, predicted_labels, k, k_predicted,
-                                overlapping=network.overlapping_ground_truth
-                            )
+                            # 8. Compute the evaluation metrics.
+                            if network_config.ground_truth:
+                                extrinsic_results = compute_extrinsic_metrics(
+                                    graph, ground_truth_labels, predicted_labels, k, k_predicted,
+                                    overlapping=network_config.overlapping_ground_truth
+                                )
+                            else:
+                                extrinsic_results = None
+
                             computational_results = compute_computational_metrics(start_time, end_time)
 
                             number_of_results += 1
                             results_id = f"{number_of_results:03d}"
                             append_result(Result(
                                 id=results_id,
-                                network_family=network_family.name,
-                                network=network.name,
-                                overlapping=network.overlapping_ground_truth,
+                                network_family=network_family_config.name,
+                                network=network_config.name,
+                                overlapping=network_config.overlapping_ground_truth,
                                 affinity_design=affinity_design_label,
                                 execution_mode=execution_mode.label,
                                 laplacian_variant=execution_mode.laplacian_variant,
@@ -145,7 +155,7 @@ def run_real_world_networks_experiments(
                                 tau=tau,
                                 k_max=k_max,
                                 stop_condition=stop_condition,
-                                gamma=defuzzification_rule.gamma,
+                                gamma=gamma,
                                 first_cluster_discarded=first_cluster_discarded,
                                 extrinsic_results=extrinsic_results,
                                 computational_results=computational_results,
@@ -153,11 +163,11 @@ def run_real_world_networks_experiments(
 
                             save_faddis_clustering_results(results_network_dir, results_id, results)
             except Exception as e:
-                print(f"[ERROR] Network {network.name} processing failed with error: {e}")
+                print(f"[ERROR] Network {network_config.name} processing failed with error: {e}")
                 continue
 
     save_report_of_real_world_runner(
-        results_dir, network_families, thresholds, affinity_designs, execution_modes, defuzzification_rules
+        results_dir, network_family_configs, thresholds, affinity_designs, execution_modes, defuzzification_rules
     )
 
     return results_dir

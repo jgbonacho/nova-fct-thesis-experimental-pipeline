@@ -1,6 +1,16 @@
 Network Family,Selected Metric,Threshold
-network_family_1,Median,0.003278856928143775
-network_family_2,Median,0.00038565962107028304
-network_family_3,Median,0.001300713641398777
-network_family_4,Median,0.0004785411972475475
-network_family_5,Median,0.00026785640938302966
+network_family_1,Median,0.006351046817283449
+network_family_10,Median,0.00027114460559936923
+network_family_11,Median,0.000677947172340617
+network_family_12,Median,0.00047935282590403315
+network_family_13,Median,0.00040122674440950737
+network_family_14,Median,0.00037260413791436944
+network_family_15,Median,6.81637796779233e-06
+network_family_2,Median,0.009598290673725801
+network_family_3,Median,0.011042331616159045
+network_family_4,Median,0.0023192712176332343
+network_family_5,Median,0.0002581203044896468
+network_family_6,Median,0.0016178360091115705
+network_family_7,Median,0.0020827632126837184
+network_family_8,Median,0.001300713641398777
+network_family_9,Median,0.0014962575304777288

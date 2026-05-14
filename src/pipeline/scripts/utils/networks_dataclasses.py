@@ -52,8 +52,8 @@ class LFRNetworkFamilyConfig:
     Attributes:
         name : (str)
             The name of the network family.
-        networks : (list[LFRNetworkConfig])
-            The list of networks in the family.
+        network_configs : (list[LFRNetworkConfig])
+            The list of network configs in the family.
 
     Returns:
         network_family : (LFRNetworkFamilyConfig)
@@ -61,7 +61,7 @@ class LFRNetworkFamilyConfig:
     """
 
     name: str
-    networks: list[LFRNetworkConfig]
+    network_configs: list[LFRNetworkConfig]
 
     @staticmethod
     def from_dict(data):
@@ -79,7 +79,7 @@ class LFRNetworkFamilyConfig:
 
         return LFRNetworkFamilyConfig(
             name=data["name"],
-            networks=[LFRNetworkConfig.from_dict(x) for x in data["networks"]],
+            network_configs=[LFRNetworkConfig.from_dict(x) for x in data["networks"]],
         )
 
 
@@ -140,17 +140,17 @@ class NetworkFamilyConfig:
             The name of the network family.
         directory : (str)
             The directory of the network family.
-        networks : (list[Network])
-            The list of networks in the family.
+        network_configs : (list[Network])
+            The list of network configs in the family.
 
     Returns:
-        network_family : NetworkFamily
+        network_family : (NetworkFamily)
             The created NetworkFamily.
     """
 
     name: str
     directory: str
-    networks: list[NetworkConfig]
+    network_configs: list[NetworkConfig]
 
     @staticmethod
     def from_dict(data, with_ground_truth_dir, without_ground_truth_dir):
@@ -166,12 +166,12 @@ class NetworkFamilyConfig:
                 The directory of the networks without ground truth.
 
         Returns:
-            network_family : NetworkFamily
+            network_family : (NetworkFamily)
                 The created NetworkFamily.
         """
 
         return NetworkFamilyConfig(
             name=data["name"],
             directory=with_ground_truth_dir if data["ground_truth_family"] else without_ground_truth_dir,
-            networks=[NetworkConfig.from_dict(x) for x in data["networks"]],
+            network_configs=[NetworkConfig.from_dict(x) for x in data["networks"]],
         )

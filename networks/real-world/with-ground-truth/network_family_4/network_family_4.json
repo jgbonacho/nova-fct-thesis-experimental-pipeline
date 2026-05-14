@@ -1,37 +1,9 @@
 [
   {
-    "name": "facebook-network-ego0",
-    "gml_filename": "facebook-network-ego0",
+    "name": "american-college-football",
+    "gml_filename": "football",
     "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
-  },
-  {
-    "name": "facebook-network-ego348",
-    "gml_filename": "facebook-network-ego348",
-    "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
-  },
-  {
-    "name": "facebook-network-ego414",
-    "gml_filename": "facebook-network-ego414",
-    "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
-  },
-  {
-    "name": "facebook-network-ego686",
-    "gml_filename": "facebook-network-ego686",
-    "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
-  },
-  {
-    "name": "facebook-network-ego3437",
-    "gml_filename": "facebook-network-ego3437",
-    "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
+    "overlapping_ground_truth": false,
+    "ground_truth_attr": "value"
   }
 ]

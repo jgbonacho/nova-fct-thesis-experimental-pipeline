@@ -1,0 +1,5 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_-,network_family_2,email-eu-core,False,0.642857,0.528387,0.587376,0.397581,0.442234,0.575175,2.540387,,,13.389895
+002_default_lapin-on_lsym_-,network_family_2,email-eu-core,False,0.071429,0.552563,0.593151,0.404725,0.432397,0.630564,2.436411,,,64.301537
+001_default_lapin-off_-_-,network_family_2,us-political-blogs,False,2.0,0.346659,0.661738,0.283945,0.545199,0.347805,1.526701,,,10.463829
+002_default_lapin-on_lsym_-,network_family_2,us-political-blogs,False,17.5,0.223308,0.545037,0.173493,0.4178,0.230576,2.705633,,,121.778873

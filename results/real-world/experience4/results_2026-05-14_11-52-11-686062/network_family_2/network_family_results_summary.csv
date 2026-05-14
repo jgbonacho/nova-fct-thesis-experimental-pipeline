@@ -1,0 +1,5 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_-,network_family_2,email-eu-core,False,0.690476,0.538912,0.589167,0.397724,0.450951,0.579727,2.457607,,,12.656501
+002_default_lapin-on_lsym_-,network_family_2,email-eu-core,False,0.238095,0.551056,0.596433,0.416129,0.448313,0.620686,2.428757,,,46.864569
+001_default_lapin-off_-_-,network_family_2,zachary-karate-club,False,2.0,0.453552,0.606618,0.279444,0.524686,0.492501,1.231464,,,0.010654
+002_default_lapin-on_lsym_-,network_family_2,zachary-karate-club,False,3.5,0.129641,0.429253,0.058394,0.298541,0.225696,2.112702,,,0.018705

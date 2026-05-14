@@ -1,0 +1,3 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,FADDIS Runtime
+001,network_family_1,books-about-us-politics,No,Default,LAPIN-off,-,0.008660,0.05,52,epsilon,Yes,4 | 3,0.333333,0.324725,0.633816,0.291861,0.521567,0.342170,1.549198,0.040617
+002,network_family_1,books-about-us-politics,No,Default,LAPIN-on,Lsym,0.008660,0.05,52,epsilon,No,3 | 3,0,0.532686,0.828571,0.644546,0.782185,0.542207,0.911753,0.040358

@@ -1,23 +1,9 @@
 [
   {
-    "name": "facebook-network-ego107",
-    "gml_filename": "facebook-network-ego107",
+    "name": "email-eu-core",
+    "gml_filename": "email-eu-core",
     "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
-  },
-  {
-    "name": "facebook-network-ego1684",
-    "gml_filename": "facebook-network-ego1684",
-    "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
-  },
-  {
-    "name": "facebook-network-ego1912",
-    "gml_filename": "facebook-network-ego1912",
-    "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
+    "overlapping_ground_truth": false,
+    "ground_truth_attr": "value"
   }
 ]

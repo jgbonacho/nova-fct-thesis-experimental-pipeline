@@ -1,0 +1,251 @@
+{
+  "network_families": [
+    {
+      "name": "network_family_1",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "zachary-karate-club",
+          "gml_filename": "zachary-karate-club",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "club"
+        }
+      ]
+    },
+    {
+      "name": "network_family_2",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "us-political-blogs",
+          "gml_filename": "us-political-blogs",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        }
+      ]
+    },
+    {
+      "name": "network_family_3",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "books-about-us-politics",
+          "gml_filename": "polbooks",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        }
+      ]
+    },
+    {
+      "name": "network_family_4",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "american-college-football",
+          "gml_filename": "football",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        }
+      ]
+    },
+    {
+      "name": "network_family_5",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "email-eu-core",
+          "gml_filename": "email-eu-core",
+          "ground_truth": true,
+          "overlapping_ground_truth": false,
+          "ground_truth_attr": "value"
+        }
+      ]
+    },
+    {
+      "name": "network_family_6",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego414",
+          "gml_filename": "facebook-network-ego414",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_7",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego107",
+          "gml_filename": "facebook-network-ego107",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_8",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego698",
+          "gml_filename": "facebook-network-ego698",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_9",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego3980",
+          "gml_filename": "facebook-network-ego3980",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_10",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego348",
+          "gml_filename": "facebook-network-ego348",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_11",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego686",
+          "gml_filename": "facebook-network-ego686",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_12",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego1684",
+          "gml_filename": "facebook-network-ego1684",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_13",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego0",
+          "gml_filename": "facebook-network-ego0",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_14",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego3437",
+          "gml_filename": "facebook-network-ego3437",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    },
+    {
+      "name": "network_family_15",
+      "directory": "C:\\Users\\guilh\\Documents\\NOVA-FCT\\thesis\\nova-fct-thesis-experimental-pipeline\\src\\pipeline\\config\\real_world_runner\\..\\..\\..\\..\\networks\\real-world\\with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego1912",
+          "gml_filename": "facebook-network-ego1912",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    }
+  ],
+  "thresholds": {
+    "network_family_1": 0.02033527862981095,
+    "network_family_10": 0.00011238882044846421,
+    "network_family_11": 0.0005677389710904313,
+    "network_family_12": 6.507205398672684e-05,
+    "network_family_13": 4.1496548697439925e-05,
+    "network_family_14": 0.00011720406254712832,
+    "network_family_15": 4.899535861185365e-05,
+    "network_family_2": 0.006974281899112466,
+    "network_family_3": 0.019272903640082013,
+    "network_family_4": 0.0008149498488533232,
+    "network_family_5": 0.00014210358578151637,
+    "network_family_6": 2.601419400131035e-05,
+    "network_family_7": 0.0026998636901662317,
+    "network_family_8": 0.0013724897999800956,
+    "network_family_9": 0.0013968421848834524
+  },
+  "affinity_designs": [
+    "Default"
+  ],
+  "execution_modes": [
+    {
+      "label": "LAPIN-off",
+      "apply_lapin": false,
+      "laplacian_variant": "-"
+    },
+    {
+      "label": "LAPIN-on",
+      "apply_lapin": true,
+      "laplacian_variant": "Lsym"
+    }
+  ],
+  "defuzzification_rules": [
+    {
+      "gamma": 0.3
+    },
+    {
+      "gamma": 0.5
+    },
+    {
+      "gamma": 0.6
+    },
+    {
+      "gamma": 0.7
+    },
+    {
+      "gamma": 0.8
+    },
+    {
+      "gamma": 0.9
+    }
+  ]
+}

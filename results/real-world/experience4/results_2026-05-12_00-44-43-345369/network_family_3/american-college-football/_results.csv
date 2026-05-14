@@ -1,3 +1,0 @@
-ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,FADDIS Runtime
-001,network_family_3,american-college-football,No,Default,LAPIN-off,-,1.747609e-10,0.05,57,W,1,Yes,18 | 12,0.5,0.764038,0.827680,0.698301,0.724715,0.836378,0.848274,0.221215
-002,network_family_3,american-college-football,No,Default,LAPIN-on,Lsym,1.747609e-10,0.05,57,epsilon,1,No,15 | 12,0.25,0.769818,0.807200,0.707619,0.731330,0.835298,0.837351,0.377713

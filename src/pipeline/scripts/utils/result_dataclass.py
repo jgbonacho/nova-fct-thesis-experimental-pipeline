@@ -10,35 +10,35 @@ class Result:
     Dataclass for results.
 
     Attributes:
-        id : str
+        id : (str)
             Identifier for the result.
-        network_family : str
+        network_family : (str)
             The family of the network.
-        network : str
+        network : (str)
             The name of the network.
-        overlapping : bool
+        overlapping : (bool)
             Whether the ground truth is overlapping.
-        affinity_design : str
+        affinity_design : (str)
             The affinity design label used in the experiment.
-        execution_mode : str
+        execution_mode : (str)
             The execution mode used in the experiment.
-        laplacian_variant : str | None
+        laplacian_variant : (str | None)
             The Laplacian variant used in the experiment, if any.
-        epsilon : float
+        epsilon : (float)
             The epsilon parameter used in the experiment.
-        tau : float
+        tau : (float)
             The tau parameter used in the experiment.
-        k_max : int
+        k_max : (int)
             The k_max parameter used in the experiment.
-        stop_condition : str
+        stop_condition : (str)
             The stop condition used in the experiment.
-        gamma : float
+        gamma : (float)
             The gamma parameter used in the experiment.
-        first_cluster_discarded : bool
+        first_cluster_discarded : (bool)
             Whether the first cluster was discarded in the experiment.
-        extrinsic_results : ExtrinsicMetrics | None
+        extrinsic_results : (ExtrinsicMetrics | None)
             The extrinsic metrics results, if computed.
-        computational_results : ComputationalMetrics | None
+        computational_results : (ComputationalMetrics | None)
             The computational metrics results, if computed.
     """
 

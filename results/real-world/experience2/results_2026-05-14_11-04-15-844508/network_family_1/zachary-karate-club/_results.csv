@@ -1,0 +1,3 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,FADDIS Runtime
+001,network_family_1,zachary-karate-club,No,Default,LAPIN-off,-,2.860592e-05,0.05,17,W,Yes,10 | 2,4,0.377805,0.517647,0.196013,0.437315,0.452463,1.578907,0.010688
+002,network_family_1,zachary-karate-club,No,Default,LAPIN-on,Lsym,2.860592e-05,0.05,17,epsilon,No,11 | 2,4.5,0.121998,0.400636,0.042525,0.264039,0.239687,2.225028,0.024644

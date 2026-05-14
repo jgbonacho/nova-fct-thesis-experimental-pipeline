@@ -7,7 +7,7 @@ class ComputationalMetrics:
     Dataclass for computational metrics.
 
     Attributes:
-        runtime : float
+        runtime : (float)
             Runtime in seconds.
     """
 
