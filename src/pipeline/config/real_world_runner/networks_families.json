@@ -1,8 +1,15 @@
 [
   {
-    "name": "network_family_1",
+    "name": "network_family_01",
     "ground_truth_family": true,
     "networks": [
+      {
+        "name": "books-about-us-politics",
+        "gml_filename": "polbooks",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      },
       {
         "name": "zachary-karate-club",
         "gml_filename": "zachary-karate-club",
@@ -13,7 +20,7 @@
     ]
   },
   {
-    "name": "network_family_2",
+    "name": "network_family_02",
     "ground_truth_family": true,
     "networks": [
       {
@@ -26,20 +33,7 @@
     ]
   },
   {
-    "name": "network_family_3",
-    "ground_truth_family": true,
-    "networks": [
-      {
-        "name": "books-about-us-politics",
-        "gml_filename": "polbooks",
-        "ground_truth": true,
-        "overlapping_ground_truth": false,
-        "ground_truth_attr": "value"
-      }
-    ]
-  },
-  {
-    "name": "network_family_4",
+    "name": "network_family_03",
     "ground_truth_family": true,
     "networks": [
       {
@@ -52,7 +46,7 @@
     ]
   },
   {
-    "name": "network_family_5",
+    "name": "network_family_04",
     "ground_truth_family": true,
     "networks": [
       {
@@ -65,46 +59,7 @@
     ]
   },
   {
-    "name": "network_family_6",
-    "ground_truth_family": true,
-    "networks": [
-      {
-        "name": "facebook-network-ego414",
-        "gml_filename": "facebook-network-ego414",
-        "ground_truth": true,
-        "overlapping_ground_truth": true,
-        "ground_truth_attr": "circles"
-      }
-    ]
-  },
-  {
-    "name": "network_family_7",
-    "ground_truth_family": true,
-    "networks": [
-      {
-        "name": "facebook-network-ego107",
-        "gml_filename": "facebook-network-ego107",
-        "ground_truth": true,
-        "overlapping_ground_truth": true,
-        "ground_truth_attr": "circles"
-      }
-    ]
-  },
-  {
-    "name": "network_family_8",
-    "ground_truth_family": true,
-    "networks": [
-      {
-        "name": "facebook-network-ego698",
-        "gml_filename": "facebook-network-ego698",
-        "ground_truth": true,
-        "overlapping_ground_truth": true,
-        "ground_truth_attr": "circles"
-      }
-    ]
-  },
-  {
-    "name": "network_family_9",
+    "name": "network_family_05",
     "ground_truth_family": true,
     "networks": [
       {
@@ -117,7 +72,20 @@
     ]
   },
   {
-    "name": "network_family_10",
+    "name": "network_family_06",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego107",
+        "gml_filename": "facebook-network-ego107",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_07",
     "ground_truth_family": true,
     "networks": [
       {
@@ -126,16 +94,17 @@
         "ground_truth": true,
         "overlapping_ground_truth": true,
         "ground_truth_attr": "circles"
-      }
-    ]
-  },
-  {
-    "name": "network_family_11",
-    "ground_truth_family": true,
-    "networks": [
+      },
       {
         "name": "facebook-network-ego686",
         "gml_filename": "facebook-network-ego686",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego698",
+        "gml_filename": "facebook-network-ego698",
         "ground_truth": true,
         "overlapping_ground_truth": true,
         "ground_truth_attr": "circles"
@@ -143,9 +112,23 @@
     ]
   },
   {
-    "name": "network_family_12",
+    "name": "network_family_08",
     "ground_truth_family": true,
     "networks": [
+      {
+        "name": "facebook-network-ego0",
+        "gml_filename": "facebook-network-ego0",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego414",
+        "gml_filename": "facebook-network-ego414",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
       {
         "name": "facebook-network-ego1684",
         "gml_filename": "facebook-network-ego1684",
@@ -156,20 +139,7 @@
     ]
   },
   {
-    "name": "network_family_13",
-    "ground_truth_family": true,
-    "networks": [
-      {
-        "name": "facebook-network-ego0",
-        "gml_filename": "facebook-network-ego0",
-        "ground_truth": true,
-        "overlapping_ground_truth": true,
-        "ground_truth_attr": "circles"
-      }
-    ]
-  },
-  {
-    "name": "network_family_14",
+    "name": "network_family_09",
     "ground_truth_family": true,
     "networks": [
       {
@@ -182,7 +152,7 @@
     ]
   },
   {
-    "name": "network_family_15",
+    "name": "network_family_10",
     "ground_truth_family": true,
     "networks": [
       {

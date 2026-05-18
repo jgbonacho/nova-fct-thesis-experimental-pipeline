@@ -1,0 +1,23 @@
+[
+  {
+    "name": "facebook-network-ego0",
+    "gml_filename": "facebook-network-ego0",
+    "ground_truth": true,
+    "overlapping_ground_truth": true,
+    "ground_truth_attr": "circles"
+  },
+  {
+    "name": "facebook-network-ego414",
+    "gml_filename": "facebook-network-ego414",
+    "ground_truth": true,
+    "overlapping_ground_truth": true,
+    "ground_truth_attr": "circles"
+  },
+  {
+    "name": "facebook-network-ego1684",
+    "gml_filename": "facebook-network-ego1684",
+    "ground_truth": true,
+    "overlapping_ground_truth": true,
+    "ground_truth_attr": "circles"
+  }
+]

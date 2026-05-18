@@ -496,6 +496,12 @@ def _plot_metric_grid(
         bbox_inches="tight",
     )
 
+    fig.savefig(
+        os.path.join(results_dir, f"{output_prefix}.png"),
+        dpi=300,
+        bbox_inches="tight",
+    )
+
     plt.close(fig)
 
 
@@ -532,6 +538,20 @@ if __name__ == "__main__":
         os.path.join(RESULTS_BASE_DIR, "experience6", "results_2026-05-14_13-27-26-954044"),
         os.path.join(RESULTS_BASE_DIR, "experience6", "results_2026-05-14_14-42-09-654746"),
         os.path.join(RESULTS_BASE_DIR, "experience6", "results_2026-05-14_14-50-59-277172"),
+
+        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_08-57-04-357791"),
+        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-05-00-419889"),
+        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-14-56-020795"),
+        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-20-51-445538"),
+        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-34-47-258253"),
+        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-42-04-813215"),
+
+        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_16-06-16-595831"),
+        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_16-18-42-834794"),
+        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-22-28-308135"),
+        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-35-06-093050"),
+        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-48-07-522086"),
+        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-59-49-412756"),
     ]
 
     for results_dir in results_dirs:

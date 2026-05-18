@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-off,-,5.321393e-06,0.05,387,epsilon,0.3,Yes,28 | 17,0.647059,0.109274,0.170401,26.062950
+002,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-off,-,5.321393e-06,0.05,387,epsilon,0.5,Yes,28 | 17,0.647059,0.120401,0.244105,26.062950
+003,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-off,-,5.321393e-06,0.05,387,epsilon,0.6,Yes,28 | 17,0.647059,0.127545,0.252939,26.062950
+004,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-off,-,5.321393e-06,0.05,387,epsilon,0.7,Yes,28 | 17,0.647059,0.145083,0.255985,26.062950
+005,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-off,-,5.321393e-06,0.05,387,epsilon,0.8,Yes,28 | 17,0.647059,0.135830,0.229477,26.062950
+006,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-off,-,5.321393e-06,0.05,387,epsilon,0.9,Yes,28 | 17,0.647059,0.152699,0.209047,26.062950
+007,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,5.321393e-06,0.05,387,epsilon,0.3,No,23 | 17,0.352941,0.233697,0.364007,36.981439
+008,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,5.321393e-06,0.05,387,epsilon,0.5,No,23 | 17,0.352941,0.255547,0.477620,36.981439
+009,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,5.321393e-06,0.05,387,epsilon,0.6,No,23 | 17,0.352941,0.284981,0.512609,36.981439
+010,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,5.321393e-06,0.05,387,epsilon,0.7,No,23 | 17,0.352941,0.314506,0.540730,36.981439
+011,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,5.321393e-06,0.05,387,epsilon,0.8,No,23 | 17,0.352941,0.315281,0.551489,36.981439
+012,network_family_08,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,5.321393e-06,0.05,387,epsilon,0.9,No,23 | 17,0.352941,0.339528,0.561233,36.981439

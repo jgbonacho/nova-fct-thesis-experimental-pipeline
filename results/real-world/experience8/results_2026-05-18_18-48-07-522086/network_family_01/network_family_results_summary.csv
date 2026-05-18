@@ -1,0 +1,5 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_-,network_family_01,books-about-us-politics,False,0.666667,0.0,0.636364,0.0,0.628534,0.0,0.979911,,,0.049404
+002_default_lapin-on_lsym_-,network_family_01,books-about-us-politics,False,0.0,0.532686,0.828571,0.644546,0.782185,0.542207,0.911753,,,0.112276
+001_default_lapin-off_-_-,network_family_01,zachary-karate-club,False,0.5,0.469024,0.802139,0.488651,0.703127,0.488067,0.900854,,,0.014494
+002_default_lapin-on_lsym_-,network_family_01,zachary-karate-club,False,1.0,0.363479,0.726644,0.385677,0.626243,0.394879,1.205259,,,0.032328

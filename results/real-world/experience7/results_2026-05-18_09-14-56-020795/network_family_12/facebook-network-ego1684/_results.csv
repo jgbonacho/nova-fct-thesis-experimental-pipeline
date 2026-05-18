@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-off,-,6.507205e-05,0.05,387,epsilon,0.3,Yes,21 | 17,0.235294,0.146499,0.231736,9.867800
+002,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-off,-,6.507205e-05,0.05,387,epsilon,0.5,Yes,21 | 17,0.235294,0.159148,0.275336,9.867800
+003,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-off,-,6.507205e-05,0.05,387,epsilon,0.6,Yes,21 | 17,0.235294,0.165944,0.280853,9.867800
+004,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-off,-,6.507205e-05,0.05,387,epsilon,0.7,Yes,21 | 17,0.235294,0.175814,0.285028,9.867800
+005,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-off,-,6.507205e-05,0.05,387,epsilon,0.8,Yes,21 | 17,0.235294,0.143142,0.265022,9.867800
+006,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-off,-,6.507205e-05,0.05,387,epsilon,0.9,Yes,21 | 17,0.235294,0.156123,0.240953,9.867800
+007,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,6.507205e-05,0.05,387,epsilon,0.3,No,15 | 17,0.117647,0.321843,0.368000,12.648022
+008,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,6.507205e-05,0.05,387,epsilon,0.5,No,15 | 17,0.117647,0.389502,0.488321,12.648022
+009,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,6.507205e-05,0.05,387,epsilon,0.6,No,15 | 17,0.117647,0.412621,0.518398,12.648022
+010,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,6.507205e-05,0.05,387,epsilon,0.7,No,15 | 17,0.117647,0.429674,0.542938,12.648022
+011,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,6.507205e-05,0.05,387,epsilon,0.8,No,15 | 17,0.117647,0.441868,0.558389,12.648022
+012,network_family_12,facebook-network-ego1684,Yes,Default,LAPIN-on,Lsym,6.507205e-05,0.05,387,epsilon,0.9,No,15 | 17,0.117647,0.456056,0.569794,12.648022

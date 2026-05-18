@@ -1,0 +1,13 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_g0.3,network_family_09,facebook-network-ego3980,True,0.181818,,,,,,,0.150605,0.171504,0.018292
+002_default_lapin-off_-_g0.5,network_family_09,facebook-network-ego3980,True,0.181818,,,,,,,0.16853,0.193718,0.018292
+003_default_lapin-off_-_g0.6,network_family_09,facebook-network-ego3980,True,0.181818,,,,,,,0.169183,0.128803,0.018292
+004_default_lapin-off_-_g0.7,network_family_09,facebook-network-ego3980,True,0.181818,,,,,,,0.189046,0.146814,0.018292
+005_default_lapin-off_-_g0.8,network_family_09,facebook-network-ego3980,True,0.181818,,,,,,,0.162445,0.184378,0.018292
+006_default_lapin-off_-_g0.9,network_family_09,facebook-network-ego3980,True,0.181818,,,,,,,0.198668,0.192149,0.018292
+007_default_lapin-on_lsym_g0.3,network_family_09,facebook-network-ego3980,True,1.0,,,,,,,0.092398,0.047749,0.089981
+008_default_lapin-on_lsym_g0.5,network_family_09,facebook-network-ego3980,True,1.0,,,,,,,0.100687,0.056933,0.089981
+009_default_lapin-on_lsym_g0.6,network_family_09,facebook-network-ego3980,True,1.0,,,,,,,0.105167,0.046116,0.089981
+010_default_lapin-on_lsym_g0.7,network_family_09,facebook-network-ego3980,True,1.0,,,,,,,0.120729,0.049428,0.089981
+011_default_lapin-on_lsym_g0.8,network_family_09,facebook-network-ego3980,True,1.0,,,,,,,0.147938,0.055895,0.089981
+012_default_lapin-on_lsym_g0.9,network_family_09,facebook-network-ego3980,True,1.0,,,,,,,0.171782,0.023807,0.089981

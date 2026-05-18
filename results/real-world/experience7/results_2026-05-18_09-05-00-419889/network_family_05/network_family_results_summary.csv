@@ -1,0 +1,3 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_-,network_family_05,email-eu-core,False,0.47619,0.535371,0.596349,0.424862,0.457004,0.59536,2.535281,,,21.520674
+002_default_lapin-on_lsym_-,network_family_05,email-eu-core,False,0.5,0.515152,0.551735,0.365493,0.397012,0.622777,2.644555,,,107.204361
