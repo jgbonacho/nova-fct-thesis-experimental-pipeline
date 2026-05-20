@@ -95,10 +95,10 @@ class NetworkConfig:
             The name of the GML file associated with the network.
         ground_truth : (bool)
             Whether the network has ground-truth community labels.
-        overlapping_ground_truth : (bool)
-            Whether the ground-truth communities are overlapping.
-        ground_truth_attr : (str)
-            The node attribute containing the ground-truth community label.
+        overlapping_ground_truth : (bool | None)
+            Whether the ground-truth communities are overlapping, or None if the network does not have ground-truth community labels.
+        ground_truth_attr : (str | None)
+            The node attribute containing the ground-truth community label, or None if the network does not have ground-truth community labels.
     """
 
     name: str
@@ -125,8 +125,8 @@ class NetworkConfig:
             name=data["name"],
             gml_filename=data['gml_filename'],
             ground_truth=data['ground_truth'],
-            overlapping_ground_truth=data['overlapping_ground_truth'],
-            ground_truth_attr=data['ground_truth_attr'],
+            overlapping_ground_truth=data.get('overlapping_ground_truth', None),
+            ground_truth_attr=data.get('ground_truth_attr', None),
         )
 
 

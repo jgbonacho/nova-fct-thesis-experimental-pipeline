@@ -1,4 +1,4 @@
-# Report 8 - Initial experiments on real-world networks
+# Report 8 - Initial experiments on real-world networks with ground-truth
 
 
 
