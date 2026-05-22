@@ -8,7 +8,6 @@ from datetime import datetime
 from typing import get_args, Any
 
 import numpy as np
-
 from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from pipeline.config.synthetic_runner.config import ExecutionMode, DefuzzificationRule

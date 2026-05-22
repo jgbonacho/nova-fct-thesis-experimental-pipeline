@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-off,-,8.796767e-05,0.05,266,epsilon,0.3,Yes,26 | 32,0.1875,0.241655,0.260427,5.447363
+002,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-off,-,8.796767e-05,0.05,266,epsilon,0.5,Yes,25 | 32,0.218750,0.292767,0.248962,5.447363
+003,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-off,-,8.796767e-05,0.05,266,epsilon,0.6,Yes,25 | 32,0.218750,0.288012,0.200160,5.447363
+004,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-off,-,8.796767e-05,0.05,266,epsilon,0.7,Yes,25 | 32,0.218750,0.259102,0.166158,5.447363
+005,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-off,-,8.796767e-05,0.05,266,epsilon,0.8,Yes,25 | 32,0.218750,0.254563,0.125368,5.447363
+006,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-off,-,8.796767e-05,0.05,266,epsilon,0.9,Yes,25 | 32,0.218750,0.231690,0.104141,5.447363
+007,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-on,Lsym,8.796767e-05,0.05,266,epsilon,0.3,No,30 | 32,0.0625,0.299539,0.212984,8.436537
+008,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-on,Lsym,8.796767e-05,0.05,266,epsilon,0.5,No,28 | 32,0.125,0.352959,0.291253,8.436537
+009,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-on,Lsym,8.796767e-05,0.05,266,epsilon,0.6,No,27 | 32,0.156250,0.346465,0.247756,8.436537
+010,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-on,Lsym,8.796767e-05,0.05,266,epsilon,0.7,No,27 | 32,0.156250,0.289595,0.346644,8.436537
+011,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-on,Lsym,8.796767e-05,0.05,266,epsilon,0.8,No,24 | 32,0.25,0.274593,0.315551,8.436537
+012,network_family_07,facebook-network-ego3437,Yes,Default,LAPIN-on,Lsym,8.796767e-05,0.05,266,epsilon,0.9,No,24 | 32,0.25,0.264204,0.299643,8.436537

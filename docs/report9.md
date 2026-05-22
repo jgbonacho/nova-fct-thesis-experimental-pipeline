@@ -1,22 +1,27 @@
-# Report 9 - More experiments on real-world networks with ground-truth
+# Report 9 - Experiments on real-world networks (Part II)
 
 
 
 ## Table of Contents
 
-- [Experience 7](#experience-7)
+- [Experience 7 (One network per family)](#experience-7-one-network-per-family)
     - [LAPIN-off Median Normalized Contributions](#lapin-off-median-normalized-contributions)
     - [LAPIN-on Median Normalized Contributions](#lapin-on-median-normalized-contributions)
     - [LAPIN-off Median K Boundary Normalized Contributions](#lapin-off-median-k-boundary-normalized-contributions)
     - [LAPIN-off Median K Boundary Raw Contributions](#lapin-off-median-k-boundary-raw-contributions)
     - [LAPIN-on Median K Boundary Normalized Contributions](#lapin-on-median-k-boundary-normalized-contributions)
     - [LAPIN-on Median K Boundary Raw Contributions](#lapin-on-median-k-boundary-raw-contributions)
-- [Experience 8](#experience-8)
+- [Experience 8 (Networks grouped by ground-truth type, K, degree assortativity and average degree)](#experience-8-networks-grouped-by-ground-truth-type-k-degree-assortativity-and-average-degree)
+    - [LAPIN-off Median Normalized Contributions](#lapin-off-median-normalized-contributions-1)
+    - [LAPIN-on Median Normalized Contributions](#lapin-on-median-normalized-contributions-1)
+    - [LAPIN-off Median K Boundary Normalized Contributions](#lapin-off-median-k-boundary-normalized-contributions-1)
+    - [LAPIN-off Median K Boundary Raw Contributions](#lapin-off-median-k-boundary-raw-contributions-1)
+    - [LAPIN-on Median K Boundary Normalized Contributions](#lapin-on-median-k-boundary-normalized-contributions-1)
     - [LAPIN-on Median K Boundary Raw Contributions](#lapin-on-median-k-boundary-raw-contributions-1)
+- [Discussion](#discussion)
 
 
-
-## Experience 7
+## Experience 7 (One network per family)
 
 ### LAPIN-off Median Normalized Contributions
 
@@ -48,7 +53,27 @@
 
 
 
-## Experience 8
+## Experience 8 (Networks grouped by ground-truth type, K, degree assortativity and average degree)
+
+### LAPIN-off Median Normalized Contributions
+
+[Open Folder](../results/real-world/experience8/results_2026-05-18_16-06-16-595831)
+
+### LAPIN-on Median Normalized Contributions
+
+[Open Folder](../results/real-world/experience8/results_2026-05-18_18-22-28-308135)
+
+### LAPIN-off Median K Boundary Normalized Contributions
+
+[Open Folder](../results/real-world/experience8/results_2026-05-18_16-18-42-834794)
+
+### LAPIN-off Median K Boundary Raw Contributions
+
+[Open Folder](../results/real-world/experience8/results_2026-05-18_18-48-07-522086)
+
+### LAPIN-on Median K Boundary Normalized Contributions
+
+[Open Folder](../results/real-world/experience8/results_2026-05-18_18-35-06-093050)
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
@@ -57,3 +82,16 @@
 ![](../results/real-world/experience8/results_2026-05-18_18-59-49-412756/non_overlapping_networks.png)
 
 ![](../results/real-world/experience8/results_2026-05-18_18-59-49-412756/overlapping_networks.png)
+
+
+
+## Discussion
+
+- **Observations**
+    - TODO  
+
+- **Warnings**
+    - TODO  
+
+- **TODO**
+    - TODO

@@ -552,6 +552,10 @@ if __name__ == "__main__":
         os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-35-06-093050"),
         os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-48-07-522086"),
         os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-59-49-412756"),
+
+        os.path.join(RESULTS_BASE_DIR, "experience9", "results_2026-05-21_18-52-42-258845"),
+        os.path.join(RESULTS_BASE_DIR, "experience10", "results_2026-05-21_19-07-49-017976"),
+        os.path.join(RESULTS_BASE_DIR, "experience11", "results_2026-05-21_19-50-50-467475"),
     ]
 
     for results_dir in results_dirs:

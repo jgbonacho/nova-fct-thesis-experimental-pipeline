@@ -46,7 +46,9 @@ def load_network_from_gml(dir_path: str, network_config: NetworkConfig) -> tuple
     if nx.number_of_selfloops(graph) > 0:
         raise ValueError(f"[ERROR] Only graphs without self-loops are supported.")
 
-    print(f"[DEBUG] Nodes = {graph.number_of_nodes()}; Edges = {graph.number_of_edges()}; CCs = {nx.number_connected_components(graph)}")
+    print(
+        f"[DEBUG] Nodes = {graph.number_of_nodes()}; Edges = {graph.number_of_edges()}; CCs = {nx.number_connected_components(graph)}"
+    )
 
     # Extract largest connected component.
     if not nx.is_connected(graph):
@@ -64,6 +66,7 @@ def load_network_from_gml(dir_path: str, network_config: NetworkConfig) -> tuple
             id_to_label = nx.get_node_attributes(graph, network_config.ground_truth_attr)
             unique_label_values = sorted(set(id_to_label.values()))
             label_value_to_idx = {label: idx for idx, label in enumerate(unique_label_values)}
+            print(f"[DEBUG] Labels-to-IDs: {label_value_to_idx}")
 
             # NOTE: Nodes without the ground-truth attribute are labeled as -1.
             ground_truth_labels = [

@@ -3,7 +3,6 @@ import os.path
 from collections.abc import Callable
 
 import numpy as np
-
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.computational.computational_metrics import get_computation_start_time, \
     get_computation_end_time, compute_computational_metrics
@@ -119,7 +118,7 @@ def run_real_world_networks_experiments(
                             defuzzification_rules if network_config.overlapping_ground_truth else [None]
                         )
                         for idx5, defuzzification_rule in enumerate(current_defuzzification_rules, 1):
-                            log_progress(idx5, len(defuzzification_rules), str(defuzzification_rule), 1)
+                            log_progress(idx5, len(current_defuzzification_rules), str(defuzzification_rule), 1)
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
                             membership_matrix, _, _, _, _, stop_condition = results

@@ -37,7 +37,7 @@ def apply_defuzzification_rule(
         ValueError : If gamma is not in the range [0, 1], when overlapping is True.
     """
 
-    if conditionally_discard_first_cluster and np.all(U[:, 0] > 0):
+    if conditionally_discard_first_cluster and np.all(U[:, 0] > 0) and U.shape[1] > 1:
         U_copy = np.asarray(U)[:, 1:]
         first_cluster_discarded = True
         labels_offset = 1

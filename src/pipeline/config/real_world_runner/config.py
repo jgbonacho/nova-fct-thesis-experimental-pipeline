@@ -14,7 +14,10 @@ RESULTS_BASE_DIR = os.path.join(ROOT_DIR, 'results', 'real-world')
 CONFIG_DIR = os.path.join(os.path.dirname(__file__))
 
 
-def load_network_family_configs(config_dir: str, input_filename: str = "networks_families.json") -> list[NetworkFamilyConfig]:
+def load_network_family_configs(
+        config_dir: str,
+        input_filename: str = "networks_families.json"
+) -> list[NetworkFamilyConfig]:
     """
     Load network families configs from JSON file.
 
