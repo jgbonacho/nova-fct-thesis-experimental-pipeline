@@ -1,7 +1,7 @@
 [
   {
-    "name": "facebook-network-ego686",
-    "gml_filename": "facebook-network-ego686",
+    "name": "facebook-network-ego0",
+    "gml_filename": "facebook-network-ego0",
     "ground_truth": true,
     "overlapping_ground_truth": true,
     "ground_truth_attr": "circles"

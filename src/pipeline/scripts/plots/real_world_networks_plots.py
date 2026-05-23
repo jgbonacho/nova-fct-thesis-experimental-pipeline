@@ -529,33 +529,11 @@ if __name__ == "__main__":
         os.path.join(RESULTS_BASE_DIR, "experience4", "results_2026-05-14_12-08-32-563204"),
         os.path.join(RESULTS_BASE_DIR, "experience4", "results_2026-05-14_12-18-20-912820"),
 
-        os.path.join(RESULTS_BASE_DIR, "experience5", "results_2026-05-14_12-32-25-330204"),
-        os.path.join(RESULTS_BASE_DIR, "experience5", "results_2026-05-14_12-41-51-363988"),
-        os.path.join(RESULTS_BASE_DIR, "experience5", "results_2026-05-14_12-52-28-621268"),
-        os.path.join(RESULTS_BASE_DIR, "experience5", "results_2026-05-14_13-02-32-182253"),
-
-        os.path.join(RESULTS_BASE_DIR, "experience6", "results_2026-05-14_13-17-59-894947"),
-        os.path.join(RESULTS_BASE_DIR, "experience6", "results_2026-05-14_13-27-26-954044"),
-        os.path.join(RESULTS_BASE_DIR, "experience6", "results_2026-05-14_14-42-09-654746"),
-        os.path.join(RESULTS_BASE_DIR, "experience6", "results_2026-05-14_14-50-59-277172"),
-
-        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_08-57-04-357791"),
-        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-05-00-419889"),
-        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-14-56-020795"),
-        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-20-51-445538"),
-        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-34-47-258253"),
-        os.path.join(RESULTS_BASE_DIR, "experience7", "results_2026-05-18_09-42-04-813215"),
-
-        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_16-06-16-595831"),
-        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_16-18-42-834794"),
-        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-22-28-308135"),
-        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-35-06-093050"),
-        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-48-07-522086"),
-        os.path.join(RESULTS_BASE_DIR, "experience8", "results_2026-05-18_18-59-49-412756"),
-
-        os.path.join(RESULTS_BASE_DIR, "experience9", "results_2026-05-21_18-52-42-258845"),
-        os.path.join(RESULTS_BASE_DIR, "experience10", "results_2026-05-21_19-07-49-017976"),
-        os.path.join(RESULTS_BASE_DIR, "experience11", "results_2026-05-21_19-50-50-467475"),
+        os.path.join(RESULTS_BASE_DIR, "experience9", "results_2026-05-23_18-31-35-504770"),
+        os.path.join(RESULTS_BASE_DIR, "experience10_train_set", "results_2026-05-23_18-48-04-504201"),
+        os.path.join(RESULTS_BASE_DIR, "experience10_test_set", "results_2026-05-23_19-34-21-746608"),
+        os.path.join(RESULTS_BASE_DIR, "experience11_train_set", "results_2026-05-23_19-07-59-472648"),
+        os.path.join(RESULTS_BASE_DIR, "experience11_test_set", "results_2026-05-23_19-46-22-129301"),
     ]
 
     for results_dir in results_dirs:

@@ -1,3 +1,0 @@
-variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
-001_default_lapin-off_-_-,network_family_04,socio-patterns-primary-school-day1,False,0.181818,0.691183,0.70087,0.534837,0.589628,0.71781,1.273045,,,0.2896
-002_default_lapin-on_lsym_-,network_family_04,socio-patterns-primary-school-day1,False,0.0,0.75217,0.779638,0.630548,0.668199,0.77758,1.038598,,,0.460474
