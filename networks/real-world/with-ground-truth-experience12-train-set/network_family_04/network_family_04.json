@@ -1,0 +1,9 @@
+[
+  {
+    "name": "cora",
+    "gml_filename": "cora",
+    "ground_truth": true,
+    "overlapping_ground_truth": false,
+    "ground_truth_attr": "gt"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "network_family_02",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "word-adjacencies",
+        "gml_filename": "adjnoun",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_04",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "citeseer",
+        "gml_filename": "citeseer",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "gt"
+      },
+      {
+        "name": "facebook-network-ego3980",
+        "gml_filename": "facebook-network-ego3980",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_05",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego686",
+        "gml_filename": "facebook-network-ego686",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_07",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego348",
+        "gml_filename": "facebook-network-ego348",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_08",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "socio-patterns-primary-school-day2",
+        "gml_filename": "primary-school-day-2",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "gt"
+      }
+    ]
+  }
+]

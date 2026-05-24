@@ -1,0 +1,25 @@
+variant,Network Family,Network,Overlapping?,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,ONMI,Omega,FADDIS Runtime
+001_default_lapin-off_-_g0.3,network_family_08,facebook-network-ego3980,True,0.363636,,,,,,,0.19705,0.259761,0.017788
+002_default_lapin-off_-_g0.5,network_family_08,facebook-network-ego3980,True,0.363636,,,,,,,0.196702,0.217094,0.017788
+003_default_lapin-off_-_g0.6,network_family_08,facebook-network-ego3980,True,0.363636,,,,,,,0.198687,0.14177,0.017788
+004_default_lapin-off_-_g0.7,network_family_08,facebook-network-ego3980,True,0.363636,,,,,,,0.221735,0.168027,0.017788
+005_default_lapin-off_-_g0.8,network_family_08,facebook-network-ego3980,True,0.363636,,,,,,,0.200262,0.203474,0.017788
+006_default_lapin-off_-_g0.9,network_family_08,facebook-network-ego3980,True,0.363636,,,,,,,0.232323,0.214296,0.017788
+007_default_lapin-on_lsym_g0.3,network_family_08,facebook-network-ego3980,True,0.454545,,,,,,,0.097209,0.094483,0.068033
+008_default_lapin-on_lsym_g0.5,network_family_08,facebook-network-ego3980,True,0.454545,,,,,,,0.100361,0.120097,0.068033
+009_default_lapin-on_lsym_g0.6,network_family_08,facebook-network-ego3980,True,0.454545,,,,,,,0.115037,0.106228,0.068033
+010_default_lapin-on_lsym_g0.7,network_family_08,facebook-network-ego3980,True,0.454545,,,,,,,0.147644,0.082174,0.068033
+011_default_lapin-on_lsym_g0.8,network_family_08,facebook-network-ego3980,True,0.454545,,,,,,,0.161305,0.08846,0.068033
+012_default_lapin-on_lsym_g0.9,network_family_08,facebook-network-ego3980,True,0.454545,,,,,,,0.153762,0.060565,0.068033
+001_default_lapin-off_-_g0.3,network_family_08,facebook-network-ego686,True,0.285714,,,,,,,0.146105,0.035872,0.191979
+002_default_lapin-off_-_g0.5,network_family_08,facebook-network-ego686,True,0.285714,,,,,,,0.122558,0.045194,0.191979
+003_default_lapin-off_-_g0.6,network_family_08,facebook-network-ego686,True,0.285714,,,,,,,0.11796,0.045514,0.191979
+004_default_lapin-off_-_g0.7,network_family_08,facebook-network-ego686,True,0.285714,,,,,,,0.115364,0.035721,0.191979
+005_default_lapin-off_-_g0.8,network_family_08,facebook-network-ego686,True,0.285714,,,,,,,0.108769,0.017003,0.191979
+006_default_lapin-off_-_g0.9,network_family_08,facebook-network-ego686,True,0.285714,,,,,,,0.117575,0.014277,0.191979
+007_default_lapin-on_lsym_g0.3,network_family_08,facebook-network-ego686,True,0.357143,,,,,,,0.116681,0.07155,0.447136
+008_default_lapin-on_lsym_g0.5,network_family_08,facebook-network-ego686,True,0.357143,,,,,,,0.12105,0.053539,0.447136
+009_default_lapin-on_lsym_g0.6,network_family_08,facebook-network-ego686,True,0.357143,,,,,,,0.103155,0.038303,0.447136
+010_default_lapin-on_lsym_g0.7,network_family_08,facebook-network-ego686,True,0.357143,,,,,,,0.090074,0.031806,0.447136
+011_default_lapin-on_lsym_g0.8,network_family_08,facebook-network-ego686,True,0.357143,,,,,,,0.086249,0.029234,0.447136
+012_default_lapin-on_lsym_g0.9,network_family_08,facebook-network-ego686,True,0.285714,,,,,,,0.081572,0.022743,0.447136

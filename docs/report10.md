@@ -69,6 +69,28 @@
 
 
 
+## Experience 12 - Train Set (Networks grouped by ground-truth type, degree assortativity, and average degree)
+
+### LAPIN-on Median K Boundary Raw Contributions
+
+[Open Folder](../results/real-world/experience12_train_set/results_2026-05-24_00-16-39-860352/)
+
+![](../results/real-world/experience12_train_set/results_2026-05-24_00-16-39-860352/non_overlapping_networks.png)
+
+![](../results/real-world/experience12_train_set/results_2026-05-24_00-16-39-860352/overlapping_networks.png)
+
+## Experience 12 - Test Set (Networks grouped by ground-truth type, degree assortativity, and average degree)
+
+### LAPIN-on Median K Boundary Raw Contributions
+
+[Open Folder](../results/real-world/experience12_test_set/results_2026-05-24_00-48-15-846586/)
+
+![](../results/real-world/experience12_test_set/results_2026-05-24_00-48-15-846586/non_overlapping_networks.png)
+
+![](../results/real-world/experience12_test_set/results_2026-05-24_00-48-15-846586/overlapping_networks.png)
+
+
+
 ## Discussion
 
 - **Observations**

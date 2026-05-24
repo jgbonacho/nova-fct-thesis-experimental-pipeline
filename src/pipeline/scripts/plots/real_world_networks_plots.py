@@ -534,6 +534,8 @@ if __name__ == "__main__":
         os.path.join(RESULTS_BASE_DIR, "experience10_test_set", "results_2026-05-23_19-34-21-746608"),
         os.path.join(RESULTS_BASE_DIR, "experience11_train_set", "results_2026-05-23_19-07-59-472648"),
         os.path.join(RESULTS_BASE_DIR, "experience11_test_set", "results_2026-05-23_19-46-22-129301"),
+        os.path.join(RESULTS_BASE_DIR, "experience12_train_set", "results_2026-05-24_00-16-39-860352"),
+        os.path.join(RESULTS_BASE_DIR, "experience12_test_set", "results_2026-05-24_00-48-15-846586"),
     ]
 
     for results_dir in results_dirs:
