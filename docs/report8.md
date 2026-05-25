@@ -19,6 +19,23 @@
 
 [Open Folder](../results/real-world/baseline/)
 
+- **Observations**:
+    - Zachary Karate Club: LAPIN-off or LAPIN-on
+    - **US Political Blogs: LAPIN-off (critical)**
+    - Books about US Politics: LAPIN-on (critical)
+    - American College Football: LAPIN-off
+    - E-mail EU Core: LAPIN-on (critical)
+    - Facebook Ego-414 Network: LAPIN-on
+    - Facebook Ego-107 Network: LAPIN-on 
+    - Facebook Ego-698 Network: LAPIN-on
+    - Facebook Ego-3980 Network: LAPIN-on
+    - Facebook Ego-348 Network: LAPIN-on
+    - Facebook Ego-686 Network: LAPIN-on
+    - Facebook Ego-1684 Network: LAPIN-on
+    - Facebook Ego-0 Network: LAPIN-on
+    - Facebook Ego-3437 Network: LAPIN-on
+    - Facebook Ego-1912 Network: LAPIN-on
+
 
 
 ## Experience 1 (All networks in the same family)
@@ -78,10 +95,6 @@
 ## Discussion
 
 - **Observations**
-    - TODO  
-
-- **Warnings**
-    - TODO  
-
-- **TODO**
-    - TODO
+  - Overall, configurations with **"Extraction of clusters until the end"**, both LAPIN-on and LAPIN-off, largely fail to estimate the number of communities;
+  - Overall, configurations with **"Extraction of K desired clusters"**, both LAPIN-on and LAPIN-off, tend to produce similar results;
+  - Overall, none of the configurations is able to correctly estimate the number of communities, with a tendency to overestimate it, even when using one network per family.

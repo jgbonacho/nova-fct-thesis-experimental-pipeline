@@ -1,0 +1,3 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,FADDIS Runtime
+001,network_family_07,cora,No,Default,LAPIN-off,-,desiredK,Yes,7 | 7,0,0.342503,0.559918,0.222768,0.366576,0.345166,2.362280,101.543017
+002,network_family_07,cora,No,Default,LAPIN-on,Lsym,desiredK,No,7 | 7,0,0.422441,0.628350,0.322497,0.457917,0.424854,2.016996,157.060975

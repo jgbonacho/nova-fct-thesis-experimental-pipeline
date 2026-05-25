@@ -13,6 +13,40 @@
 
 
 
+## Experience 0 (Baseline - Train Set)
+
+[Open Folder](../results/real-world/baseline-train/)
+
+- **Observations**:
+    - Zachary Karate Club: LAPIN-off or LAPIN-on
+    - Books about US Politics: LAPIN-on (critical)
+    - American College Football: LAPIN-off
+    - SocioPatterns Primary School day 1: LAPIN-on
+    - E-mail EU Core: LAPIN-on (critical)
+    - **US Political Blogs: LAPIN-off (critical)**
+    - Cora: LAPIN-on
+    - Facebook Ego-698 Network: LAPIN-on
+    - Facebook Ego-414 Network: LAPIN-on
+    - Facebook Ego-0 Network: LAPIN-on
+    - Facebook Ego-3437 Network: LAPIN-on
+    - Facebook Ego-1684 Network: LAPIN-on
+    - Facebook Ego-1912 Network: LAPIN-on
+    - Facebook Ego-107 Network: LAPIN-on
+
+## Experience 0 (Baseline - Test Set)
+
+[Open Folder](../results/real-world/baseline-test/)
+
+- **Observations**:
+    - **Word Adjacencies: None**
+    - SocioPatterns Primary School day 2: LAPIN-on
+    - CiteSeer: LAPIN-on
+    - Facebook Ego-348 Network: LAPIN-on
+    - Facebook Ego-3980 Network: LAPIN-on
+    - Facebook Ego-686 Network: LAPIN-on
+
+
+
 ## Experience 9 (One network per family - Train Set)
 
 ### LAPIN-on Median K Boundary Raw Contributions
@@ -94,10 +128,4 @@
 ## Discussion
 
 - **Observations**
-    - TODO  
-
-- **Warnings**
-    - TODO  
-
-- **TODO**
-    - TODO
+    - The generalization is not perfect.

@@ -88,10 +88,10 @@
 ## Discussion
 
 - **Observations**
-    - TODO  
-
-- **Warnings**
-    - TODO  
-
-- **TODO**
-    - TODO
+  - Experience 7:
+    - Overall, **"LAPIN-off Median Normalized Contributions"** and **"LAPIN-on Median Normalized Contributions"** have very similar performance. In many networks, both configurations fail to estimate the number of communities correctly;
+    - Overall, the configuration with **"Median K-Boundary Normalized Contributions"** largely fails to estimate the number of communities. The denormalization used in the configuration with **"Median K-Boundary Raw Contributions"** seems to mitigate this issue;
+    - Overall, **"LAPIN-off Median K-Boundary Raw Contributions"** has poor performance in several networks, especially when the corresponding family does not have a calibrated threshold;
+    - Overall, **"LAPIN-on Median K-Boundary Raw Contributions"** seems to be the best configuration, with good performance on both non-overlapping and overlapping networks. The only family without a threshold estimation is `network_family_11`. The critical network is `us-political-blogs`, where LAPIN-on strongly degrades the performance. However, this configuration may still have generalization issues because the number of networks is small.
+  - Experience 8:
+    - As expected, combining networks into families introduces some deviation in the estimated number of communities.
