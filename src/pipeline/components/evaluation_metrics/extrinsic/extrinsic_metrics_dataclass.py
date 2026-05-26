@@ -9,7 +9,7 @@ class ExtrinsicMetrics:
     Attributes:
         diff_of_k : (str)
             A string representing the number of communities in the ground truth and the number of communities predicted, formatted as "K' | K".
-        relative_error_of_k : (float)
+        relative_error_of_k : (float | None)
             Relative error of the number of communities, computed as |K'-K|/K.
         ami : (float | None)
             Adjusted Mutual Information (AMI) score. None if not applicable.
@@ -30,7 +30,7 @@ class ExtrinsicMetrics:
     """
 
     diff_of_k: str = field(metadata={"label": "K' | K"})
-    relative_error_of_k: float = field(metadata={"label": "|K'-K|/K"})
+    relative_error_of_k: float = field(default=None, metadata={"label": "|K'-K|/K"})
     ami: float = field(default=None, metadata={"label": "AMI"})
     f_measure: float = field(default=None, metadata={"label": "F-measure"})
     ari: float = field(default=None, metadata={"label": "ARI"})

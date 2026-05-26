@@ -1,0 +1,15 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_01,les-miserables,Yes,Default,LAPIN-off,-,0.032604,0.05,38,epsilon,0.3,Yes,2,,,0.020705,0.080569,0.029315
+002,network_family_01,les-miserables,Yes,Default,LAPIN-off,-,0.032604,0.05,38,epsilon,0.5,Yes,2,,,0.020705,0.080569,0.029315
+003,network_family_01,les-miserables,Yes,Default,LAPIN-off,-,0.032604,0.05,38,epsilon,0.6,Yes,2,,,0.020705,0.093913,0.029315
+004,network_family_01,les-miserables,Yes,Default,LAPIN-off,-,0.032604,0.05,38,epsilon,0.7,Yes,2,,,0.020705,0.093913,0.029315
+005,network_family_01,les-miserables,Yes,Default,LAPIN-off,-,0.032604,0.05,38,epsilon,0.8,Yes,2,,,0.020705,0.093913,0.029315
+006,network_family_01,les-miserables,Yes,Default,LAPIN-off,-,0.032604,0.05,38,epsilon,0.9,Yes,2,,,0.020705,0.093913,0.029315
+007,network_family_01,les-miserables,No,Default,LAPIN-off,-,0.032604,0.05,38,epsilon,,Yes,2,0.377015,0.127572,,,0.029315
+008,network_family_01,les-miserables,Yes,Default,LAPIN-on,Lsym,0.032604,0.05,38,epsilon,0.3,No,4,,,0.038775,0.097467,0.069021
+009,network_family_01,les-miserables,Yes,Default,LAPIN-on,Lsym,0.032604,0.05,38,epsilon,0.5,No,4,,,0.038775,0.097467,0.069021
+010,network_family_01,les-miserables,Yes,Default,LAPIN-on,Lsym,0.032604,0.05,38,epsilon,0.6,No,4,,,0.038775,0.097467,0.069021
+011,network_family_01,les-miserables,Yes,Default,LAPIN-on,Lsym,0.032604,0.05,38,epsilon,0.7,No,4,,,0.038775,0.097467,0.069021
+012,network_family_01,les-miserables,Yes,Default,LAPIN-on,Lsym,0.032604,0.05,38,epsilon,0.8,No,4,,,0.038775,0.097467,0.069021
+013,network_family_01,les-miserables,Yes,Default,LAPIN-on,Lsym,0.032604,0.05,38,epsilon,0.9,No,4,,,0.038775,0.097467,0.069021
+014,network_family_01,les-miserables,No,Default,LAPIN-on,Lsym,0.032604,0.05,38,epsilon,,No,4,0.423004,0.155738,,,0.069021

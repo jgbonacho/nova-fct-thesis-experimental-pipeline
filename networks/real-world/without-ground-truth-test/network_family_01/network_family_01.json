@@ -1,0 +1,17 @@
+[
+    {
+        "name": "les-miserables",
+        "gml_filename": "les-miserables",
+        "ground_truth": false
+    },
+    {
+        "name": "c-elegans-neural-network",
+        "gml_filename": "c-elegans-neural-network",
+        "ground_truth": false
+    },
+    {
+        "name": "c-elegans-metabolic",
+        "gml_filename": "c-elegans-metabolic",
+        "ground_truth": false
+    }
+]

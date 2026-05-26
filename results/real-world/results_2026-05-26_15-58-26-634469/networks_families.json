@@ -1,0 +1,148 @@
+[
+  {
+    "name": "network_family_01",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "zachary-karate-club",
+        "gml_filename": "zachary-karate-club",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "club"
+      },
+      {
+        "name": "books-about-us-politics",
+        "gml_filename": "polbooks",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_02",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "us-political-blogs",
+        "gml_filename": "us-political-blogs",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_03",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "cora",
+        "gml_filename": "cora",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "gt"
+      },
+      {
+        "name": "facebook-network-ego698",
+        "gml_filename": "facebook-network-ego698",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_04",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "email-eu-core",
+        "gml_filename": "email-eu-core",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_05",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "american-college-football",
+        "gml_filename": "football",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_06",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego0",
+        "gml_filename": "facebook-network-ego0",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego414",
+        "gml_filename": "facebook-network-ego414",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego3437",
+        "gml_filename": "facebook-network-ego3437",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_07",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego107",
+        "gml_filename": "facebook-network-ego107",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego1684",
+        "gml_filename": "facebook-network-ego1684",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "socio-patterns-primary-school-day1",
+        "gml_filename": "primary-school-day-1",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "gt"
+      }
+    ]
+  },
+  {
+    "name": "network_family_08",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego1912",
+        "gml_filename": "facebook-network-ego1912",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  }
+]

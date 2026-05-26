@@ -1,0 +1,15 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_03,dolphins,Yes,Default,LAPIN-off,-,0.003429,0.05,31,epsilon,0.3,Yes,6,,,0.063668,0.070630,0.038810
+002,network_family_03,dolphins,Yes,Default,LAPIN-off,-,0.003429,0.05,31,epsilon,0.5,Yes,6,,,0.063668,0.086453,0.038810
+003,network_family_03,dolphins,Yes,Default,LAPIN-off,-,0.003429,0.05,31,epsilon,0.6,Yes,6,,,0.063668,0.086453,0.038810
+004,network_family_03,dolphins,Yes,Default,LAPIN-off,-,0.003429,0.05,31,epsilon,0.7,Yes,6,,,0.063668,0.086453,0.038810
+005,network_family_03,dolphins,Yes,Default,LAPIN-off,-,0.003429,0.05,31,epsilon,0.8,Yes,6,,,0.063668,0.096485,0.038810
+006,network_family_03,dolphins,Yes,Default,LAPIN-off,-,0.003429,0.05,31,epsilon,0.9,Yes,6,,,0.063668,0.096485,0.038810
+007,network_family_03,dolphins,No,Default,LAPIN-off,-,0.003429,0.05,31,epsilon,,Yes,6,0.469661,0.125,,,0.038810
+008,network_family_03,dolphins,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,31,epsilon,0.3,No,2,,,0.019277,0.024388,0.043434
+009,network_family_03,dolphins,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,31,epsilon,0.5,No,2,,,0.019277,0.024388,0.043434
+010,network_family_03,dolphins,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,31,epsilon,0.6,No,2,,,0.019277,0.024388,0.043434
+011,network_family_03,dolphins,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,31,epsilon,0.7,No,2,,,0.019277,0.024388,0.043434
+012,network_family_03,dolphins,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,31,epsilon,0.8,No,2,,,0.019277,0.024388,0.043434
+013,network_family_03,dolphins,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,31,epsilon,0.9,No,2,,,0.019277,0.024388,0.043434
+014,network_family_03,dolphins,No,Default,LAPIN-on,Lsym,0.003429,0.05,31,epsilon,,No,2,0.384775,0.070707,,,0.043434

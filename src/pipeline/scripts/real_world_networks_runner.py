@@ -3,10 +3,13 @@ import os.path
 from collections.abc import Callable
 
 import numpy as np
+
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.computational.computational_metrics import get_computation_start_time, \
     get_computation_end_time, compute_computational_metrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import compute_extrinsic_metrics
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
+from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics
 from pipeline.components.faddis.faddis import faddis
 from pipeline.components.lapin.lapin import lapin
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
@@ -114,29 +117,39 @@ def run_real_world_networks_experiments(
                             )
                         end_time = get_computation_end_time()
 
-                        current_defuzzification_rules = (
-                            defuzzification_rules if network_config.overlapping_ground_truth else [None]
-                        )
+                        if network_config.overlapping_ground_truth is True:
+                            current_defuzzification_rules = defuzzification_rules
+                        elif network_config.overlapping_ground_truth is False:
+                            current_defuzzification_rules = [None]
+                        else:
+                            current_defuzzification_rules = defuzzification_rules + [None]
+
                         for idx5, defuzzification_rule in enumerate(current_defuzzification_rules, 1):
                             log_progress(idx5, len(current_defuzzification_rules), str(defuzzification_rule), 1)
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
                             membership_matrix, _, _, _, _, stop_condition = results
-                            gamma = defuzzification_rule.gamma if network_config.overlapping_ground_truth else None
+                            overlapping = defuzzification_rule is not None
+                            gamma = defuzzification_rule.gamma if overlapping else None
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                                 membership_matrix,
                                 gamma,
-                                overlapping=network_config.overlapping_ground_truth
+                                overlapping=overlapping
                             )
 
                             # 8. Compute the evaluation metrics.
                             if network_config.ground_truth:
                                 extrinsic_results = compute_extrinsic_metrics(
                                     graph, ground_truth_labels, predicted_labels, k, k_predicted,
-                                    overlapping=network_config.overlapping_ground_truth
+                                    overlapping=overlapping
                                 )
                             else:
-                                extrinsic_results = None
+                                extrinsic_results = ExtrinsicMetrics(diff_of_k=f"{k_predicted}")
+                            
+                            intrinsic_results = compute_intrinsic_metrics(
+                                graph, A, membership_matrix, predicted_labels,
+                                overlapping=overlapping
+                            )
 
                             computational_results = compute_computational_metrics(start_time, end_time)
 
@@ -146,7 +159,7 @@ def run_real_world_networks_experiments(
                                 id=results_id,
                                 network_family=network_family_config.name,
                                 network=network_config.name,
-                                overlapping=network_config.overlapping_ground_truth,
+                                overlapping=overlapping,
                                 affinity_design=affinity_design_label,
                                 execution_mode=execution_mode.label,
                                 laplacian_variant=execution_mode.laplacian_variant,
@@ -157,6 +170,7 @@ def run_real_world_networks_experiments(
                                 gamma=gamma,
                                 first_cluster_discarded=first_cluster_discarded,
                                 extrinsic_results=extrinsic_results,
+                                intrinsic_results=intrinsic_results,
                                 computational_results=computational_results,
                             ))
 

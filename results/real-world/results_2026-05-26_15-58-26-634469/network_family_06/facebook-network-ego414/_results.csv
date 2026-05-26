@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-off,-,5.301553e-05,0.05,74,epsilon,0.3,Yes,11 | 7,0.571429,0.203284,0.355368,,,0.028726,0.024646,0.292193
+002,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-off,-,5.301553e-05,0.05,74,epsilon,0.5,Yes,11 | 7,0.571429,0.222276,0.419068,,,0.028726,0.082364,0.292193
+003,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-off,-,5.301553e-05,0.05,74,epsilon,0.6,Yes,11 | 7,0.571429,0.237170,0.405867,,,0.028726,0.082364,0.292193
+004,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-off,-,5.301553e-05,0.05,74,epsilon,0.7,Yes,11 | 7,0.571429,0.242564,0.355599,,,0.028726,0.082364,0.292193
+005,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-off,-,5.301553e-05,0.05,74,epsilon,0.8,Yes,11 | 7,0.571429,0.261018,0.310453,,,0.028726,0.118586,0.292193
+006,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-off,-,5.301553e-05,0.05,74,epsilon,0.9,Yes,11 | 7,0.571429,0.256631,0.281185,,,0.028726,0.156107,0.292193
+007,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-on,Lsym,5.301553e-05,0.05,74,epsilon,0.3,No,7 | 7,0,0.528782,0.164772,,,0.018838,0.003648,0.299177
+008,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-on,Lsym,5.301553e-05,0.05,74,epsilon,0.5,No,7 | 7,0,0.537177,0.174565,,,0.018838,0.003648,0.299177
+009,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-on,Lsym,5.301553e-05,0.05,74,epsilon,0.6,No,7 | 7,0,0.501993,0.559639,,,0.018838,0.003648,0.299177
+010,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-on,Lsym,5.301553e-05,0.05,74,epsilon,0.7,No,7 | 7,0,0.516687,0.697171,,,0.018838,0.003648,0.299177
+011,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-on,Lsym,5.301553e-05,0.05,74,epsilon,0.8,No,7 | 7,0,0.521969,0.693948,,,0.018838,0.003648,0.299177
+012,network_family_06,facebook-network-ego414,Yes,Default,LAPIN-on,Lsym,5.301553e-05,0.05,74,epsilon,0.9,No,7 | 7,0,0.490289,0.652299,,,0.018838,0.003648,0.299177
