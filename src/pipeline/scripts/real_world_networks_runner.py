@@ -145,7 +145,7 @@ def run_real_world_networks_experiments(
                                 )
                             else:
                                 extrinsic_results = ExtrinsicMetrics(diff_of_k=f"{k_predicted}")
-                            
+
                             intrinsic_results = compute_intrinsic_metrics(
                                 graph, A, membership_matrix, predicted_labels,
                                 overlapping=overlapping
@@ -174,7 +174,14 @@ def run_real_world_networks_experiments(
                                 computational_results=computational_results,
                             ))
 
-                            save_faddis_clustering_results(results_network_dir, results_id, results)
+                            save_faddis_clustering_results(
+                                results_network_dir,
+                                results_id,
+                                results,
+                                predicted_labels,
+                                ground_truth_labels,
+                                save_membership_matrix=True
+                            )
             except Exception as e:
                 print(f"[ERROR] Network {network_config.name} processing failed with error: {e}")
                 continue

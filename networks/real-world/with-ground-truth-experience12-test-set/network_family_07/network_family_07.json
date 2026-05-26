@@ -1,9 +1,0 @@
-[
-  {
-    "name": "socio-patterns-primary-school-day2",
-    "gml_filename": "primary-school-day-2",
-    "ground_truth": true,
-    "overlapping_ground_truth": false,
-    "ground_truth_attr": "gt"
-  }
-]

@@ -1,54 +1,140 @@
 [
   {
     "name": "network_family_01",
-    "ground_truth_family": false,
+    "ground_truth_family": true,
     "networks": [
       {
-        "name": "les-miserables",
-        "gml_filename": "les-miserables",
-        "ground_truth": false
+        "name": "zachary-karate-club",
+        "gml_filename": "zachary-karate-club",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "club"
       },
       {
-        "name": "c-elegans-neural-network",
-        "gml_filename": "c-elegans-neural-network",
-        "ground_truth": false
-      },
+        "name": "books-about-us-politics",
+        "gml_filename": "polbooks",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_02",
+    "ground_truth_family": true,
+    "networks": [
       {
-        "name": "c-elegans-metabolic",
-        "gml_filename": "c-elegans-metabolic",
-        "ground_truth": false
+        "name": "us-political-blogs",
+        "gml_filename": "us-political-blogs",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
       }
     ]
   },
   {
     "name": "network_family_03",
-    "ground_truth_family": false,
+    "ground_truth_family": true,
     "networks": [
       {
-        "name": "dolphins",
-        "gml_filename": "dolphins",
-        "ground_truth": false
-      },
-      {
-        "name": "email-urv",
-        "gml_filename": "email-urv",
-        "ground_truth": false
-      },
-      {
-        "name": "co-authorships-in-network-science",
-        "gml_filename": "co-authorships-in-network-science",
-        "ground_truth": false
+        "name": "facebook-network-ego698",
+        "gml_filename": "facebook-network-ego698",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
       }
     ]
   },
   {
     "name": "network_family_04",
-    "ground_truth_family": false,
+    "ground_truth_family": true,
     "networks": [
       {
-        "name": "jazz-musicians",
-        "gml_filename": "jazz-musicians",
-        "ground_truth": false
+        "name": "email-eu-core",
+        "gml_filename": "email-eu-core",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_05",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "american-college-football",
+        "gml_filename": "football",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "value"
+      }
+    ]
+  },
+  {
+    "name": "network_family_06",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego0",
+        "gml_filename": "facebook-network-ego0",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego414",
+        "gml_filename": "facebook-network-ego414",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego3437",
+        "gml_filename": "facebook-network-ego3437",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      }
+    ]
+  },
+  {
+    "name": "network_family_07",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego107",
+        "gml_filename": "facebook-network-ego107",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "facebook-network-ego1684",
+        "gml_filename": "facebook-network-ego1684",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
+      },
+      {
+        "name": "socio-patterns-primary-school-day1",
+        "gml_filename": "primary-school-day-1",
+        "ground_truth": true,
+        "overlapping_ground_truth": false,
+        "ground_truth_attr": "gt"
+      }
+    ]
+  },
+  {
+    "name": "network_family_08",
+    "ground_truth_family": true,
+    "networks": [
+      {
+        "name": "facebook-network-ego1912",
+        "gml_filename": "facebook-network-ego1912",
+        "ground_truth": true,
+        "overlapping_ground_truth": true,
+        "ground_truth_attr": "circles"
       }
     ]
   }

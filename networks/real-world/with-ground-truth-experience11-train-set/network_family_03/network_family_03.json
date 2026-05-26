@@ -1,9 +1,0 @@
-[
-  {
-    "name": "us-political-blogs",
-    "gml_filename": "us-political-blogs",
-    "ground_truth": true,
-    "overlapping_ground_truth": false,
-    "ground_truth_attr": "value"
-  }
-]

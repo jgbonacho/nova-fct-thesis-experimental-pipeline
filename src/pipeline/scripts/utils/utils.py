@@ -216,7 +216,10 @@ def save_faddis_clustering_results(
         results_dir: str,
         results_id: str,
         faddis_results: tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, int, str],
-        output_filename: str = "faddis-clusters"
+        predicted_labels: list,
+        ground_truth_labels: list,
+        output_filename: str = "faddis-clusters",
+        save_membership_matrix=False
 ) -> None:
     """
     Save the results of the FADDIS clustering algorithm.
@@ -234,19 +237,27 @@ def save_faddis_clustering_results(
                 - eigenvalues
                 - number_of_clusters
                 - stop_condition
+        predicted_labels : (list[int], length n | list[list[int]], length n)
+            Predicted labels.
+        ground_truth_labels : (list[int], length n | list[list[int]], length n | None)
+            Ground-truth labels.
         output_filename : (str, optional)
             The name of the output CSV file.
             Default is "results-faddis-clusters.csv".
+        save_membership_matrix : (bool, optional)
+            whether to save the membership matrix of the FADDIS algorithm.
+            Default is False.
 
     Saves:
         A CSV file within 'results_dir' named "{output_filename}_{results_id}.csv" containing the clustering results.
     """
 
-    _, contributions, intensities, eigenvalues, number_of_clusters, _ = faddis_results
+    membership_matrix, contributions, intensities, eigenvalues, number_of_clusters, _ = faddis_results
+    assigned_nodes_per_cluster = _count_assigned_nodes(predicted_labels, number_of_clusters)
     with open(os.path.join(results_dir, f"{output_filename}_{results_id}.csv"), mode="w", newline="",
               encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Cluster", "Contribution", "Eigenvalue", "Intensity", "Weight"])
+        writer.writerow(["Cluster", "Contribution", "Eigenvalue", "Intensity", "Weight", "Assigned Nodes"])
 
         for i in range(0, number_of_clusters):
             writer.writerow([
@@ -255,7 +266,75 @@ def save_faddis_clustering_results(
                 round((eigenvalues[i]), 4),
                 round((intensities[i, 0]), 4),
                 round((intensities[i, 1]), 4),
+                assigned_nodes_per_cluster[i],
             ])
+
+    if save_membership_matrix:
+        membership_matrix = np.asarray(membership_matrix)
+        with open(os.path.join(results_dir, f"faddis-membership-matrix_{results_id}.csv"), mode="w", newline="",
+                  encoding="utf-8") as csvfile:
+            writer = csv.writer(csvfile)
+            header = (
+                    ["Node"]
+                    + [f"Cluster_{_int_to_roman(i)}" for i in range(number_of_clusters)]
+                    + ["Predicted Label"]
+            )
+            if ground_truth_labels is not None:
+                header += ["Ground-Truth Label"]
+            writer.writerow(header)
+
+            for node_id in range(membership_matrix.shape[0]):
+                row = [node_id]
+                row += [float(membership_matrix[node_id, cluster_id]) for cluster_id in range(number_of_clusters)]
+                row.append(_format_label(predicted_labels[node_id]))
+                if ground_truth_labels is not None:
+                    row.append(_format_label(ground_truth_labels[node_id]))
+                writer.writerow(row)
+
+
+def _count_assigned_nodes(predicted_labels: list, number_of_clusters: int) -> dict[int, int]:
+    """
+    Count the number of nodes assigned to each predicted cluster.
+
+    Parameters:
+        predicted_labels : (list[int] | list[list[int]])
+            Predicted node assignments.
+        number_of_clusters : (int)
+            Number of clusters.
+
+    Returns:
+        assigned_nodes_per_cluster : (dict[int, int])
+            Number of nodes assigned to each cluster.
+    """
+
+    assigned_nodes_per_cluster = {cluster_id: 0 for cluster_id in range(number_of_clusters)}
+    for labels in predicted_labels:
+        if isinstance(labels, list):
+            for label in labels:
+                assigned_nodes_per_cluster[label] += 1
+        else:
+            assigned_nodes_per_cluster[labels] += 1
+
+    return assigned_nodes_per_cluster
+
+
+def _format_label(label):
+    """
+    Format a label for saving in CSV.
+
+    Parameters:
+        label : (int | np.integer | list[int] | list[np.integer])
+            Label to format.
+
+    Returns:
+        formatted_label : (str | int)
+            Formatted label.
+    """
+
+    if isinstance(label, list):
+        return str([int(x) if isinstance(x, np.integer) else x for x in label])
+    else:
+        return int(label)
 
 
 def save_report_of_synthetic_runner(

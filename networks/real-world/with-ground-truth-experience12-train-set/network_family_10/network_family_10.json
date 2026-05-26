@@ -1,9 +1,0 @@
-[
-  {
-    "name": "facebook-network-ego1684",
-    "gml_filename": "facebook-network-ego1684",
-    "ground_truth": true,
-    "overlapping_ground_truth": true,
-    "ground_truth_attr": "circles"
-  }
-]

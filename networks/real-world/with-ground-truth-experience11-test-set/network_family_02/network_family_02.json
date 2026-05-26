@@ -1,9 +1,0 @@
-[
-  {
-    "name": "word-adjacencies",
-    "gml_filename": "adjnoun",
-    "ground_truth": true,
-    "overlapping_ground_truth": false,
-    "ground_truth_attr": "value"
-  }
-]
