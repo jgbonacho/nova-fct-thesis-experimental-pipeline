@@ -271,7 +271,7 @@ def save_faddis_clustering_results(
 
     if save_membership_matrix:
         membership_matrix = np.asarray(membership_matrix)
-        with open(os.path.join(results_dir, f"faddis-membership-matrix_{results_id}.csv"), mode="w", newline="",
+        with open(os.path.join(results_dir, f"faddis-nodes-{results_id}.csv"), mode="w", newline="",
                   encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             header = (

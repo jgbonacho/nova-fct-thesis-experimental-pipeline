@@ -1,0 +1,15 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-off,-,0.003429,0.05,189,epsilon,0.3,Yes,25,,,0.071049,0.031746,2.336389
+002,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-off,-,0.003429,0.05,189,epsilon,0.5,Yes,25,,,0.071049,0.025253,2.336389
+003,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-off,-,0.003429,0.05,189,epsilon,0.6,Yes,25,,,0.071049,0.025253,2.336389
+004,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-off,-,0.003429,0.05,189,epsilon,0.7,Yes,25,,,0.071049,0.025253,2.336389
+005,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-off,-,0.003429,0.05,189,epsilon,0.8,Yes,25,,,0.071049,0.025253,2.336389
+006,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-off,-,0.003429,0.05,189,epsilon,0.9,Yes,25,,,0.071049,0.025253,2.336389
+007,network_family_03,co-authorships-in-network-science,No,Default,LAPIN-off,-,0.003429,0.05,189,epsilon,,Yes,25,0.763132,0.037037,,,2.336389
+008,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,189,epsilon,0.3,No,7,,,0.016961,0.004872,0.737804
+009,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,189,epsilon,0.5,No,7,,,0.016961,0.010914,0.737804
+010,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,189,epsilon,0.6,No,7,,,0.016961,0.010779,0.737804
+011,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,189,epsilon,0.7,No,7,,,0.016961,0.010980,0.737804
+012,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,189,epsilon,0.8,No,7,,,0.016961,0.010980,0.737804
+013,network_family_03,co-authorships-in-network-science,Yes,Default,LAPIN-on,Lsym,0.003429,0.05,189,epsilon,0.9,No,7,,,0.016961,0.010980,0.737804
+014,network_family_03,co-authorships-in-network-science,No,Default,LAPIN-on,Lsym,0.003429,0.05,189,epsilon,,No,7,0.760221,0.021739,,,0.737804

@@ -1,3 +1,0 @@
-ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-001,network_family_02,us-political-blogs,No,Default,LAPIN-off,-,0.008358,0.05,500,epsilon,Yes,1 | 2,0.5,0,0.684607,0,0.707410,0,0.692310,0,1,,,6.786955
-002,network_family_02,us-political-blogs,No,Default,LAPIN-on,Lsym,0.008358,0.05,500,epsilon,No,7 | 2,2.5,0.338217,0.718851,0.373983,0.619088,0.339684,1.477184,0.352900,0.098551,,,32.520765

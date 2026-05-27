@@ -1,0 +1,3 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_05,american-college-football,No,Default,LAPIN-off,-,desiredK,Yes,12 | 12,0,0.822237,0.864147,0.741190,0.767965,0.864227,0.650848,0.545307,0.261538,,,0.200457
+002,network_family_05,american-college-football,No,Default,LAPIN-on,Lsym,desiredK,No,12 | 12,0,0.711265,0.764328,0.624549,0.658170,0.779804,1.061801,0.482069,0.261538,,,0.302574

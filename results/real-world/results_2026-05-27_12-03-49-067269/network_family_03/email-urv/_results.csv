@@ -1,0 +1,15 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_03,email-urv,Yes,Default,LAPIN-off,-,0.004190,0.05,500,epsilon,0.3,Yes,6,,,0.005763,0.171433,11.391562
+002,network_family_03,email-urv,Yes,Default,LAPIN-off,-,0.004190,0.05,500,epsilon,0.5,Yes,6,,,0.005763,0.173758,11.391562
+003,network_family_03,email-urv,Yes,Default,LAPIN-off,-,0.004190,0.05,500,epsilon,0.6,Yes,6,,,0.005763,0.182767,11.391562
+004,network_family_03,email-urv,Yes,Default,LAPIN-off,-,0.004190,0.05,500,epsilon,0.7,Yes,6,,,0.005763,0.191854,11.391562
+005,network_family_03,email-urv,Yes,Default,LAPIN-off,-,0.004190,0.05,500,epsilon,0.8,Yes,6,,,0.005763,0.202869,11.391562
+006,network_family_03,email-urv,Yes,Default,LAPIN-off,-,0.004190,0.05,500,epsilon,0.9,Yes,6,,,0.005763,0.243255,11.391562
+007,network_family_03,email-urv,No,Default,LAPIN-off,-,0.004190,0.05,500,epsilon,,Yes,6,0.449559,0.316,,,11.391562
+008,network_family_03,email-urv,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,500,epsilon,0.3,No,11,,,0.005529,0,38.338745
+009,network_family_03,email-urv,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,500,epsilon,0.5,No,11,,,0.005529,0,38.338745
+010,network_family_03,email-urv,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,500,epsilon,0.6,No,11,,,0.005529,0,38.338745
+011,network_family_03,email-urv,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,500,epsilon,0.7,No,11,,,0.005529,0,38.338745
+012,network_family_03,email-urv,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,500,epsilon,0.8,No,11,,,0.005529,0,38.338745
+013,network_family_03,email-urv,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,500,epsilon,0.9,No,11,,,0.005529,0,38.338745
+014,network_family_03,email-urv,No,Default,LAPIN-on,Lsym,0.004190,0.05,500,epsilon,,No,11,0.486746,0.237700,,,38.338745
