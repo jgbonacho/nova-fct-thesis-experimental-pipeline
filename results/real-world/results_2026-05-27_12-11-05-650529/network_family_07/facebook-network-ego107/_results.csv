@@ -1,13 +1,13 @@
 ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-001,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.3,Yes,17 | 9,0.888889,0.133463,0.211732,,,0.009419,0.030286,21.606438
-002,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.5,Yes,17 | 9,0.888889,0.153495,0.259268,,,0.009419,0.030286,21.606438
-003,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.6,Yes,17 | 9,0.888889,0.164770,0.237801,,,0.009419,0.030286,21.606438
-004,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.7,Yes,17 | 9,0.888889,0.176200,0.214471,,,0.009419,0.030286,21.606438
-005,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.8,Yes,17 | 9,0.888889,0.162177,0.184358,,,0.009419,0.030286,21.606438
-006,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.9,Yes,17 | 9,0.888889,0.175977,0.167445,,,0.009419,0.030584,21.606438
-007,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.3,No,18 | 9,1,0.252237,0.565667,,,0.005509,0.016264,38.584963
-008,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.5,No,18 | 9,1,0.319693,0.554097,,,0.005509,0,38.584963
-009,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.6,No,18 | 9,1,0.344560,0.549265,,,0.005509,0,38.584963
-010,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.7,No,18 | 9,1,0.368252,0.552834,,,0.005509,0,38.584963
-011,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.8,No,18 | 9,1,0.374734,0.550490,,,0.005509,0,38.584963
-012,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.9,No,18 | 9,1,0.399827,0.548738,,,0.005509,0,38.584963
+001,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.3,Yes,17 | 9,0.888889,0.133463,0.211732,,,0.009419,0.030286,25.092220
+002,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.5,Yes,17 | 9,0.888889,0.153495,0.259268,,,0.009419,0.030286,25.092220
+003,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.6,Yes,17 | 9,0.888889,0.164770,0.237801,,,0.009419,0.030286,25.092220
+004,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.7,Yes,17 | 9,0.888889,0.176200,0.214471,,,0.009419,0.030286,25.092220
+005,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.8,Yes,17 | 9,0.888889,0.162177,0.184358,,,0.009419,0.030286,25.092220
+006,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-off,-,0.000492,0.05,500,epsilon,0.9,Yes,17 | 9,0.888889,0.175977,0.167445,,,0.009419,0.030584,25.092220
+007,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.3,No,20 | 9,1.222222,0.252237,0.565667,,,0.005509,0.016264,48.890821
+008,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.5,No,20 | 9,1.222222,0.319693,0.554097,,,0.005509,0,48.890821
+009,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.6,No,20 | 9,1.222222,0.344560,0.549265,,,0.005509,0,48.890821
+010,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.7,No,20 | 9,1.222222,0.368252,0.552834,,,0.005509,0,48.890821
+011,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.8,No,20 | 9,1.222222,0.374734,0.550490,,,0.005509,0,48.890821
+012,network_family_07,facebook-network-ego107,Yes,Default,LAPIN-on,Lsym,0.000492,0.05,500,epsilon,0.9,No,20 | 9,1.222222,0.399827,0.548738,,,0.005509,0,48.890821

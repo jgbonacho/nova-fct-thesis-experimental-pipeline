@@ -54,7 +54,7 @@ def compute_extrinsic_metrics(
             filtered_ground_truth_labels,
             filtered_predicted_labels,
             k,
-            filtered_k_predicted
+            k_predicted
         )
     else:
         evaluation_scores = compute_extrinsic_metrics_for_overlapping_ground_truth(
@@ -62,7 +62,7 @@ def compute_extrinsic_metrics(
             filtered_ground_truth_labels,
             filtered_predicted_labels,
             k,
-            filtered_k_predicted
+            k_predicted
         )
 
     return evaluation_scores

@@ -1,13 +1,13 @@
 ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-001,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.3,Yes,4 | 9,0.555556,0.278167,0.139516,,,0.034933,0.103047,0.009713
-002,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.5,Yes,4 | 9,0.555556,0.301717,0.102871,,,0.034933,0.107966,0.009713
-003,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.6,Yes,4 | 9,0.555556,0.301717,0.102871,,,0.034933,0.107966,0.009713
-004,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.7,Yes,4 | 9,0.555556,0.301717,0.102871,,,0.034933,0.107966,0.009713
-005,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.8,Yes,4 | 9,0.555556,0.304841,0.124368,,,0.034933,0.107966,0.009713
-006,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.9,Yes,4 | 9,0.555556,0.282893,0.078948,,,0.034933,0.107966,0.009713
-007,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.3,No,6 | 9,0.333333,0.389461,0.390875,,,0.039601,0,0.020077
-008,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.5,No,6 | 9,0.333333,0.327659,0.344639,,,0.039601,0,0.020077
-009,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.6,No,6 | 9,0.333333,0.341631,0.357620,,,0.039601,0,0.020077
-010,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.7,No,6 | 9,0.333333,0.339617,0.352854,,,0.039601,0,0.020077
-011,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.8,No,6 | 9,0.333333,0.339617,0.352854,,,0.039601,0,0.020077
-012,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.9,No,6 | 9,0.333333,0.322707,0.265700,,,0.039601,0,0.020077
+001,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.3,Yes,4 | 9,0.555556,0.278167,0.139516,,,0.034933,0.103047,0.006742
+002,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.5,Yes,4 | 9,0.555556,0.301717,0.102871,,,0.034933,0.107966,0.006742
+003,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.6,Yes,4 | 9,0.555556,0.301717,0.102871,,,0.034933,0.107966,0.006742
+004,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.7,Yes,4 | 9,0.555556,0.301717,0.102871,,,0.034933,0.107966,0.006742
+005,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.8,Yes,4 | 9,0.555556,0.304841,0.124368,,,0.034933,0.107966,0.006742
+006,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-off,-,0.004190,0.05,20,epsilon,0.9,Yes,4 | 9,0.555556,0.282893,0.078948,,,0.034933,0.107966,0.006742
+007,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.3,No,6 | 9,0.333333,0.389461,0.390875,,,0.039601,0,0.021065
+008,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.5,No,6 | 9,0.333333,0.327659,0.344639,,,0.039601,0,0.021065
+009,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.6,No,6 | 9,0.333333,0.341631,0.357620,,,0.039601,0,0.021065
+010,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.7,No,6 | 9,0.333333,0.339617,0.352854,,,0.039601,0,0.021065
+011,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.8,No,6 | 9,0.333333,0.339617,0.352854,,,0.039601,0,0.021065
+012,network_family_03,facebook-network-ego698,Yes,Default,LAPIN-on,Lsym,0.004190,0.05,20,epsilon,0.9,No,6 | 9,0.333333,0.322707,0.265700,,,0.039601,0,0.021065
