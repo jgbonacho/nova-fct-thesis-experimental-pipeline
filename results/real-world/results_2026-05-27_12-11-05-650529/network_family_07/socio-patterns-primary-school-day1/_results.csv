@@ -1,3 +1,0 @@
-ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-001,network_family_07,socio-patterns-primary-school-day1,No,Default,LAPIN-off,-,0.000492,0.05,118,epsilon,Yes,9 | 11,0.181818,0.691183,0.700870,0.534837,0.589628,0.717810,1.273045,0.274853,0.477395,,,0.345818
-002,network_family_07,socio-patterns-primary-school-day1,No,Default,LAPIN-on,Lsym,0.000492,0.05,118,epsilon,No,9 | 11,0.181818,0.691856,0.710250,0.527479,0.582232,0.718396,1.272321,0.249181,0.474946,,,1.000121

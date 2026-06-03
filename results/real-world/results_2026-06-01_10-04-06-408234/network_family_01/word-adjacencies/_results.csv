@@ -1,0 +1,2 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_01,word-adjacencies,No,Default,LAPIN-off,-,0.032604,0.05,56,epsilon,No,1 | 2,0.5,0,0.682353,0,0.704371,0,0.692509,0,1,,,0.012641

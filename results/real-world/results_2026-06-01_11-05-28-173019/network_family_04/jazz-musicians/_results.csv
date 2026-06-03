@@ -1,0 +1,15 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_04,jazz-musicians,Yes,Default,LAPIN-off,-,0.000170,0.05,99,epsilon,0.3,Yes,11,,,0.025059,0.129337,0.352053
+002,network_family_04,jazz-musicians,Yes,Default,LAPIN-off,-,0.000170,0.05,99,epsilon,0.5,Yes,11,,,0.025059,0.112149,0.352053
+003,network_family_04,jazz-musicians,Yes,Default,LAPIN-off,-,0.000170,0.05,99,epsilon,0.6,Yes,11,,,0.025059,0.141330,0.352053
+004,network_family_04,jazz-musicians,Yes,Default,LAPIN-off,-,0.000170,0.05,99,epsilon,0.7,Yes,11,,,0.025059,0.140573,0.352053
+005,network_family_04,jazz-musicians,Yes,Default,LAPIN-off,-,0.000170,0.05,99,epsilon,0.8,Yes,11,,,0.025059,0.176916,0.352053
+006,network_family_04,jazz-musicians,Yes,Default,LAPIN-off,-,0.000170,0.05,99,epsilon,0.9,Yes,11,,,0.025059,0.201831,0.352053
+007,network_family_04,jazz-musicians,No,Default,LAPIN-off,-,0.000170,0.05,99,epsilon,,Yes,10,0.271542,0.271868,,,0.352053
+008,network_family_04,jazz-musicians,Yes,Default,LAPIN-on,Lsym,0.000170,0.05,99,epsilon,0.3,No,24,,,0.017947,0,0.738323
+009,network_family_04,jazz-musicians,Yes,Default,LAPIN-on,Lsym,0.000170,0.05,99,epsilon,0.5,No,24,,,0.017947,0,0.738323
+010,network_family_04,jazz-musicians,Yes,Default,LAPIN-on,Lsym,0.000170,0.05,99,epsilon,0.6,No,24,,,0.017947,0,0.738323
+011,network_family_04,jazz-musicians,Yes,Default,LAPIN-on,Lsym,0.000170,0.05,99,epsilon,0.7,No,24,,,0.017947,0,0.738323
+012,network_family_04,jazz-musicians,Yes,Default,LAPIN-on,Lsym,0.000170,0.05,99,epsilon,0.8,No,24,,,0.017947,0,0.738323
+013,network_family_04,jazz-musicians,Yes,Default,LAPIN-on,Lsym,0.000170,0.05,99,epsilon,0.9,No,24,,,0.017947,0,0.738323
+014,network_family_04,jazz-musicians,No,Default,LAPIN-on,Lsym,0.000170,0.05,99,epsilon,,No,24,0.249361,0.274623,,,0.738323

@@ -1,0 +1,3 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Stop Condition,C0 discarded?,K' | K,|K'-K|/K,AMI,F-measure,ARI,FMI,NMI,VI,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+001,network_family_01,zachary-karate-club,No,Default,LAPIN-off,-,desiredK,Yes,2 | 2,0,0.833466,0.970588,0.882258,0.939451,0.837169,0.225449,0.371466,0.131579,,,0.005300
+002,network_family_01,zachary-karate-club,No,Default,LAPIN-on,Lsym,desiredK,No,2 | 2,0,0.833466,0.970588,0.882258,0.939451,0.837169,0.225449,0.371466,0.131579,,,0.005671

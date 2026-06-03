@@ -1,8 +1,0 @@
-ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-001,network_family_01,c-elegans-neural-network,Yes,Default,LAPIN-off,-,0.032604,0.05,148,epsilon,0.3,No,1,,,0.000278,1,0.082067
-002,network_family_01,c-elegans-neural-network,Yes,Default,LAPIN-off,-,0.032604,0.05,148,epsilon,0.5,No,1,,,0.000278,1,0.082067
-003,network_family_01,c-elegans-neural-network,Yes,Default,LAPIN-off,-,0.032604,0.05,148,epsilon,0.6,No,1,,,0.000278,1,0.082067
-004,network_family_01,c-elegans-neural-network,Yes,Default,LAPIN-off,-,0.032604,0.05,148,epsilon,0.7,No,1,,,0.000278,1,0.082067
-005,network_family_01,c-elegans-neural-network,Yes,Default,LAPIN-off,-,0.032604,0.05,148,epsilon,0.8,No,1,,,0.000278,1,0.082067
-006,network_family_01,c-elegans-neural-network,Yes,Default,LAPIN-off,-,0.032604,0.05,148,epsilon,0.9,No,1,,,0.000278,1,0.082067
-007,network_family_01,c-elegans-neural-network,No,Default,LAPIN-off,-,0.032604,0.05,148,epsilon,,No,1,0,1,,,0.082067
