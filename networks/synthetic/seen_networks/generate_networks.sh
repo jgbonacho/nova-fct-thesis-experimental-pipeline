@@ -177,12 +177,3 @@
   'list_on_percentages=(10 20)' \
   'list_om=(2 3)' \
   't=2'
-
-# 91_nVH_uM_onnL_omL
-../synthetic_networks_lfr_generator.sh \
-  'network_family_name="91_nVH_uM_onnL_omL"' \
-  'list_n=(6000 8000 10000)' \
-  'list_mu=(0.4 0.5 0.6)' \
-  'list_on_percentages=(10 20)' \
-  'list_om=(2 3)' \
-  't=2'
