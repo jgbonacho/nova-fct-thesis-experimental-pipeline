@@ -10,7 +10,7 @@ class Test(unittest.TestCase):
     def test_lapin(self):
         W = np.matrix([[1, 0, 1], [0, 3, 0], [1, 0, 9]])
 
-        for variant in ['Lsym', 'Lrw', 'L']:
+        for variant in ['Lsym', 'L']:
             W_transformed = lapin(W, laplacian_variant=variant)
             print("\n" + variant)
             print(W_transformed)

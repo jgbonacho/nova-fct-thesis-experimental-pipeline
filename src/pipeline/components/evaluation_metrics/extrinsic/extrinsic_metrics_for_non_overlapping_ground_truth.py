@@ -3,9 +3,10 @@ Evaluation Metrics - Extrinsic: Compute extrinsic metrics for non-overlapping gr
 """
 
 import numpy as np
-from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from sklearn.metrics import adjusted_rand_score, adjusted_mutual_info_score, normalized_mutual_info_score, \
     fowlkes_mallows_score, mutual_info_score
+
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 
 
 def compute_extrinsic_metrics_for_non_overlapping_ground_truth(

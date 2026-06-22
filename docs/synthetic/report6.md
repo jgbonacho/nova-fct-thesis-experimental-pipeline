@@ -212,9 +212,7 @@
 
 [Open Folder](../../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-05-02_09-15-07-970979/)
 
-![Experience 5 Results 0](../../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-05-02_09-15-07-970979/mu_variation_set_0.png)
-
-![Experience 5 Results 1](../../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-05-02_09-15-07-970979/mu_variation_set_1.png)
+![Experience 5 Results](../../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-05-02_09-15-07-970979/mu_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -257,27 +255,21 @@
 
 [Open Folder](../../results/synthetic/boundary_variation_set/experience6_cluster/results_2026-05-02_11-26-20-488782/)
 
-![Experience 6 Results 0](../../results/synthetic/boundary_variation_set/experience6_cluster/results_2026-05-02_11-26-20-488782/mu_variation_set_0.png)
-
-![Experience 6 Results 1](../../results/synthetic/boundary_variation_set/experience6_cluster/results_2026-05-02_11-26-20-488782/mu_variation_set_1.png)
+![Experience 6 Results](../../results/synthetic/boundary_variation_set/experience6_cluster/results_2026-05-02_11-26-20-488782/mu_all_variants.png)
 
 
 ### Experience 7 (LAPIN-on + Extraction of K desired clusters) Results
 
 [Open Folder](../../results/synthetic/boundary_variation_set/experience7_cluster/results_2026-05-02_15-23-59-555680/)
 
-![Experience 7 Results 0](../../results/synthetic/boundary_variation_set/experience7_cluster/results_2026-05-02_15-23-59-555680/mu_variation_set_0.png)
-
-![Experience 7 Results 1](../../results/synthetic/boundary_variation_set/experience7_cluster/results_2026-05-02_15-23-59-555680/mu_variation_set_1.png)
+![Experience 7 Results](../../results/synthetic/boundary_variation_set/experience7_cluster/results_2026-05-02_15-23-59-555680/mu_all_variants.png)
 
 
 ### Experience 8 (LAPIN-on + Extraction of clusters until the end) Results
 
 [Open Folder](../../results/synthetic/boundary_variation_set/experience8_cluster/)
 
-![Experience 8 Results 0](../../results/synthetic/boundary_variation_set/experience8_cluster/results_2026-05-02_16-46-53-100982/mu_variation_set_0.png)
-
-![Experience 8 Results 1](../../results/synthetic/boundary_variation_set/experience8_cluster/results_2026-05-02_16-46-53-100982/mu_variation_set_1.png)
+![Experience 8 Results](../../results/synthetic/boundary_variation_set/experience8_cluster/results_2026-05-02_16-46-53-100982/mu_all_variants.png)
 
 
 
@@ -292,9 +284,7 @@
 
 [Open Folder](../../results/synthetic/membership_variation_set/experience5_cluster/results_2026-05-02_19-27-44-446056/)
 
-![Experience 5 Results 0](../../results/synthetic/membership_variation_set/experience5_cluster/results_2026-05-02_19-27-44-446056/om_variation_set_0.png)
-
-![Experience 5 Results 1](../../results/synthetic/membership_variation_set/experience5_cluster/results_2026-05-02_19-27-44-446056/om_variation_set_1.png)
+![Experience 5 Results](../../results/synthetic/membership_variation_set/experience5_cluster/results_2026-05-02_19-27-44-446056/om_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -334,27 +324,21 @@
 
 [Open Folder](../../results/synthetic/membership_variation_set/experience6_cluster/results_2026-05-02_22-55-58-140699/)
 
-![Experience 6 Results 0](../../results/synthetic/membership_variation_set/experience6_cluster/results_2026-05-02_22-55-58-140699/om_variation_set_0.png)
-
-![Experience 6 Results 1](../../results/synthetic/membership_variation_set/experience6_cluster/results_2026-05-02_22-55-58-140699/om_variation_set_1.png)
+![Experience 6 Results](../../results/synthetic/membership_variation_set/experience6_cluster/results_2026-05-02_22-55-58-140699/om_all_variants.png)
 
 
 ### Experience 7 (LAPIN-on + Extraction of K desired clusters) Results
 
 [Open Folder](../../results/synthetic/membership_variation_set/experience7_cluster/results_2026-05-03_00-33-14-635642/)
 
-![Experience 7 Results 0](../../results/synthetic/membership_variation_set/experience7_cluster/results_2026-05-03_00-33-14-635642/om_variation_set_0.png)
-
-![Experience 7 Results 1](../../results/synthetic/membership_variation_set/experience7_cluster/results_2026-05-03_00-33-14-635642/om_variation_set_1.png)
+![Experience 7 Results](../../results/synthetic/membership_variation_set/experience7_cluster/results_2026-05-03_00-33-14-635642/om_all_variants.png)
 
 
 ### Experience 8 (LAPIN-on + Extraction of clusters until the end) Results
 
 [Open Folder](../../results/synthetic/membership_variation_set/experience8_cluster/results_2026-05-03_08-11-41-388440/)
 
-![Experience 8 Results 0](../../results/synthetic/membership_variation_set/experience8_cluster/results_2026-05-03_08-11-41-388440/om_variation_set_0.png)
-
-![Experience 8 Results 1](../../results/synthetic/membership_variation_set/experience8_cluster/results_2026-05-03_08-11-41-388440/om_variation_set_1.png)
+![Experience 8 Results](../../results/synthetic/membership_variation_set/experience8_cluster/results_2026-05-03_08-11-41-388440/om_all_variants.png)
 
 
 
@@ -369,9 +353,7 @@
 
 [Open Folder](../../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-05-03_12-11-56-013021/)
 
-![Experience 5 Results 0](../../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-05-03_12-11-56-013021/on_variation_set_0.png)
-
-![Experience 5 Results 1](../../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-05-03_12-11-56-013021/on_variation_set_1.png)
+![Experience 5 Results](../../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-05-03_12-11-56-013021/on_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -408,27 +390,21 @@
 
 [Open Folder](../../results/synthetic/overlap_variation_set/experience6_cluster/results_2026-05-03_14-23-08-858214/)
 
-![Experience 6 Results 0](../../results/synthetic/overlap_variation_set/experience6_cluster/results_2026-05-03_14-23-08-858214/on_variation_set_0.png)
-
-![Experience 6 Results 1](../../results/synthetic/overlap_variation_set/experience6_cluster/results_2026-05-03_14-23-08-858214/on_variation_set_1.png)
+![Experience 6 Results](../../results/synthetic/overlap_variation_set/experience6_cluster/results_2026-05-03_14-23-08-858214/on_all_variants.png)
 
 
 ### Experience 7 (LAPIN-on + Extraction of K desired clusters) Results
 
 [Open Folder](../../results/synthetic/overlap_variation_set/experience7_cluster/results_2026-05-03_15-37-47-343899/)
 
-![Experience 7 Results 0](../../results/synthetic/overlap_variation_set/experience7_cluster/results_2026-05-03_15-37-47-343899/on_variation_set_0.png)
-
-![Experience 7 Results 1](../../results/synthetic/overlap_variation_set/experience7_cluster/results_2026-05-03_15-37-47-343899/on_variation_set_1.png)
+![Experience 7 Results](../../results/synthetic/overlap_variation_set/experience7_cluster/results_2026-05-03_15-37-47-343899/on_all_variants.png)
 
 
 ### Experience 8 (LAPIN-on + Extraction of clusters until the end) Results
 
 [Open Folder](../../results/synthetic/overlap_variation_set/experience8_cluster/results_2026-05-03_16-44-48-087897/)
 
-![Experience 8 Results 0](../../results/synthetic/overlap_variation_set/experience8_cluster/results_2026-05-03_16-44-48-087897/on_variation_set_0.png)
-
-![Experience 8 Results 1](../../results/synthetic/overlap_variation_set/experience8_cluster/results_2026-05-03_16-44-48-087897/on_variation_set_1.png)
+![Experience 8 Results](../../results/synthetic/overlap_variation_set/experience8_cluster/results_2026-05-03_16-44-48-087897/on_all_variants.png)
 
 
 
@@ -443,9 +419,7 @@
 
 [Open Folder](../../results/synthetic/size_variation_set/experience5_cluster/results_2026-05-03_19-16-46-640640/)
 
-![Experience 5 Results 0](../../results/synthetic/size_variation_set/experience5_cluster/results_2026-05-03_19-16-46-640640/n_variation_set_0.png)
-
-![Experience 5 Results 1](../../results/synthetic/size_variation_set/experience5_cluster/results_2026-05-03_19-16-46-640640/n_variation_set_1.png)
+![Experience 5 Results](../../results/synthetic/size_variation_set/experience5_cluster/results_2026-05-03_19-16-46-640640/n_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -466,27 +440,21 @@
 
 [Open Folder](../../results/synthetic/size_variation_set/experience6_cluster/results_2026-05-03_19-52-19-167434/)
 
-![Experience 6 Results 0](../../results/synthetic/size_variation_set/experience6_cluster/results_2026-05-03_19-52-19-167434/n_variation_set_0.png)
-
-![Experience 6 Results 1](../../results/synthetic/size_variation_set/experience6_cluster/results_2026-05-03_19-52-19-167434/n_variation_set_1.png)
+![Experience 6 Results](../../results/synthetic/size_variation_set/experience6_cluster/results_2026-05-03_19-52-19-167434/n_all_variants.png)
 
 
 ### Experience 7 (LAPIN-on + Extraction of K desired clusters) Results
 
 [Open Folder](../../results/synthetic/size_variation_set/experience7_cluster/results_2026-05-03_20-32-31-224707/)
 
-![Experience 7 Results 0](../../results/synthetic/size_variation_set/experience7_cluster/results_2026-05-03_20-32-31-224707/n_variation_set_0.png)
-
-![Experience 7 Results 1](../../results/synthetic/size_variation_set/experience7_cluster/results_2026-05-03_20-32-31-224707/n_variation_set_1.png)
+![Experience 7 Results](../../results/synthetic/size_variation_set/experience7_cluster/results_2026-05-03_20-32-31-224707/n_all_variants.png)
 
 
 ### Experience 8 (LAPIN-on + Extraction of clusters until the end) Results
 
 [Open Folder](../../results/synthetic/size_variation_set/experience8_cluster/results_2026-05-03_21-25-59-359439/)
 
-![Experience 8 Results 0](../../results/synthetic/size_variation_set/experience8_cluster/results_2026-05-03_21-25-59-359439/n_variation_set_0.png)
-
-![Experience 8 Results 1](../../results/synthetic/size_variation_set/experience8_cluster/results_2026-05-03_21-25-59-359439/n_variation_set_1.png)
+![Experience 8 Results](../../results/synthetic/size_variation_set/experience8_cluster/results_2026-05-03_21-25-59-359439/n_all_variants.png)
 
 
 ## Hardware

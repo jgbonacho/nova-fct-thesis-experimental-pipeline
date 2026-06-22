@@ -21,6 +21,15 @@ class Result:
             Whether the ground truth is overlapping.
         affinity_design : (str)
             The affinity design label used in the experiment.
+        actual_average_degree : (float)
+            Actual average degree after sparsification.
+        sparsification_target_average_degree : (float)
+            Target average degree used by the sparsification procedure.
+        sparsification_theta : (float)
+            Theta used by the sparsification.
+        sparsification_diff_n : (str)
+            A string representing the original number of nodes and the number of nodes after sparsification,
+            formatted as "N | N_s".
         execution_mode : (str)
             The execution mode used in the experiment.
         laplacian_variant : (str | None)
@@ -50,6 +59,10 @@ class Result:
     network: str = field(metadata={"label": "Network"})
     overlapping: bool = field(metadata={"label": "Overlapping?"})
     affinity_design: str = field(metadata={"label": "Affinity Design"})
+    actual_average_degree: float = field(metadata={"label": "Actual Avg Degree"})
+    sparsification_target_average_degree: float = field(metadata={"label": "Target Avg Degree"})
+    sparsification_theta: float = field(metadata={"label": "Theta"})
+    sparsification_diff_n: str = field(metadata={"label": "N | Sparsified N"})
     execution_mode: str = field(metadata={"label": "Execution Mode"})
     laplacian_variant: str = field(metadata={"label": "Laplacian"})
     epsilon: float = field(metadata={"label": "Epsilon"})

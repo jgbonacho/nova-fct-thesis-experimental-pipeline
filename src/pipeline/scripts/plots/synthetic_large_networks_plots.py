@@ -321,8 +321,7 @@ def _plot_results_by_network(results_dir: str, df: pd.DataFrame):
     """
 
     plot_variants = [
-        None,
-        ["005_default_lapin-off_-_g0.8", "006_default_lapin-off_-_g0.9"]
+        None
     ]
 
     for idx, selected_variants in enumerate(plot_variants):
@@ -379,28 +378,24 @@ def _plot_results_by_network(results_dir: str, df: pd.DataFrame):
                 label=variant,
             )
 
-            ax3.errorbar(
+            ax3.plot(
                 d["_x"],
                 d["Mean Relative Error |K'-K|/K"],
-                yerr=d["Sample Std Relative Error |K'-K|/K"],
                 marker=marker,
                 color=color,
                 linewidth=1.8,
                 markersize=7,
-                capsize=4,
                 label=variant,
             )
 
             if has_faddis_runtime:
-                ax4.errorbar(
+                ax4.plot(
                     d["_x"],
                     d["Mean FADDIS Runtime"],
-                    yerr=d["Sample Std FADDIS Runtime"],
                     marker=marker,
                     color=color,
                     linewidth=1.8,
                     markersize=7,
-                    capsize=4,
                     label=variant,
                 )
 
@@ -419,27 +414,39 @@ def _plot_results_by_network(results_dir: str, df: pd.DataFrame):
 
             handles, labels = ax.get_legend_handles_labels()
             if handles:
-                ax.legend(loc="upper right", fontsize=10)
+                ax.legend(
+                    loc="upper right",
+                    fontsize=8,
+                    framealpha=0.3,
+                    ncol=2,
+                    columnspacing=0.8,
+                    handletextpad=0.4,
+                )
 
-        ax1.set_ylabel("ONMI")
+        ax1.set_ylabel("Mean ONMI")
         ax1.set_ylim(0, 1.0)
 
-        ax2.set_ylabel("Omega")
+        ax2.set_ylabel("Mean Omega")
         ax2.set_ylim(0, 1.0)
 
-        ax3.set_ylabel("Relative Error |K'-K|/K")
+        ax3.set_ylabel("Mean Relative Error |K'-K|/K")
         ax3.set_ylim(bottom=0)
 
         if has_faddis_runtime:
-            ax4.set_ylabel("FADDIS Runtime (in seconds)")
+            ax4.set_ylabel("Mean FADDIS Runtime (seconds)")
             ax4.set_ylim(bottom=0)
 
         fig.tight_layout()
         fig.savefig(
-            os.path.join(results_dir, f"network_results_{idx}.pdf"),
+            os.path.join(results_dir, f"network_results_all_variants.pdf"),
             dpi=300,
             bbox_inches="tight",
         )
+        # fig.savefig(
+        #    os.path.join(results_dir, f"network_results_all_variants.png"),
+        #    dpi=300,
+        #    bbox_inches="tight",
+        # )
 
         plt.close(fig)
 

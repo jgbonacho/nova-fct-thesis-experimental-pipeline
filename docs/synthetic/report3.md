@@ -196,9 +196,7 @@
 
 [Open Folder](../../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/)
 
-![Experience 5 (Baseline) Results 0](../../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/mu_variation_set_0.png)
-
-![Experience 5 (Baseline) Results 1](../../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/mu_variation_set_1.png)
+![Experience 5 (Baseline) Results](../../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/mu_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -248,9 +246,7 @@
 
 [Open Folder](../../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/)
 
-![Experience 5 (Baseline) Results 0](../../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/om_variation_set_0.png)
-
-![Experience 5 (Baseline) Results 1](../../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/om_variation_set_1.png)
+![Experience 5 (Baseline) Results](../../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/om_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -297,9 +293,7 @@
 
 [Open Folder](../../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/)
 
-![Experience 5 (Baseline) Results 0](../../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/on_variation_set_0.png)
-
-![Experience 5 (Baseline) Results 1](../../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/on_variation_set_1.png)
+![Experience 5 (Baseline) Results](../../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/on_all_variants.png)
 
 - **Observations**
     - "Best" variants

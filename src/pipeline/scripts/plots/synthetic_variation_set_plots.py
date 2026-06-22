@@ -32,10 +32,18 @@ FADDIS_RUNTIME_COL = "FADDIS Runtime"
 # Variant name column and limits for plots.
 VARIANT_COL = "Variation"
 VARIANT_LIMITS = {
+    # NETWORK_PROPERTY_N: (500 - 20, 1000 + 20),
     NETWORK_PROPERTY_N: (1000 - 200, 10000 + 200),
     NETWORK_PROPERTY_MU: (0.1 - 0.02, 0.8 + 0.02),
     NETWORK_PROPERTY_ON: (100 - 20, 600 + 20),
     NETWORK_PROPERTY_OM: (1 - 0.2, 8 + 0.2),
+}
+
+VARIATION_PARAMETER_LABELS = {
+    NETWORK_PROPERTY_N: r"$n$",
+    NETWORK_PROPERTY_MU: r"$\mu$",
+    NETWORK_PROPERTY_ON: r"$o_n$",
+    NETWORK_PROPERTY_OM: r"$o_m$",
 }
 
 # Example network name: n1000mu0.1on200om2inst1
@@ -56,10 +64,12 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
             Default is "_results.csv".
 
     Saves:
-        - A CSV file with the raw results for all instances and variants, named "{variation_parameter}_variation_set.csv".
-        - A CSV file with summary statistics for each variant, named "{variation_parameter}_variation_set_summary.csv".
-        - Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter for each variant,
-          saved as PDF files in the results directory, named "{variation_parameter}_variation_set_{idx}.pdf".
+        - A CSV file with the raw results for all instances and variants, named "{variation_parameter}_results.csv".
+        - A CSV file with summary statistics for each variant, named "{variation_parameter}_summary.csv".
+        - A CSV file with the best variant per affinity design, named "{variation_parameter}_best_variants_by_affinity.csv".
+        - A CSV file with the best variant per parameter, named "{variation_parameter}_best_variants_by_parameter.csv".
+        - A CSV file with the best variant per affinity design and parameter, named "{variation_parameter}_best_variants_by_parameter_affinity.csv".
+        - Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter.
     """
 
     rows = []
@@ -81,6 +91,7 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
         for _, res in results_df.iterrows():
             row = {
                 VARIANT_COL: res[VARIANT_COL],
+                AFFINITY_DESIGN_COL: str(res[AFFINITY_DESIGN_COL]).strip().lower(),
                 NETWORK_PROPERTY_N: properties[NETWORK_PROPERTY_N],
                 NETWORK_PROPERTY_MU: properties[NETWORK_PROPERTY_MU],
                 NETWORK_PROPERTY_ON: properties[NETWORK_PROPERTY_ON],
@@ -98,7 +109,7 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
 
     raw_df = (
         pd.DataFrame(rows)
-        .sort_values([variation_parameter, VARIANT_COL, NETWORK_PROPERTY_INST])
+        .sort_values([variation_parameter, AFFINITY_DESIGN_COL, VARIANT_COL, NETWORK_PROPERTY_INST])
         .reset_index(drop=True)
     )
 
@@ -126,7 +137,7 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
 
     summary_df = (
         raw_df
-        .groupby([variation_parameter, VARIANT_COL], as_index=False)
+        .groupby([variation_parameter, AFFINITY_DESIGN_COL, VARIANT_COL], as_index=False)
         .agg(**agg_dict)
     )
 
@@ -143,8 +154,36 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
         if col in summary_df.columns:
             summary_df[col] = summary_df[col].round(6)
 
-    raw_df.to_csv(os.path.join(results_dir, f"{variation_parameter}_variation_set.csv"), index=False)
-    summary_df.to_csv(os.path.join(results_dir, f"{variation_parameter}_variation_set_summary.csv"), index=False)
+    best_variants_affinity_design_df = _select_best_variants_by_affinity_design(summary_df)
+    best_variation_parameter_variants_df = _select_best_variants_by_variation_parameter(
+        summary_df,
+        variation_parameter,
+    )
+    best_variation_parameter_affinity_variants_df = _select_best_variants_by_variation_parameter_and_affinity_design(
+        summary_df,
+        variation_parameter,
+    )
+
+    raw_df.to_csv(
+        os.path.join(results_dir, f"{variation_parameter}_results.csv"),
+        index=False,
+    )
+    summary_df.to_csv(
+        os.path.join(results_dir, f"{variation_parameter}_summary.csv"),
+        index=False,
+    )
+    best_variation_parameter_variants_df.to_csv(
+        os.path.join(results_dir, f"{variation_parameter}_best_variants_by_parameter.csv"),
+        index=False,
+    )
+    best_variants_affinity_design_df.to_csv(
+        os.path.join(results_dir, f"{variation_parameter}_best_variants_by_affinity.csv"),
+        index=False,
+    )
+    best_variation_parameter_affinity_variants_df.to_csv(
+        os.path.join(results_dir, f"{variation_parameter}_best_variants_by_parameter_affinity.csv"),
+        index=False,
+    )
 
     _plot_results(results_dir, summary_df, variation_parameter)
 
@@ -251,6 +290,182 @@ def results_as_json(series: pd.Series) -> str:
     return json.dumps(values)
 
 
+def _select_best_variants_by_variation_parameter(df: pd.DataFrame, variation_parameter: str) -> pd.DataFrame:
+    """
+    Select the best variant for each value of the variation parameter.
+
+    Ranking strategy:
+        1. Highest Mean ONMI
+        2. Highest Mean Omega
+        3. Lowest Mean Relative Error |K'-K|/K
+
+    Parameters:
+        df : (pd.DataFrame)
+            DataFrame containing the summary results for the variation set.
+        variation_parameter : (str)
+            The network property that was varied in the experiment.
+
+    Returns:
+        pd.DataFrame : (pd.DataFrame)
+            DataFrame containing the best variant selected for each value of the variation parameter.
+    """
+
+    ranking_df = df.sort_values(
+        by=[
+            variation_parameter,
+            "Mean ONMI",
+            "Mean Omega",
+            "Mean Relative Error |K'-K|/K",
+            VARIANT_COL,
+        ],
+        ascending=[
+            True,
+            False,
+            False,
+            True,
+            True,
+        ],
+    )
+
+    return (
+        ranking_df
+        .groupby(variation_parameter, as_index=False)
+        .head(1)
+        .reset_index(drop=True)
+    )
+
+
+def _select_best_variants_by_affinity_design(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Select the best variant for each affinity design.
+
+    Ranking strategy:
+        1. Highest Mean ONMI
+        2. Highest Mean Omega
+        3. Lowest Mean Relative Error |K'-K|/K
+
+    Parameters:
+        df : (pd.DataFrame)
+            DataFrame containing the summary results for the variation set.
+
+    Returns:
+        pd.DataFrame : (pd.DataFrame)
+            DataFrame containing the best variant selected for each affinity design.
+
+    Notes:
+        The selection is computed across all values of the variation parameter.
+    """
+
+    ranking_df = (
+        df
+        .groupby([AFFINITY_DESIGN_COL, VARIANT_COL], as_index=False)
+        .agg(
+            **{
+                "Overall Mean ONMI": ("Mean ONMI", "mean"),
+                "Overall Sample Std ONMI": ("Mean ONMI", lambda s: s.std(ddof=1)),
+
+                "Overall Mean Omega": ("Mean Omega", "mean"),
+                "Overall Sample Std Omega": ("Mean Omega", lambda s: s.std(ddof=1)),
+
+                "Overall Mean Relative Error |K'-K|/K": (
+                    "Mean Relative Error |K'-K|/K",
+                    "mean",
+                ),
+                "Overall Sample Std Relative Error |K'-K|/K": (
+                    "Mean Relative Error |K'-K|/K",
+                    lambda s: s.std(ddof=1),
+                ),
+            }
+        )
+    )
+
+    for col in [
+        "Overall Mean ONMI",
+        "Overall Sample Std ONMI",
+        "Overall Mean Omega",
+        "Overall Sample Std Omega",
+        "Overall Mean Relative Error |K'-K|/K",
+        "Overall Sample Std Relative Error |K'-K|/K",
+    ]:
+        if col in ranking_df.columns:
+            ranking_df[col] = ranking_df[col].round(6)
+
+    ranking_df = ranking_df.sort_values(
+        by=[
+            AFFINITY_DESIGN_COL,
+            "Overall Mean ONMI",
+            "Overall Mean Omega",
+            "Overall Mean Relative Error |K'-K|/K",
+            VARIANT_COL,
+        ],
+        ascending=[
+            True,
+            False,
+            False,
+            True,
+            True,
+        ],
+    )
+
+    return (
+        ranking_df
+        .groupby(AFFINITY_DESIGN_COL, as_index=False)
+        .head(1)
+        .reset_index(drop=True)
+    )
+
+
+def _select_best_variants_by_variation_parameter_and_affinity_design(
+        df: pd.DataFrame,
+        variation_parameter: str,
+) -> pd.DataFrame:
+    """
+    Select the best variant for each value of the variation parameter and affinity design.
+
+    Ranking strategy:
+        1. Highest Mean ONMI
+        2. Highest Mean Omega
+        3. Lowest Mean Relative Error |K'-K|/K
+
+    Parameters:
+        df : (pd.DataFrame)
+            DataFrame containing the summary results for the variation set.
+        variation_parameter : (str)
+            The network property that was varied in the experiment.
+
+    Returns:
+        pd.DataFrame : (pd.DataFrame)
+            DataFrame containing the best variant selected for each value of the variation parameter
+            and affinity design.
+    """
+
+    ranking_df = df.sort_values(
+        by=[
+            variation_parameter,
+            AFFINITY_DESIGN_COL,
+            "Mean ONMI",
+            "Mean Omega",
+            "Mean Relative Error |K'-K|/K",
+            VARIANT_COL,
+        ],
+        ascending=[
+            True,
+            True,
+            False,
+            False,
+            True,
+            True,
+        ],
+    )
+
+    return (
+        ranking_df
+        .groupby([variation_parameter, AFFINITY_DESIGN_COL], as_index=False)
+        .head(1)
+        .reset_index(drop=True)
+    )
+
+
 def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
     """
     Generate plots for the variation set results.
@@ -264,13 +479,18 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
             The network property that was varied in the experiment, used for labeling the plots.
 
     Saves:
-        Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter for each variant,
-        saved as PDF files in the results directory.
+        Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter.
     """
 
+    best_variants_df = _select_best_variants_by_affinity_design(df)
     plot_variants = [
         None,
-        ["005_default_lapin-off_-_g0.8", "006_default_lapin-off_-_g0.9"]
+        best_variants_df[VARIANT_COL].tolist(),
+    ]
+
+    plot_names = [
+        "all_variants",
+        "best_variants_by_affinity_design",
     ]
 
     for idx, selected_variants in enumerate(plot_variants):
@@ -321,28 +541,24 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
                 label=variant,
             )
 
-            ax3.errorbar(
+            ax3.plot(
                 d[variation_parameter],
                 d["Mean Relative Error |K'-K|/K"],
-                yerr=d["Sample Std Relative Error |K'-K|/K"],
                 marker=marker,
                 color=color,
                 linewidth=1.8,
                 markersize=7,
-                capsize=4,
                 label=variant,
             )
 
             if has_faddis_runtime:
-                ax4.errorbar(
+                ax4.plot(
                     d[variation_parameter],
                     d["Mean FADDIS Runtime"],
-                    yerr=d["Sample Std FADDIS Runtime"],
                     marker=marker,
                     color=color,
                     linewidth=1.8,
                     markersize=7,
-                    capsize=4,
                     label=variant,
                 )
 
@@ -353,34 +569,46 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
             if not ax.axison:
                 continue
 
-            ax.set_xlabel(variation_parameter)
+            ax.set_xlabel(VARIATION_PARAMETER_LABELS.get(variation_parameter, variation_parameter))
             ax.set_xlim(VARIANT_LIMITS[variation_parameter][0], VARIANT_LIMITS[variation_parameter][1])
             ax.margins(x=0.03)
             ax.grid(True, alpha=0.3)
 
             handles, labels = ax.get_legend_handles_labels()
             if handles:
-                ax.legend(loc="upper right", fontsize=10)
+                ax.legend(
+                    loc="upper right",
+                    fontsize=8,
+                    framealpha=0.3,
+                    ncol=2,
+                    columnspacing=0.8,
+                    handletextpad=0.4,
+                )
 
-        ax1.set_ylabel("ONMI")
+        ax1.set_ylabel("Mean ONMI")
         ax1.set_ylim(0, 1.0)
 
-        ax2.set_ylabel("Omega")
+        ax2.set_ylabel("Mean Omega")
         ax2.set_ylim(0, 1.0)
 
-        ax3.set_ylabel("Relative Error |K'-K|/K")
+        ax3.set_ylabel("Mean Relative Error |K'-K|/K")
         ax3.set_ylim(bottom=0)
 
         if has_faddis_runtime:
-            ax4.set_ylabel("FADDIS Runtime (in seconds)")
+            ax4.set_ylabel("Mean FADDIS Runtime (seconds)")
             ax4.set_ylim(bottom=0)
 
         fig.tight_layout()
         fig.savefig(
-            os.path.join(results_dir, f"{variation_parameter}_variation_set_{idx}.pdf"),
+            os.path.join(results_dir, f"{variation_parameter}_{plot_names[idx]}.pdf"),
             dpi=300,
             bbox_inches="tight",
         )
+        # fig.savefig(
+        #    os.path.join(results_dir, f"{variation_parameter}_{plot_names[idx]}.png"),
+        #    dpi=300,
+        #    bbox_inches="tight",
+        # )
 
         plt.close(fig)
 
@@ -393,12 +621,15 @@ if __name__ == "__main__":
         ("experience3_cluster", "results_2026-04-10_21-39-07-593414"),
         ("experience4_cluster", "results_2026-04-11_00-08-06-619023"),
 
-        ("experience5_cluster_0", "results_2026-04-19_12-06-10-999135"),
+        # ("experience5_cluster_0", "results_2026-04-19_12-06-10-999135"),
 
         ("experience5_cluster", "results_2026-05-02_09-15-07-970979"),
         ("experience6_cluster", "results_2026-05-02_11-26-20-488782"),
         ("experience7_cluster", "results_2026-05-02_15-23-59-555680"),
-        ("experience8_cluster", "results_2026-05-02_16-46-53-100982")
+        ("experience8_cluster", "results_2026-05-02_16-46-53-100982"),
+
+        ("lapin_and_laplacian", "results_2026-06-17_16-17-14-278377"),
+        ("affinity_designs", "results_2026-06-17_23-22-22-871630")
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(RESULTS_BASE_DIR, "boundary_variation_set", folders[0], folders[1]),
@@ -412,17 +643,18 @@ if __name__ == "__main__":
         ("experience3_cluster", "results_2026-04-12_09-50-03-559581"),
         ("experience4_cluster", "results_2026-04-12_11-35-17-967624"),
 
-        ("experience5_cluster_0", "results_2026-04-19_18-21-44-389254"),
+        # ("experience5_cluster_0", "results_2026-04-19_18-21-44-389254"),
 
         ("experience5_cluster", "results_2026-05-02_19-27-44-446056"),
         ("experience6_cluster", "results_2026-05-02_22-55-58-140699"),
         ("experience7_cluster", "results_2026-05-03_00-33-14-635642"),
         ("experience8_cluster", "results_2026-05-03_08-11-41-388440"),
+
+        ("lapin_and_laplacian", "results_2026-06-18_16-51-24-027093"),
+        ("affinity_designs", "results_2026-06-18_19-56-33-609075")
     ]:
         plot_variation_set_results(
-            results_dir=os.path.join(
-                RESULTS_BASE_DIR, "membership_variation_set", folders[0], folders[1]
-            ),
+            results_dir=os.path.join(RESULTS_BASE_DIR, "membership_variation_set", folders[0], folders[1]),
             variation_parameter=NETWORK_PROPERTY_OM
         )
 
@@ -433,17 +665,18 @@ if __name__ == "__main__":
         ("experience3_cluster", "results_2026-04-12_17-17-12-630419"),
         ("experience4_cluster", "results_2026-04-12_18-47-18-341627"),
 
-        ("experience5_cluster_0", "results_2026-04-19_22-29-26-629180"),
+        # ("experience5_cluster_0", "results_2026-04-19_22-29-26-629180"),
 
         ("experience5_cluster", "results_2026-05-03_12-11-56-013021"),
         ("experience6_cluster", "results_2026-05-03_14-23-08-858214"),
         ("experience7_cluster", "results_2026-05-03_15-37-47-343899"),
         ("experience8_cluster", "results_2026-05-03_16-44-48-087897"),
+
+        ("lapin_and_laplacian", "results_2026-06-19_21-09-49-051769"),
+        ("affinity_designs", "results_2026-06-19_23-01-34-957749")
     ]:
         plot_variation_set_results(
-            results_dir=os.path.join(
-                RESULTS_BASE_DIR, "overlap_variation_set", folders[0], folders[1]
-            ),
+            results_dir=os.path.join(RESULTS_BASE_DIR, "overlap_variation_set", folders[0], folders[1]),
             variation_parameter=NETWORK_PROPERTY_ON
         )
 
@@ -469,8 +702,6 @@ if __name__ == "__main__":
         # ("experience8_cluster", "results_2026-05-03_21-25-59-359439"),
     ]:
         plot_variation_set_results(
-            results_dir=os.path.join(
-                RESULTS_BASE_DIR, "size_variation_set", folders[0], folders[1]
-            ),
+            results_dir=os.path.join(RESULTS_BASE_DIR, "size_variation_set", folders[0], folders[1]),
             variation_parameter=NETWORK_PROPERTY_N
         )

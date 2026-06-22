@@ -1,5 +1,4 @@
 import os.path
-import os.path
 from collections.abc import Callable
 
 import numpy as np
@@ -14,6 +13,7 @@ from pipeline.components.faddis.faddis import faddis
 from pipeline.components.lapin.lapin import lapin
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.real_world_data_loader import load_network_from_gml
+from pipeline.components.sparsification.sparsification import apply_global_threshold_sparsification
 from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
 from pipeline.config.real_world_runner.config import ExecutionMode, DefuzzificationRule
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamilyConfig
@@ -90,18 +90,21 @@ def run_real_world_networks_experiments(
                     W = affinity_matrix_lambda(A)
 
                     # 3. Apply sparsification to matrix W to obtain the matrix Ws.
-                    # Ws =
+                    Ws, As, graph_s, ground_truth_labels_s, k_s, sparsification_info = apply_global_threshold_sparsification(
+                        W, ground_truth_labels, affinity_design_label,
+                        target_average_degree=20.0
+                    )
 
                     for idx4, execution_mode in enumerate(execution_modes, 1):
                         log_progress(idx4, len(execution_modes), execution_mode.label, 2)
 
                         # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
-                        Ln = lapin(W, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
+                        Ln = lapin(Ws, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
 
                         # 5. Fine-tune the stop criterion for FADDIS.
                         if not stop_criterion_until_k:
                             epsilon, tau, k_max = set_stop_criterion(
-                                graph.number_of_nodes(), network_family_config.name, thresholds
+                                graph_s.number_of_nodes(), network_family_config.name, thresholds
                             )
                         else:
                             epsilon, tau, k_max = None, None, None
@@ -109,11 +112,11 @@ def run_real_world_networks_experiments(
                         # 6. Execute FADDIS.
                         start_time = get_computation_start_time()
                         if not stop_criterion_until_k:
-                            results = faddis(W if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
+                            results = faddis(Ws if not execution_mode.apply_lapin else Ln, epsilon, tau, k_max)
                         else:
                             results = faddis(
-                                W=W if not execution_mode.apply_lapin else Ln,
-                                desired_k=k + 1 if not execution_mode.apply_lapin else k
+                                W=Ws if not execution_mode.apply_lapin else Ln,
+                                desired_k=k_s + 1 if not execution_mode.apply_lapin else k_s
                             )
                         end_time = get_computation_end_time()
 
@@ -140,14 +143,14 @@ def run_real_world_networks_experiments(
                             # 8. Compute the evaluation metrics.
                             if network_config.ground_truth:
                                 extrinsic_results = compute_extrinsic_metrics(
-                                    graph, ground_truth_labels, predicted_labels, k, k_predicted,
+                                    graph_s, ground_truth_labels_s, predicted_labels, k_s, k_predicted,
                                     overlapping=overlapping
                                 )
                             else:
                                 extrinsic_results = ExtrinsicMetrics(diff_of_k=f"{k_predicted}")
 
                             intrinsic_results = compute_intrinsic_metrics(
-                                graph, A, membership_matrix, predicted_labels,
+                                graph_s, As, membership_matrix, predicted_labels,
                                 overlapping=overlapping
                             )
 
@@ -161,6 +164,10 @@ def run_real_world_networks_experiments(
                                 network=network_config.name,
                                 overlapping=overlapping,
                                 affinity_design=affinity_design_label,
+                                actual_average_degree=sparsification_info.actual_average_degree,
+                                sparsification_target_average_degree=sparsification_info.target_average_degree,
+                                sparsification_theta=sparsification_info.theta,
+                                sparsification_diff_n=sparsification_info.diff_n,
                                 execution_mode=execution_mode.label,
                                 laplacian_variant=execution_mode.laplacian_variant,
                                 epsilon=epsilon,
@@ -179,7 +186,7 @@ def run_real_world_networks_experiments(
                                 results_id,
                                 results,
                                 predicted_labels,
-                                ground_truth_labels,
+                                ground_truth_labels_s,
                                 save_membership_matrix=True
                             )
             except Exception as e:

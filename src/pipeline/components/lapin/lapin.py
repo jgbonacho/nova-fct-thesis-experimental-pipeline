@@ -22,7 +22,7 @@ def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
         laplacian_variant : (str, optional)
             Variant of Laplacian to use.
             Default is 'Lsym' (Symmetric Normalized Laplacian).
-            Other options are 'Lrw' (Random Walk-Normalized Laplacian) or 'L' (Unnormalized Laplacian).
+            Other option is 'L' (Unnormalized Laplacian).
 
     Returns:
         Ln+ : (np.ndarray)
@@ -32,7 +32,7 @@ def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
         ValueError : If laplacian_variant is not supported.
     """
 
-    if laplacian_variant not in ['Lsym', 'Lrw', 'L']:
+    if laplacian_variant not in ['Lsym', 'L']:
         raise ValueError(f"[ERROR] Laplacian variant {laplacian_variant} not supported.")
 
     # W = (W + W.T) / 2
@@ -52,15 +52,11 @@ def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
         # L = D - W
         L = np.diag(w_sums) - W
     else:
-        is_symmetric_normalized_laplacian = laplacian_variant == 'Lsym'
         C = np.empty((matrix_rows, matrix_rows))
         for i in range(matrix_rows):
             for j in range(matrix_rows):
-                if is_symmetric_normalized_laplacian:
-                    C[i, j] = W[i, j] / np.sqrt(w_sums[i] * w_sums[j])
-                else:
-                    C[i, j] = W[i, j] / w_sums[i]
-        # L = I - D^(-1/2) * W * D^(-1/2) or L = I - D^(-1) * W
+                C[i, j] = W[i, j] / np.sqrt(w_sums[i] * w_sums[j])
+        # L = I - D^(-1/2) * W * D^(-1/2)
         L = np.eye(matrix_rows) - C
 
     eigenvalues, eigenvectors = LA.eig(L)

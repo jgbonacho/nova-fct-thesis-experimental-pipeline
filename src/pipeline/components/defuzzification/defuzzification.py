@@ -41,12 +41,10 @@ def apply_defuzzification_rule(
         U_copy = np.asarray(U)[:, 1:]
         first_cluster_discarded = True
         labels_offset = 1
-        # print("[INFO] Defuzzification discarding the first extracted cluster.")
     else:
         U_copy = np.asarray(U)
         first_cluster_discarded = False
         labels_offset = 0
-        # print("[INFO] Defuzzification including the first extracted cluster.")
 
     if not overlapping:
         # Maximum membership assignment.

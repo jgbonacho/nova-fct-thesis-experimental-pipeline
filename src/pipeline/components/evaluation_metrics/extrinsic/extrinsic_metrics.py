@@ -40,6 +40,7 @@ def compute_extrinsic_metrics(
             Extrinsic metrics.
     """
 
+    # NOTE: The metrics are computed only on nodes with ground-truth labels. However, K' is kept from the full FADDIS prediction, so filtered_k_predicted is not used.
     filtered_graph, filtered_ground_truth_labels, filtered_predicted_labels, k, filtered_k_predicted = _remove_nodes_without_community_labels(
         graph,
         ground_truth_labels,

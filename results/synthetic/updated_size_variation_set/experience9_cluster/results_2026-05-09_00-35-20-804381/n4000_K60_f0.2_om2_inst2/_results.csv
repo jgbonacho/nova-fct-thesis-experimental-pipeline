@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,45 | 66,0.318182,0.040095,0.049108,3738.661365
+002,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,45 | 66,0.318182,0.171136,0.217526,3738.661365
+003,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,45 | 66,0.318182,0.266447,0.320011,3738.661365
+004,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,45 | 66,0.318182,0.338876,0.407474,3738.661365
+005,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,45 | 66,0.318182,0.443223,0.479585,3738.661365
+006,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,45 | 66,0.318182,0.453159,0.529650,3738.661365
+007,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,30 | 66,0.545455,0,0.004689,4205.069927
+008,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,30 | 66,0.545455,0,0.049644,4205.069927
+009,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,30 | 66,0.545455,0,0.088792,4205.069927
+010,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,30 | 66,0.545455,0.031434,0.138812,4205.069927
+011,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,30 | 66,0.545455,0.073959,0.197982,4205.069927
+012,64_nH_uM_onnL_omL,n4000_K60_f0.2_om2_inst2,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,30 | 66,0.545455,0.079388,0.248668,4205.069927

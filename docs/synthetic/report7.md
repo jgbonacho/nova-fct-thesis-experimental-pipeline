@@ -139,25 +139,19 @@ Based on [Recommendations Document](../imgs/FADDIS_LFR_Recommendations%20.pdf).
 
 [Open Folder](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-06_17-17-41-795974/)
 
-![Results 0](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-06_17-17-41-795974/network_results_0.png)
-
-![Results 1](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-06_17-17-41-795974/network_results_1.png)
+![Results](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-06_17-17-41-795974/network_results_all_variants.png)
 
 ### `n3000`
 
 [Open Folder](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-07_00-32-30-551860/)
 
-![Results 0](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-07_00-32-30-551860/network_results_0.png)
-
-![Results 1](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-07_00-32-30-551860/network_results_1.png)
+![Results](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-07_00-32-30-551860/network_results_all_variants.png)
 
 ### `n4000`
 
 [Open Folder](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/)
 
-![Results 0](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/network_results_0.png)
-
-![Results 1](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/network_results_1.png)
+![Results](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/network_results_all_variants.png)
 
 
 
@@ -170,4 +164,4 @@ Based on [Recommendations Document](../imgs/FADDIS_LFR_Recommendations%20.pdf).
 ## Discussion
 
 - **Observations**
-    - TODO
+    - FADDIS limitation mitigated.

@@ -1,0 +1,13 @@
+ID,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Laplacian,Epsilon,Tau,Kmax,Stop Condition,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+001,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.3,Yes,48 | 60,0.2,0.103522,0.081211,3741.825026
+002,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.5,Yes,48 | 60,0.2,0.357740,0.332427,3741.825026
+003,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.6,Yes,48 | 60,0.2,0.496098,0.473343,3741.825026
+004,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.7,Yes,48 | 60,0.2,0.583426,0.576947,3741.825026
+005,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.8,Yes,48 | 60,0.2,0.640634,0.655832,3741.825026
+006,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-off,-,1.816790e-06,0.05,500,epsilon,0.9,Yes,48 | 60,0.2,0.650580,0.695593,3741.825026
+007,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.3,No,34 | 60,0.433333,0.005808,0.002239,4753.088108
+008,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.5,No,34 | 60,0.433333,0.028197,0.051128,4753.088108
+009,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.6,No,34 | 60,0.433333,0.055201,0.105735,4753.088108
+010,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.7,No,34 | 60,0.433333,0.094190,0.184287,4753.088108
+011,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.8,No,34 | 60,0.433333,0.188356,0.282989,4753.088108
+012,64_nH_uM_onnL_omL,n4000_K60_f0.1_om2_inst3,Yes,Default,LAPIN-on,Lsym,1.816790e-06,0.05,500,epsilon,0.9,No,34 | 60,0.433333,0.260833,0.378219,4753.088108

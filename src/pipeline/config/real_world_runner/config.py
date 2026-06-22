@@ -4,6 +4,10 @@ import os
 from dataclasses import dataclass
 
 from pipeline.components.affinity_design.default_affinity import default_affinity
+from pipeline.components.affinity_design.neighborhood_based_similarities.binary_set_similarities import compute_kul, \
+    compute_dice, compute_ochiai
+from pipeline.components.affinity_design.neighborhood_based_similarities.weighted_inner_product_similarities import \
+    compute_ip, compute_cosip
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamilyConfig
 
 ROOT_DIR = os.path.join(os.path.dirname(__file__), '..', '..', '..', '..')
@@ -84,6 +88,15 @@ def load_thresholds(
 
 AFFINITY_DESIGNS = {
     'Default': lambda A: default_affinity(A),
+    'Kul': lambda A: compute_kul(A),
+    'Dice': lambda A: compute_dice(A),
+    'Ochiai': lambda A: compute_ochiai(A),
+    'IP_beta0': lambda A: compute_ip(A, beta=0),
+    'IP_beta0.5': lambda A: compute_ip(A, beta=0.5),
+    'IP_beta1': lambda A: compute_ip(A, beta=1),
+    'CosIP_beta0': lambda A: compute_cosip(A, beta=0),
+    'CosIP_beta0.5': lambda A: compute_cosip(A, beta=0.5),
+    'CosIP_beta1': lambda A: compute_cosip(A, beta=1),
 }
 
 
@@ -112,7 +125,6 @@ class ExecutionMode:
 EXECUTION_MODES = [
     ExecutionMode('LAPIN-off', False, '-'),
     ExecutionMode('LAPIN-on', True, 'Lsym'),
-    # ExecutionMode('LAPIN-on', True, 'Lrw'),
     # ExecutionMode('LAPIN-on', True, 'L'),
 ]
 

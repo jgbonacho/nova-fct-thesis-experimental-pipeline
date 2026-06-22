@@ -95,9 +95,7 @@ size_positive_eigenvalues = eigenvalues_pos.size
 
 [Open Folder](../../results/synthetic/size_variation_set/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/)
 
-![Experience with numpy.linalg.eigh Results 0](../../results/synthetic/size_variation_set/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/n_variation_set_0.png)
-
-![Experience with numpy.linalg.eigh Results 1](../../results/synthetic/size_variation_set/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/n_variation_set_1.png)
+![Experience with numpy.linalg.eigh Results](../../results/synthetic/size_variation_set/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/n_all_variants.png)
 
 
 
@@ -118,9 +116,7 @@ size_positive_eigenvalues = eigenvalues_pos.size
 
 [Open Folder](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/)
 
-![Experience with scipy.linalg.eigh (driver='evd') Results 0](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/n_variation_set_0.png)
-
-![Experience with scipy.linalg.eigh (driver='evd') Results 1](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/n_variation_set_1.png)
+![Experience with scipy.linalg.eigh (driver='evd') Results](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/n_all_variants.png)
 
 
 
@@ -142,9 +138,7 @@ eigenvalues_pos = np.argsort(curr_eigenvalues)[::-1]
 
 [Open Folder](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/)
 
-![Experience with scipy.linalg.eigh (driver='evr') Results 0](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_variation_set_0.png)
-
-![Experience with scipy.linalg.eigh (driver='evr') Results 1](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_variation_set_1.png)
+![Experience with scipy.linalg.eigh (driver='evr') Results](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_all_variants.png)
 
 
 
