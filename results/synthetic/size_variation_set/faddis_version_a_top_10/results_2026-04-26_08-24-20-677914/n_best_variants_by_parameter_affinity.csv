@@ -1,4 +1,0 @@
-n,Affinity Design,Variation,#Instances,ONMI Results,Mean ONMI,Sample Std ONMI,Omega Results,Mean Omega,Sample Std Omega,Relative Error |K'-K|/K Results,Mean Relative Error |K'-K|/K,Sample Std Relative Error |K'-K|/K,Mean FADDIS Runtime,Sample Std FADDIS Runtime
-1000,default,006_default_lapin-off_-_g0.9,3,"[0.609538, 0.613517, 0.543192]",0.588749,0.039504,"[0.663049, 0.643033, 0.577903]",0.627995,0.04452,"[0.0, 0.0, 0.130435]",0.043478,0.075307,6.074801,0.325501
-2000,default,006_default_lapin-off_-_g0.9,3,"[0.362201, 0.528177, 0.446337]",0.445572,0.082991,"[0.469312, 0.604088, 0.549921]",0.541107,0.067819,"[0.382979, 0.255319, 0.26]",0.299433,0.072391,11.722889,2.423023
-3000,default,006_default_lapin-off_-_g0.9,3,"[0.25939, 0.275582, 0.266992]",0.267321,0.008101,"[0.362612, 0.411244, 0.396785]",0.390214,0.024973,"[0.521739, 0.5, 0.493151]",0.504963,0.014926,82.070058,5.127924

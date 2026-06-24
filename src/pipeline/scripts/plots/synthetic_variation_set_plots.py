@@ -30,7 +30,7 @@ OMEGA_COL = "Omega"
 FADDIS_RUNTIME_COL = "FADDIS Runtime"
 
 # Variant name column and limits for plots.
-VARIANT_COL = "Variation"
+VARIANT_COL = "Variant"
 VARIANT_LIMITS = {
     # NETWORK_PROPERTY_N: (500 - 20, 1000 + 20),
     NETWORK_PROPERTY_N: (1000 - 200, 10000 + 200),
@@ -131,6 +131,7 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
 
     if FADDIS_RUNTIME_COL in raw_df.columns:
         agg_dict.update({
+            "FADDIS Runtime Results": (FADDIS_RUNTIME_COL, results_as_json),
             "Mean FADDIS Runtime": (FADDIS_RUNTIME_COL, "mean"),
             "Sample Std FADDIS Runtime": (FADDIS_RUNTIME_COL, lambda s: s.std(ddof=1)),
         })
@@ -173,15 +174,15 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
         index=False,
     )
     best_variation_parameter_variants_df.to_csv(
-        os.path.join(results_dir, f"{variation_parameter}_best_variants_by_parameter.csv"),
+        os.path.join(results_dir, f"{variation_parameter}_best_by_param.csv"),
         index=False,
     )
     best_variants_affinity_design_df.to_csv(
-        os.path.join(results_dir, f"{variation_parameter}_best_variants_by_affinity.csv"),
+        os.path.join(results_dir, f"{variation_parameter}_best_by_affinity.csv"),
         index=False,
     )
     best_variation_parameter_affinity_variants_df.to_csv(
-        os.path.join(results_dir, f"{variation_parameter}_best_variants_by_parameter_affinity.csv"),
+        os.path.join(results_dir, f"{variation_parameter}_best_by_param_affinity.csv"),
         index=False,
     )
 
@@ -267,10 +268,11 @@ def _build_variant_name(row: dict[str, str]) -> str:
     variant_id = str(row[ID_COL]).strip().zfill(3)
     affinity_design = str(row[AFFINITY_DESIGN_COL]).strip().lower()
     execution_mode = str(row[EXECUTION_MODE_COL]).strip().lower()
-    laplacian = str(row[LAPLACIAN_COL]).strip().lower()
+    # laplacian = str(row[LAPLACIAN_COL]).strip().lower()
     gamma = f"g{str(row[GAMMA_COL]).strip().lower()}"
 
-    return f"{variant_id}_{affinity_design}_{execution_mode}_{laplacian}_{gamma}"
+    # return f"{variant_id}_{affinity_design}_{execution_mode}_{laplacian}_{gamma}"
+    return f"{variant_id}_{affinity_design}_{execution_mode}_{gamma}"
 
 
 def results_as_json(series: pd.Series) -> str:
@@ -621,14 +623,15 @@ if __name__ == "__main__":
         ("experience3_cluster", "results_2026-04-10_21-39-07-593414"),
         ("experience4_cluster", "results_2026-04-11_00-08-06-619023"),
 
-        # ("experience5_cluster_0", "results_2026-04-19_12-06-10-999135"),
+        ("experience5_cluster_0", "results_2026-04-19_12-06-10-999135"),
 
         ("experience5_cluster", "results_2026-05-02_09-15-07-970979"),
         ("experience6_cluster", "results_2026-05-02_11-26-20-488782"),
         ("experience7_cluster", "results_2026-05-02_15-23-59-555680"),
         ("experience8_cluster", "results_2026-05-02_16-46-53-100982"),
 
-        ("lapin_and_laplacian", "results_2026-06-17_16-17-14-278377"),
+        # ("lapin_and_laplacian", "results_2026-06-17_16-17-14-278377"),
+
         ("affinity_designs", "results_2026-06-17_23-22-22-871630")
     ]:
         plot_variation_set_results(
@@ -643,14 +646,15 @@ if __name__ == "__main__":
         ("experience3_cluster", "results_2026-04-12_09-50-03-559581"),
         ("experience4_cluster", "results_2026-04-12_11-35-17-967624"),
 
-        # ("experience5_cluster_0", "results_2026-04-19_18-21-44-389254"),
+        ("experience5_cluster_0", "results_2026-04-19_18-21-44-389254"),
 
         ("experience5_cluster", "results_2026-05-02_19-27-44-446056"),
         ("experience6_cluster", "results_2026-05-02_22-55-58-140699"),
         ("experience7_cluster", "results_2026-05-03_00-33-14-635642"),
         ("experience8_cluster", "results_2026-05-03_08-11-41-388440"),
 
-        ("lapin_and_laplacian", "results_2026-06-18_16-51-24-027093"),
+        # ("lapin_and_laplacian", "results_2026-06-18_16-51-24-027093"),
+
         ("affinity_designs", "results_2026-06-18_19-56-33-609075")
     ]:
         plot_variation_set_results(
@@ -665,14 +669,15 @@ if __name__ == "__main__":
         ("experience3_cluster", "results_2026-04-12_17-17-12-630419"),
         ("experience4_cluster", "results_2026-04-12_18-47-18-341627"),
 
-        # ("experience5_cluster_0", "results_2026-04-19_22-29-26-629180"),
+        ("experience5_cluster_0", "results_2026-04-19_22-29-26-629180"),
 
         ("experience5_cluster", "results_2026-05-03_12-11-56-013021"),
         ("experience6_cluster", "results_2026-05-03_14-23-08-858214"),
         ("experience7_cluster", "results_2026-05-03_15-37-47-343899"),
         ("experience8_cluster", "results_2026-05-03_16-44-48-087897"),
 
-        ("lapin_and_laplacian", "results_2026-06-19_21-09-49-051769"),
+        # ("lapin_and_laplacian", "results_2026-06-19_21-09-49-051769"),
+
         ("affinity_designs", "results_2026-06-19_23-01-34-957749")
     ]:
         plot_variation_set_results(

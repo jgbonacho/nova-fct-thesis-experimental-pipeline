@@ -1,0 +1,11 @@
+Affinity Design,Variant,Overall Mean ONMI,Overall Sample Std ONMI,Overall Mean Omega,Overall Sample Std Omega,Overall Mean Relative Error |K'-K|/K,Overall Sample Std Relative Error |K'-K|/K
+cosip_beta0,096_cosip_beta0_lapin-on_g0.9,0.355932,0.231623,0.378743,0.232229,0.208995,0.06698
+cosip_beta0.5,108_cosip_beta0.5_lapin-on_g0.9,0.356977,0.244692,0.371927,0.242989,0.179746,0.056206
+cosip_beta1,120_cosip_beta1_lapin-on_g0.9,0.345057,0.268603,0.353249,0.264411,0.169049,0.058141
+default,006_default_lapin-off_g0.9,0.445096,0.342138,0.476086,0.319748,0.077428,0.030751
+dice,036_dice_lapin-on_g0.9,0.340353,0.221978,0.362656,0.223197,0.248389,0.075029
+ip_beta0,053_ip_beta0_lapin-off_g0.8,0.494336,0.367437,0.484998,0.336535,0.16183,0.049368
+ip_beta0.5,065_ip_beta0.5_lapin-off_g0.8,0.474774,0.36532,0.469697,0.336587,0.132683,0.041406
+ip_beta1,078_ip_beta1_lapin-off_g0.9,0.447425,0.356125,0.452489,0.338189,0.112412,0.035447
+kul,024_kul_lapin-on_g0.9,0.345091,0.224937,0.372241,0.227302,0.255432,0.089386
+ochiai,048_ochiai_lapin-on_g0.9,0.346256,0.228241,0.368226,0.225809,0.215128,0.079635

@@ -12,17 +12,13 @@ ZERO_BOUND = 10 ** (-8)
 ENTITY_BOUND = 10 ** (-4)
 
 
-def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
+def lapin(W: np.ndarray) -> np.ndarray:
     """
     LAPIN: Laplacian Pseudo-Inverse transformation.
 
     Parameters:
         W : (np.ndarray, shape[n,n])
             nxn symmetric similarity/affinity matrix.
-        laplacian_variant : (str, optional)
-            Variant of Laplacian to use.
-            Default is 'Lsym' (Symmetric Normalized Laplacian).
-            Other option is 'L' (Unnormalized Laplacian).
 
     Returns:
         Ln+ : (np.ndarray)
@@ -31,9 +27,6 @@ def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
     Exceptions:
         ValueError : If laplacian_variant is not supported.
     """
-
-    if laplacian_variant not in ['Lsym', 'L']:
-        raise ValueError(f"[ERROR] Laplacian variant {laplacian_variant} not supported.")
 
     # W = (W + W.T) / 2
     w_sums = np.ravel(abs(sum(W)))
@@ -47,17 +40,11 @@ def lapin(W: np.ndarray, laplacian_variant: str = 'Lsym') -> np.ndarray:
         raise Exception('[ERROR] Entities are no good - remove them first.')
 
     matrix_rows, _ = W.shape
-
-    if laplacian_variant == 'L':
-        # L = D - W
-        L = np.diag(w_sums) - W
-    else:
-        C = np.empty((matrix_rows, matrix_rows))
-        for i in range(matrix_rows):
-            for j in range(matrix_rows):
-                C[i, j] = W[i, j] / np.sqrt(w_sums[i] * w_sums[j])
-        # L = I - D^(-1/2) * W * D^(-1/2)
-        L = np.eye(matrix_rows) - C
+    C = np.empty((matrix_rows, matrix_rows))
+    for i in range(matrix_rows):
+        for j in range(matrix_rows):
+            C[i, j] = W[i, j] / np.sqrt(w_sums[i] * w_sums[j])
+    L = np.eye(matrix_rows) - C
 
     eigenvalues, eigenvectors = LA.eig(L)
     eigenvalues_diagonal = np.diag(eigenvalues)

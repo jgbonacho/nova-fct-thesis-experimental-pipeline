@@ -283,10 +283,9 @@ def _build_variant_name(row: dict[str, str]) -> str:
     variant_id = str(row[ID_COL]).strip().zfill(3)
     affinity_design = str(row[AFFINITY_DESIGN_COL]).strip().lower()
     execution_mode = str(row[EXECUTION_MODE_COL]).strip().lower()
-    laplacian = str(row[LAPLACIAN_COL]).strip().lower()
     gamma = f"g{str(row[GAMMA_COL]).strip().lower()}"
 
-    return f"{variant_id}_{affinity_design}_{execution_mode}_{laplacian}_{gamma}"
+    return f"{variant_id}_{affinity_design}_{execution_mode}_{gamma}"
 
 
 def results_as_json(series: pd.Series) -> str:

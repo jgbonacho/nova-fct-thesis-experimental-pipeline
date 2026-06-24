@@ -11,7 +11,8 @@ from pipeline.components.affinity_design.neighborhood_based_similarities.weighte
 from pipeline.scripts.utils.networks_dataclasses import LFRNetworkFamilyConfig
 
 ROOT_DIR = os.path.join(os.path.dirname(__file__), '..', '..', '..', '..')
-SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic', 'variation_sets', 'boundary_variation_set')
+SYNTHETIC_NETWORKS_BASE_DIR = os.path.join(ROOT_DIR, 'networks', 'synthetic', 'variation_sets',
+                                           'boundary_variation_set')
 RESULTS_BASE_DIR = os.path.join(ROOT_DIR, 'results', 'synthetic')
 CONFIG_DIR = os.path.join(os.path.dirname(__file__))
 
@@ -108,19 +109,15 @@ class ExecutionMode:
             The label for the execution mode.
         apply_lapin : (bool)
             Whether to apply LAPIN or not.
-        laplacian_variant : (str)
-            The variant of the Laplacian to apply if apply_lapin is True.
     """
 
     label: str
     apply_lapin: bool
-    laplacian_variant: str
 
 
 EXECUTION_MODES = [
-    ExecutionMode('LAPIN-off', False, '-'),
-    ExecutionMode('LAPIN-on', True, 'Lsym'),
-    # ExecutionMode('LAPIN-on', True, 'L'),
+    ExecutionMode('LAPIN-off', False),
+    ExecutionMode('LAPIN-on', True)
 ]
 
 

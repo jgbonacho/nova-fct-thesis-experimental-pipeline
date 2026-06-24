@@ -2,6 +2,7 @@ import os.path
 from collections.abc import Callable
 
 import numpy as np
+from networkx.linalg.laplacianmatrix import laplacian_matrix
 
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.computational.computational_metrics import get_computation_start_time, \
@@ -99,7 +100,7 @@ def run_real_world_networks_experiments(
                         log_progress(idx4, len(execution_modes), execution_mode.label, 2)
 
                         # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
-                        Ln = lapin(Ws, execution_mode.laplacian_variant) if execution_mode.apply_lapin else None
+                        Ln = lapin(Ws) if execution_mode.apply_lapin else None
 
                         # 5. Fine-tune the stop criterion for FADDIS.
                         if not stop_criterion_until_k:
@@ -158,6 +159,7 @@ def run_real_world_networks_experiments(
 
                             number_of_results += 1
                             results_id = f"{number_of_results:03d}"
+                            laplacian_variant = "Lsym" if execution_mode.apply_lapin else "-"
                             append_result(Result(
                                 id=results_id,
                                 network_family=network_family_config.name,
@@ -169,7 +171,7 @@ def run_real_world_networks_experiments(
                                 sparsification_theta=sparsification_info.theta,
                                 sparsification_diff_n=sparsification_info.diff_n,
                                 execution_mode=execution_mode.label,
-                                laplacian_variant=execution_mode.laplacian_variant,
+                                laplacian_variant=laplacian_variant,
                                 epsilon=epsilon,
                                 tau=tau,
                                 k_max=k_max,

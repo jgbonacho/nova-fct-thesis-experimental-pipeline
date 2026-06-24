@@ -113,19 +113,15 @@ class ExecutionMode:
             The label for the execution mode.
         apply_lapin : (bool)
             Whether to apply LAPIN or not.
-        laplacian_variant : (str)
-            The variant of the Laplacian to apply if apply_lapin is True.
     """
 
     label: str
     apply_lapin: bool
-    laplacian_variant: str
 
 
 EXECUTION_MODES = [
-    ExecutionMode('LAPIN-off', False, '-'),
-    ExecutionMode('LAPIN-on', True, 'Lsym'),
-    # ExecutionMode('LAPIN-on', True, 'L'),
+    ExecutionMode('LAPIN-off', False),
+    ExecutionMode('LAPIN-on', True)
 ]
 
 
