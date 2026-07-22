@@ -1,0 +1,7 @@
+Algorithm,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,Modularity,Conductance,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+FADDIS,46_nM_uH_onnL_omL,n1000mu0.8on200om2inst1,Yes,IP_beta0,LAPIN-off,0.3,Yes,25 | 25,0,0,0.000269,,,0.000159,0.574183,23.606743
+NJW+FCM,46_nM_uH_onnL_omL,n1000mu0.8on200om2inst1,Yes,IP_beta0,LAPIN-off,0.3,No,25 | 25,0,3.081486e-16,0,,,-6.906494e-17,0,5.179998
+FADDIS,46_nM_uH_onnL_omL,n1000mu0.8on200om2inst1,Yes,IP_beta0,LAPIN-off,0.5,Yes,25 | 25,0,0,-0.000855,,,0.000159,0.665865,31.467246
+NJW+FCM,46_nM_uH_onnL_omL,n1000mu0.8on200om2inst1,Yes,IP_beta0,LAPIN-off,0.5,No,25 | 25,0,3.081486e-16,0,,,-6.906494e-17,0,5.221068
+FADDIS,46_nM_uH_onnL_omL,n1000mu0.8on200om2inst1,Yes,IP_beta0,LAPIN-off,0.8,Yes,25 | 25,0,0,0.000883,,,0.000159,0.803158,34.119235
+NJW+FCM,46_nM_uH_onnL_omL,n1000mu0.8on200om2inst1,Yes,IP_beta0,LAPIN-off,0.8,No,25 | 25,0,3.081486e-16,0,,,-6.906494e-17,0,43.332202

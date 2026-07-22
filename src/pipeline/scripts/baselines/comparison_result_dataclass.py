@@ -1,0 +1,48 @@
+from dataclasses import dataclass, field
+
+from pipeline.components.evaluation_metrics.computational.computational_metrics import ComputationalMetrics
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
+from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import IntrinsicMetrics
+
+
+@dataclass
+class ComparisonResult:
+    """
+    Dataclass for comparison results.
+
+    Attributes:
+        algorithm_name : (str)
+            Name of the algorithm.
+        network_family : (str)
+            The family of the network.
+        network : (str)
+            The name of the network.
+        overlapping : (bool)
+            Whether the ground truth is overlapping.
+        affinity_design : (str)
+            The affinity design label used in the experiment.
+        execution_mode : (str)
+            The execution mode used in the experiment.
+        gamma : (float)
+            The gamma parameter used in the experiment.
+        first_cluster_discarded : (bool)
+            Whether the first cluster was discarded in the experiment.
+        extrinsic_results : (ExtrinsicMetrics | None)
+            The extrinsic metrics results, if computed.
+        intrinsic_results : (IntrinsicMetrics | None)
+            The intrinsic metrics results, if computed.
+        computational_results : (ComputationalMetrics | None)
+            The computational metrics results, if computed.
+    """
+
+    algorithm_name: str = field(metadata={"label": "Algorithm"})
+    network_family: str = field(metadata={"label": "Network Family"})
+    network: str = field(metadata={"label": "Network"})
+    overlapping: bool = field(metadata={"label": "Overlapping?"})
+    affinity_design: str = field(metadata={"label": "Affinity Design"})
+    execution_mode: str = field(metadata={"label": "Execution Mode"})
+    gamma: float = field(metadata={"label": "Gamma"})
+    first_cluster_discarded: bool = field(metadata={"label": "C0 discarded?"})
+    extrinsic_results: ExtrinsicMetrics = field(default=None),
+    intrinsic_results: IntrinsicMetrics = field(default=None),
+    computational_results: ComputationalMetrics = field(default=None)

@@ -29,11 +29,16 @@ ONMI_COL = "ONMI"
 OMEGA_COL = "Omega"
 FADDIS_RUNTIME_COL = "FADDIS Runtime"
 
+# Pareto-based acceptability tolerance fractions.
+PARETO_TOLERANCE_FRACTION_ONMI = 0.1
+PARETO_TOLERANCE_FRACTION_OMEGA = 0.1
+PARETO_TOLERANCE_FRACTION_KERR = 0.5
+
 # Variant name column and limits for plots.
 VARIANT_COL = "Variant"
 VARIANT_LIMITS = {
-    # NETWORK_PROPERTY_N: (500 - 20, 1000 + 20),
-    NETWORK_PROPERTY_N: (1000 - 200, 10000 + 200),
+    NETWORK_PROPERTY_N: (500 - 20, 1000 + 20),
+    # NETWORK_PROPERTY_N: (1000 - 200, 10000 + 200),
     NETWORK_PROPERTY_MU: (0.1 - 0.02, 0.8 + 0.02),
     NETWORK_PROPERTY_ON: (100 - 20, 600 + 20),
     NETWORK_PROPERTY_OM: (1 - 0.2, 8 + 0.2),
@@ -292,14 +297,153 @@ def results_as_json(series: pd.Series) -> str:
     return json.dumps(values)
 
 
+def _select_best_candidate_with_pareto_and_parsimony(
+        df: pd.DataFrame,
+        onmi_col: str,
+        omega_col: str,
+        kerr_col: str,
+        runtime_col: str | None = None,
+) -> pd.Series:
+    """
+    Select one candidate using Pareto-based acceptability and parsimony.
+
+    Selection strategy:
+        1. Retain candidates with acceptable ONMI, Omega, and relative error of K.
+        2. Among acceptable candidates, prefer the candidate with the lowest runtime.
+        3. Use relative error, ONMI, Omega, and variant name as deterministic tie-breakers.
+        4. If no candidate is jointly acceptable, fall back to the original quality ranking.
+
+    Parameters:
+        df : (pd.DataFrame)
+            DataFrame containing the candidates in one selection group.
+        onmi_col : (str)
+            Name of the ONMI column to maximize.
+        omega_col : (str)
+            Name of the Omega column to maximize.
+        kerr_col : (str)
+            Name of the relative error of K column to minimize.
+        runtime_col : (str | None, optional)
+            Name of the runtime column used for parsimony.
+            Default is None.
+
+    Returns:
+        best_candidate : (pd.Series)
+            The selected candidate.
+    """
+
+    valid_df = df.dropna(subset=[onmi_col, omega_col, kerr_col]).copy()
+
+    if valid_df.empty:
+        return df.sort_values(VARIANT_COL).iloc[0]
+
+    onmi_delta = (
+            PARETO_TOLERANCE_FRACTION_ONMI
+            * (valid_df[onmi_col].max() - valid_df[onmi_col].min())
+    )
+    omega_delta = (
+            PARETO_TOLERANCE_FRACTION_OMEGA
+            * (valid_df[omega_col].max() - valid_df[omega_col].min())
+    )
+    kerr_delta = (
+            PARETO_TOLERANCE_FRACTION_KERR
+            * (valid_df[kerr_col].max() - valid_df[kerr_col].min())
+    )
+
+    acceptable_df = valid_df[
+        (valid_df[onmi_col] >= valid_df[onmi_col].max() - onmi_delta)
+        & (valid_df[omega_col] >= valid_df[omega_col].max() - omega_delta)
+        & (valid_df[kerr_col] <= valid_df[kerr_col].min() + kerr_delta)
+        ].copy()
+
+    if acceptable_df.empty:
+        print("[DEBUG] Fallback...")
+        return (
+            valid_df
+            .sort_values(
+                by=[onmi_col, omega_col, kerr_col, VARIANT_COL],
+                ascending=[False, False, True, True],
+            )
+            .iloc[0]
+        )
+
+    sort_columns = []
+    ascending = []
+
+    print("[DEBUG] Acceptable...")
+    # Parsimony: among practically indistinguishable candidates, prefer lower runtime.
+    if runtime_col is not None and runtime_col in acceptable_df.columns:
+        sort_columns.append(runtime_col)
+        ascending.append(True)
+
+    sort_columns.extend([kerr_col, onmi_col, omega_col, VARIANT_COL])
+    ascending.extend([True, False, False, True])
+
+    return (
+        acceptable_df
+        .sort_values(
+            by=sort_columns,
+            ascending=ascending,
+            na_position="last",
+        )
+        .iloc[0]
+    )
+
+
+def _select_best_candidates_by_group(
+        df: pd.DataFrame,
+        group_columns: list[str],
+        onmi_col: str,
+        omega_col: str,
+        kerr_col: str,
+        runtime_col: str | None = None,
+) -> pd.DataFrame:
+    """
+    Select one candidate per group using Pareto-based acceptability and parsimony.
+
+    Parameters:
+        df : (pd.DataFrame)
+            DataFrame containing the candidates.
+        group_columns : (list[str])
+            Columns defining each independent selection group.
+        onmi_col : (str)
+            Name of the ONMI column to maximize.
+        omega_col : (str)
+            Name of the Omega column to maximize.
+        kerr_col : (str)
+            Name of the relative error of K column to minimize.
+        runtime_col : (str | None, optional)
+            Name of the runtime column used for parsimony.
+            Default is None.
+
+    Returns:
+        selected_df : (pd.DataFrame)
+            DataFrame containing one selected candidate per group.
+    """
+
+    selected_candidates = []
+
+    for _, group_df in df.groupby(group_columns, sort=True, dropna=False):
+        selected_candidates.append(
+            _select_best_candidate_with_pareto_and_parsimony(
+                df=group_df,
+                onmi_col=onmi_col,
+                omega_col=omega_col,
+                kerr_col=kerr_col,
+                runtime_col=runtime_col,
+            )
+        )
+
+    return pd.DataFrame(selected_candidates).reset_index(drop=True)
+
+
 def _select_best_variants_by_variation_parameter(df: pd.DataFrame, variation_parameter: str) -> pd.DataFrame:
     """
     Select the best variant for each value of the variation parameter.
 
-    Ranking strategy:
-        1. Highest Mean ONMI
-        2. Highest Mean Omega
-        3. Lowest Mean Relative Error |K'-K|/K
+    Selection strategy:
+        1. Pareto-based acceptability for ONMI, Omega, and relative error of K.
+        2. Runtime-based parsimony among acceptable candidates.
+        3. Original quality ranking as fallback.
 
     Parameters:
         df : (pd.DataFrame)
@@ -312,28 +456,13 @@ def _select_best_variants_by_variation_parameter(df: pd.DataFrame, variation_par
             DataFrame containing the best variant selected for each value of the variation parameter.
     """
 
-    ranking_df = df.sort_values(
-        by=[
-            variation_parameter,
-            "Mean ONMI",
-            "Mean Omega",
-            "Mean Relative Error |K'-K|/K",
-            VARIANT_COL,
-        ],
-        ascending=[
-            True,
-            False,
-            False,
-            True,
-            True,
-        ],
-    )
-
-    return (
-        ranking_df
-        .groupby(variation_parameter, as_index=False)
-        .head(1)
-        .reset_index(drop=True)
+    return _select_best_candidates_by_group(
+        df=df,
+        group_columns=[variation_parameter],
+        onmi_col="Mean ONMI",
+        omega_col="Mean Omega",
+        kerr_col="Mean Relative Error |K'-K|/K",
+        runtime_col="Mean FADDIS Runtime",
     )
 
 
@@ -341,10 +470,10 @@ def _select_best_variants_by_affinity_design(df: pd.DataFrame) -> pd.DataFrame:
     """
     Select the best variant for each affinity design.
 
-    Ranking strategy:
-        1. Highest Mean ONMI
-        2. Highest Mean Omega
-        3. Lowest Mean Relative Error |K'-K|/K
+    Selection strategy:
+        1. Pareto-based acceptability for ONMI, Omega, and relative error of K.
+        2. Runtime-based parsimony among acceptable candidates.
+        3. Original quality ranking as fallback.
 
     Parameters:
         df : (pd.DataFrame)
@@ -358,27 +487,36 @@ def _select_best_variants_by_affinity_design(df: pd.DataFrame) -> pd.DataFrame:
         The selection is computed across all values of the variation parameter.
     """
 
+    agg_dict = {
+        "Overall Mean ONMI": ("Mean ONMI", "mean"),
+        "Overall Sample Std ONMI": ("Mean ONMI", lambda s: s.std(ddof=1)),
+
+        "Overall Mean Omega": ("Mean Omega", "mean"),
+        "Overall Sample Std Omega": ("Mean Omega", lambda s: s.std(ddof=1)),
+
+        "Overall Mean Relative Error |K'-K|/K": (
+            "Mean Relative Error |K'-K|/K",
+            "mean",
+        ),
+        "Overall Sample Std Relative Error |K'-K|/K": (
+            "Mean Relative Error |K'-K|/K",
+            lambda s: s.std(ddof=1),
+        ),
+    }
+
+    if "Mean FADDIS Runtime" in df.columns:
+        agg_dict.update({
+            "Overall Mean FADDIS Runtime": ("Mean FADDIS Runtime", "mean"),
+            "Overall Sample Std FADDIS Runtime": (
+                "Mean FADDIS Runtime",
+                lambda s: s.std(ddof=1),
+            ),
+        })
+
     ranking_df = (
         df
         .groupby([AFFINITY_DESIGN_COL, VARIANT_COL], as_index=False)
-        .agg(
-            **{
-                "Overall Mean ONMI": ("Mean ONMI", "mean"),
-                "Overall Sample Std ONMI": ("Mean ONMI", lambda s: s.std(ddof=1)),
-
-                "Overall Mean Omega": ("Mean Omega", "mean"),
-                "Overall Sample Std Omega": ("Mean Omega", lambda s: s.std(ddof=1)),
-
-                "Overall Mean Relative Error |K'-K|/K": (
-                    "Mean Relative Error |K'-K|/K",
-                    "mean",
-                ),
-                "Overall Sample Std Relative Error |K'-K|/K": (
-                    "Mean Relative Error |K'-K|/K",
-                    lambda s: s.std(ddof=1),
-                ),
-            }
-        )
+        .agg(**agg_dict)
     )
 
     for col in [
@@ -388,32 +526,19 @@ def _select_best_variants_by_affinity_design(df: pd.DataFrame) -> pd.DataFrame:
         "Overall Sample Std Omega",
         "Overall Mean Relative Error |K'-K|/K",
         "Overall Sample Std Relative Error |K'-K|/K",
+        "Overall Mean FADDIS Runtime",
+        "Overall Sample Std FADDIS Runtime",
     ]:
         if col in ranking_df.columns:
             ranking_df[col] = ranking_df[col].round(6)
 
-    ranking_df = ranking_df.sort_values(
-        by=[
-            AFFINITY_DESIGN_COL,
-            "Overall Mean ONMI",
-            "Overall Mean Omega",
-            "Overall Mean Relative Error |K'-K|/K",
-            VARIANT_COL,
-        ],
-        ascending=[
-            True,
-            False,
-            False,
-            True,
-            True,
-        ],
-    )
-
-    return (
-        ranking_df
-        .groupby(AFFINITY_DESIGN_COL, as_index=False)
-        .head(1)
-        .reset_index(drop=True)
+    return _select_best_candidates_by_group(
+        df=ranking_df,
+        group_columns=[AFFINITY_DESIGN_COL],
+        onmi_col="Overall Mean ONMI",
+        omega_col="Overall Mean Omega",
+        kerr_col="Overall Mean Relative Error |K'-K|/K",
+        runtime_col="Overall Mean FADDIS Runtime",
     )
 
 
@@ -424,10 +549,10 @@ def _select_best_variants_by_variation_parameter_and_affinity_design(
     """
     Select the best variant for each value of the variation parameter and affinity design.
 
-    Ranking strategy:
-        1. Highest Mean ONMI
-        2. Highest Mean Omega
-        3. Lowest Mean Relative Error |K'-K|/K
+    Selection strategy:
+        1. Pareto-based acceptability for ONMI, Omega, and relative error of K.
+        2. Runtime-based parsimony among acceptable candidates.
+        3. Original quality ranking as fallback.
 
     Parameters:
         df : (pd.DataFrame)
@@ -441,30 +566,13 @@ def _select_best_variants_by_variation_parameter_and_affinity_design(
             and affinity design.
     """
 
-    ranking_df = df.sort_values(
-        by=[
-            variation_parameter,
-            AFFINITY_DESIGN_COL,
-            "Mean ONMI",
-            "Mean Omega",
-            "Mean Relative Error |K'-K|/K",
-            VARIANT_COL,
-        ],
-        ascending=[
-            True,
-            True,
-            False,
-            False,
-            True,
-            True,
-        ],
-    )
-
-    return (
-        ranking_df
-        .groupby([variation_parameter, AFFINITY_DESIGN_COL], as_index=False)
-        .head(1)
-        .reset_index(drop=True)
+    return _select_best_candidates_by_group(
+        df=df,
+        group_columns=[variation_parameter, AFFINITY_DESIGN_COL],
+        onmi_col="Mean ONMI",
+        omega_col="Mean Omega",
+        kerr_col="Mean Relative Error |K'-K|/K",
+        runtime_col="Mean FADDIS Runtime",
     )
 
 
@@ -618,19 +726,7 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
 if __name__ == "__main__":
     # Boundary variation set.
     for folders in [
-        ("experience1_cluster", "results_2026-04-10_13-16-21-594342"),
-        ("experience2_cluster", "results_2026-04-10_18-46-27-529048"),
-        ("experience3_cluster", "results_2026-04-10_21-39-07-593414"),
-        ("experience4_cluster", "results_2026-04-11_00-08-06-619023"),
-
-        ("experience5_cluster_0", "results_2026-04-19_12-06-10-999135"),
-
         ("experience5_cluster", "results_2026-05-02_09-15-07-970979"),
-        ("experience6_cluster", "results_2026-05-02_11-26-20-488782"),
-        ("experience7_cluster", "results_2026-05-02_15-23-59-555680"),
-        ("experience8_cluster", "results_2026-05-02_16-46-53-100982"),
-
-        # ("lapin_and_laplacian", "results_2026-06-17_16-17-14-278377"),
 
         ("affinity_designs", "results_2026-06-17_23-22-22-871630")
     ]:
@@ -641,19 +737,7 @@ if __name__ == "__main__":
 
     # Membership variation set.
     for folders in [
-        ("experience1_cluster", "results_2026-04-11_11-39-05-745642"),
-        ("experience2_cluster", "results_2026-04-11_23-31-55-403981"),
-        ("experience3_cluster", "results_2026-04-12_09-50-03-559581"),
-        ("experience4_cluster", "results_2026-04-12_11-35-17-967624"),
-
-        ("experience5_cluster_0", "results_2026-04-19_18-21-44-389254"),
-
         ("experience5_cluster", "results_2026-05-02_19-27-44-446056"),
-        ("experience6_cluster", "results_2026-05-02_22-55-58-140699"),
-        ("experience7_cluster", "results_2026-05-03_00-33-14-635642"),
-        ("experience8_cluster", "results_2026-05-03_08-11-41-388440"),
-
-        # ("lapin_and_laplacian", "results_2026-06-18_16-51-24-027093"),
 
         ("affinity_designs", "results_2026-06-18_19-56-33-609075")
     ]:
@@ -664,19 +748,7 @@ if __name__ == "__main__":
 
     # Overlap variation set.
     for folders in [
-        ("experience1_cluster", "results_2026-04-12_13-46-36-158854"),
-        ("experience2_cluster", "results_2026-04-12_15-41-47-330370"),
-        ("experience3_cluster", "results_2026-04-12_17-17-12-630419"),
-        ("experience4_cluster", "results_2026-04-12_18-47-18-341627"),
-
-        ("experience5_cluster_0", "results_2026-04-19_22-29-26-629180"),
-
         ("experience5_cluster", "results_2026-05-03_12-11-56-013021"),
-        ("experience6_cluster", "results_2026-05-03_14-23-08-858214"),
-        ("experience7_cluster", "results_2026-05-03_15-37-47-343899"),
-        ("experience8_cluster", "results_2026-05-03_16-44-48-087897"),
-
-        # ("lapin_and_laplacian", "results_2026-06-19_21-09-49-051769"),
 
         ("affinity_designs", "results_2026-06-19_23-01-34-957749")
     ]:
@@ -687,24 +759,7 @@ if __name__ == "__main__":
 
     # Size variation set.
     for folders in [
-        # ("experience1_cluster", "results_2026-04-12_20-42-10-997187"),
-        # ("experience2_cluster", "results_2026-04-13_19-12-06-974844"),
-        # ("experience3_cluster", "results_2026-04-14_10-15-07-924997"),
-        # ("experience4_cluster", "results_2026-04-14_17-27-01-073540"),
-
-        ("faddis_version_a_got", "results_2026-04-20_08-40-19-143228"),
-        ("faddis_version_m", "results_2026-04-26_00-05-03-708303"),
-        ("faddis_version_a_top_10", "results_2026-04-26_08-24-20-677914"),
-        ("faddis_version_a_improved", "results_2026-04-30_00-23-38-440972"),
-
-        ("faddis_numpy_eigh", "results_2026-05-01_22-11-08-231496"),
-        ("faddis_scipy_eigh_evd", "results_2026-05-01_19-11-52-478180"),
-        ("faddis_scipy_eigh_evr", "results_2026-05-01_16-12-18-640998"),
-
-        # ("experience5_cluster", "results_2026-05-03_19-16-46-640640"),
-        # ("experience6_cluster", "results_2026-05-03_19-52-19-167434"),
-        # ("experience7_cluster", "results_2026-05-03_20-32-31-224707"),
-        # ("experience8_cluster", "results_2026-05-03_21-25-59-359439"),
+        ("experience5_cluster", "results_2026-05-03_19-16-46-640640"),
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(RESULTS_BASE_DIR, "size_variation_set", folders[0], folders[1]),

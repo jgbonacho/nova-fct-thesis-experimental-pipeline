@@ -1,0 +1,4 @@
+Algorithm,Network Family,Network,Overlapping?,Affinity Design,Execution Mode,Gamma,C0 discarded?,K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+FADDIS,09_nM_uL_onnL_omL,n1000mu0.2on200om2inst1,Yes,Default,LAPIN-off,0.8,Yes,24 | 22,0.090909,0.822442,0.794894,21.527201
+"SLPA (t=100, r=0.45)",09_nM_uL_onnL_omL,n1000mu0.2on200om2inst1,Yes,-,-,-,-,22 | 22,0,0.774424,0.817547,8.972393
+CFinder (clique_size=4),09_nM_uL_onnL_omL,n1000mu0.2on200om2inst1,Yes,-,-,-,-,45 | 22,1.045455,0.709320,0.723371,0.333259
