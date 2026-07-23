@@ -1,4 +1,4 @@
-# Report 11 — Baseline Comparison Design
+# Report 11 - Baseline Comparison Design
 
 ## Pipeline
 
@@ -100,7 +100,7 @@
      - Default affinity matrix, i.e., the adjacency matrix;
    - Do not apply sparsification.
    - Use the LAPIN-off execution mode.
-   - Set the $\epsilon\$.
+   - Set the threshold $\epsilon$.
 
    #### SLPA
 
@@ -124,13 +124,13 @@
 - Maximum number of iterations (default):
 
   $$
-  t = 21
+  t = 100
   $$
 
 - Post-processing threshold (default):
 
   $$
-  r = 0.1
+  r = 0.45
   $$
 
 > **Note:** SLPA is non-deterministic and is therefore executed multiple times using different random seeds. The results are reported as the mean ± standard deviation.

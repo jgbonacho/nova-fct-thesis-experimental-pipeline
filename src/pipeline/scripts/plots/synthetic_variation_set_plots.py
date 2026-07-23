@@ -546,33 +546,101 @@ def _select_best_variants_by_variation_parameter_and_affinity_design(
         df: pd.DataFrame,
         variation_parameter: str,
 ) -> pd.DataFrame:
-    """
-    Select the best variant for each value of the variation parameter and affinity design.
-
-    Selection strategy:
-        1. Pareto-based acceptability for ONMI, Omega, and relative error of K.
-        2. Runtime-based parsimony among acceptable candidates.
-        3. Original quality ranking as fallback.
-
-    Parameters:
-        df : (pd.DataFrame)
-            DataFrame containing the summary results for the variation set.
-        variation_parameter : (str)
-            The network property that was varied in the experiment.
-
-    Returns:
-        pd.DataFrame : (pd.DataFrame)
-            DataFrame containing the best variant selected for each value of the variation parameter
-            and affinity design.
-    """
-
-    return _select_best_candidates_by_group(
+    selected_df = _select_best_candidates_by_group(
         df=df,
         group_columns=[variation_parameter, AFFINITY_DESIGN_COL],
         onmi_col="Mean ONMI",
         omega_col="Mean Omega",
         kerr_col="Mean Relative Error |K'-K|/K",
         runtime_col="Mean FADDIS Runtime",
+    )
+
+    ordered_groups = []
+
+    for _, group_df in selected_df.groupby(
+            variation_parameter,
+            sort=True,
+            dropna=False,
+    ):
+        ordered_groups.append(
+            _order_candidates_with_pareto_and_parsimony(
+                df=group_df,
+                onmi_col="Mean ONMI",
+                omega_col="Mean Omega",
+                kerr_col="Mean Relative Error |K'-K|/K",
+                runtime_col="Mean FADDIS Runtime",
+            )
+        )
+
+    return pd.concat(
+        ordered_groups,
+        ignore_index=True,
+    )
+
+
+def _order_candidates_with_pareto_and_parsimony(
+        df: pd.DataFrame,
+        onmi_col: str,
+        omega_col: str,
+        kerr_col: str,
+        runtime_col: str | None = None,
+) -> pd.DataFrame:
+    valid_df = df.dropna(subset=[onmi_col, omega_col, kerr_col]).copy()
+
+    if valid_df.empty:
+        return df.sort_values(VARIANT_COL).reset_index(drop=True)
+
+    onmi_delta = (
+            PARETO_TOLERANCE_FRACTION_ONMI
+            * (valid_df[onmi_col].max() - valid_df[onmi_col].min())
+    )
+    omega_delta = (
+            PARETO_TOLERANCE_FRACTION_OMEGA
+            * (valid_df[omega_col].max() - valid_df[omega_col].min())
+    )
+    kerr_delta = (
+            PARETO_TOLERANCE_FRACTION_KERR
+            * (valid_df[kerr_col].max() - valid_df[kerr_col].min())
+    )
+
+    acceptable_mask = (
+            (valid_df[onmi_col] >= valid_df[onmi_col].max() - onmi_delta)
+            & (valid_df[omega_col] >= valid_df[omega_col].max() - omega_delta)
+            & (valid_df[kerr_col] <= valid_df[kerr_col].min() + kerr_delta)
+    )
+
+    acceptable_df = valid_df[acceptable_mask].copy()
+    fallback_df = valid_df[~acceptable_mask].copy()
+
+    acceptable_sort_columns = []
+    acceptable_ascending = []
+
+    if runtime_col is not None and runtime_col in acceptable_df.columns:
+        acceptable_sort_columns.append(runtime_col)
+        acceptable_ascending.append(True)
+
+    acceptable_sort_columns.extend(
+        [kerr_col, onmi_col, omega_col, VARIANT_COL]
+    )
+    acceptable_ascending.extend(
+        [True, False, False, True]
+    )
+
+    acceptable_df = acceptable_df.sort_values(
+        by=acceptable_sort_columns,
+        ascending=acceptable_ascending,
+        na_position="last",
+    )
+
+    fallback_df = fallback_df.sort_values(
+        by=[onmi_col, omega_col, kerr_col, VARIANT_COL],
+        ascending=[False, False, True, True],
+        na_position="last",
+    )
+
+    return pd.concat(
+        [acceptable_df, fallback_df],
+        ignore_index=True,
     )
 
 
