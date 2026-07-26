@@ -15,7 +15,7 @@
 
 ## Experience 0 (Baseline - Train Set)
 
-[Open Folder](../../results/real-world/baseline-train/)
+[Open Folder](../../../results/real-world/stage1/baseline-train/)
 
 - **Observations**:
     - Zachary Karate Club: LAPIN-off or LAPIN-on
@@ -35,7 +35,7 @@
 
 ## Experience 0 (Baseline - Test Set)
 
-[Open Folder](../../results/real-world/baseline-test/)
+[Open Folder](../../../results/real-world/stage1/baseline-test/)
 
 - **Observations**:
     - **Word Adjacencies: None**
@@ -51,11 +51,11 @@
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
-[Open Folder](../../results/real-world/experience9/results_2026-05-23_18-31-35-504770/)
+[Open Folder](../../../results/real-world/stage1/experience9/results_2026-05-23_18-31-35-504770/)
 
-![](../../results/real-world/experience9/results_2026-05-23_18-31-35-504770/non_overlapping_networks.png)
+![](../../../results/real-world/stage1/experience9/results_2026-05-23_18-31-35-504770/non_overlapping_networks.png)
 
-![](../../results/real-world/experience9/results_2026-05-23_18-31-35-504770/overlapping_networks.png)
+![](../../../results/real-world/stage1/experience9/results_2026-05-23_18-31-35-504770/overlapping_networks.png)
 
 
 
@@ -63,21 +63,21 @@
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
-[Open Folder](../../results/real-world/experience10_train_set/results_2026-05-23_18-48-04-504201/)
+[Open Folder](../../../results/real-world/stage1/exp10_train_set/results_2026-05-23_18-48-04-504201/)
 
-![](../../results/real-world/experience10_train_set/results_2026-05-23_18-48-04-504201/non_overlapping_networks.png)
+![](../../../results/real-world/stage1/exp10_train_set/results_2026-05-23_18-48-04-504201/non_overlapping_networks.png)
 
-![](../../results/real-world/experience10_train_set/results_2026-05-23_18-48-04-504201/overlapping_networks.png)
+![](../../../results/real-world/stage1/exp10_train_set/results_2026-05-23_18-48-04-504201/overlapping_networks.png)
 
 ## Experience 10 - Test Set (Networks grouped by degree assortativity, average degree, and K)
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
-[Open Folder](../../results/real-world/experience10_test_set/results_2026-05-23_19-34-21-746608/)
+[Open Folder](../../../results/real-world/stage1/exp10_test_set/results_2026-05-23_19-34-21-746608/)
 
-![](../../results/real-world/experience10_test_set/results_2026-05-23_19-34-21-746608/non_overlapping_networks.png)
+![](../../../results/real-world/stage1/exp10_test_set/results_2026-05-23_19-34-21-746608/non_overlapping_networks.png)
 
-![](../../results/real-world/experience10_test_set/results_2026-05-23_19-34-21-746608/overlapping_networks.png)
+![](../../../results/real-world/stage1/exp10_test_set/results_2026-05-23_19-34-21-746608/overlapping_networks.png)
 
 
 
@@ -85,21 +85,21 @@
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
-[Open Folder](../../results/real-world/experience11_train_set/results_2026-05-23_19-07-59-472648/)
+[Open Folder](../../../results/real-world/stage1/exp11_train_set/results_2026-05-23_19-07-59-472648/)
 
-![](../../results/real-world/experience11_train_set/results_2026-05-23_19-07-59-472648/non_overlapping_networks.png)
+![](../../../results/real-world/stage1/exp11_train_set/results_2026-05-23_19-07-59-472648/non_overlapping_networks.png)
 
-![](../../results/real-world/experience11_train_set/results_2026-05-23_19-07-59-472648/overlapping_networks.png)
+![](../../../results/real-world/stage1/exp11_train_set/results_2026-05-23_19-07-59-472648/overlapping_networks.png)
 
 ## Experience 11 - Test Set (Networks grouped by degree assortativity, average degree)
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
-[Open Folder](../../results/real-world/experience11_test_set/results_2026-05-23_19-46-22-129301/)
+[Open Folder](../../../results/real-world/stage1/exp11_test_set/results_2026-05-23_19-46-22-129301/)
 
-![](../../results/real-world/experience11_test_set/results_2026-05-23_19-46-22-129301/non_overlapping_networks.png)
+![](../../../results/real-world/stage1/exp11_test_set/results_2026-05-23_19-46-22-129301/non_overlapping_networks.png)
 
-![](../../results/real-world/experience11_test_set/results_2026-05-23_19-46-22-129301/overlapping_networks.png)
+![](../../../results/real-world/stage1/exp11_test_set/results_2026-05-23_19-46-22-129301/overlapping_networks.png)
 
 
 
@@ -107,21 +107,21 @@
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
-[Open Folder](../../results/real-world/experience12_train_set/results_2026-05-24_00-16-39-860352/)
+[Open Folder](../../../results/real-world/stage1/exp12_train_set/results_2026-05-24_00-16-39-860352/)
 
-![](../../results/real-world/experience12_train_set/results_2026-05-24_00-16-39-860352/non_overlapping_networks.png)
+![](../../../results/real-world/stage1/exp12_train_set/results_2026-05-24_00-16-39-860352/non_overlapping_networks.png)
 
-![](../../results/real-world/experience12_train_set/results_2026-05-24_00-16-39-860352/overlapping_networks.png)
+![](../../../results/real-world/stage1/exp12_train_set/results_2026-05-24_00-16-39-860352/overlapping_networks.png)
 
 ## Experience 12 - Test Set (Networks grouped by ground-truth type, degree assortativity, and average degree)
 
 ### LAPIN-on Median K Boundary Raw Contributions
 
-[Open Folder](../../results/real-world/experience12_test_set/results_2026-05-24_00-48-15-846586/)
+[Open Folder](../../../results/real-world/stage1/exp12_test_set/results_2026-05-24_00-48-15-846586/)
 
-![](../../results/real-world/experience12_test_set/results_2026-05-24_00-48-15-846586/non_overlapping_networks.png)
+![](../../../results/real-world/stage1/exp12_test_set/results_2026-05-24_00-48-15-846586/non_overlapping_networks.png)
 
-![](../../results/real-world/experience12_test_set/results_2026-05-24_00-48-15-846586/overlapping_networks.png)
+![](../../../results/real-world/stage1/exp12_test_set/results_2026-05-24_00-48-15-846586/overlapping_networks.png)
 
 
 
