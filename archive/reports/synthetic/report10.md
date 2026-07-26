@@ -1,85 +1,101 @@
-# Report 10 - LFR experiments: Selection of the Best Variant/Affinity Design
-
-### Old rule
-
-  - Highest Mean ONMI; Highest Mean Omega; Lowest Mean Relative Error $\frac{|K'-K|}{K}$.
-
-### New rule
-
-$$
-\mathcal{A}_i
-=
-\left\{
-d \in D_i :
-\overline{\operatorname{ONMI}}(d)
-\geq
-\overline{\operatorname{ONMI}}_{\max}
--
-\delta_{\operatorname{ONMI}},
-\;
-\overline{Omega}(d)
-\geq
-\overline{Omega}_{\max}
--
-\delta_{Omega},
-\;
-\overline{E_K}(d)
-\leq
-\overline{E_K}_{\min}
-+
-\delta_{E_K}
-\right\}
-$$
-
-$$
-d_i^{*}
-=
-\underset{d \in \mathcal{A}_i}{\arg\min}
-\;
-\overline{T}(d)
-$$
-
-where:
-
-$$
-E_K
-=
-\frac{|K'-K|}{K}
-$$
-
-- **Acceptable**:
-  - **Acceptable ONMI** (high mean ONMI):
-    - $\overline{\operatorname{ONMI}}(d) \geq \overline{\operatorname{ONMI}}_{\max}-\delta_{\operatorname{ONMI}}$
-      - $\overline{\operatorname{ONMI}}_{\max}=\max(\overline{\operatorname{ONMI}}(d))$
-      - $\delta_{\operatorname{ONMI}}=$ `PARETO_TOLERANCE_FRACTION_ONMI` $\times \left(\overline{\operatorname{ONMI}}_{\max}-\overline{\operatorname{ONMI}}_{\min}\right)$
-      - `PARETO_TOLERANCE_FRACTION_ONMI = 0.1`
-  - **Acceptable Omega** (high mean Omega):
-    - $\overline{Omega}(d) \geq \overline{Omega}_{\max}-\delta_{Omega}$
-      - $\overline{Omega}_{\max}=\max(\overline{Omega}(d))$
-      - $\delta_{Omega}=$ `PARETO_TOLERANCE_FRACTION_OMEGA` $\times \left(\overline{Omega}_{\max}-\overline{Omega}_{\min}\right)$
-      - `PARETO_TOLERANCE_FRACTION_OMEGA = 0.1`
-  - **Acceptable Relative Error of $K$** (low mean relative error):
-    - $\overline{E_K}(d) \leq \overline{E_K}_{\min}+\delta_{E_K}$
-      - $\overline{E_K}_{\min}=\min(\overline{E_K}(d))$
-      - $\delta_{E_K}=$ `PARETO_TOLERANCE_FRACTION_KERR` $\times \left(\overline{E_K}_{\max}-\overline{E_K}_{\min}\right)$
-      - `PARETO_TOLERANCE_FRACTION_KERR = 0.5`
-
-- **Pareto-based Filtering and Runtime Parsimony**
-  - *Select*: **Runtime**-based Parsimony Principle over Acceptables
-
-  - *Fallback*: Highest Mean ONMI; Highest Mean Omega; Lowest Mean Relative Error $\frac{|K'-K|}{K}$
+# Report 10 - Spectral Baseline Comparison Design
 
 
-### Updated Results
 
-- Boundary Variation Set
-  - [Results](../../results/synthetic/boundary_variation_set/experience5_cluster/results_2026-05-02_09-15-07-970979/mu_best_by_param.csv)
-  - [Affinity Results](../../results/synthetic/boundary_variation_set/affinity_designs/results_2026-06-17_23-22-22-871630/mu_best_by_param_affinity.csv)
+## Table of Contents
 
-- Membership Variation Set
-  - [Results](../../results/synthetic/membership_variation_set/experience5_cluster/results_2026-05-02_19-27-44-446056/om_best_by_param.csv)
-  - [Affinity Results](../../results/synthetic/membership_variation_set/affinity_designs/results_2026-06-18_19-56-33-609075/om_best_by_param_affinity.csv)
+- [Pipeline](#pipeline)
+- [Considered Methods](#considered-methods)
+- [FADDIS versus NJW+FCM](#faddis-versus-njwfcm)
+- [NJW+FCM Hyperparameters](#njwfcm-hyperparameters)
+  - [NJW](#njw)
+  - [FCM](#fcm)
+- [Preliminary Results](#preliminary-results)
 
-- Overlap Variation Set
-  - [Results](../../results/synthetic/overlap_variation_set/experience5_cluster/results_2026-05-03_12-11-56-013021/on_best_by_param.csv)
-  - [Affinity Results](../../results/synthetic/overlap_variation_set/affinity_designs/results_2026-06-19_23-01-34-957749/on_best_by_param_affinity.csv)
+
+
+## Pipeline
+
+![Pipeline](../imgs/pipeline.svg)
+
+
+
+## Considered Methods
+   
+- NJW+FCM
+
+
+
+## FADDIS versus NJW+FCM
+
+1. Select the networks:
+   - LFR boundary-set networks;
+   - Real-world networks with ground-truth.
+
+2. Construct the affinity matrix:
+   - Default affinity matrix, i.e., the adjacency matrix.
+
+3. Do not apply sparsification.
+
+4. Use the LAPIN-off execution mode.
+
+5. Use the ground-truth number of communities, $K$:
+   - As the stopping criterion for FADDIS;
+   - As the number of clusters for NJW + FCM.
+
+6. Execute:
+   - FADDIS;
+   - NJW + FCM.
+
+7. Apply the defuzzification rule according to the ground-truth type:
+   - For non-overlapping ground-truth, apply maximum-membership assignment;
+   - For overlapping ground-truth: 
+      - Apply node-wise $\alpha$-cut thresholding relative to the maximum membership value for FADDIS. This is not applicable to NJW+FCM because the memberships of each node sum to 1;
+      - Apply fixed $\lambda$-thresholding.
+
+8. Evaluate the results using:
+   - Extrinsic metrics;
+   - Intrinsic metrics;
+   - Computational metrics.
+
+
+
+## NJW+FCM Hyperparameters
+
+### NJW
+
+- Number of clusters:
+
+  $$
+  K = K_{\text{ground-truth}}
+  $$
+
+- Scaling parameter $\sigma$ (skipped)
+
+### FCM
+
+- Fuzziness parameter (default):
+
+  $$
+  m = 2.0
+  $$
+
+- Convergence tolerance (default):
+
+  $$
+  e = 10^{-5}
+  $$
+
+- Maximum number of iterations (default):
+
+  $$
+  t_{\max} = 300
+  $$
+
+> **Note:** NJW + FCM is non-deterministic and is therefore executed multiple times using different random seeds. The results are reported as the mean ± standard deviation.
+
+
+
+## Preliminary Results
+
+- [Boundary Variation Set](../../results/synthetic/boundary_variation_set/spectral-baseline/)

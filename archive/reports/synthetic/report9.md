@@ -6,6 +6,7 @@
 
 - [Setup](#setup)
 - [Scripts](#scripts)
+- [Selection of the Best Variant/Affinity Design Design](#selection-of-the-best-variantaffinity-design-design)
 - [Thresholds](#thresholds)
     - [Experience 5 (LAPIN-off + Extraction of K desired clusters)](#experience-5-lapin-off--extraction-of-k-desired-clusters)
 - [Boundary Variation Set](#boundary-variation-set)
@@ -14,8 +15,6 @@
     - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-1)
 - [Overlap Variation Set](#overlap-variation-set)
     - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-2)
-- [Size Variation Set](#size-variation-set)
-    - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-3)
 - [Hardware](#hardware)
 
 
@@ -64,8 +63,8 @@
 ![Pipeline](../imgs/pipeline.svg)
 
 1. `LFR synthetic network`
-2. `Default (Adjacency matrix)`
-3. `Sparsification not applied`
+2. `Default (Adjacency matrix); Kul; Dice; Ochiai; IP (beta 0, 0.5 and 1); CosIP (beta 0, 0.5 and 1)`
+3. `Sparsification applied to force d_avg=20`
 4. `LAPIN-off and LAPIN-on`
 5. `epsilon = threshold of the network family; tau = 0.05; k_max = min(500, n/2)`
 6. `FADDIS with stop criterion (epsilon, tau, k_max)`
@@ -73,6 +72,79 @@
 8. `Extrinsic metrics = [Relative Error of K, ONMI, Omega]`
 
 - For each experience (set of thresholds), draw two plots for each variation set showing the mean ONMI and Omega results by the tested variant, identical to the plots of the reference paper. Additionally, plot the relative error of K (number of communities) and the mean runtime of FADDIS.
+
+
+
+## Selection of the Best Variant/Affinity Design Design
+
+### Old rule
+
+  - Highest Mean ONMI; Highest Mean Omega; Lowest Mean Relative Error $\frac{|K'-K|}{K}$.
+
+### New rule
+
+$$
+\mathcal{A}_i
+=
+\left\{
+d \in D_i :
+\overline{\operatorname{ONMI}}(d)
+\geq
+\overline{\operatorname{ONMI}}_{\max}
+-
+\delta_{\operatorname{ONMI}},
+\;
+\overline{Omega}(d)
+\geq
+\overline{Omega}_{\max}
+-
+\delta_{Omega},
+\;
+\overline{E_K}(d)
+\leq
+\overline{E_K}_{\min}
++
+\delta_{E_K}
+\right\}
+$$
+
+$$
+d_i^{*}
+=
+\underset{d \in \mathcal{A}_i}{\arg\min}
+\;
+\overline{T}(d)
+$$
+
+where:
+
+$$
+E_K
+=
+\frac{|K'-K|}{K}
+$$
+
+- **Acceptable**:
+  - **Acceptable ONMI** (high mean ONMI):
+    - $\overline{\operatorname{ONMI}}(d) \geq \overline{\operatorname{ONMI}}_{\max}-\delta_{\operatorname{ONMI}}$
+      - $\overline{\operatorname{ONMI}}_{\max}=\max(\overline{\operatorname{ONMI}}(d))$
+      - $\delta_{\operatorname{ONMI}}=$ `PARETO_TOLERANCE_FRACTION_ONMI` $\times \left(\overline{\operatorname{ONMI}}_{\max}-\overline{\operatorname{ONMI}}_{\min}\right)$
+      - `PARETO_TOLERANCE_FRACTION_ONMI = 0.1`
+  - **Acceptable Omega** (high mean Omega):
+    - $\overline{Omega}(d) \geq \overline{Omega}_{\max}-\delta_{Omega}$
+      - $\overline{Omega}_{\max}=\max(\overline{Omega}(d))$
+      - $\delta_{Omega}=$ `PARETO_TOLERANCE_FRACTION_OMEGA` $\times \left(\overline{Omega}_{\max}-\overline{Omega}_{\min}\right)$
+      - `PARETO_TOLERANCE_FRACTION_OMEGA = 0.1`
+  - **Acceptable Relative Error of $K$** (low mean relative error):
+    - $\overline{E_K}(d) \leq \overline{E_K}_{\min}+\delta_{E_K}$
+      - $\overline{E_K}_{\min}=\min(\overline{E_K}(d))$
+      - $\delta_{E_K}=$ `PARETO_TOLERANCE_FRACTION_KERR` $\times \left(\overline{E_K}_{\max}-\overline{E_K}_{\min}\right)$
+      - `PARETO_TOLERANCE_FRACTION_KERR = 0.5`
+
+- **Pareto-based Filtering and Runtime Parsimony**
+  - *Select*: **Runtime**-based Parsimony Principle over Acceptables
+
+  - *Fallback*: Highest Mean ONMI; Highest Mean Omega; Lowest Mean Relative Error $\frac{|K'-K|}{K}$
 
 
 
@@ -112,6 +184,8 @@
 
 ![Experience 5 Results](../../results/synthetic/boundary_variation_set/affinity_designs/results_2026-06-17_23-22-22-871630/mu_best_variants_by_affinity_design.png)
 
+[Best Affinity/Parameter Results](../../results/synthetic/boundary_variation_set/affinity_designs/results_2026-06-17_23-22-22-871630/mu_best_by_param_affinity.csv)
+
 - **Observations**
     - The *default affinity* can be overcome.
 
@@ -125,6 +199,8 @@
 
 ![Experience 5 Results](../../results/synthetic/membership_variation_set/affinity_designs/results_2026-06-18_19-56-33-609075/om_best_variants_by_affinity_design.png)
 
+[Best Affinity/Parameter Results](../../results/synthetic/membership_variation_set/affinity_designs/results_2026-06-18_19-56-33-609075/om_best_by_param_affinity.csv)
+
 - **Observations**
     - The *default affinity* can be overcome.
 
@@ -137,6 +213,8 @@
 [Open Folder](../../results/synthetic/overlap_variation_set/affinity_designs/results_2026-06-19_23-01-34-957749/)
 
 ![Experience 5 Results](../../results/synthetic/overlap_variation_set/affinity_designs/results_2026-06-19_23-01-34-957749/on_best_variants_by_affinity_design.png)
+
+[Best Affinity/Parameter Results](../../results/synthetic/overlap_variation_set/affinity_designs/results_2026-06-19_23-01-34-957749/on_best_by_param_affinity.csv)
 
 - **Observations**
     - The *default affinity* can be overcome.
