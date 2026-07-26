@@ -1,21 +1,55 @@
 import csv
 import os
-from dataclasses import fields
+from dataclasses import dataclass, field, fields
 from typing import Callable, get_args
-
-import networkx as nx
-import numpy as np
 
 from pipeline.components.evaluation_metrics.computational.computational_metrics_dataclass import ComputationalMetrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import IntrinsicMetrics
-from pipeline.components.faddis.faddis import faddis
-from pipeline.scripts.baselines.algorithm_dataclass import Algorithm
-from pipeline.scripts.baselines.comparison_result_dataclass import ComparisonResult
-from pipeline.scripts.baselines.non_spectral.cfinder import cfinder
-from pipeline.scripts.baselines.non_spectral.slpa import slpa
-from pipeline.scripts.baselines.spectral.njw_fcm import njw_fcm
 from pipeline.scripts.utils.utils import _format_value
+
+
+@dataclass
+class ComparisonResult:
+    """
+    Dataclass for comparison results.
+
+    Attributes:
+        algorithm_name : (str)
+            Name of the algorithm.
+        network_family : (str)
+            The family of the network.
+        network : (str)
+            The name of the network.
+        overlapping : (bool)
+            Whether the ground truth is overlapping.
+        affinity_design : (str)
+            The affinity design label used in the experiment.
+        execution_mode : (str)
+            The execution mode used in the experiment.
+        gamma : (float)
+            The gamma parameter used in the experiment.
+        first_cluster_discarded : (bool)
+            Whether the first cluster was discarded in the experiment.
+        extrinsic_results : (ExtrinsicMetrics | None)
+            The extrinsic metrics results, if computed.
+        intrinsic_results : (IntrinsicMetrics | None)
+            The intrinsic metrics results, if computed.
+        computational_results : (ComputationalMetrics | None)
+            The computational metrics results, if computed.
+    """
+
+    algorithm_name: str = field(metadata={"label": "Algorithm"})
+    network_family: str = field(metadata={"label": "Network Family"})
+    network: str = field(metadata={"label": "Network"})
+    overlapping: bool = field(metadata={"label": "Overlapping?"})
+    affinity_design: str = field(metadata={"label": "Affinity Design"})
+    execution_mode: str = field(metadata={"label": "Execution Mode"})
+    gamma: float = field(metadata={"label": "Gamma"})
+    first_cluster_discarded: bool = field(metadata={"label": "C0 discarded?"})
+    extrinsic_results: ExtrinsicMetrics = field(default=None),
+    intrinsic_results: IntrinsicMetrics = field(default=None),
+    computational_results: ComputationalMetrics = field(default=None)
 
 
 def initialize_comparison_results_file(
@@ -115,72 +149,3 @@ def initialize_comparison_results_file(
             csv.writer(append_file).writerow(row)
 
     return append_result
-
-
-def wrapper_spectral_algorithm(
-        algorithm_name: Algorithm,
-        W: np.ndarray,
-        k: int,
-        faddis_stopping_criterion: tuple = None
-):
-    """
-    Execute the selected spectral comparison algorithm.
-
-    Parameters:
-        algorithm_name : (Algorithm)
-            The algorithm to execute.
-        W : (np.ndarray, shape[n,n])
-            nxn symmetric similarity/affinity matrix.
-        k : (int)
-            Number of ground-truth communities.
-        faddis_stopping_criterion : (tuple)
-            The FADDIS stopping criterion.
-            Default is None.
-
-    Returns:
-        membership_matrix : (np.ndarray, shape[n,k'])
-            Fuzzy membership matrix returned by the selected algorithm.
-
-    Exceptions:
-        ValueError : If the selected algorithm is not supported.
-    """
-
-    if algorithm_name == Algorithm.FADDIS:
-        if faddis_stopping_criterion is not None:
-            (epsilon, tau, k_max) = faddis_stopping_criterion
-            membership_matrix, _, _, _, _, _ = faddis(W=W, epsilon=epsilon, tau=tau, k_max=k_max)
-        else:
-            membership_matrix, _, _, _, _, _ = faddis(W=W, desired_k=k + 1)
-        return membership_matrix
-    elif algorithm_name == Algorithm.NJW_FCM:
-        return njw_fcm(W=W, k=k)
-    else:
-        raise ValueError(f"[ERROR] {algorithm_name.value} is not a valid spectral algorithm.")
-
-
-def wrapper_non_spectral_algorithm(algorithm_name: Algorithm, graph: nx.Graph):
-    """
-    Execute the selected non-spectral comparison algorithm.
-
-    Parameters:
-        algorithm_name : (Algorithm)
-            The algorithm to execute.
-        graph : (nx.Graph)
-            Input NetworkX graph.
-
-    Returns:
-        predicted_labels : (list[list[int]])
-            List of detected community labels assigned to each node.
-        k_predicted : (int)
-            Number of detected communities.
-
-    Exceptions:
-        ValueError : If the selected algorithm is not supported.
-    """
-
-    if algorithm_name == Algorithm.SLPA:
-        return slpa(graph=graph, t=100, r=0.45, seed=0)
-    elif algorithm_name == Algorithm.CFINDER:
-        return cfinder(graph=graph, clique_size=4)
-    else:
-        raise ValueError(f"[ERROR] {algorithm_name.value} is not a valid non-spectral algorithm.")

@@ -7,9 +7,8 @@ from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import c
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.synthetic_data_loader import load_lfr_benchmark_network
-from pipeline.scripts.baselines.algorithm_dataclass import Algorithm
-from pipeline.scripts.baselines.comparison_result_dataclass import ComparisonResult
-from pipeline.scripts.baselines.utils import initialize_comparison_results_file, wrapper_spectral_algorithm
+from pipeline.scripts.utils.algorithm_dataclass import Algorithm, wrapper_spectral_algorithm
+from pipeline.scripts.utils.comparison_result_dataclass import ComparisonResult, initialize_comparison_results_file
 from pipeline.scripts.utils.networks_dataclasses import LFRNetworkFamilyConfig
 from pipeline.scripts.utils.utils import create_results_dir, log_progress, create_network_results_dir
 

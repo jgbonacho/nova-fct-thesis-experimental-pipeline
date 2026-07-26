@@ -16,11 +16,11 @@ from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matri
 from pipeline.components.loaders.synthetic_data_loader import load_lfr_benchmark_network
 from pipeline.components.sparsification.sparsification import apply_global_threshold_sparsification
 from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
-from pipeline.config.synthetic_runner.config import ExecutionMode, DefuzzificationRule
+from pipeline.config.synthetic_runners.config import ExecutionMode, DefuzzificationRule
 from pipeline.scripts.utils.networks_dataclasses import LFRNetworkFamilyConfig
-from pipeline.scripts.utils.result_dataclass import Result
+from pipeline.scripts.utils.result_dataclass import Result, initialize_results_file
 from pipeline.scripts.utils.utils import create_results_dir, create_network_results_dir, log_progress, \
-    initialize_results_file, save_report_of_synthetic_runner, save_faddis_clustering_results, stable_seed
+    save_report_of_synthetic_runner, save_faddis_clustering_results, stable_seed
 
 
 def run_synthetic_networks_experiments(
