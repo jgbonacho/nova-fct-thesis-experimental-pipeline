@@ -1,7 +1,3 @@
-"""
-Evaluation Metrics - Extrinsic: Compute extrinsic metrics for non-overlapping ground-truth.
-"""
-
 import numpy as np
 from sklearn.metrics import adjusted_rand_score, adjusted_mutual_info_score, normalized_mutual_info_score, \
     fowlkes_mallows_score, mutual_info_score

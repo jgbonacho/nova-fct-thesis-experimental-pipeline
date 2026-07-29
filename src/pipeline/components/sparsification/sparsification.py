@@ -1,39 +1,16 @@
-from dataclasses import dataclass, field
-
 import networkx as nx
 import numpy as np
 
+from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
 from pipeline.components.loaders.adjacency_matrix import ensure_square_matrix, ensure_binary_matrix, \
     ensure_symmetric_matrix, ensure_zero_diagonal_matrix
-
-
-@dataclass
-class SparsificationInfo:
-    """
-    Dataclass for sparsification information.
-
-    Attributes:
-        theta : (float | str)
-            Sparsification threshold. If sparsification is skipped, this is "-".
-        target_average_degree : (float | str)
-            Target average degree used by sparsification. If sparsification is skipped, this is "-".
-        actual_average_degree : (float)
-            Actual average degree after sparsification.
-        diff_n : (str)
-            A string representing the original number of nodes and the sparsified number of nodes,
-            formatted as "N | N_s".
-    """
-
-    theta: float = field(metadata={"label": "Theta"})
-    target_average_degree: float = field(metadata={"label": "Target Avg Degree"})
-    actual_average_degree: float = field(metadata={"label": "Actual Avg Degree"})
-    diff_n: str = field(metadata={"label": "N | Sparsified N"})
+from pipeline.components.sparsification.sparsification_dataclass import SparsificationInfo
 
 
 def apply_global_threshold_sparsification(
         W: np.ndarray,
         ground_truth_labels: list,
-        affinity_design_label: str,
+        affinity_design: AffinityDesign,
         target_average_degree: float = 20.0,
         keep_lcc: bool = True,
 ) -> tuple[np.ndarray, np.ndarray, nx.Graph, list, int, SparsificationInfo]:
@@ -46,8 +23,8 @@ def apply_global_threshold_sparsification(
             Symmetric affinity/similarity matrix.
         ground_truth_labels : (list[int] | list[list[int]] | None, length n)
             Ground-truth labels associated with the original node ordering. If None, no label filtering is applied.
-        affinity_design_label : (str)
-            The affinity design label.
+        affinity_design : (AffinityDesign)
+            The AffinityDesign.
         target_average_degree : (float, optional)
             Target average degree to approximate after sparsification.
             Default is 20.0.
@@ -80,7 +57,7 @@ def apply_global_threshold_sparsification(
     n = W.shape[0]
 
     # Skip sparsification for the default affinity, i.e., the binary adjacency matrix.
-    if affinity_design_label == "Default":
+    if affinity_design == AffinityDesign.DEFAULT:
         Ws = W
         As = (Ws > 0).astype(float)
         graph_s = nx.from_numpy_array(As)

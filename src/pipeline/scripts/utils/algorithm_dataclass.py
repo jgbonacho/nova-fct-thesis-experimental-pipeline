@@ -12,74 +12,136 @@ from pipeline.components.faddis.faddis import faddis
 class Algorithm(Enum):
     FADDIS = "FADDIS"
     NJW_FCM = "NJW+FCM"
-    SLPA = "SLPA (t=100, r=0.45)"
-    CFINDER = "CFinder (clique_size=4)"
+    SLPA = "SLPA"
+    CFINDER = "CFinder"
 
+    def execute_faddis(
+            self,
+            W: np.ndarray,
+            k: int = None,
+            faddis_stopping_criterion: tuple = None
+    ) -> np.ndarray:
+        """
+        Execute FADDIS.
 
-def wrapper_spectral_algorithm(
-        algorithm_name: Algorithm,
-        W: np.ndarray,
-        k: int,
-        faddis_stopping_criterion: tuple = None
-):
-    """
-    Execute the selected spectral comparison algorithm.
+        Parameters:
+           W : (np.ndarray, shape[n,n])
+               nxn symmetric affinity matrix.
+           k : (int, optional)
+               Desired number of communities.
+               Default is None.
+           faddis_stopping_criterion : (tuple[float, float, int], optional)
+               FADDIS stopping criterion containing epsilon, tau and k_max.
+               Default is None.
 
-    Parameters:
-        algorithm_name : (Algorithm)
-            The algorithm to execute.
-        W : (np.ndarray, shape[n,n])
-            nxn symmetric similarity/affinity matrix.
-        k : (int)
-            Number of ground-truth communities.
-        faddis_stopping_criterion : (tuple)
-            The FADDIS stopping criterion.
-            Default is None.
+        Returns:
+           U : (np.ndarray, shape[n,k])
+               Fuzzy memberships per node per community.
+        """
 
-    Returns:
-        membership_matrix : (np.ndarray, shape[n,k'])
-            Fuzzy membership matrix returned by the selected algorithm.
+        if self != Algorithm.FADDIS:
+            raise Exception("[ERROR] Algorithm is not FADDIS.")
 
-    Exceptions:
-        ValueError : If the selected algorithm is not supported.
-    """
-
-    if algorithm_name == Algorithm.FADDIS:
-        if faddis_stopping_criterion is not None:
+        if k is not None and faddis_stopping_criterion is None:
+            U, _, _, _, _, _ = faddis(W=W, desired_k=k + 1)
+            return U
+        elif k is None and faddis_stopping_criterion is not None:
             (epsilon, tau, k_max) = faddis_stopping_criterion
-            membership_matrix, _, _, _, _, _ = faddis(W=W, epsilon=epsilon, tau=tau, k_max=k_max)
+            U, _, _, _, _, _ = faddis(W=W, epsilon=epsilon, tau=tau, k_max=k_max)
+            return U
         else:
-            membership_matrix, _, _, _, _, _ = faddis(W=W, desired_k=k + 1)
-        return membership_matrix
-    elif algorithm_name == Algorithm.NJW_FCM:
-        return njw_fcm(W=W, k=k)
-    else:
-        raise ValueError(f"[ERROR] {algorithm_name.value} is not a valid spectral algorithm.")
+            raise Exception("[ERROR] Algorithm parameters are invalid.")
 
+    def execute_njw_fcm(
+            self,
+            W: np.ndarray,
+            k: int,
+            fcm_m: float,
+            fcm_error: float,
+            fcm_max_iter: int,
+            fcm_seed: int
+    ) -> np.ndarray:
+        """
+        Execute NJW followed by Fuzzy C-Means.
 
-def wrapper_non_spectral_algorithm(algorithm_name: Algorithm, graph: nx.Graph):
-    """
-    Execute the selected non-spectral comparison algorithm.
+        Parameters:
+          W : (np.ndarray, shape[n,n])
+              nxn symmetric affinity matrix.
+          k : (int)
+              Number of communities.
+          fcm_m : (float)
+              Fuzzifier parameter of Fuzzy C-Means.
+          fcm_error : (float)
+              Convergence tolerance of Fuzzy C-Means.
+          fcm_max_iter : (int)
+              Maximum number of Fuzzy C-Means iterations.
+          fcm_seed : (int)
+              Random seed of Fuzzy C-Means.
 
-    Parameters:
-        algorithm_name : (Algorithm)
-            The algorithm to execute.
-        graph : (nx.Graph)
-            Input NetworkX graph.
+        Returns:
+          U : (np.ndarray, shape[n,k])
+              Fuzzy memberships per node per community.
+        """
 
-    Returns:
-        predicted_labels : (list[list[int]])
-            List of detected community labels assigned to each node.
-        k_predicted : (int)
-            Number of detected communities.
+        if self != Algorithm.NJW_FCM:
+            raise Exception("[ERROR] Algorithm is not NJW+FCM.")
 
-    Exceptions:
-        ValueError : If the selected algorithm is not supported.
-    """
+        return njw_fcm(W, k, fcm_m, fcm_error, fcm_max_iter, fcm_seed)
 
-    if algorithm_name == Algorithm.SLPA:
-        return slpa(graph=graph, t=100, r=0.45, seed=0)
-    elif algorithm_name == Algorithm.CFINDER:
-        return cfinder(graph=graph, clique_size=4)
-    else:
-        raise ValueError(f"[ERROR] {algorithm_name.value} is not a valid non-spectral algorithm.")
+    def execute_slpa(
+            self,
+            graph: nx.Graph,
+            t: int,
+            r: float,
+            seed: int
+    ) -> tuple[list[list[int]], int]:
+        """
+        Execute SLPA.
+
+        Parameters:
+            graph : (nx.Graph)
+                The graph.
+            t : (int)
+                Number of SLPA iterations.
+            r : (float)
+                Post-processing threshold used to remove labels with low occurrence probabilities.
+            seed : (int)
+                Random seed.
+
+        Returns:
+            predicted_labels : (list[list[int]], length n)
+                Predicted community labels for each node.
+            k_predicted : (int)
+                Number of predicted communities.
+        """
+
+        if self != Algorithm.SLPA:
+            raise Exception("[ERROR] Algorithm is not SLPA.")
+
+        return slpa(graph, t, r, seed)
+
+    def execute_cfinder(
+            self,
+            graph: nx.Graph,
+            clique_size: int
+    ) -> tuple[list[list[int]], int]:
+        """
+        Execute CFinder.
+
+        Parameters:
+            graph : (nx.Graph)
+                The graph.
+            clique_size : (int)
+                Minimum clique size used to detect communities.
+
+        Returns:
+            predicted_labels : (list[list[int]], length n)
+                Predicted community labels for each node.
+            k_predicted : (int)
+                Number of predicted communities.
+        """
+
+        if self != Algorithm.CFINDER:
+            raise Exception("[ERROR] Algorithm is not CFinder.")
+
+        return cfinder(graph, clique_size)

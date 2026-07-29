@@ -12,25 +12,43 @@ from pipeline.scripts.utils.utils import _format_value
 @dataclass
 class ComparisonResult:
     """
-    Dataclass for comparison results.
+    Dataclass for baseline comparison results.
 
     Attributes:
         algorithm_name : (str)
-            Name of the algorithm.
-        network_family : (str)
-            The family of the network.
+            The name of the community detection algorithm.
         network : (str)
             The name of the network.
         overlapping : (bool)
-            Whether the ground truth is overlapping.
-        affinity_design : (str)
-            The affinity design label used in the experiment.
-        execution_mode : (str)
-            The execution mode used in the experiment.
-        gamma : (float)
-            The gamma parameter used in the experiment.
-        first_cluster_discarded : (bool)
-            Whether the first cluster was discarded in the experiment.
+            Whether the predicted community structure is overlapping.
+        seeds : (tuple[int, ...] | None)
+            The random seeds used in the experiment, if applicable.
+        affinity_design : (str | None)
+            The affinity design label used in the experiment, if applicable.
+        execution_mode : (str | None)
+            The execution mode used in the experiment, if applicable.
+        faddis_epsilon : (float | None)
+            The epsilon parameter used by FADDIS, if applicable.
+        faddis_tau : (float | None)
+            The tau parameter used by FADDIS, if applicable.
+        faddis_k_max : (int | None)
+            The maximum number of clusters used by FADDIS, if applicable.
+        faddis_gamma : (float | None)
+            The gamma parameter used by the FADDIS defuzzification rule, if applicable.
+        njw_fcm_m : (float | None)
+            The fuzzifier parameter used by Fuzzy C-Means, if applicable.
+        njw_fcm_error : (float | None)
+            The convergence tolerance used by Fuzzy C-Means, if applicable.
+        njw_fcm_max_iter : (int | None)
+            The maximum number of Fuzzy C-Means iterations, if applicable.
+        njw_fcm_fi : (float | None)
+            The fi threshold used by the NJW+FCM defuzzification rule, if applicable.
+        slpa_t : (int | None)
+            The number of SLPA iterations, if applicable.
+        slpa_r : (float | None)
+            The SLPA post-processing threshold, if applicable.
+        cfinder_clique_size : (int | None)
+            The minimum clique size used by CFinder, if applicable.
         extrinsic_results : (ExtrinsicMetrics | None)
             The extrinsic metrics results, if computed.
         intrinsic_results : (IntrinsicMetrics | None)
@@ -40,15 +58,24 @@ class ComparisonResult:
     """
 
     algorithm_name: str = field(metadata={"label": "Algorithm"})
-    network_family: str = field(metadata={"label": "Network Family"})
     network: str = field(metadata={"label": "Network"})
     overlapping: bool = field(metadata={"label": "Overlapping?"})
-    affinity_design: str = field(metadata={"label": "Affinity Design"})
-    execution_mode: str = field(metadata={"label": "Execution Mode"})
-    gamma: float = field(metadata={"label": "Gamma"})
-    first_cluster_discarded: bool = field(metadata={"label": "C0 discarded?"})
-    extrinsic_results: ExtrinsicMetrics = field(default=None),
-    intrinsic_results: IntrinsicMetrics = field(default=None),
+    seeds: tuple[int, ...] = field(metadata={"label": "Seeds"}, default=None)
+    affinity_design: str = field(metadata={"label": "Affinity Design"}, default=None)
+    execution_mode: str = field(metadata={"label": "Execution Mode"}, default=None)
+    faddis_epsilon: float = field(metadata={"label": "epsilon (FADDIS)"}, default=None)
+    faddis_tau: float = field(metadata={"label": "tau (FADDIS)"}, default=None)
+    faddis_k_max: int = field(metadata={"label": "k_max (FADDIS)"}, default=None)
+    faddis_gamma: float = field(metadata={"label": "gamma (FADDIS)"}, default=None)
+    njw_fcm_m: float = field(metadata={"label": "m (NJW+FCM)"}, default=None)
+    njw_fcm_error: float = field(metadata={"label": "e (NJW+FCM)"}, default=None)
+    njw_fcm_max_iter: int = field(metadata={"label": "t_max (NJW+FCM)"}, default=None)
+    njw_fcm_fi: float = field(metadata={"label": "fi (NJW+FCM)"}, default=None)
+    slpa_t: float = field(metadata={"label": "t (SLPA)"}, default=None)
+    slpa_r: float = field(metadata={"label": "r (SLPA)"}, default=None)
+    cfinder_clique_size: float = field(metadata={"label": "k (CFinder)"}, default=None)
+    extrinsic_results: ExtrinsicMetrics = field(default=None)
+    intrinsic_results: IntrinsicMetrics = field(default=None)
     computational_results: ComputationalMetrics = field(default=None)
 
 
@@ -57,14 +84,14 @@ def initialize_comparison_results_file(
         output_filename: str = "_comparison_results"
 ) -> Callable[[ComparisonResult], None]:
     """
-    Initialize the results file and write it to the output directory.
+    Initialize the comparison results file and write it to the output directory.
 
     Parameters:
         results_dir : (str)
             Path to the created results' directory.
         output_filename : (str, optional)
             The name of the output CSV file.
-            Default is "_results".
+            Default is "_comparison_results".
 
     Returns:
         append_result : (Callable[[Result], None])

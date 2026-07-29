@@ -5,7 +5,7 @@ import numpy as np
 def compute_adjacency_matrix(graph: nx.Graph) -> np.ndarray:
     """
     Compute the adjacency matrix of a graph and ensure it is symmetric, binary and has a zero diagonal.
-    
+
     Parameters:
         graph : (nx.Graph)
             The unweighted and undirected input graph.
@@ -39,7 +39,7 @@ def ensure_square_matrix(A: np.ndarray) -> None:
     """
 
     if A.ndim != 2 or A.shape[0] != A.shape[1]:
-        raise ValueError(f"[ERROR] Adjacency matrix is not square.")
+        raise ValueError("[ERROR] Adjacency matrix is not square.")
 
 
 def ensure_symmetric_matrix(A: np.ndarray) -> None:

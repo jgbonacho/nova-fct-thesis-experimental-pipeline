@@ -3,6 +3,7 @@ from collections.abc import Callable
 
 import numpy as np
 
+from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.computational.computational_metrics import get_computation_start_time, \
     get_computation_end_time, compute_computational_metrics
@@ -13,7 +14,6 @@ from pipeline.components.faddis.faddis import faddis
 from pipeline.components.lapin.lapin import lapin
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.real_world_data_loader import load_network_from_gml
-from pipeline.components.sparsification.sparsification import apply_global_threshold_sparsification
 from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
 from pipeline.config.real_world_runners.config import ExecutionMode, DefuzzificationRule
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamilyConfig
@@ -27,11 +27,11 @@ def run_real_world_networks_experiments(
         results_base_dir: str,
         network_family_configs: list[NetworkFamilyConfig],
         thresholds: dict[str, float],
-        affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
+        affinity_designs: dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]],
         execution_modes: list[ExecutionMode],
         defuzzification_rules: list[DefuzzificationRule],
         stop_criterion_until_k: bool = False
-):
+) -> str:
     """
     Run real-world networks experiments.
 
@@ -41,8 +41,8 @@ def run_real_world_networks_experiments(
         network_family_configs : (list[NetworkFamilyConfig])
             List of network family configs to be processed.
         thresholds : (dict[str, float])
-            Dictionary containing threshold values, keyed by network family name.
-        affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
+            Dictionary containing threshold values, keyed by network name.
+        affinity_designs : (dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]])
             Dictionary of affinity designs to be applied, keyed by design label.
         execution_modes : (list[ExecutionMode])
             List of execution modes to be applied.
@@ -83,17 +83,14 @@ def run_real_world_networks_experiments(
                 # 1. Compute adjacency matrix A.
                 A = compute_adjacency_matrix(graph)
 
-                for idx3, (affinity_design_label, affinity_matrix_lambda) in enumerate(affinity_designs.items(), 1):
-                    log_progress(idx3, len(affinity_designs), affinity_design_label, 3)
+                for idx3, (affinity_design, affinity_matrix_lambda) in enumerate(affinity_designs.items(), 1):
+                    log_progress(idx3, len(affinity_designs), affinity_design.value, 3)
 
                     # 2. Compute the affinity matrix W from the matrix A.
                     W = affinity_matrix_lambda(A)
 
                     # 3. Apply sparsification to matrix W to obtain the matrix Ws.
-                    Ws, As, graph_s, ground_truth_labels_s, k_s, sparsification_info = apply_global_threshold_sparsification(
-                        W, ground_truth_labels, affinity_design_label,
-                        target_average_degree=20.0
-                    )
+                    Ws = W.copy()  # Not apply.
 
                     for idx4, execution_mode in enumerate(execution_modes, 1):
                         log_progress(idx4, len(execution_modes), execution_mode.label, 2)
@@ -104,7 +101,7 @@ def run_real_world_networks_experiments(
                         # 5. Fine-tune the stop criterion for FADDIS.
                         if not stop_criterion_until_k:
                             epsilon, tau, k_max = set_stop_criterion(
-                                graph_s.number_of_nodes(), network_family_config.name, thresholds
+                                graph.number_of_nodes(), network_config.name, thresholds
                             )
                         else:
                             epsilon, tau, k_max = None, None, None
@@ -116,41 +113,47 @@ def run_real_world_networks_experiments(
                         else:
                             results = faddis(
                                 W=Ws if not execution_mode.apply_lapin else Ln,
-                                desired_k=k_s + 1 if not execution_mode.apply_lapin else k_s
+                                desired_k=k + 1 if not execution_mode.apply_lapin else k
                             )
                         end_time = get_computation_end_time()
 
                         if network_config.overlapping_ground_truth is True:
+                            # Networks with overlapping ground-truth.
                             current_defuzzification_rules = defuzzification_rules
                         elif network_config.overlapping_ground_truth is False:
+                            # Networks with non-overlapping ground-truth.
                             current_defuzzification_rules = [None]
                         else:
+                            # Networks without ground-truth.
                             current_defuzzification_rules = defuzzification_rules + [None]
 
                         for idx5, defuzzification_rule in enumerate(current_defuzzification_rules, 1):
                             log_progress(idx5, len(current_defuzzification_rules), str(defuzzification_rule), 1)
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
-                            membership_matrix, _, _, _, _, stop_condition = results
+                            U, _, _, _, _, stop_condition = results
                             overlapping = defuzzification_rule is not None
                             gamma = defuzzification_rule.gamma if overlapping else None
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
-                                membership_matrix,
-                                gamma,
+                                U=U,
+                                gamma=gamma,
                                 overlapping=overlapping
                             )
 
                             # 8. Compute the evaluation metrics.
                             if network_config.ground_truth:
                                 extrinsic_results = compute_extrinsic_metrics(
-                                    graph_s, ground_truth_labels_s, predicted_labels, k_s, k_predicted,
+                                    graph, ground_truth_labels, predicted_labels, k, k_predicted,
                                     overlapping=overlapping
                                 )
                             else:
                                 extrinsic_results = ExtrinsicMetrics(diff_of_k=f"{k_predicted}")
 
                             intrinsic_results = compute_intrinsic_metrics(
-                                graph_s, As, membership_matrix, predicted_labels,
+                                graph=graph,
+                                A=A,
+                                U=U if not first_cluster_discarded else np.asarray(U)[:, 1:],
+                                predicted_labels=predicted_labels,
                                 overlapping=overlapping
                             )
 
@@ -164,11 +167,7 @@ def run_real_world_networks_experiments(
                                 network_family=network_family_config.name,
                                 network=network_config.name,
                                 overlapping=overlapping,
-                                affinity_design=affinity_design_label,
-                                actual_average_degree=sparsification_info.actual_average_degree,
-                                sparsification_target_average_degree=sparsification_info.target_average_degree,
-                                sparsification_theta=sparsification_info.theta,
-                                sparsification_diff_n=sparsification_info.diff_n,
+                                affinity_design=affinity_design.value,
                                 execution_mode=execution_mode.label,
                                 laplacian_variant=laplacian_variant,
                                 epsilon=epsilon,
@@ -187,7 +186,7 @@ def run_real_world_networks_experiments(
                                 results_id,
                                 results,
                                 predicted_labels,
-                                ground_truth_labels_s,
+                                ground_truth_labels,
                                 save_membership_matrix=True
                             )
             except Exception as e:

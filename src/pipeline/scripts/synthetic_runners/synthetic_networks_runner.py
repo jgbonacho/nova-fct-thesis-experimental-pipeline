@@ -1,10 +1,10 @@
-import math
 import os.path
-import random
+import os.path
 from collections.abc import Callable
 
 import numpy as np
 
+from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.computational.computational_metrics import get_computation_start_time, \
     get_computation_end_time, compute_computational_metrics
@@ -20,7 +20,7 @@ from pipeline.config.synthetic_runners.config import ExecutionMode, Defuzzificat
 from pipeline.scripts.utils.networks_dataclasses import LFRNetworkFamilyConfig
 from pipeline.scripts.utils.result_dataclass import Result, initialize_results_file
 from pipeline.scripts.utils.utils import create_results_dir, create_network_results_dir, log_progress, \
-    save_report_of_synthetic_runner, save_faddis_clustering_results, stable_seed
+    save_report_of_synthetic_runner, save_faddis_clustering_results
 
 
 def run_synthetic_networks_experiments(
@@ -28,13 +28,11 @@ def run_synthetic_networks_experiments(
         results_base_dir: str,
         network_family_configs: list[LFRNetworkFamilyConfig],
         thresholds: dict[str, float],
-        affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
+        affinity_designs: dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]],
         execution_modes: list[ExecutionMode],
         defuzzification_rules: list[DefuzzificationRule],
-        stop_criterion_until_k: bool = False,
-        sample_fraction: float = None,
-        random_seed: int = None,
-):
+        stop_criterion_until_k: bool = False
+) -> str:
     """
     Run synthetic networks experiments.
 
@@ -47,20 +45,14 @@ def run_synthetic_networks_experiments(
             List of network family configs to be processed.
         thresholds : (dict[str, float])
             Dictionary containing threshold values, keyed by network family name.
-        affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
-            Dictionary of affinity designs to be applied, keyed by design label.
+        affinity_designs : (dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]])
+            Dictionary of affinity designs to be applied, keyed by AffinityDesign.
         execution_modes : (list[ExecutionMode])
             List of execution modes to be applied.
         defuzzification_rules : (list[DefuzzificationRule])
             List of defuzzification rules to be applied.
         stop_criterion_until_k : (bool, optional)
             Set the stop criterion of FADDIS for extracting k clusters.
-        sample_fraction : (float, optional)
-            Fraction of networks to sample from each family for processing. If None, all networks are processed
-            Default is None.
-        random_seed : (int, optional)
-            Random seed for reproducibility when sampling networks.
-            Default is None.
 
     Returns:
         results_dir : (str)
@@ -73,15 +65,8 @@ def run_synthetic_networks_experiments(
         log_progress(idx1, len(network_family_configs), network_family_config.name, 5, True)
 
         network_configs = sorted(network_family_config.network_configs, key=lambda n: n.name)
-        if sample_fraction is None:
-            sampled_network_configs = network_configs
-        else:
-            k = max(1, math.ceil(len(network_configs) * sample_fraction))
-            rng = random.Random(stable_seed(random_seed, network_family_config.name))
-            sampled_network_configs = rng.sample(network_configs, k=k)
-
-        for idx2, network_config in enumerate(sampled_network_configs, 1):
-            log_progress(idx2, len(sampled_network_configs), network_config.name, 4, True)
+        for idx2, network_config in enumerate(network_configs, 1):
+            log_progress(idx2, len(network_configs), network_config.name, 4, True)
 
             results_network_dir = create_network_results_dir(
                 results_dir, network_family_config.name, network_config.name
@@ -100,15 +85,15 @@ def run_synthetic_networks_experiments(
                 # 1. Compute adjacency matrix A.
                 A = compute_adjacency_matrix(graph)
 
-                for idx3, (affinity_design_label, affinity_matrix_lambda) in enumerate(affinity_designs.items(), 1):
-                    log_progress(idx3, len(affinity_designs), affinity_design_label, 3)
+                for idx3, (affinity_design, affinity_matrix_lambda) in enumerate(affinity_designs.items(), 1):
+                    log_progress(idx3, len(affinity_designs), affinity_design.value, 3)
 
                     # 2. Compute the affinity matrix W from the matrix A.
                     W = affinity_matrix_lambda(A)
 
                     # 3. Apply sparsification to matrix W to obtain the matrix Ws.
                     Ws, As, graph_s, ground_truth_labels_s, k_s, sparsification_info = apply_global_threshold_sparsification(
-                        W, ground_truth_labels, affinity_design_label,
+                        W, ground_truth_labels, affinity_design,
                         target_average_degree=20.0
                     )
 
@@ -144,11 +129,11 @@ def run_synthetic_networks_experiments(
                             log_progress(idx5, len(current_defuzzification_rules), str(defuzzification_rule), 1)
 
                             # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
-                            membership_matrix, _, _, _, _, stop_condition = results
+                            U, _, _, _, _, stop_condition = results
                             gamma = defuzzification_rule.gamma if network_config.overlapping_ground_truth else None
                             predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
-                                membership_matrix,
-                                gamma,
+                                U=U,
+                                gamma=gamma,
                                 overlapping=network_config.overlapping_ground_truth
                             )
 
@@ -158,7 +143,10 @@ def run_synthetic_networks_experiments(
                                 overlapping=network_config.overlapping_ground_truth
                             )
                             intrinsic_results = compute_intrinsic_metrics(
-                                graph_s, As, membership_matrix, predicted_labels,
+                                graph=graph_s,
+                                A=As,
+                                U=U if not first_cluster_discarded else np.asarray(U)[:, 1:],
+                                predicted_labels=predicted_labels,
                                 overlapping=network_config.overlapping_ground_truth
                             )
                             computational_results = compute_computational_metrics(start_time, end_time)
@@ -171,7 +159,7 @@ def run_synthetic_networks_experiments(
                                 network_family=network_family_config.name,
                                 network=network_config.name,
                                 overlapping=network_config.overlapping_ground_truth,
-                                affinity_design=affinity_design_label,
+                                affinity_design=affinity_design.value,
                                 actual_average_degree=sparsification_info.actual_average_degree,
                                 sparsification_target_average_degree=sparsification_info.target_average_degree,
                                 sparsification_theta=sparsification_info.theta,

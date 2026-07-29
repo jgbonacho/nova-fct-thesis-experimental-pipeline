@@ -5,28 +5,25 @@ import numpy as np
 from cdlib import algorithms
 
 
-def slpa(graph: nx.Graph, t: int = 21, r: float = 0.1, seed: int = 0) -> tuple[list[list[int]], int]:
+def slpa(graph: nx.Graph, t: int, r: float, seed: int) -> tuple[list[list[int]], int]:
     """
-    Compute Speaker-Listener Label Propagation Algorithm (SLPA).
+    Compute the Speaker-Listener Label Propagation Algorithm (SLPA) community detection algorithm.
 
     Parameters:
         graph : (nx.Graph)
-            Input NetworkX graph.
-        t : (int, optional)
+            Input graph.
+        t : (int)
             Number of SLPA iterations.
-            Default is 21.
-        r : (float, optional)
-            Post-processing threshold used to remove labels with low frequency.
-            Default is 0.1.
-        seed : (int, optional)
-            Random seed used before executing SLPA.
-            Default is 0.
+        r : (float)
+            Post-processing threshold used to remove labels with low occurrence probabilities.
+        seed : (int)
+            Random seed.
 
     Returns:
         predicted_labels : (list[list[int]])
-            List of detected community labels assigned to each node.
+            Predicted community labels for each node.
         k_predicted : (int)
-            Number of detected communities.
+            Number of predicted communities.
     """
 
     random.seed(seed)
@@ -40,19 +37,20 @@ def slpa(graph: nx.Graph, t: int = 21, r: float = 0.1, seed: int = 0) -> tuple[l
 
 def _communities_to_labels(communities: list, n: int) -> tuple[list[list[int]], int]:
     """
-    Convert a list of overlapping communities to node labels.
+    Convert the detected communities into predicted node labels.
+    Nodes without assigned communities are labelled with [-1].
 
     Parameters:
         communities : (list)
-            List of communities, where each community contains node ids.
+            Detected communities.
         n : (int)
-            Number of nodes in the original graph.
+            Number of nodes.
 
     Returns:
         predicted_labels : (list[list[int]])
-            List of detected community labels assigned to each node.
+            Predicted community labels for each node.
         k_predicted : (int)
-            Number of detected communities.
+            Number of predicted communities.
     """
 
     predicted_labels = [[-1] for _ in range(n)]
@@ -66,8 +64,5 @@ def _communities_to_labels(communities: list, n: int) -> tuple[list[list[int]], 
                 predicted_labels[node].append(label)
 
     k_predicted = len(communities)
-
-    if any(labels == [-1] for labels in predicted_labels):
-        k_predicted += 1
 
     return predicted_labels, k_predicted

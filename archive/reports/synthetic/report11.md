@@ -1,4 +1,4 @@
-# Report 11 - Non-Spectral Baseline Comparison Design
+# Report 11 - Non-Spectral Baseline Comparison Design and Results
 
 
 
@@ -7,12 +7,13 @@
 - [Pipeline](#pipeline)
 - [Considered Methods](#considered-methods)
 - [FADDIS versus SLPA versus CFinder](#faddis-versus-slpa-versus-cfinder)
-  - [FADDIS](#faddis)
-  - [SLPA](#slpa)
-  - [CFinder](#cfinder)
+- [FADDIS Hyperparameters](#faddis-hyperparameters)
 - [SLPA Hyperparameters](#slpa-hyperparameters)
 - [CFinder Hyperparameters](#cfinder-hyperparameters)
-- [Preliminary Results](#preliminary-results)
+- [Results](#results)
+  - [Boundary Variation Set](#boundary-variation-set)
+  - [Membership Variation Set](#membership-variation-set)
+  - [Overlap Variation Set](#overlap-variation-set)
 
 
 
@@ -32,8 +33,7 @@
 ## FADDIS versus SLPA versus CFinder
 
 1. Select the networks:
-   - LFR boundary-set networks;
-   - Real-world networks with ground-truth.
+   - LFR boundary-set networks.
 
 2. Configure each method as follows:
 
@@ -41,9 +41,11 @@
 
    - Construct the affinity matrix:
      - Default affinity matrix, i.e., the adjacency matrix;
-   - Do not apply sparsification.
-   - Use the LAPIN-off execution mode.
-   - Set the threshold $\epsilon$.
+   - Do not apply sparsification;
+   - Use the LAPIN-off execution mode;
+   - Set the threshold $\tau$;
+   - Set the threshold $\epsilon$;
+   - Set the threshold $k_{max}$.
 
    ### SLPA
 
@@ -57,15 +59,44 @@
 3. Execute:
    - FADDIS;
    - SLPA;
-   - CFinder
+   - CFinder.
 
 4. For FADDIS, apply the defuzzification rule according to the ground-truth type:
-   - For non-overlapping ground-truth, apply maximum-membership assignment;
-   - For overlapping ground-truth, apply node-wise $\alpha$-cut thresholding relative to the maximum membership value.
+   - For overlapping ground-truth, apply node-wise $\alpha$-cut thresholding relative to the maximum membership value, with $\gamma$ hyperparameter.
 
 5. Evaluate the results using:
-   - Extrinsic metrics;
-   - Computational metrics.
+   - Extrinsic metrics (ONMI, Omega);
+   - Computational metrics (Runtime (1 (A) -> 4 (Defuzzification)) with multiple runs).
+
+> **Note:** SLPA is non-deterministic and is therefore executed multiple times using different random seeds. The results are reported as the mean ± standard deviation.
+
+
+
+## FADDIS Hyperparameters
+
+- Threshold $k_{max}$:
+
+  $$
+  K_{max} = \min(n/2, 500)
+  $$
+
+- Threshold $\tau$:
+
+  $$
+  \tau = 0.05
+  $$
+
+- Threshold $\epsilon$:
+
+  $$
+  \epsilon = \text{network family threshold}
+  $$
+
+- Defuzzification hyperparameter $\gamma$ (best observed from LFR experiments):
+
+  $$
+  \gamma = 0.8
+  $$
 
 
 
@@ -74,29 +105,52 @@
 - Maximum number of iterations (default):
 
   $$
-  t = 100
+  t = 21
   $$
 
 - Post-processing threshold (default):
 
   $$
-  r = 0.45
+  r = 0.1
   $$
+
+- Seeds:
+
+$$
+   [0, 1, 2]
+$$
 
 
 
 ## CFinder Hyperparameters
 
-- Size of the cliques (default):
+- Size of the cliques (reference value):
 
   $$
   k = 5
   $$
 
-> **Note:** SLPA and CFinder are non-deterministic and are therefore executed multiple times using different random seeds. The results are reported as the mean ± standard deviation.
 
 
+## Results
 
-## Preliminary Results
+### Boundary Variation Set
 
-- [Boundary Variation Set](../../results/synthetic/boundary_variation_set/non-spectral-baseline/)
+- [Results](../../results/synthetic/boundary_variation_set/non-spectral-baseline/results_2026-07-28_21-40-44-641538/mu_non_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/boundary_variation_set/non-spectral-baseline/results_2026-07-28_21-40-44-641538/mu_non_spectral_comparison_summary.csv)
+
+![Plots](../../results/synthetic/boundary_variation_set/non-spectral-baseline/results_2026-07-28_21-40-44-641538/mu_non_spectral_algorithms.png)
+
+### Membership Variation Set
+
+- [Results](../../results/synthetic/membership_variation_set/non-spectral-baseline/results_2026-07-28_20-49-14-846861/om_non_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/membership_variation_set/non-spectral-baseline/results_2026-07-28_20-49-14-846861/om_non_spectral_comparison_summary.csv)
+
+![Plots](../../results/synthetic/membership_variation_set/non-spectral-baseline/results_2026-07-28_20-49-14-846861/om_non_spectral_algorithms.png)
+
+### Overlap Variation Set
+
+- [Results](../../results/synthetic/overlap_variation_set/non-spectral-baseline/results_2026-07-28_19-54-57-827213/on_non_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/overlap_variation_set/non-spectral-baseline/results_2026-07-28_19-54-57-827213/on_non_spectral_comparison_summary.csv)
+
+![Plots](../../results/synthetic/overlap_variation_set/non-spectral-baseline/results_2026-07-28_19-54-57-827213/on_non_spectral_algorithms.png)

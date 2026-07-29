@@ -5,32 +5,27 @@ import skfuzzy as fuzz
 def njw_fcm(
         W: np.ndarray,
         k: int,
-        fcm_m: float = 2.0,
-        fcm_error: float = 1e-5,
-        fcm_max_iter: int = 300,
-        fcm_seed: int = 0,
-        # fcm_number_of_initializations: int = 10
+        fcm_m: float,
+        fcm_error: float,
+        fcm_max_iter: int,
+        fcm_seed: int
 ) -> np.ndarray:
     """
-    Compute NJW spectral clustering followed by Fuzzy C-Means.
+    Compute the NJW spectral clustering followed by Fuzzy C-Means.
 
     Parameters:
         W : (np.ndarray, shape[n,n])
             nxn symmetric similarity/affinity matrix.
         k : (int)
             Number of clusters.
-        fcm_m : (float, optional)
+        fcm_m : (float)
             Fuzzifier parameter of Fuzzy C-Means.
-            Default is 2.0.
-        fcm_error : (float, optional)
+        fcm_error : (float)
             Convergence tolerance of Fuzzy C-Means.
-            Default is 1e-5.
-        fcm_max_iter : (int, optional)
+        fcm_max_iter : (int)
             Maximum number of Fuzzy C-Means iterations.
-            Default is 300.
-        fcm_seed : (int, optional)
+        fcm_seed : (int)
             Random seed of Fuzzy C-Means.
-            Default is 0.
 
     Returns:
         U : (np.ndarray, shape[n,k])
@@ -60,24 +55,49 @@ def njw_fcm(
 
     return U.T
 
-    # Compute Fuzzy C-Means using multiple initializations.
-    # best_U = None
-    # best_objective = np.inf
-    #
-    # for initialization in range(fcm_number_of_initializations):
-    #    _, U, _, _, objective_history, _, _ = fuzz.cluster.cmeans(
-    #        data=X.T,
-    #        c=k,
-    #        m=fcm_m,
-    #        error=fcm_error,
-    #        maxiter=fcm_max_iter,
-    #        seed=fcm_seed + initialization
-    #    )
-    #
-    #    final_objective = objective_history[-1]
-    #
-    #    if final_objective < best_objective:
-    #        best_objective = final_objective
-    #        best_U = U
-    #
-    # return best_U.T
+
+def apply_njw_fcm_defuzzification_rule(U: np.ndarray, fi: float, overlapping: bool = True) -> tuple[list, int]:
+    """
+    Apply a defuzzification rule to map NJW+FCM fuzzy memberships to a binary [overlapping] community cover.
+
+    Parameters:
+        U : (np.ndarray, shape[n,k])
+            Fuzzy memberships per node per community.
+        fi : (float, optional)
+            Fixed membership threshold used for overlapping community assignment.
+            If no membership reaches the threshold, assign the node to the community with maximum membership.
+        overlapping : (bool, optional)
+            If True, apply fixed membership thresholding with maximum-membership fallback.
+            If False, apply maximum-membership assignment.
+            Default is True.
+
+    Returns:
+        predicted_labels : (list[list[int]], length n | list[int], length n)
+            Predicted labels for each node.
+        k_predicted : (int)
+            Number of predicted communities.
+
+     Exceptions:
+        ValueError : If the membership threshold is not in the range [0, 1] when overlapping is True.
+    """
+
+    if not overlapping:
+        # Maximum-membership assignment.
+        predicted_labels = np.argmax(U, axis=1).tolist()
+        k_predicted = len(set(predicted_labels))
+
+        return predicted_labels, k_predicted
+    else:
+        if not 0.0 <= fi <= 1.0:
+            raise ValueError("[ERROR] The membership threshold must be in the range [0, 1].")
+
+        # Fixed membership thresholding with maximum-membership fallback.
+        predicted_labels = []
+        for node_memberships in U:
+            node_labels = np.flatnonzero(node_memberships >= fi).tolist()
+            if not node_labels:
+                node_labels = [int(np.argmax(node_memberships))]
+            predicted_labels.append(node_labels)
+        k_predicted = len({label for node_labels in predicted_labels for label in node_labels})
+
+        return predicted_labels, k_predicted

@@ -1,5 +1,4 @@
 import csv
-import hashlib
 import json
 import os
 from collections.abc import Callable
@@ -9,7 +8,9 @@ from typing import Any
 
 import numpy as np
 
-from pipeline.config.synthetic_runners.config import ExecutionMode, DefuzzificationRule
+from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
+from pipeline.config.utils.defuzzification_rule_dataclass import DefuzzificationRule
+from pipeline.config.utils.execution_mode_dataclass import ExecutionMode
 from pipeline.scripts.utils.networks_dataclasses import LFRNetworkFamilyConfig, NetworkFamilyConfig
 
 
@@ -93,25 +94,6 @@ def log_progress(
     print(f"{prefix}{indent_level * '#'} [{current_step}/{total_steps}] '{item_label}'")
 
 
-def stable_seed(base_seed: int, family_name: str) -> int:
-    """
-    Generate a random seed for a specific family.
-
-    Parameters:
-        base_seed : (int)
-            The base seed for generating the seed.
-        family_name : (str)
-            The name of the family for which to generate the seed.
-
-    Returns:
-        seed : (int)
-            A stable seed generated from the base seed and family name.
-    """
-
-    s = f"{base_seed}::{family_name}"
-    return int(hashlib.sha256(s.encode("utf-8")).hexdigest()[:16], 16)
-
-
 def save_faddis_clustering_results(
         results_dir: str,
         results_id: str,
@@ -119,7 +101,7 @@ def save_faddis_clustering_results(
         predicted_labels: list,
         ground_truth_labels: list,
         output_filename: str = "faddis-clusters",
-        save_membership_matrix=False
+        save_membership_matrix: bool = False
 ) -> None:
     """
     Save the results of the FADDIS clustering algorithm.
@@ -192,6 +174,130 @@ def save_faddis_clustering_results(
                 writer.writerow(row)
 
 
+def save_report_of_synthetic_runner(
+        results_dir: str,
+        network_families: list[LFRNetworkFamilyConfig],
+        thresholds: dict[str, float] = None,
+        affinity_designs: dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]] = None,
+        execution_modes: list[ExecutionMode] = None,
+        defuzzification_rules: list[DefuzzificationRule] = None,
+        output_filename: str = "report"
+) -> None:
+    """
+    Save a report of the experiment configurations to a JSON file in the results' directory.
+
+    Parameters:
+        results_dir : (str)
+            Path to the results' directory.
+        network_families : (list[LFRNetworkFamilyConfig])
+            List of network families to be processed.
+        thresholds : (dict[str, float] | None)
+            Dictionary containing threshold values, keyed by network family name.
+        affinity_designs : (dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]] | None)
+            Dictionary of affinity designs to be applied, keyed by AffinityDesign.
+        execution_modes : (list[ExecutionMode] | None)
+            List of execution modes to be applied.
+        defuzzification_rules : (list[DefuzzificationRule] | None)
+            List of defuzzification rules to be applied.
+        output_filename : (str, optional)
+            The name of the output JSON file.
+            Default is "report.json".
+
+    Saves:
+        A JSON file within 'results_dir' named "{output_filename}.json".
+    """
+
+    report: dict[str, Any] = {
+        "network_families": [asdict(network_family) for network_family in network_families]
+    }
+
+    if thresholds is not None:
+        report["thresholds"] = thresholds
+
+    if affinity_designs is not None:
+        report["affinity_designs"] = [
+            design.value
+            if isinstance(design, AffinityDesign)
+            else str(design)
+            for design in affinity_designs
+        ]
+
+    if execution_modes is not None:
+        report["execution_modes"] = [
+            asdict(execution_mode) for execution_mode in execution_modes
+        ]
+
+    if defuzzification_rules is not None:
+        report["defuzzification_rules"] = [
+            asdict(defuzzification_rule) for defuzzification_rule in defuzzification_rules
+        ]
+
+    with open(os.path.join(results_dir, f"{output_filename}.json"), "w", encoding="utf-8") as out_file:
+        json.dump(report, out_file, indent=2)
+
+
+def save_report_of_real_world_runner(
+        results_dir: str,
+        network_families: list[NetworkFamilyConfig],
+        thresholds: dict[str, float] = None,
+        affinity_designs: dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]] = None,
+        execution_modes: list[ExecutionMode] = None,
+        defuzzification_rules: list[DefuzzificationRule] = None,
+        output_filename: str = "report"
+) -> None:
+    """
+    Save a report of the experiment configurations to a JSON file in the results' directory.
+
+    Parameters:
+        results_dir : (str)
+            Path to the results' directory.
+        network_families : (list[NetworkFamilyConfig])
+            List of network families to be processed.
+        thresholds : (dict[str, float] | None)
+            Dictionary containing threshold values, keyed by network name.
+        affinity_designs : (dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]] | None)
+            Dictionary of affinity designs to be applied, keyed by AffinityDesign.
+        execution_modes : (list[ExecutionMode] | None)
+            List of execution modes to be applied.
+        defuzzification_rules : (list[DefuzzificationRule] | None)
+            List of defuzzification rules to be applied.
+        output_filename : (str, optional)
+            The name of the output JSON file.
+            Default is "report.json".
+
+    Saves:
+        A JSON file within 'results_dir' named "{output_filename}.json".
+    """
+
+    report: dict[str, Any] = {
+        "network_families": [asdict(network_family) for network_family in network_families],
+    }
+
+    if thresholds is not None:
+        report["thresholds"] = thresholds
+
+    if affinity_designs is not None:
+        report["affinity_designs"] = [
+            design.value
+            if isinstance(design, AffinityDesign)
+            else str(design)
+            for design in affinity_designs
+        ]
+
+    if execution_modes is not None:
+        report["execution_modes"] = [
+            asdict(execution_mode) for execution_mode in execution_modes
+        ]
+
+    if defuzzification_rules is not None:
+        report["defuzzification_rules"] = [
+            asdict(defuzzification_rule) for defuzzification_rule in defuzzification_rules
+        ]
+
+    with open(os.path.join(results_dir, f"{output_filename}.json"), "w", encoding="utf-8") as out_file:
+        json.dump(report, out_file, indent=2)
+
+
 def _count_assigned_nodes(predicted_labels: list, number_of_clusters: int) -> dict[int, int]:
     """
     Count the number of nodes assigned to each predicted cluster.
@@ -235,96 +341,6 @@ def _format_label(label):
         return str([int(x) if isinstance(x, np.integer) else x for x in label])
     else:
         return int(label)
-
-
-def save_report_of_synthetic_runner(
-        results_dir: str,
-        network_families: list[LFRNetworkFamilyConfig],
-        thresholds: dict[str, float],
-        affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
-        execution_modes: list[ExecutionMode],
-        defuzzification_rules: list[DefuzzificationRule],
-        output_filename: str = "report"
-) -> None:
-    """
-    Save a report of the experiment configurations to a JSON file in the results' directory.
-
-    Parameters:
-        results_dir : (str)
-            Path to the results' directory.
-        network_families : (list[LFRNetworkFamilyConfig])
-            List of network families to be processed.
-        thresholds : (dict[str, float])
-            Dictionary containing threshold values, keyed by network family name.
-        affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
-            Dictionary of affinity designs to be applied, keyed by design label.
-        execution_modes : (list[ExecutionMode])
-            List of execution modes to be applied.
-        defuzzification_rules : (list[DefuzzificationRule])
-            List of defuzzification rules to be applied.
-        output_filename : (str, optional)
-            The name of the output JSON file.
-            Default is "report.json".
-
-    Saves:
-        A JSON file within 'results_dir' named "{output_filename}.json".
-    """
-
-    report = {
-        "network_families": [asdict(network_family) for network_family in network_families],
-        "thresholds": thresholds,
-        "affinity_designs": list(affinity_designs.keys()),
-        "execution_modes": [asdict(execution_mode) for execution_mode in execution_modes],
-        "defuzzification_rules": [asdict(defuzzification_rule) for defuzzification_rule in defuzzification_rules],
-    }
-
-    with open(os.path.join(results_dir, f"{output_filename}.json"), "w", encoding="utf-8") as out_file:
-        json.dump(report, out_file, indent=2)
-
-
-def save_report_of_real_world_runner(
-        results_dir: str,
-        network_families: list[NetworkFamilyConfig],
-        thresholds: dict[str, float],
-        affinity_designs: dict[str, Callable[[np.ndarray], np.ndarray]],
-        execution_modes: list[ExecutionMode],
-        defuzzification_rules: list[DefuzzificationRule],
-        output_filename: str = "report"
-) -> None:
-    """
-    Save a report of the experiment configurations to a JSON file in the results' directory.
-
-    Parameters:
-        results_dir : (str)
-            Path to the results' directory.
-        network_families : (list[NetworkFamilyConfig])
-            List of network families to be processed.
-        thresholds : (dict[str, float])
-            Dictionary containing threshold values, keyed by network family name.
-        affinity_designs : (dict[str, Callable[[np.ndarray], np.ndarray]])
-            Dictionary of affinity designs to be applied, keyed by design label.
-        execution_modes : (list[ExecutionMode])
-            List of execution modes to be applied.
-        defuzzification_rules : (list[DefuzzificationRule])
-            List of defuzzification rules to be applied.
-        output_filename : (str, optional)
-            The name of the output JSON file.
-            Default is "report.json".
-
-    Saves:
-        A JSON file within 'results_dir' named "{output_filename}.json".
-    """
-
-    report = {
-        "network_families": [asdict(network_family) for network_family in network_families],
-        "thresholds": thresholds,
-        "affinity_designs": list(affinity_designs.keys()),
-        "execution_modes": [asdict(execution_mode) for execution_mode in execution_modes],
-        "defuzzification_rules": [asdict(defuzzification_rule) for defuzzification_rule in defuzzification_rules],
-    }
-
-    with open(os.path.join(results_dir, f"{output_filename}.json"), "w", encoding="utf-8") as out_file:
-        json.dump(report, out_file, indent=2)
 
 
 def _format_value(value: Any) -> str:

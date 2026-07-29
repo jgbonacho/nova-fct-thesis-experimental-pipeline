@@ -1,3 +1,5 @@
+from dataclasses import fields
+
 import networkx as nx
 import numpy as np
 from networkx import conductance
@@ -39,18 +41,75 @@ def compute_intrinsic_metrics(
         evaluation_scores = IntrinsicMetrics(
             modularity=_compute_modularity(graph, communities),
             conductance=_compute_conductance(graph, communities),
-            fuzzy_modularity="",
-            conductance_bn=""
         )
     else:
         evaluation_scores = IntrinsicMetrics(
             fuzzy_modularity=_compute_fuzzy_modularity(A, np.asarray(U)),
             conductance_bn=_compute_conductance_of_boundary_nodes(A, communities),
-            modularity="",
-            conductance=""
         )
 
     return evaluation_scores
+
+
+def compute_intrinsic_metrics_means_and_stds(
+        graph: nx.Graph,
+        A: np.ndarray,
+        U_results: list[np.ndarray],
+        predicted_labels_results: list[list],
+        overlapping: bool = True
+) -> IntrinsicMetrics:
+    """
+    Compute the means and sample standard deviations of the intrinsic metrics across multiple executions.
+
+    Parameters:
+        graph : (nx.Graph)
+            The graph.
+        A : (np.ndarray, shape[n,n])
+            nxn symmetric binary zero diagonal adjacency matrix.
+        U_results : (list[np.ndarray], each with shape[n,k])
+            Fuzzy memberships per node per community obtained in each execution.
+        predicted_labels_results : (list[list[int]], length number of executions | list[list[list[int]]], length number of executions)
+            Predicted labels obtained in each execution.
+        overlapping : (bool, optional)
+            Whether the predicted labels are overlapping.
+            Default is True.
+
+    Returns:
+        evaluation_scores : (IntrinsicMetrics)
+            Means and sample standard deviations of the intrinsic metrics.
+    """
+
+    intrinsic_results_acc = []
+    for U, predicted_labels in zip(U_results, predicted_labels_results):
+        intrinsic_results = compute_intrinsic_metrics(
+            graph=graph,
+            A=A,
+            U=U,
+            predicted_labels=predicted_labels,
+            overlapping=overlapping
+        )
+        intrinsic_results_acc.append(intrinsic_results)
+
+    aggregated_metrics = {}
+    for metric_field in fields(IntrinsicMetrics):
+        valid_values = [
+            float(getattr(result, metric_field.name))
+            for result in intrinsic_results_acc
+            if (
+                    getattr(result, metric_field.name) is not None
+                    and np.isfinite(float(getattr(result, metric_field.name)))
+            )
+        ]
+
+        if not valid_values:
+            aggregated_metrics[metric_field.name] = None
+            continue
+
+        mean = float(np.mean(valid_values))
+        sample_std = (float(np.std(valid_values, ddof=1)) if len(valid_values) > 1 else 0.0)
+        aggregated_metrics[metric_field.name] = f"{mean} ± {sample_std}"
+
+    return IntrinsicMetrics(**aggregated_metrics)
 
 
 def _compute_modularity(graph: nx.Graph, communities: dict[int, list[int]]) -> float:
@@ -154,7 +213,7 @@ def _compute_conductance_of_boundary_nodes(A: np.ndarray, communities: dict[int,
     """
 
     if len(communities) == 1:
-        return 1.0
+        return 1.0  # Large value for single community case.
 
     degrees = A.sum(axis=1)
 
@@ -172,7 +231,7 @@ def _compute_conductance_of_boundary_nodes(A: np.ndarray, communities: dict[int,
             k_in_C += k_in_i
             sum_terms += (k_in_i * k_out_i) / ki
 
-        psi = (sum_terms / k_in_C) if k_in_C > 0 else 0.0
+        psi = (sum_terms / k_in_C) if k_in_C > 0 else 1.0  # Large value when the community has no internal edges.
         psis.append(psi)
 
     return float(np.min(psis))

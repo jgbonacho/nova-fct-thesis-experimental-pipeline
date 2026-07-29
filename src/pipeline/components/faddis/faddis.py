@@ -88,7 +88,6 @@ def faddis(
 
         if size_positive_eigenvalues == 0:
             stop_condition = "W"
-            # print("[INFO] No positive weights at spectral clusters.")
             break
 
         # Store intensities and corresponding membership vectors.
@@ -155,7 +154,6 @@ def faddis(
         # Check stop condition 1: Eigenvalues of the residual matrix Wt are not positives.
         if max_contribution <= ZERO_BOUND:
             stop_condition = "W"
-            # print("[INFO] No positive weights at spectral clusters.")
             break
 
         # Compute square root and value of lambda intensity of cluster.
@@ -171,7 +169,6 @@ def faddis(
         # Check stop condition 2: Individual cluster contribution is less or equal than 'epsilon'.
         if desired_k is None and individual_cluster_contribution <= epsilon:
             stop_condition = 'epsilon'
-            # print("[INFO] Cluster contribution is too small.")
             break
 
         # Update the total clusters' contribution.
@@ -180,7 +177,6 @@ def faddis(
         # Check stop condition 3: 'residual_scatter' is less or equal than tau.
         if desired_k is None and residual_data_scatter <= tau:
             stop_condition = 'tau'
-            # print("[INFO] Residual is too small.")
             break
 
         # Append the membership vector, contribution, intensity and eigenvalue of the cluster to the results.
@@ -194,12 +190,10 @@ def faddis(
         # Check stop condition 4: 'number_of_clusters' is equal to 'k_max'.
         if desired_k is None and number_of_clusters == k_max:
             stop_condition = 'Kmax'
-            # print("[INFO] Maximum number of clusters reached.")
             break
 
         if desired_k is not None and number_of_clusters == desired_k:
             stop_condition = 'desiredK'
-            # print("[INFO] Desired number of clusters reached.")
             break
 
         # Compute residual similarity matrix, removing the present cluster (i.e. intensity* membership) from similarity matrix.

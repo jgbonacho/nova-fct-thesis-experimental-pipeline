@@ -12,13 +12,13 @@ def load_lfr_benchmark_network(
      Load a LFR benchmark network, preprocess it, and extract ground-truth labels.
 
      Parameters:
-            dir_path : (str)
-                The directory path where the network files are located.
-            filename : (str)
-                The name of the network files .nse and .nmc (without extension).
-            overlapping_ground_truth : (bool, optional)
-                Whether nodes can belong to multiple communities in the ground-truth labels.
-                Default is True.
+        dir_path : (str)
+            The directory path where the network files are located.
+        filename : (str)
+            The name of the network files .nse and .nmc (without extension).
+        overlapping_ground_truth : (bool, optional)
+            Whether nodes can belong to multiple communities in the ground-truth labels.
+            Default is True.
 
      Returns:
          graph : (nx.Graph)
@@ -37,7 +37,7 @@ def load_lfr_benchmark_network(
     if not nx.is_connected(graph):
         largest_cc = max(nx.connected_components(graph), key=len)
         graph = graph.subgraph(largest_cc).copy()
-        print(f"[INFO] Extracted LCC with {graph.number_of_nodes()} nodes and {graph.number_of_edges()} edges.")
+        print(f"[INFO] Nodes LCC = {graph.number_of_nodes()}; Edges LCC = {graph.number_of_edges()}")
 
     # Extract ground-truth labels.
     original_nodes = sorted(graph.nodes())
@@ -51,11 +51,6 @@ def load_lfr_benchmark_network(
     # Relabel nodes to ensure they are labeled from 0 to n-1.
     mapping = {node: idx for idx, node in enumerate(original_nodes)}
     graph = nx.relabel_nodes(graph, mapping)
-
-    # Check whether all nodes have ground-truth labels.
-    if graph.number_of_nodes() != len(ground_truth_labels):
-        number_of_nodes_without_ground_truth = graph.number_of_nodes() - len(ground_truth_labels)
-        print(f"[INFO] There are {number_of_nodes_without_ground_truth} nodes without ground-truth labels.")
 
     return graph, ground_truth_labels, k
 

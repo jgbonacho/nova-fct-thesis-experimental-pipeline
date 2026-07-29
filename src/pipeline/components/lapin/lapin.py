@@ -25,16 +25,14 @@ def lapin(W: np.ndarray) -> np.ndarray:
             nxn Laplacian pseudo-inverse transformed matrix.
 
     Exceptions:
-        ValueError : If laplacian_variant is not supported.
+        Exception : If the sums of rows/columns of W are not greater than ENTITY_BOUND.
     """
 
-    # W = (W + W.T) / 2
+    W = (W + W.T) / 2
     w_sums = np.ravel(abs(sum(W)))
     nonzero_sums_condition = np.array(w_sums > ENTITY_BOUND)
 
     if not nonzero_sums_condition.all():
-        # print('[INFO] These entities are no good - remove them first.')
-        # print([i for i, j in enumerate(nonzero_sums_condition, 1) if not j])
         # W = W[:, nonzero_sums_condition][nonzero_sums_condition, :]
         # w_sums = w_sums[nonzero_sums_condition]
         raise Exception('[ERROR] Entities are no good - remove them first.')

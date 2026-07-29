@@ -1,0 +1,3 @@
+Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
+FADDIS,american-college-football,Yes,-,Default,LAPIN-off,0.004747,0.05,57,0.5,-,-,-,11 | 12,0.083333,0.491914,0.389893,0.087860
+SLPA,american-college-football,Yes,"[0, 1, 2]",-,-,-,-,-,-,21,0.1,-,9.666666666666666 ± 2.5166114784235836 | 12,0.19444444444444445 ± 0.20971762320196527,0.604464926715764 ± 0.16519147532745054,0.6079810295255852 ± 0.1748946963237628,0.590677

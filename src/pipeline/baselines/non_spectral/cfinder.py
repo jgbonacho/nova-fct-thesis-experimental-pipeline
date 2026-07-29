@@ -2,23 +2,21 @@ import networkx as nx
 from cdlib import algorithms
 
 
-def cfinder(graph: nx.Graph, clique_size: int = 3) -> tuple[list[list[int]], int]:
+def cfinder(graph: nx.Graph, clique_size: int) -> tuple[list[list[int]], int]:
     """
-    Compute CFinder.
+    Compute the CFinder community detection algorithm.
 
     Parameters:
         graph : (nx.Graph)
-            Input NetworkX graph.
-        clique_size : (int, optional)
-            Size of the cliques used by the clique percolation method.
-            This parameter does not represent the number of communities.
-            Default is 3.
+            Input graph.
+        clique_size : (int)
+            Minimum clique size used to detect communities.
 
     Returns:
         predicted_labels : (list[list[int]])
-            List of detected community labels assigned to each node.
+            Predicted community labels for each node.
         k_predicted : (int)
-            Number of detected communities.
+            Number of predicted communities.
     """
 
     # Compute CFinder.
@@ -29,19 +27,20 @@ def cfinder(graph: nx.Graph, clique_size: int = 3) -> tuple[list[list[int]], int
 
 def _communities_to_labels(communities: list, n: int) -> tuple[list[list[int]], int]:
     """
-    Convert a list of overlapping communities to node labels.
+    Convert the detected communities into predicted node labels.
+    Nodes without assigned communities are labelled with [-1].
 
     Parameters:
         communities : (list)
-            List of communities, where each community contains node ids.
+            Detected communities.
         n : (int)
-            Number of nodes in the original graph.
+            Number of nodes.
 
     Returns:
         predicted_labels : (list[list[int]])
-            List of detected community labels assigned to each node.
+            Predicted community labels for each node.
         k_predicted : (int)
-            Number of detected communities.
+            Number of predicted communities.
     """
 
     predicted_labels = [[-1] for _ in range(n)]
@@ -55,8 +54,5 @@ def _communities_to_labels(communities: list, n: int) -> tuple[list[list[int]], 
                 predicted_labels[node].append(label)
 
     k_predicted = len(communities)
-
-    if any(labels == [-1] for labels in predicted_labels):
-        k_predicted += 1
 
     return predicted_labels, k_predicted
