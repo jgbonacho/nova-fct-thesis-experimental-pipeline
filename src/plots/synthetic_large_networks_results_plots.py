@@ -172,7 +172,7 @@ def plot_results_by_network(results_dir: str, input_filename: str = "_results.cs
             summary_df[col] = summary_df[col].round(6)
 
     raw_df.to_csv(os.path.join(results_dir, "network_results.csv"), index=False)
-    summary_df.to_csv(os.path.join(results_dir, "network_results_summary.csv"), index=False)
+    summary_df.to_csv(os.path.join(results_dir, "network_summary.csv"), index=False)
 
     _plot_results_by_network(results_dir, summary_df)
 
@@ -290,7 +290,7 @@ def _build_variant_name(row: dict[str, str]) -> str:
     variant_id = str(row[ID_COL]).strip().zfill(3)
     affinity_design = str(row[AFFINITY_DESIGN_COL]).strip().lower()
     execution_mode = str(row[EXECUTION_MODE_COL]).strip().lower()
-    gamma = f"g{str(row[GAMMA_COL]).strip().lower()}"
+    gamma = rf"$\gamma{str(row[GAMMA_COL]).strip().lower()}$"
 
     return f"{variant_id}_{affinity_design}_{execution_mode}_{gamma}"
 

@@ -129,12 +129,12 @@ $$
     - $\overline{\operatorname{ONMI}}(d) \geq \overline{\operatorname{ONMI}}_{\max}-\delta_{\operatorname{ONMI}}$
       - $\overline{\operatorname{ONMI}}_{\max}=\max(\overline{\operatorname{ONMI}}(d))$
       - $\delta_{\operatorname{ONMI}}=$ `PARETO_TOLERANCE_FRACTION_ONMI` $\times \left(\overline{\operatorname{ONMI}}_{\max}-\overline{\operatorname{ONMI}}_{\min}\right)$
-      - `PARETO_TOLERANCE_FRACTION_ONMI = 0.1`
+      - `PARETO_TOLERANCE_FRACTION_ONMI = 0.15`
   - **Acceptable Omega** (high mean Omega):
     - $\overline{Omega}(d) \geq \overline{Omega}_{\max}-\delta_{Omega}$
       - $\overline{Omega}_{\max}=\max(\overline{Omega}(d))$
       - $\delta_{Omega}=$ `PARETO_TOLERANCE_FRACTION_OMEGA` $\times \left(\overline{Omega}_{\max}-\overline{Omega}_{\min}\right)$
-      - `PARETO_TOLERANCE_FRACTION_OMEGA = 0.1`
+      - `PARETO_TOLERANCE_FRACTION_OMEGA = 0.15`
   - **Acceptable Relative Error of $K$** (low mean relative error):
     - $\overline{E_K}(d) \leq \overline{E_K}_{\min}+\delta_{E_K}$
       - $\overline{E_K}_{\min}=\min(\overline{E_K}(d))$

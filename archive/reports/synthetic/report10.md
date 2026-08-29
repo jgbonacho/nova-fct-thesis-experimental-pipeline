@@ -36,7 +36,8 @@
    - LFR boundary-set networks.
 
 2. Construct the affinity matrix:
-   - Default affinity matrix, i.e., the adjacency matrix.
+   - Default affinity matrix, i.e., the adjacency matrix;
+   - Alternative best-performing affinity design IP ($\beta=0$).
 
 3. Do not apply sparsification.
 
@@ -130,21 +131,21 @@ $$
 
 ### Boundary Variation Set
 
-- [Results](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-07-28_01-15-27-987757/mu_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-07-28_01-15-27-987757/mu_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-08-23_22-59-23-685832/mu_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-08-23_22-59-23-685832/mu_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-07-28_01-15-27-987757/mu_spectral_algorithms.png)
+![Plots](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-08-23_22-59-23-685832/mu_spectral_algorithms.png)
 
 ### Membership Variation Set
 
-- [Results](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-07-28_03-11-14-484538/om_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-07-28_03-11-14-484538/om_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-08-24_01-42-24-752338/om_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-08-24_01-42-24-752338/om_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-07-28_03-11-14-484538/om_spectral_algorithms.png)
+![Plots](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-08-24_01-42-24-752338/om_spectral_algorithms.png)
 
 ### Overlap Variation Set
 
-- [Results](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-07-28_05-06-56-584925/on_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-07-28_05-06-56-584925/on_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-08-24_08-08-27-013832/on_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-08-24_08-08-27-013832/on_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-07-28_05-06-56-584925/on_spectral_algorithms.png)
+![Plots](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-08-24_08-08-27-013832/on_spectral_algorithms.png)

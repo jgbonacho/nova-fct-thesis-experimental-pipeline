@@ -74,11 +74,18 @@ OVERLAPPING_METRICS = (
 
 # Metrics shown in the figures. The relative error of K is retained in the
 # generated CSV files but intentionally omitted from the plots.
-NON_OVERLAPPING_PLOT_METRICS = tuple(
-    metric for metric in NON_OVERLAPPING_METRICS if metric != KERR_COL
+NON_OVERLAPPING_PLOT_METRICS = (
+    AMI_COL,
+    NMI_COL,
+    MODULARITY_COL,
+    CONDUCTANCE_COL,
 )
-OVERLAPPING_PLOT_METRICS = tuple(
-    metric for metric in OVERLAPPING_METRICS if metric != KERR_COL
+
+OVERLAPPING_PLOT_METRICS = (
+    ONMI_COL,
+    OMEGA_COL,
+    FUZZY_MODULARITY_COL,
+    CONDUCTANCE_BN_COL,
 )
 
 ALL_METRICS = tuple(dict.fromkeys(
@@ -115,8 +122,9 @@ def plot_real_world_spectral_comparison_results(
     organizes them by network family and then by network name. Metric values
     can be either scalar values (e.g., FADDIS) or strings formatted as
     "mean ± sample standard deviation" (e.g., NJW+FCM). The mean component is
-    used in the plots, while the reported standard deviation is retained in
-    the generated CSV files.
+    used as the bar height, while the reported standard deviation, when
+    available, is shown using error bars and retained in the generated CSV
+    files.
 
     Results are separated by the value of the "Overlapping?" column:
         - Non-overlapping networks use crisp extrinsic and intrinsic metrics.
@@ -396,6 +404,7 @@ def _plot_ground_truth_group(
         .sort_values(NETWORK_ORDER_COL)
     )
     networks = network_order_df[NETWORK_COL].tolist()
+    display_networks = [_format_network_label(network) for network in networks]
     x_positions = np.arange(len(networks), dtype=float)
 
     algorithms = _ordered_algorithms(plot_df[ALGORITHM_COL])
@@ -411,13 +420,13 @@ def _plot_ground_truth_group(
     bar_width = total_group_width / len(algorithms)
     first_offset = -total_group_width / 2.0 + bar_width / 2.0
 
-    number_of_columns = 3
+    number_of_columns = 2
     number_of_rows = math.ceil(len(available_metrics) / number_of_columns)
 
     fig, axes = plt.subplots(
         number_of_rows,
         number_of_columns,
-        figsize=(18.0, 4.8 * number_of_rows),
+        figsize=(7.2, 2.7 * number_of_rows),
         squeeze=False,
     )
     flattened_axes = axes.flatten()
@@ -439,11 +448,32 @@ def _plot_ground_truth_group(
                 .to_numpy(dtype=float)
             )
 
+            std_metric_col = f"Mean Reported Std {metric_col}"
+
+            if std_metric_col in algorithm_df.columns:
+                std_values = (
+                    pd.to_numeric(
+                        algorithm_df[std_metric_col],
+                        errors="coerce",
+                    )
+                    .reindex(networks)
+                    .to_numpy(dtype=float)
+                )
+
+                if np.isnan(std_values).all():
+                    std_values = None
+                else:
+                    std_values = np.nan_to_num(std_values, nan=0.0)
+            else:
+                std_values = None
+
             offset = first_offset + algorithm_index * bar_width
             axis.bar(
                 x_positions + offset,
                 values,
                 width=bar_width,
+                yerr=std_values,
+                capsize=2 if std_values is not None else 0,
                 label=algorithm,
                 color=algorithm_colors[algorithm_index % len(algorithm_colors)],
                 hatch=algorithm_hatches[algorithm_index % len(algorithm_hatches)],
@@ -452,15 +482,20 @@ def _plot_ground_truth_group(
                 zorder=3,
             )
 
-        axis.set_xlabel("Network")
-        axis.set_ylabel(METRIC_LABELS.get(metric_col, mean_metric_col))
+        axis.set_xlabel("Network", fontsize=7)
+        axis.set_ylabel(
+            METRIC_LABELS.get(metric_col, mean_metric_col),
+            fontsize=7,
+        )
         axis.set_xticks(x_positions)
         axis.set_xticklabels(
-            networks,
-            rotation=35,
+            display_networks,
+            rotation=30,
             ha="right",
+            fontsize=5.5,
         )
-        axis.margins(x=0.02)
+        axis.tick_params(axis="y", labelsize=6)
+        axis.margins(x=0.01)
         axis.grid(True, axis="y", alpha=0.3, zorder=0)
 
         _set_metric_limits(axis, metric_col, plot_df[mean_metric_col])
@@ -469,18 +504,22 @@ def _plot_ground_truth_group(
         if handles:
             axis.legend(
                 loc="best",
-                fontsize=8,
+                fontsize=5.5,
                 framealpha=0.3,
                 ncol=1,
-                columnspacing=0.8,
-                handletextpad=0.4,
+                columnspacing=0.6,
+                handletextpad=0.3,
             )
 
     for axis in flattened_axes[len(available_metrics):]:
         axis.axis("off")
 
-    fig.suptitle(title, fontsize=14)
-    fig.tight_layout(rect=(0.0, 0.0, 1.0, 0.97))
+    fig.tight_layout(
+        rect=(0.0, 0.0, 1.0, 0.96),
+        pad=0.8,
+        h_pad=1.0,
+        w_pad=1.0,
+    )
     fig.savefig(
         os.path.join(results_dir, f"{output_filename}.pdf"),
         dpi=300,
@@ -494,6 +533,15 @@ def _plot_ground_truth_group(
     )
 
     plt.close(fig)
+
+
+def _format_network_label(network: str) -> str:
+    """Return a compact network label for figures without changing stored names."""
+
+    if network.startswith("facebook-network-"):
+        return network.removeprefix("facebook-network-")
+
+    return network
 
 
 def _set_metric_limits(

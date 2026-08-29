@@ -37,8 +37,8 @@ OMEGA_COL = "Omega"
 FADDIS_RUNTIME_COL = "FADDIS Runtime"
 
 # Pareto-based acceptability tolerance fractions.
-PARETO_TOLERANCE_FRACTION_ONMI = 0.1
-PARETO_TOLERANCE_FRACTION_OMEGA = 0.1
+PARETO_TOLERANCE_FRACTION_ONMI = 0.15
+PARETO_TOLERANCE_FRACTION_OMEGA = 0.15
 PARETO_TOLERANCE_FRACTION_KERR = 0.5
 
 # Variant name column and limits for plots.
@@ -281,7 +281,7 @@ def _build_variant_name(row: dict[str, str]) -> str:
     affinity_design = str(row[AFFINITY_DESIGN_COL]).strip().lower()
     execution_mode = str(row[EXECUTION_MODE_COL]).strip().lower()
     # laplacian = str(row[LAPLACIAN_COL]).strip().lower()
-    gamma = f"g{str(row[GAMMA_COL]).strip().lower()}"
+    gamma = rf"$\gamma{str(row[GAMMA_COL]).strip().lower()}$"
 
     # return f"{variant_id}_{affinity_design}_{execution_mode}_{laplacian}_{gamma}"
     return f"{variant_id}_{affinity_design}_{execution_mode}_{gamma}"
@@ -317,7 +317,7 @@ def _select_best_candidate_with_pareto_and_parsimony(
     Selection strategy:
         1. Retain candidates with acceptable ONMI, Omega, and relative error of K.
         2. Among acceptable candidates, prefer the candidate with the lowest runtime.
-        3. Use relative error, ONMI, Omega, and variant name as deterministic tie-breakers.
+        3. Use ONMI, Omega, relative error, and variant name as deterministic tie-breakers.
         4. If no candidate is jointly acceptable, fall back to the original quality ranking.
 
     Parameters:
@@ -382,8 +382,8 @@ def _select_best_candidate_with_pareto_and_parsimony(
         sort_columns.append(runtime_col)
         ascending.append(True)
 
-    sort_columns.extend([kerr_col, onmi_col, omega_col, VARIANT_COL])
-    ascending.extend([True, False, False, True])
+    sort_columns.extend([onmi_col, omega_col, kerr_col, VARIANT_COL])
+    ascending.extend([False, False, True, True])
 
     return (
         acceptable_df
@@ -627,10 +627,10 @@ def _order_candidates_with_pareto_and_parsimony(
         acceptable_ascending.append(True)
 
     acceptable_sort_columns.extend(
-        [kerr_col, onmi_col, omega_col, VARIANT_COL]
+        [onmi_col, omega_col, kerr_col, VARIANT_COL]
     )
     acceptable_ascending.extend(
-        [True, False, False, True]
+        [False, False, True, True]
     )
 
     acceptable_df = acceptable_df.sort_values(
@@ -801,7 +801,19 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
 if __name__ == "__main__":
     # Boundary variation set.
     for folders in [
+        ("experience1_cluster", "results_2026-04-10_13-16-21-594342"),
+        ("experience2_cluster", "results_2026-04-10_18-46-27-529048"),
+        ("experience3_cluster", "results_2026-04-10_21-39-07-593414"),
+        ("experience4_cluster", "results_2026-04-11_00-08-06-619023"),
+
+        ("experience5_cluster_0", "results_2026-04-19_12-06-10-999135"),
+
         ("experience5_cluster", "results_2026-05-02_09-15-07-970979"),
+        ("experience6_cluster", "results_2026-05-02_11-26-20-488782"),
+        ("experience7_cluster", "results_2026-05-02_15-23-59-555680"),
+        ("experience8_cluster", "results_2026-05-02_16-46-53-100982"),
+
+        ("lapin_and_laplacian", "results_2026-06-17_16-17-14-278377"),
 
         ("affinity_designs", "results_2026-06-17_23-22-22-871630")
     ]:
@@ -812,7 +824,19 @@ if __name__ == "__main__":
 
     # Membership variation set.
     for folders in [
+        ("experience1_cluster", "results_2026-04-11_11-39-05-745642"),
+        ("experience2_cluster", "results_2026-04-11_23-31-55-403981"),
+        ("experience3_cluster", "results_2026-04-12_09-50-03-559581"),
+        ("experience4_cluster", "results_2026-04-12_11-35-17-967624"),
+
+        ("experience5_cluster_0", "results_2026-04-19_18-21-44-389254"),
+
         ("experience5_cluster", "results_2026-05-02_19-27-44-446056"),
+        ("experience6_cluster", "results_2026-05-02_22-55-58-140699"),
+        ("experience7_cluster", "results_2026-05-03_00-33-14-635642"),
+        ("experience8_cluster", "results_2026-05-03_08-11-41-388440"),
+
+        ("lapin_and_laplacian", "results_2026-06-18_16-51-24-027093"),
 
         ("affinity_designs", "results_2026-06-18_19-56-33-609075")
     ]:
@@ -823,7 +847,19 @@ if __name__ == "__main__":
 
     # Overlap variation set.
     for folders in [
+        ("experience1_cluster", "results_2026-04-12_13-46-36-158854"),
+        ("experience2_cluster", "results_2026-04-12_15-41-47-330370"),
+        ("experience3_cluster", "results_2026-04-12_17-17-12-630419"),
+        ("experience4_cluster", "results_2026-04-12_18-47-18-341627"),
+
+        ("experience5_cluster_0", "results_2026-04-19_22-29-26-629180"),
+
         ("experience5_cluster", "results_2026-05-03_12-11-56-013021"),
+        ("experience6_cluster", "results_2026-05-03_14-23-08-858214"),
+        ("experience7_cluster", "results_2026-05-03_15-37-47-343899"),
+        ("experience8_cluster", "results_2026-05-03_16-44-48-087897"),
+
+        ("lapin_and_laplacian", "results_2026-06-19_21-09-49-051769"),
 
         ("affinity_designs", "results_2026-06-19_23-01-34-957749")
     ]:
@@ -834,7 +870,24 @@ if __name__ == "__main__":
 
     # Size variation set.
     for folders in [
+        ("experience1_cluster", "results_2026-04-12_20-42-10-997187"),
+        ("experience2_cluster", "results_2026-04-13_19-12-06-974844"),
+        ("experience3_cluster", "results_2026-04-14_10-15-07-924997"),
+        ("experience4_cluster", "results_2026-04-14_17-27-01-073540"),
+
+        # ("faddis_version_a_got", "results_2026-04-20_08-40-19-143228"),
+        # ("faddis_version_m", "results_2026-04-26_00-05-03-708303"),
+        # ("faddis_version_a_top_10", "results_2026-04-26_08-24-20-677914"),
+        # ("faddis_version_a_improved", "results_2026-04-30_00-23-38-440972"),
+
+        # ("faddis_numpy_eigh", "results_2026-05-01_22-11-08-231496"),
+        # ("faddis_scipy_eigh_evd", "results_2026-05-01_19-11-52-478180"),
+        # ("faddis_scipy_eigh_evr", "results_2026-05-01_16-12-18-640998"),
+
         ("experience5_cluster", "results_2026-05-03_19-16-46-640640"),
+        ("experience6_cluster", "results_2026-05-03_19-52-19-167434"),
+        ("experience7_cluster", "results_2026-05-03_20-32-31-224707"),
+        ("experience8_cluster", "results_2026-05-03_21-25-59-359439"),
     ]:
         plot_variation_set_results(
             results_dir=os.path.join(RESULTS_BASE_DIR, "size_variation_set", folders[0], folders[1]),

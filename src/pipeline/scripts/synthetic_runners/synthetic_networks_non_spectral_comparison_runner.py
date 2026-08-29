@@ -2,6 +2,8 @@ import os.path
 
 from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
 from pipeline.components.affinity_design.default_affinity import default_affinity
+from pipeline.components.affinity_design.neighborhood_based_similarities.weighted_inner_product_similarities import \
+    compute_ip
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 from pipeline.components.evaluation_metrics.computational.computational_metrics import get_computation_start_time, \
     get_computation_end_time, compute_computational_metrics
@@ -9,6 +11,7 @@ from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import c
     compute_extrinsic_metrics_means_and_stds
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.synthetic_data_loader import load_lfr_benchmark_network
+from pipeline.components.sparsification.sparsification import apply_global_threshold_sparsification
 from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
 from pipeline.scripts.utils.algorithm_dataclass import Algorithm
 from pipeline.scripts.utils.comparison_result_dataclass import ComparisonResult, initialize_comparison_results_file
@@ -45,7 +48,12 @@ def run_synthetic_networks_non_spectral_comparison_experiments(
     """
 
     results_dir = create_results_dir(results_base_dir)
-    algorithms = [Algorithm.FADDIS, Algorithm.SLPA, Algorithm.CFINDER]
+    executions = [
+        (Algorithm.FADDIS, AffinityDesign.DEFAULT),
+        (Algorithm.FADDIS, AffinityDesign.IP_B0),
+        (Algorithm.SLPA, None),
+        (Algorithm.CFINDER, None),
+    ]
 
     for idx1, network_family_config in enumerate(network_family_configs, 1):
         log_progress(idx1, len(network_family_configs), network_family_config.name, 5, True)
@@ -70,8 +78,8 @@ def run_synthetic_networks_non_spectral_comparison_experiments(
                 network_config.overlapping_ground_truth = True
                 ground_truth_labels = [[label] for label in ground_truth_labels]
 
-            for idx3, algorithm in enumerate(algorithms, 1):
-                log_progress(idx3, len(algorithms), algorithm.value, 3)
+            for idx3, (algorithm, affinity) in enumerate(executions, 1):
+                log_progress(idx3, len(executions), algorithm.value, 3)
 
                 affinity_design, execution_mode, epsilon, tau, k_max, gamma = "-", "-", "-", "-", "-", "-"
                 seeds, t, r, clique_size = "-", "-", "-", "-",
@@ -79,30 +87,38 @@ def run_synthetic_networks_non_spectral_comparison_experiments(
                 start_time = get_computation_start_time()
 
                 if algorithm == Algorithm.FADDIS:
-                    affinity_design = AffinityDesign.DEFAULT.value
+                    affinity_design = affinity.value
                     execution_mode = "LAPIN-off"
 
                     # 1. Compute adjacency matrix A.
                     A = compute_adjacency_matrix(graph)
 
                     # 2. Compute the affinity matrix W from the matrix A.
-                    W = default_affinity(A)
+                    if affinity == AffinityDesign.DEFAULT:
+                        W = default_affinity(A)
+                    elif affinity == AffinityDesign.IP_B0:
+                        W = compute_ip(A, beta=0)
+                    else:
+                        raise ValueError(f"[ERROR] Affinity design {affinity.value} not supported.")
 
                     # 3. Apply sparsification to matrix W to obtain the matrix Ws.
-                    # Skipped
+                    Ws, As, graph_s, ground_truth_labels_s, k_s, sparsification_info = apply_global_threshold_sparsification(
+                        W, ground_truth_labels, affinity,
+                        target_average_degree=20.0
+                    )
 
                     # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
                     # Skipped
 
                     # 5. Fine-tune the stop criterion for FADDIS.
                     (epsilon, tau, k_max) = set_stop_criterion(
-                        graph.number_of_nodes(), network_family_config.name, thresholds
+                        graph_s.number_of_nodes(), network_family_config.name, thresholds
                     )
 
                     # 6. Execute algorithm.
-                    U = algorithm.execute_faddis(W=W, faddis_stopping_criterion=(epsilon, tau, k_max))
+                    U = algorithm.execute_faddis(W=Ws, faddis_stopping_criterion=(epsilon, tau, k_max))
 
-                    # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
+                    # 7. Apply defuzzification.
                     gamma = 0.8
                     predicted_labels, k_predicted, first_cluster_discarded = apply_defuzzification_rule(
                         U=U, gamma=gamma, overlapping=network_config.overlapping_ground_truth
@@ -112,7 +128,7 @@ def run_synthetic_networks_non_spectral_comparison_experiments(
 
                     # 8. Compute the computational and extrinsic evaluation metrics.
                     extrinsic_results = compute_extrinsic_metrics(
-                        graph, ground_truth_labels, predicted_labels, k, k_predicted,
+                        graph_s, ground_truth_labels_s, predicted_labels, k_s, k_predicted,
                         overlapping=network_config.overlapping_ground_truth
                     )
                     computational_results = compute_computational_metrics(start_time, end_time)
@@ -158,7 +174,11 @@ def run_synthetic_networks_non_spectral_comparison_experiments(
                     raise ValueError("[ERROR] Algorithm not supported.")
 
                 append_result(ComparisonResult(
-                    algorithm_name=str(algorithm.value),
+                    algorithm_name=(
+                        f"{algorithm.value} ({affinity.value})"
+                        if affinity is not None
+                        else str(algorithm.value)
+                    ),
                     network=network_config.name,
                     overlapping=network_config.overlapping_ground_truth,
                     affinity_design=affinity_design,

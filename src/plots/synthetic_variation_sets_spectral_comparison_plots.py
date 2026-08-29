@@ -4,6 +4,7 @@ import re
 from itertools import cycle
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
@@ -45,6 +46,15 @@ METRIC_COLS = (
     RUNTIME_COL,
 )
 
+# Metrics shown in the figures. Runtime is retained in the generated CSV files
+# but intentionally omitted from the plots.
+PLOT_METRIC_COLS = (
+    ONMI_COL,
+    OMEGA_COL,
+    FUZZY_MODULARITY_COL,
+    CONDUCTANCE_BN_COL,
+)
+
 # Algorithm order used in summaries and plots.
 ALGORITHM_ORDER = ("FADDIS", "NJW+FCM")
 
@@ -84,7 +94,10 @@ def plot_spectral_comparison_variation_set_results(
 
     FADDIS scalar metric values and the mean component of NJW+FCM
     "mean ± sample standard deviation" values are aggregated across network
-    instances for each value of the variation parameter.
+    instances for each value of the variation parameter. Sample standard
+    deviations across network instances and reported within-instance standard
+    deviations across stochastic executions, when available, are both shown
+    as error bars in the figures.
 
     Parameters:
         results_dir : (str)
@@ -103,7 +116,7 @@ def plot_spectral_comparison_variation_set_results(
           and algorithm:
           "{variation_parameter}_spectral_comparison_summary.csv".
         - A PDF containing plots of mean ONMI, mean Omega,
-          mean Conductance-BN, mean Fuzzy-Modularity, and mean runtime:
+          mean Fuzzy-Modularity, and mean Conductance-BN:
           "{variation_parameter}_spectral_algorithms.pdf".
     """
 
@@ -226,8 +239,10 @@ def _compute_summary(
 
     For NJW+FCM, each source CSV cell can already represent a mean and sample
     standard deviation across seeds. Only the source mean is used in the
-    algorithm curve. The reported within-network standard deviations are
-    retained in separate summary columns for traceability.
+    algorithm curve. The sample standard deviation across network instances
+    and the reported within-network standard deviation across stochastic
+    executions are retained separately and both used as figure error bars when
+    available.
     """
 
     aggregation = {
@@ -294,12 +309,7 @@ def _plot_results(
         summary_df: pd.DataFrame,
         variation_parameter: str,
 ) -> None:
-    """
-    Plot the five aggregated spectral-comparison metrics.
-
-    The layout follows the original variation-set plotting script, extended
-    from a 2x2 grid to a 2x3 grid. The final axis is hidden.
-    """
+    """Plot the four aggregated spectral-comparison metrics."""
 
     algorithms = _ordered_algorithms(summary_df[ALGORITHM_COL])
     algorithm_markers = {
@@ -310,28 +320,29 @@ def _plot_results(
         )
     }
 
-    fig, axes = plt.subplots(2, 3, figsize=(18.0, 9.0))
+    fig, axes = plt.subplots(
+        2,
+        2,
+        figsize=(7.2, 5.4),
+        squeeze=False,
+    )
 
     metric_axes = [
-        (axes[0, 0], "Mean ONMI", "Mean ONMI"),
-        (axes[0, 1], "Mean Omega", "Mean Omega"),
-        (
-            axes[0, 2],
-            f"Mean {CONDUCTANCE_BN_COL}",
-            "Mean Conductance-BN",
-        ),
+        (axes[0, 0], "Mean ONMI", "Mean ONMI", ONMI_COL),
+        (axes[0, 1], "Mean Omega", "Mean Omega", OMEGA_COL),
         (
             axes[1, 0],
             f"Mean {FUZZY_MODULARITY_COL}",
             "Mean Fuzzy-Modularity",
+            FUZZY_MODULARITY_COL,
         ),
         (
             axes[1, 1],
-            f"Mean {RUNTIME_COL}",
-            "Mean Runtime (seconds)",
+            f"Mean {CONDUCTANCE_BN_COL}",
+            "Mean Conductance-BN",
+            CONDUCTANCE_BN_COL,
         ),
     ]
-    axes[1, 2].axis("off")
 
     for algorithm in algorithms:
         algorithm_df = (
@@ -340,18 +351,79 @@ def _plot_results(
         )
         marker = algorithm_markers[algorithm]
 
-        for axis, metric_column, _ in metric_axes:
+        for axis, metric_column, _, metric_col in metric_axes:
             if metric_column not in algorithm_df.columns:
                 continue
 
-            axis.plot(
+            sample_std_col = f"Sample Std {metric_col}"
+            reported_std_col = f"Mean Reported Std {metric_col}"
+
+            sample_std_values = None
+            reported_std_values = None
+
+            if sample_std_col in algorithm_df.columns:
+                sample_std_values = pd.to_numeric(
+                    algorithm_df[sample_std_col],
+                    errors="coerce",
+                ).to_numpy(dtype=float)
+
+                if np.isnan(sample_std_values).all():
+                    sample_std_values = None
+                else:
+                    sample_std_values = np.nan_to_num(
+                        sample_std_values,
+                        nan=0.0,
+                    )
+
+            if reported_std_col in algorithm_df.columns:
+                reported_std_values = pd.to_numeric(
+                    algorithm_df[reported_std_col],
+                    errors="coerce",
+                ).to_numpy(dtype=float)
+
+                if np.isnan(reported_std_values).all():
+                    reported_std_values = None
+                else:
+                    reported_std_values = np.nan_to_num(
+                        reported_std_values,
+                        nan=0.0,
+                    )
+
+            line, = axis.plot(
                 algorithm_df[variation_parameter],
                 algorithm_df[metric_column],
                 marker=marker,
-                linewidth=1.8,
-                markersize=7,
+                linewidth=1.2,
+                markersize=4.5,
                 label=algorithm,
             )
+            line_color = line.get_color()
+
+            if sample_std_values is not None:
+                axis.errorbar(
+                    algorithm_df[variation_parameter],
+                    algorithm_df[metric_column],
+                    yerr=sample_std_values,
+                    fmt="none",
+                    ecolor=line_color,
+                    elinewidth=1.0,
+                    capsize=4,
+                    alpha=0.45,
+                    zorder=2,
+                )
+
+            if reported_std_values is not None:
+                axis.errorbar(
+                    algorithm_df[variation_parameter],
+                    algorithm_df[metric_column],
+                    yerr=reported_std_values,
+                    fmt="none",
+                    ecolor=line_color,
+                    elinewidth=0.8,
+                    capsize=2,
+                    alpha=0.9,
+                    zorder=3,
+                )
 
     x_limits = VARIATION_PARAMETER_LIMITS[variation_parameter]
     x_label = VARIATION_PARAMETER_LABELS.get(
@@ -359,10 +431,11 @@ def _plot_results(
         variation_parameter,
     )
 
-    for axis, _, y_label in metric_axes:
-        axis.set_xlabel(x_label)
-        axis.set_ylabel(y_label)
+    for axis, _, y_label, _ in metric_axes:
+        axis.set_xlabel(x_label, fontsize=7)
+        axis.set_ylabel(y_label, fontsize=7)
         axis.set_xlim(x_limits[0], x_limits[1])
+        axis.tick_params(axis="both", labelsize=6)
         axis.margins(x=0.03)
         axis.grid(True, alpha=0.3)
 
@@ -370,19 +443,22 @@ def _plot_results(
         if handles:
             axis.legend(
                 loc="upper right",
-                fontsize=8,
+                fontsize=5.5,
                 framealpha=0.3,
                 ncol=1,
-                columnspacing=0.8,
-                handletextpad=0.4,
+                columnspacing=0.6,
+                handletextpad=0.3,
             )
 
     axes[0, 0].set_ylim(0, 1.0)
     axes[0, 1].set_ylim(0, 1.0)
-    axes[0, 2].set_ylim(bottom=0)
     axes[1, 1].set_ylim(bottom=0)
 
-    fig.tight_layout()
+    fig.tight_layout(
+        pad=0.8,
+        h_pad=1.0,
+        w_pad=1.0,
+    )
     fig.savefig(
         os.path.join(
             results_dir,
@@ -558,6 +634,7 @@ if __name__ == "__main__":
     # Boundary variation set.
     for folders in [
         ("spectral-baseline", "results_2026-07-28_01-15-27-987757"),
+        ("spectral-baseline", "results_2026-08-23_22-59-23-685832")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
@@ -572,6 +649,7 @@ if __name__ == "__main__":
     # Membership variation set.
     for folders in [
         ("spectral-baseline", "results_2026-07-28_03-11-14-484538"),
+        ("spectral-baseline", "results_2026-08-24_01-42-24-752338")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
@@ -586,6 +664,7 @@ if __name__ == "__main__":
     # Overlap variation set.
     for folders in [
         ("spectral-baseline", "results_2026-07-28_05-06-56-584925"),
+        ("spectral-baseline", "results_2026-08-24_08-08-27-013832")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
