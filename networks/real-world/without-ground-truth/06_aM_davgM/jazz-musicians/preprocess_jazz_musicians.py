@@ -113,6 +113,19 @@ def pre_process_jazz_musicians(network: str = "jazz-musicians"):
     # Get the graph.
     graph = _read_net_as_edge_list(os.path.join(".", "jazz.net"))
 
+    print("\nBefore pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
+
+
+    print("\nAfter pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
+
     # Save the processed graph as a GML file.
     nx.write_gml(graph, gml_path)
 

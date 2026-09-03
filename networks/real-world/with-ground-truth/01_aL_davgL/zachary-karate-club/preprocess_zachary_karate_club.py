@@ -45,11 +45,23 @@ def pre_process_zachary_karate_club(network: str = "zachary-karate-club"):
 
     # Get the graph.
     weighted_graph = nx.karate_club_graph()
-    
+
+    print("\nBefore pre-processing:")
+    print(f"n = {weighted_graph.number_of_nodes()}")
+    print(f"m = {weighted_graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(weighted_graph)}")
+    print(f"directed = {weighted_graph.is_directed()}")
+
     # Remove weights.
     unweighted_graph = weighted_graph.copy()
     for u, v in unweighted_graph.edges():
         unweighted_graph[u][v].pop("weight", None)
+
+    print("\nAfter pre-processing:")
+    print(f"n = {unweighted_graph.number_of_nodes()}")
+    print(f"m = {unweighted_graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(unweighted_graph)}")
+    print(f"directed = {unweighted_graph.is_directed()}")
 
     # Save the processed graph as a GML file.
     nx.write_gml(unweighted_graph, gml_path)

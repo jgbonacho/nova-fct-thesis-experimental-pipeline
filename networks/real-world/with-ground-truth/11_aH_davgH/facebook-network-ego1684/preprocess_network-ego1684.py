@@ -51,6 +51,12 @@ def pre_process_facebook_ego_network(ego_id: int):
     # Get the graph.
     graph = nx.read_edgelist(os.path.join(".", f"{ego_id}.edges"), nodetype=int, create_using=nx.Graph())
 
+    print("\nBefore pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
+
     # Add ground-truth.
     circles = {}
     with open(os.path.join(".", f"{ego_id}.circles"), "r", encoding="utf-8") as f:
@@ -82,6 +88,12 @@ def pre_process_facebook_ego_network(ego_id: int):
         ]
 
         graph.nodes[node]["circles"] = ";".join(map(str, ground_truth_labels))
+
+    print("\nAfter pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
 
     # Save the processed graph as a GML file.
     nx.write_gml(graph, gml_path)

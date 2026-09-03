@@ -1,7 +1,4 @@
 import os
-import re
-import json
-
 import networkx as nx
 
 
@@ -30,26 +27,26 @@ def check_and_get_gml_path(network: str, base_dir: str):
         return False, gml_path
 
 
-def pre_process_facebook_ego_network(ego_id: int):
+def pre_process_email_eu_core(network: str = "email-eu-core"):
     """
-    Pre-process Facebook Ego Network.
+    Pre-process Email EU core.
 
     Parameters:
         network : (str)
             The name of the network.
-        ego_id : (int)
-            The id of the ego network.
 
     Saves:
         A GML file with the graph and ground truth labels.
     """
-    
-    gml_exists, gml_path = check_and_get_gml_path(f"facebook-network-ego{EGO_NETWORK}", ".")
+
+    gml_exists, gml_path = check_and_get_gml_path(network, ".")
     if gml_exists:
         return
 
     # Get the graph.
-    graph = nx.read_edgelist(os.path.join(".", f"{ego_id}.edges"), nodetype=int, create_using=nx.Graph())
+    edge_file = os.path.join(".", "email-Eu-core.txt")
+    label_file = os.path.join(".", "email-Eu-core-department-labels.txt")
+    graph = nx.read_edgelist(edge_file, nodetype=int, create_using=nx.DiGraph())
 
     print("\nBefore pre-processing:")
     print(f"n = {graph.number_of_nodes()}")
@@ -57,37 +54,25 @@ def pre_process_facebook_ego_network(ego_id: int):
     print(f"weighted = {nx.is_weighted(graph)}")
     print(f"directed = {graph.is_directed()}")
 
+    # Ensure graph is undirected.
+    graph = graph.to_undirected()
+
+    # Remove self-loop edges.
+    graph.remove_edges_from(list(nx.selfloop_edges(graph)))
+
     # Add ground-truth.
-    circles = {}
-    with open(os.path.join(".", f"{ego_id}.circles"), "r", encoding="utf-8") as f:
+    labels = {}
+    with open(label_file, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
-            if not line or line.startswith("#"):
+            if not line:
                 continue
-
-            match = re.match(r"^([^:\s]+)[:\s]+(.*)$", line)
-            if not match:
-                continue
-
-            circle_name = match.group(1)
-            node_ids_str = match.group(2)
-            circle_id = int(circle_name.removeprefix("circle"))
-            node_ids = [
-                int(node_id)
-                for node_id in re.split(r"\s+", node_ids_str.strip())
-                if node_id
-            ]
-
-            circles[circle_id] = set(node_ids)
-
-    for node in graph.nodes():
-        ground_truth_labels = [
-            circle_id
-            for circle_id, node_set in circles.items()
-            if node in node_set
-        ]
-
-        graph.nodes[node]["circles"] = ";".join(map(str, ground_truth_labels))
+            u, dept = map(int, line.split())
+            labels[u] = int(dept)
+            if u not in graph:
+                graph.add_node(u)
+    value_attr = {n: labels[n] for n in graph.nodes()}
+    nx.set_node_attributes(graph, value_attr, name="value")
 
     print("\nAfter pre-processing:")
     print(f"n = {graph.number_of_nodes()}")
@@ -100,5 +85,4 @@ def pre_process_facebook_ego_network(ego_id: int):
 
 
 if __name__ == "__main__":
-    EGO_NETWORK=107
-    pre_process_facebook_ego_network(EGO_NETWORK)
+    pre_process_email_eu_core()

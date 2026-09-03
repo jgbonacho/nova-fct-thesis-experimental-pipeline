@@ -46,10 +46,23 @@ def pre_process_coauthorships_network_science(network: str = "co-authorships-in-
     # Get the graph from GML format.
     graph = nx.read_gml(os.path.join(".", "netscience.gml"), label="label")
 
+    print("\nBefore pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
+
+
     # Remove weights.
     unweighted_graph = graph.copy()
     for u, v in unweighted_graph.edges():
         unweighted_graph[u][v].pop("value", None)
+
+    print("\nAfter pre-processing:")
+    print(f"n = {unweighted_graph.number_of_nodes()}")
+    print(f"m = {unweighted_graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(unweighted_graph)}")
+    print(f"directed = {unweighted_graph.is_directed()}")
 
     # Save the processed graph as a GML file.
     nx.write_gml(unweighted_graph, gml_path)

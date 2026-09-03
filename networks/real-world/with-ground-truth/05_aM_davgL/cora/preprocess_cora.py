@@ -73,6 +73,26 @@ def pre_process_cora(
         paper_id: i
         for i, paper_id in enumerate(paper_ids)
     }
+    raw_graph = nx.DiGraph()
+    raw_graph.add_nodes_from(paper_to_id.values())
+
+    with open(cites_path, "r", encoding="utf-8") as file:
+        for line in file:
+            parts = line.strip().split()
+            if len(parts) < 2:
+                continue
+
+            source_paper = parts[0]
+            target_paper = parts[1]
+            if source_paper in paper_to_id and target_paper in paper_to_id:
+                raw_graph.add_edge(paper_to_id[source_paper], paper_to_id[target_paper])
+
+
+    print("\nBefore pre-processing:")
+    print(f"n = {raw_graph.number_of_nodes()}")
+    print(f"m = {raw_graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(raw_graph)}")
+    print(f"directed = {raw_graph.is_directed()}")
 
     # Create a simple, undirected, unweighted graph.
     graph = nx.Graph()
@@ -113,6 +133,12 @@ def pre_process_cora(
                 continue
 
             graph.add_edge(source_id, target_id)
+
+    print("\nAfter pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
 
     # Save the processed graph as a GML file.
     nx.write_gml(graph, gml_path)

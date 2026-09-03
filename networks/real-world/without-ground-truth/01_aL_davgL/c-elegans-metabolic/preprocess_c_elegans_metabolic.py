@@ -46,6 +46,13 @@ def pre_process_celegans_metabolic(network: str = "c-elegans-metabolic"):
     # Get the graph from Pajek .net format.
     graph = nx.read_pajek(os.path.join(".", "celegans_metabolic.net"))
 
+    print("\nBefore pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
+
+
     # Ensure graph is simple, i.e., remove possible parallel edges.
     graph = nx.Graph(graph)
 
@@ -56,6 +63,12 @@ def pre_process_celegans_metabolic(network: str = "c-elegans-metabolic"):
     unweighted_graph = graph.copy()
     for u, v in unweighted_graph.edges():
         unweighted_graph[u][v].pop("weight", None)
+
+    print("\nAfter pre-processing:")
+    print(f"n = {unweighted_graph.number_of_nodes()}")
+    print(f"m = {unweighted_graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(unweighted_graph)}")
+    print(f"directed = {unweighted_graph.is_directed()}")
 
     # Save the processed graph as a GML file.
     nx.write_gml(unweighted_graph, gml_path)

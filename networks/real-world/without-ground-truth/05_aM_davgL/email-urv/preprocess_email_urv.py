@@ -96,6 +96,19 @@ def pre_process_email_urv(network: str = "email-urv"):
     # Get the graph from the edge-list file.
     graph = _read_email_urv_edge_list(os.path.join(".", "email.txt"))
 
+    print("\nBefore pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
+
+
+    print("\nAfter pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
+
     # # Save the processed graph as a GML file.
     nx.write_gml(graph, gml_path)
 

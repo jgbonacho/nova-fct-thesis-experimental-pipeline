@@ -51,6 +51,13 @@ def pre_process_primary_school_day_2(
     # Load the GEXF graph.
     raw_graph = nx.read_gexf(gexf_path)
 
+    print("\nBefore pre-processing:")
+    print(f"n = {raw_graph.number_of_nodes()}")
+    print(f"m = {raw_graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(raw_graph)}")
+    print(f"directed = {raw_graph.is_directed()}")
+
+
     # Ensure graph is undirected.
     if raw_graph.is_directed():
         raw_graph = raw_graph.to_undirected()
@@ -81,6 +88,12 @@ def pre_process_primary_school_day_2(
     for u, v in raw_graph.edges():
         if u != v:
             graph.add_edge(node_to_id[u], node_to_id[v])
+
+    print("\nAfter pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
 
     # Save the processed graph as a GML file.
     nx.write_gml(graph, gml_path)

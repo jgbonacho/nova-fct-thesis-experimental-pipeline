@@ -78,6 +78,13 @@ def pre_process_c_elegans_neural_network(network: str = "c-elegans-neural-networ
     multigraph_path = add_multigraph_header_if_needed(os.path.join(".", "celegansneural.gml"))
     graph_raw = nx.read_gml(multigraph_path, label="id")
 
+    print("\nBefore pre-processing:")
+    print(f"n = {graph_raw.number_of_nodes()}")
+    print(f"m = {graph_raw.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph_raw)}")
+    print(f"directed = {graph_raw.is_directed()}")
+
+
     # Preserve original node information before saving again.
     for _, data in graph_raw.nodes(data=True):
         if "label" in data:
@@ -87,6 +94,12 @@ def pre_process_c_elegans_neural_network(network: str = "c-elegans-neural-networ
     graph = nx.Graph()
     graph.add_nodes_from(graph_raw.nodes(data=True))
     graph.add_edges_from(graph_raw.edges())
+
+    print("\nAfter pre-processing:")
+    print(f"n = {graph.number_of_nodes()}")
+    print(f"m = {graph.number_of_edges()}")
+    print(f"weighted = {nx.is_weighted(graph)}")
+    print(f"directed = {graph.is_directed()}")
 
     # Save the processed graph as a GML file.
     nx.write_gml(graph, gml_path)
