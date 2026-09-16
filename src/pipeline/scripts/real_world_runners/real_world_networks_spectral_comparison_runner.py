@@ -14,6 +14,7 @@ from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import c
     compute_intrinsic_metrics_means_and_stds
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.real_world_data_loader import load_network_from_gml
+from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
 from pipeline.scripts.utils.algorithm_dataclass import Algorithm
 from pipeline.scripts.utils.comparison_result_dataclass import ComparisonResult, initialize_comparison_results_file
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamilyConfig
@@ -24,6 +25,7 @@ from pipeline.scripts.utils.utils import create_results_dir, log_progress, creat
 def run_real_world_networks_spectral_comparison_experiments(
         results_base_dir: str,
         network_family_configs: list[NetworkFamilyConfig],
+        thresholds: dict[str, float],
         number_of_seeds: int
 ) -> str:
     """
@@ -34,6 +36,8 @@ def run_real_world_networks_spectral_comparison_experiments(
             Path to the base directory where results will be saved.
         network_family_configs : (list[NetworkFamilyConfig])
             List of network family configs to be processed.
+        thresholds : (dict[str, float])
+            Dictionary containing threshold values, keyed by network name.
         number_of_seeds : (int)
             Total number of seeds to be processed.
 
@@ -82,13 +86,18 @@ def run_real_world_networks_spectral_comparison_experiments(
                     # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
                     # Skipped
 
-                    # 5. Fine-tune the stop criterion for FADDIS.
-                    # Skipped
-
                     gamma, seeds, fcm_m, fcm_error, fcm_max_iter, fi = "-", "-", "-", "-", "-", "-"
+                    extrinsic_results = None
                     if algorithm == Algorithm.FADDIS:
-                        # 6. Execute Algorithm.
-                        U = algorithm.execute_faddis(W=W, k=k)
+
+                        # 5. Fine-tune the stop criterion for FADDIS. & 6. Execute Algorithm.
+                        if k is not None:
+                            U = algorithm.execute_faddis(W=W, k=k)
+                        else:
+                            (epsilon, tau, k_max) = set_stop_criterion(
+                                graph.number_of_nodes(), network_config.name, thresholds
+                            )
+                            U = algorithm.execute_faddis(W=W, faddis_stopping_criterion=(epsilon, tau, k_max))
 
                         # 7. Apply a defuzzification rule to map fuzzy memberships to a binary [overlapping] community cover.
                         gamma = 0.8
@@ -99,10 +108,11 @@ def run_real_world_networks_spectral_comparison_experiments(
                         end_time = get_computation_end_time()
 
                         # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
-                        extrinsic_results = compute_extrinsic_metrics(
-                            graph, ground_truth_labels, predicted_labels, k, k_predicted,
-                            overlapping=network_config.overlapping_ground_truth
-                        )
+                        if network_config.ground_truth:
+                            extrinsic_results = compute_extrinsic_metrics(
+                                graph, ground_truth_labels, predicted_labels, k, k_predicted,
+                                overlapping=network_config.overlapping_ground_truth
+                            )
                         intrinsic_results = compute_intrinsic_metrics(
                             graph=graph,
                             A=A,
@@ -132,14 +142,15 @@ def run_real_world_networks_spectral_comparison_experiments(
                         end_time = get_computation_end_time()
 
                         # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
-                        extrinsic_results = compute_extrinsic_metrics_means_and_stds(
-                            graph=graph,
-                            ground_truth_labels=ground_truth_labels,
-                            predicted_labels_results=predicted_labels_results,
-                            k=k,
-                            k_predicted_results=k_predicted_results,
-                            overlapping=network_config.overlapping_ground_truth
-                        )
+                        if network_config.ground_truth:
+                            extrinsic_results = compute_extrinsic_metrics_means_and_stds(
+                                graph=graph,
+                                ground_truth_labels=ground_truth_labels,
+                                predicted_labels_results=predicted_labels_results,
+                                k=k,
+                                k_predicted_results=k_predicted_results,
+                                overlapping=network_config.overlapping_ground_truth
+                            )
                         intrinsic_results = compute_intrinsic_metrics_means_and_stds(
                             graph=graph,
                             A=A,

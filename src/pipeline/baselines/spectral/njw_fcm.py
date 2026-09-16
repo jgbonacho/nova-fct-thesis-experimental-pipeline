@@ -16,8 +16,8 @@ def njw_fcm(
     Parameters:
         W : (np.ndarray, shape[n,n])
             nxn symmetric similarity/affinity matrix.
-        k : (int)
-            Number of clusters.
+        k : (int | None)
+            Number of clusters. If None, estimated using the eigengap criterion.
         fcm_m : (float)
             Fuzzifier parameter of Fuzzy C-Means.
         fcm_error : (float)
@@ -38,6 +38,12 @@ def njw_fcm(
     L = D_inv_sqrt @ W @ D_inv_sqrt
 
     eigenvalues, eigenvectors = np.linalg.eigh(L)
+
+    # Estimate K' using the eigengap criterion.
+    if k is None:
+        eigenvalues_desc = eigenvalues[::-1]
+        eigengaps = eigenvalues_desc[:-1] - eigenvalues_desc[1:]
+        k = np.argmax(eigengaps) + 1
 
     X_norm = np.linalg.norm(eigenvectors[:, -k:], axis=1, keepdims=True)
     X_norm[X_norm == 0] = 1

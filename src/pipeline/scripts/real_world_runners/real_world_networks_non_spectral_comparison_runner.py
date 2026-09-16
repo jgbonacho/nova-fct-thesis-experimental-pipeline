@@ -1,5 +1,7 @@
 import os.path
 
+import numpy as np
+
 from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
 from pipeline.components.affinity_design.default_affinity import default_affinity
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
@@ -7,6 +9,9 @@ from pipeline.components.evaluation_metrics.computational.computational_metrics 
     get_computation_end_time, compute_computational_metrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import compute_extrinsic_metrics, \
     compute_extrinsic_metrics_means_and_stds
+from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics, \
+    compute_intrinsic_metrics_means_and_stds
+from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import labels_to_membership_matrix
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix
 from pipeline.components.loaders.real_world_data_loader import load_network_from_gml
 from pipeline.components.stop_criterion.stop_criterion import set_stop_criterion
@@ -62,9 +67,16 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                 dir_path=os.path.join(network_family_config.directory, network_family_config.name),
                 network_config=network_config
             )
-            if not network_config.overlapping_ground_truth:
+            if network_config.ground_truth:
+                if not network_config.overlapping_ground_truth:
+                    network_config.overlapping_ground_truth = True
+                    ground_truth_labels = [[label] for label in ground_truth_labels]
+            else:
                 network_config.overlapping_ground_truth = True
-                ground_truth_labels = [[label] for label in ground_truth_labels]
+                extrinsic_results = None
+
+            # 1. Compute adjacency matrix A.
+            A = compute_adjacency_matrix(graph)
 
             for idx3, algorithm in enumerate(algorithms, 1):
                 log_progress(idx3, len(algorithms), algorithm.value, 3)
@@ -77,9 +89,6 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                 if algorithm == Algorithm.FADDIS:
                     affinity_design = AffinityDesign.DEFAULT.value
                     execution_mode = "LAPIN-off"
-
-                    # 1. Compute adjacency matrix A.
-                    A = compute_adjacency_matrix(graph)
 
                     # 2. Compute the affinity matrix W from the matrix A.
                     W = default_affinity(A)
@@ -106,9 +115,21 @@ def run_real_world_networks_non_spectral_comparison_experiments(
 
                     end_time = get_computation_end_time()
 
-                    # 8. Compute the computational and extrinsic evaluation metrics.
-                    extrinsic_results = compute_extrinsic_metrics(
-                        graph, ground_truth_labels, predicted_labels, k, k_predicted,
+                    # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
+                    if network_config.ground_truth:
+                        extrinsic_results = compute_extrinsic_metrics(
+                            graph=graph,
+                            ground_truth_labels=ground_truth_labels,
+                            predicted_labels=predicted_labels,
+                            k=k,
+                            k_predicted=k_predicted,
+                            overlapping=network_config.overlapping_ground_truth
+                        )
+                    intrinsic_results = compute_intrinsic_metrics(
+                        graph=graph,
+                        A=A,
+                        U=U if not first_cluster_discarded else np.asarray(U)[:, 1:],
+                        predicted_labels=predicted_labels,
                         overlapping=network_config.overlapping_ground_truth
                     )
                     computational_results = compute_computational_metrics(start_time, end_time)
@@ -116,36 +137,61 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                 elif algorithm == Algorithm.SLPA:
                     seeds, t, r = list(range(number_of_seeds)), 21, 0.1
 
-                    predicted_labels_results, k_predicted_results = [], []
+                    U_results, predicted_labels_results, k_predicted_results = [], [], []
                     for seed in range(number_of_seeds):
                         # 6. Execute Algorithm.
                         predicted_labels, k_predicted = algorithm.execute_slpa(graph, t, r, seed)
 
+                        U = labels_to_membership_matrix(predicted_labels, k_predicted)
+
+                        U_results.append(U)
                         predicted_labels_results.append(predicted_labels)
                         k_predicted_results.append(k_predicted)
 
                     end_time = get_computation_end_time()
 
-                    # 8. Compute the computational and extrinsic evaluation metrics.
-                    extrinsic_results = compute_extrinsic_metrics_means_and_stds(
+                    # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
+                    if network_config.ground_truth:
+                        extrinsic_results = compute_extrinsic_metrics_means_and_stds(
+                            graph=graph,
+                            ground_truth_labels=ground_truth_labels,
+                            predicted_labels_results=predicted_labels_results,
+                            k=k,
+                            k_predicted_results=k_predicted_results,
+                            overlapping=network_config.overlapping_ground_truth
+                        )
+                    intrinsic_results = compute_intrinsic_metrics_means_and_stds(
                         graph=graph,
-                        ground_truth_labels=ground_truth_labels,
+                        A=A,
+                        U_results=U_results,
                         predicted_labels_results=predicted_labels_results,
-                        k=k,
-                        k_predicted_results=k_predicted_results,
                         overlapping=network_config.overlapping_ground_truth
                     )
                     computational_results = compute_computational_metrics(start_time, end_time)
 
                 elif algorithm == Algorithm.CFINDER:
                     clique_size = 5
+
                     predicted_labels, k_predicted = algorithm.execute_cfinder(graph, clique_size)
+                    U = labels_to_membership_matrix(predicted_labels, k_predicted)
 
                     end_time = get_computation_end_time()
 
-                    # 8. Compute the computational and extrinsic evaluation metrics.
-                    extrinsic_results = compute_extrinsic_metrics(
-                        graph, ground_truth_labels, predicted_labels, k, k_predicted,
+                    # 8. Compute the computational, intrinsic and extrinsic evaluation metrics.
+                    if network_config.ground_truth:
+                        extrinsic_results = compute_extrinsic_metrics(
+                            graph=graph,
+                            ground_truth_labels=ground_truth_labels,
+                            predicted_labels=predicted_labels,
+                            k=k,
+                            k_predicted=k_predicted,
+                            overlapping=network_config.overlapping_ground_truth
+                        )
+                    intrinsic_results = compute_intrinsic_metrics(
+                        graph=graph,
+                        A=A,
+                        U=U,
+                        predicted_labels=predicted_labels,
                         overlapping=network_config.overlapping_ground_truth
                     )
                     computational_results = compute_computational_metrics(start_time, end_time)
@@ -168,6 +214,7 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                     slpa_r=r,
                     cfinder_clique_size=clique_size,
                     extrinsic_results=extrinsic_results,
+                    intrinsic_results=intrinsic_results,
                     computational_results=computational_results
                 ))
 

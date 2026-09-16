@@ -1,0 +1,55 @@
+[
+  {
+    "name": "01_aL_davgL",
+    "ground_truth_family": false,
+    "networks": [
+      {
+        "name": "les-miserables",
+        "gml_filename": "les-miserables",
+        "ground_truth": false
+      },
+      {
+        "name": "c-elegans-neural-network",
+        "gml_filename": "c-elegans-neural-network",
+        "ground_truth": false
+      },
+      {
+        "name": "c-elegans-metabolic",
+        "gml_filename": "c-elegans-metabolic",
+        "ground_truth": false
+      }
+    ]
+  },
+  {
+    "name": "05_aM_davgL",
+    "ground_truth_family": false,
+    "networks": [
+      {
+        "name": "dolphins",
+        "gml_filename": "dolphins",
+        "ground_truth": false
+      },
+      {
+        "name": "email-urv",
+        "gml_filename": "email-urv",
+        "ground_truth": false
+      },
+      {
+        "name": "co-authorships-in-network-science",
+        "gml_filename": "co-authorships-in-network-science",
+        "ground_truth": false
+      }
+    ]
+  },
+  {
+    "name": "06_aM_davgM",
+    "ground_truth_family": false,
+    "networks": [
+      {
+        "name": "jazz-musicians",
+        "gml_filename": "jazz-musicians",
+        "ground_truth": false
+      }
+    ]
+  }
+]

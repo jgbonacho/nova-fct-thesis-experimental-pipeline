@@ -1,4 +1,5 @@
 import json
+import math
 import os.path
 from pathlib import Path
 
@@ -24,6 +25,8 @@ OVERLAPPING_COL = "Overlapping?"
 KERR_COL = "|K'-K|/K"
 ONMI_COL = "ONMI"
 OMEGA_COL = "Omega"
+FUZZY_MODULARITY_COL = "Fuzzy-Modularity"
+CONDUCTANCE_BN_COL = "Conductance-BN"
 
 # The current comparison CSV labels the generic runtime as "FADDIS Runtime"
 # for every algorithm. "Runtime" is also accepted for a corrected schema.
@@ -42,6 +45,8 @@ METRICS = (
     ONMI_COL,
     OMEGA_COL,
     KERR_COL,
+    FUZZY_MODULARITY_COL,
+    CONDUCTANCE_BN_COL,
     RUNTIME_COL,
 )
 
@@ -51,6 +56,8 @@ PLOT_METRICS = (
     ONMI_COL,
     OMEGA_COL,
     KERR_COL,
+    FUZZY_MODULARITY_COL,
+    CONDUCTANCE_BN_COL,
 )
 
 # Human-readable y-axis labels.
@@ -58,6 +65,8 @@ METRIC_LABELS = {
     ONMI_COL: "Mean ONMI",
     OMEGA_COL: "Mean Omega",
     KERR_COL: r"Mean Relative Error $|K'-K|/K$",
+    FUZZY_MODULARITY_COL: "Mean Fuzzy-Modularity",
+    CONDUCTANCE_BN_COL: "Mean Conductance-BN",
     RUNTIME_COL: "Mean Runtime (seconds)",
 }
 
@@ -82,16 +91,18 @@ def plot_real_world_non_spectral_comparison_results(
     """
     Process and plot non-spectral comparison results for real-world networks.
 
-    Result files are discovered recursively because the real-world runner
-    organizes them by network family and then by network name. Metric values
-    can be scalar values or strings formatted as "mean ± sample standard
-    deviation". The mean component is used as the bar height, while the
-    reported standard deviation, when available, is shown using error bars and
-    retained in the generated CSV files.
+    Result files are discovered recursively because the real-world runner organizes
+    results by network family and then by network name. Metric values can be scalar
+    values or strings formatted as "mean ± sample standard deviation". The mean
+    component is used as the bar height, while the reported standard deviation,
+    when available, is shown using error bars and retained in the generated CSV
+    files.
 
-    Results are separated according to the value of the "Overlapping?" column.
-    Both groups are evaluated using ONMI, Omega, relative error of K, and
-    runtime because FADDIS, SLPA, and CFinder are compared as community covers.
+    Results are separated according to the resolved overlap type. The explicit
+    "Overlapping?" column is used when available; otherwise, the overlap type is
+    inferred from the fuzzy intrinsic metrics. The final comparison figure includes
+    the supported metrics available in the input files. Runtime is retained in the
+    generated CSV files but omitted from the figure.
 
     Parameters:
         results_dir : (str)
@@ -99,8 +110,7 @@ def plot_real_world_non_spectral_comparison_results(
             results. The function searches recursively for each network's
             comparison CSV file.
         input_filename : (str, optional)
-            Name of the comparison results file saved in each network
-            directory.
+            Name of the comparison results file saved in each network directory.
             Default is "_comparison_results.csv".
 
     Saves:
@@ -109,8 +119,11 @@ def plot_real_world_non_spectral_comparison_results(
           ground-truth type, network, and algorithm.
         - "non_overlapping_real_world_non_spectral_algorithms.pdf": grouped bar
           plots for non-overlapping networks, when available.
-        - "overlapping_real_world_non_spectral_algorithms.pdf": grouped bar
-          plots for overlapping networks, when available.
+        - "overlapping_real_world_non_spectral_algorithms.pdf": grouped bar plots
+          for overlapping networks, when available.
+
+    Returns:
+        None
     """
 
     result_files = _iter_result_files(
@@ -133,10 +146,6 @@ def plot_real_world_non_spectral_comparison_results(
 
         required_columns = {
             ALGORITHM_COL,
-            OVERLAPPING_COL,
-            ONMI_COL,
-            OMEGA_COL,
-            KERR_COL,
         }
         missing_columns = required_columns - set(results_df.columns)
         if missing_columns:
@@ -145,14 +154,19 @@ def plot_real_world_non_spectral_comparison_results(
                 f"{sorted(missing_columns)}."
             )
 
+        supported_metric_columns = set(PLOT_METRICS) & set(results_df.columns)
+        if not supported_metric_columns:
+            raise ValueError(
+                f"[ERROR] No supported comparison metrics were found in "
+                f"'{result_file}'."
+            )
+
         for _, result in results_df.iterrows():
             network = _resolve_network_name(
                 result=result,
                 result_file=result_file,
             )
-            overlapping = _normalize_overlapping_value(
-                result[OVERLAPPING_COL]
-            )
+            overlapping = _resolve_overlapping_value(result)
 
             if network not in network_orders:
                 network_orders[network] = len(network_orders)
@@ -226,14 +240,6 @@ def plot_real_world_non_spectral_comparison_results(
     _plot_ground_truth_group(
         results_dir=results_dir,
         summary_df=summary_df,
-        overlapping="No",
-        output_filename="non_overlapping_real_world_non_spectral_algorithms",
-        title="Non-overlapping Real-World Networks",
-    )
-
-    _plot_ground_truth_group(
-        results_dir=results_dir,
-        summary_df=summary_df,
         overlapping="Yes",
         output_filename="overlapping_real_world_non_spectral_algorithms",
         title="Overlapping Real-World Networks",
@@ -244,9 +250,17 @@ def _compute_summary(raw_df: pd.DataFrame) -> pd.DataFrame:
     """
     Aggregate parsed rows by ground-truth type, network, and algorithm.
 
-    Normally each group contains one result row. Grouping also makes the
-    script robust to duplicated or repeated comparison rows and gives every
-    plotted value an explicit mean.
+    Normally, each group contains one result row. Grouping also makes the script
+    robust to duplicated or repeated comparison rows and gives every plotted value
+    an explicit mean.
+
+    Parameters:
+        raw_df : (pd.DataFrame)
+            Dataframe containing the parsed comparison rows.
+
+    Returns:
+        summary_df : (pd.DataFrame)
+            Aggregated results grouped by ground-truth type, network, and algorithm.
     """
 
     aggregation = {
@@ -324,7 +338,24 @@ def _plot_ground_truth_group(
         output_filename: str,
         title: str,
 ) -> None:
-    """Plot grouped algorithm bars for one ground-truth type."""
+    """
+    Plot grouped algorithm bars for one ground-truth type.
+
+    Parameters:
+        results_dir : (str)
+            Directory in which the generated figures are saved.
+        summary_df : (pd.DataFrame)
+            Aggregated comparison results.
+        overlapping : (str)
+            Ground-truth overlap indicator used to select the network group.
+        output_filename : (str)
+            Base filename used for the generated figures.
+        title : (str)
+            Descriptive title associated with the network group.
+
+    Returns:
+        None
+    """
 
     plot_df = summary_df[
         summary_df[OVERLAPPING_COL] == overlapping
@@ -362,16 +393,10 @@ def _plot_ground_truth_group(
     bar_width = total_group_width / len(algorithms)
     first_offset = -total_group_width / 2.0 + bar_width / 2.0
 
-    number_of_columns = 1
-    number_of_rows = len(available_metrics)
-
-    fig, axes = plt.subplots(
-        number_of_rows,
-        number_of_columns,
-        figsize=(7.2, 2.5 * number_of_rows),
-        squeeze=False,
+    fig, flattened_axes = _create_metric_axes(
+        number_of_metrics=len(available_metrics),
+        row_height=2.7,
     )
-    flattened_axes = axes.flatten()
 
     for axis, metric_col in zip(flattened_axes, available_metrics):
         mean_metric_col = f"Mean {metric_col}"
@@ -477,26 +502,116 @@ def _plot_ground_truth_group(
     plt.close(fig)
 
 
-def _format_network_label(network: str) -> str:
-    """Return a compact network label for figures without changing stored names."""
 
-    if network.startswith("facebook-network-"):
-        return network.removeprefix("facebook-network-")
+def _create_metric_axes(
+        number_of_metrics: int,
+        row_height: float,
+) -> tuple:
+    """
+    Create a balanced figure layout for the requested number of metrics.
+
+    Five-metric figures use two wider plots on the first row and three equal
+    plots on the second row. Four-metric figures use a regular 2-by-2 layout.
+
+    Parameters:
+        number_of_metrics : (int)
+            Number of metric plots to create.
+        row_height : (float)
+            Height allocated to each figure row.
+
+    Returns:
+        fig :
+            Matplotlib figure.
+        axes : (np.ndarray)
+            Flattened array containing the created axes.
+    """
+
+    if number_of_metrics == 5:
+        fig = plt.figure(figsize=(7.2, row_height * 2))
+        grid = fig.add_gridspec(2, 6)
+
+        axes = [
+            fig.add_subplot(grid[0, 0:3]),
+            fig.add_subplot(grid[0, 3:6]),
+            fig.add_subplot(grid[1, 0:2]),
+            fig.add_subplot(grid[1, 2:4]),
+            fig.add_subplot(grid[1, 4:6]),
+        ]
+
+        return fig, np.asarray(axes)
+
+    if number_of_metrics == 4:
+        fig, axes = plt.subplots(
+            2,
+            2,
+            figsize=(7.2, row_height * 2),
+            squeeze=False,
+        )
+        return fig, axes.flatten()
+
+    number_of_columns = min(number_of_metrics, 3)
+    number_of_rows = math.ceil(number_of_metrics / number_of_columns)
+
+    fig, axes = plt.subplots(
+        number_of_rows,
+        number_of_columns,
+        figsize=(7.2, row_height * number_of_rows),
+        squeeze=False,
+    )
+
+    return fig, axes.flatten()
+
+
+def _format_network_label(network: str) -> str:
+    """
+    Return the original network name for figure labels.
+
+    Parameters:
+        network : (str)
+            Original network name.
+
+    Returns:
+        label : (str)
+            Original network name used in figures.
+    """
 
     return network
 
 
 def _set_metric_limits(axis, metric_col: str) -> None:
-    """Apply meaningful y-axis limits for each metric."""
+    """
+    Apply meaningful y-axis limits for a metric.
+
+    Parameters:
+        axis :
+            Matplotlib axis to update.
+        metric_col : (str)
+            Metric represented on the axis.
+
+    Returns:
+        None
+    """
 
     if metric_col in {ONMI_COL, OMEGA_COL}:
         axis.set_ylim(0.0, 1.0)
-    elif metric_col in {KERR_COL, RUNTIME_COL}:
+    elif metric_col in {KERR_COL, CONDUCTANCE_BN_COL, RUNTIME_COL}:
         axis.set_ylim(bottom=0.0)
 
 
 def _algorithm_color(algorithm: str, algorithm_index: int) -> str:
-    """Return a deterministic display colour for an algorithm."""
+    """
+    Return a deterministic display colour for an algorithm.
+
+    Parameters:
+        algorithm : (str)
+            Algorithm name.
+        algorithm_index : (int)
+            Position of the algorithm in the plotted order.
+
+    Returns:
+        color : (str)
+            Display colour associated with the algorithm.
+    """
 
     fallback_colors = ["tab:blue", "tab:orange", "tab:green", "tab:red"]
     return ALGORITHM_COLORS.get(
@@ -506,7 +621,19 @@ def _algorithm_color(algorithm: str, algorithm_index: int) -> str:
 
 
 def _algorithm_hatch(algorithm: str, algorithm_index: int) -> str:
-    """Return a deterministic print-friendly hatch for an algorithm."""
+    """
+    Return a deterministic print-friendly hatch for an algorithm.
+
+    Parameters:
+        algorithm : (str)
+            Algorithm name.
+        algorithm_index : (int)
+            Position of the algorithm in the plotted order.
+
+    Returns:
+        hatch : (str)
+            Hatch pattern associated with the algorithm.
+    """
 
     fallback_hatches = [r"\\", "//", "xx", ".."]
     return ALGORITHM_HATCHES.get(
@@ -519,7 +646,19 @@ def _iter_result_files(
         results_dir: str,
         input_filename: str,
 ) -> list[Path]:
-    """Return all comparison result files recursively, sorted by path."""
+    """
+    Return all comparison result files recursively, sorted by path.
+
+    Parameters:
+        results_dir : (str)
+            Root directory containing the comparison results.
+        input_filename : (str)
+            Name of the comparison results file to locate.
+
+    Returns:
+        result_files : (list[Path])
+            Matching comparison result files sorted by path.
+    """
 
     root_path = Path(results_dir)
     if not root_path.exists():
@@ -537,8 +676,18 @@ def _iter_result_files(
     )
 
 
-def _read_csv(csv_path: str | Path) -> pd.DataFrame:
-    """Read a comparison CSV file and normalize its column names."""
+def _read_csv(csv_path: str) -> pd.DataFrame:
+    """
+    Read a result CSV file and normalize its column names.
+
+    Parameters:
+        csv_path : (str | Path)
+            Path to the input CSV file.
+
+    Returns:
+        dataframe : (pd.DataFrame)
+            Loaded dataframe with normalized column names.
+    """
 
     dataframe = pd.read_csv(csv_path, sep=",", engine="python")
     dataframe.columns = [
@@ -552,7 +701,20 @@ def _resolve_network_name(
         result: pd.Series,
         result_file: Path,
 ) -> str:
-    """Use the CSV network value, falling back to the parent folder name."""
+    """
+    Resolve the network name from a result row or its parent directory.
+
+    Parameters:
+        result : (pd.Series)
+            Result row containing the optional network name.
+        result_file : (Path)
+            Path to the result file.
+
+    Returns:
+        network_name : (str)
+            Network name from the CSV row, falling back to the parent directory
+            name when necessary.
+    """
 
     if NETWORK_COL in result.index:
         network = str(result[NETWORK_COL]).strip()
@@ -562,8 +724,82 @@ def _resolve_network_name(
     return result_file.parent.name
 
 
+
+def _resolve_overlapping_value(result: pd.Series) -> str:
+    """
+    Resolve whether a result row represents an overlapping cover.
+
+    The explicit "Overlapping?" value is used when available. If the column is
+    absent, the cover is inferred from the fuzzy intrinsic metrics used by the
+    non-spectral comparison.
+
+    Parameters:
+        result : (pd.Series)
+            Result row containing the comparison metrics.
+
+    Returns:
+        overlapping : (str)
+            Normalized overlap indicator, either "Yes" or "No".
+    """
+
+    if (
+            OVERLAPPING_COL in result.index
+            and _has_result_value(result[OVERLAPPING_COL])
+    ):
+        return _normalize_overlapping_value(result[OVERLAPPING_COL])
+
+    overlapping_metrics_present = any(
+        metric_col in result.index and _has_result_value(result[metric_col])
+        for metric_col in (FUZZY_MODULARITY_COL, CONDUCTANCE_BN_COL)
+    )
+
+    if overlapping_metrics_present:
+        return "Yes"
+
+    raise ValueError(
+        "[ERROR] Unable to infer whether the result is overlapping. "
+        "Add an 'Overlapping?' column or provide the fuzzy intrinsic metrics."
+    )
+
+
+def _has_result_value(value) -> bool:
+    """
+    Return whether a result cell contains a usable value.
+
+    Parameters:
+        value :
+            Result cell value.
+
+    Returns:
+        has_value : (bool)
+            True when the cell contains a non-missing value.
+    """
+
+    if pd.isna(value):
+        return False
+
+    return str(value).strip().lower() not in {
+        "",
+        "-",
+        "--",
+        "none",
+        "nan",
+        "n/a",
+    }
+
+
 def _normalize_overlapping_value(value) -> str:
-    """Normalize supported boolean-like values to 'Yes' or 'No'."""
+    """
+    Normalize a supported boolean-like value to "Yes" or "No".
+
+    Parameters:
+        value :
+            Value representing whether the ground truth is overlapping.
+
+    Returns:
+        normalized_value : (str)
+            Normalized overlap indicator, either "Yes" or "No".
+    """
 
     normalized = str(value).strip().lower()
 
@@ -577,8 +813,19 @@ def _normalize_overlapping_value(value) -> str:
     )
 
 
-def _find_runtime_column(dataframe: pd.DataFrame) -> str | None:
-    """Return the first supported runtime column found in the dataframe."""
+def _find_runtime_column(dataframe: pd.DataFrame) -> str:
+    """
+    Return the first supported runtime column found in the dataframe.
+
+    Parameters:
+        dataframe : (pd.DataFrame)
+            Dataframe containing the comparison results.
+
+    Returns:
+        runtime_column : (str | None)
+            Name of the first supported runtime column, or None if no supported
+            runtime column is present.
+    """
 
     for runtime_column in RUNTIME_INPUT_COLS:
         if runtime_column in dataframe.columns:
@@ -589,13 +836,18 @@ def _find_runtime_column(dataframe: pd.DataFrame) -> str | None:
 
 def _parse_mean_and_std(value) -> tuple[float, float]:
     """
-    Parse either a scalar or a "mean ± sample standard deviation" value.
+    Parse either a scalar value or a "mean ± sample standard deviation" value.
+
+    Parameters:
+        value :
+            Value to parse.
 
     Returns:
         mean : (float)
             Parsed scalar value or mean component.
         sample_std : (float)
-            Parsed sample standard deviation, or NaN for scalar input.
+            Parsed sample standard deviation, or NaN when the input contains only
+            one scalar value.
     """
 
     if pd.isna(value):
@@ -617,13 +869,34 @@ def _parse_mean_and_std(value) -> tuple[float, float]:
 
 
 def _reported_std_col(metric_col: str) -> str:
-    """Build the raw-data column name for a reported within-network std."""
+    """
+    Build the raw-data column name for a reported within-network standard deviation.
+
+    Parameters:
+        metric_col : (str)
+            Metric column name.
+
+    Returns:
+        reported_std_col : (str)
+            Column name used to store the reported within-network standard
+            deviation.
+    """
 
     return f"Reported Std {metric_col}"
 
 
 def _results_as_json(series: pd.Series) -> str:
-    """Convert numeric result values into a JSON list."""
+    """
+    Convert numeric result values into a JSON list.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing numeric result values.
+
+    Returns:
+        results_json : (str)
+            JSON representation of the finite numeric values.
+    """
 
     values = [
         None
@@ -635,7 +908,17 @@ def _results_as_json(series: pd.Series) -> str:
 
 
 def _algorithm_categorical(series: pd.Series) -> pd.Categorical:
-    """Create an algorithm categorical with a deterministic order."""
+    """
+    Create an algorithm categorical with a deterministic order.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing algorithm names.
+
+    Returns:
+        categorical : (pd.Series)
+            Categorical series using the preferred deterministic algorithm order.
+    """
 
     observed_algorithms = [
         str(algorithm)
@@ -656,7 +939,17 @@ def _algorithm_categorical(series: pd.Series) -> pd.Categorical:
 
 
 def _ordered_algorithms(series: pd.Series) -> list[str]:
-    """Return observed algorithms in the preferred deterministic order."""
+    """
+    Return observed algorithms in the preferred deterministic order.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing algorithm names.
+
+    Returns:
+        algorithms : (list[str])
+            Observed algorithm names in deterministic order.
+    """
 
     observed = {
         str(algorithm)
@@ -675,9 +968,11 @@ def _ordered_algorithms(series: pd.Series) -> list[str]:
 
 if __name__ == "__main__":
     for folders in [
-        ("non-spectral-baseline", "results_2026-07-28_01-06-56-313643"),
-        ("non-spectral-baseline", "results_2026-07-28_19-12-41-695604"),
-        ("non-spectral-baseline", "results_2026-07-28_19-28-06-901203"),
+        ##("non-spectral-baseline", "results_2026-07-28_01-06-56-313643"),
+        ##("non-spectral-baseline", "results_2026-07-28_19-12-41-695604"),
+        ##("non-spectral-baseline", "results_2026-07-28_19-28-06-901203"),
+        ("non-spectral-baseline", "results_2026-09-07_13-31-07-632881"),
+        ("non-spectral-baseline", "results_2026-09-07_13-46-48-687558"),
     ]:
         plot_real_world_non_spectral_comparison_results(
             results_dir=os.path.join(

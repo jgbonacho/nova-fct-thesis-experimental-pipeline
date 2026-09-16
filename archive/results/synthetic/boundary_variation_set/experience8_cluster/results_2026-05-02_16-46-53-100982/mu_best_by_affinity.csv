@@ -1,2 +1,2 @@
-Affinity Design,Variant,Overall Mean ONMI,Overall Sample Std ONMI,Overall Mean Omega,Overall Sample Std Omega,Overall Mean Relative Error |K'-K|/K,Overall Sample Std Relative Error |K'-K|/K,Overall Mean FADDIS Runtime,Overall Sample Std FADDIS Runtime
-default,006_default_lapin-off_$\gamma0.9$,0.447481,0.345961,0.474644,0.319075,0.088697,0.028651,11.644451,0.735616
+Affinity Design,Variant,Overall Mean ONMI,Overall Sample Std ONMI,Overall Mean Omega,Overall Sample Std Omega,Overall Mean Relative Error |K'-K|/K,Overall Sample Std Relative Error |K'-K|/K,Overall Mean Signed Relative Error (K'-K)/K,Overall Sample Std Signed Relative Error (K'-K)/K,Overall Mean Node Coverage,Overall Sample Std Node Coverage,Overall Mean FADDIS Runtime,Overall Sample Std FADDIS Runtime
+default,006_default_lapin-off_$\gamma0.9$,0.447481,0.345961,0.474644,0.319075,0.088697,0.028651,0.052685,0.067307,,,11.644451,0.735616

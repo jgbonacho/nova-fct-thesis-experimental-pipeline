@@ -1,0 +1,71 @@
+{
+  "network_families": [
+    {
+      "name": "01_aL_davgL",
+      "directory": "/home/j.bonacho/nova-fct-thesis-experimental-pipeline/src/pipeline/config/real_world_runners/../../../../networks/real-world/without-ground-truth",
+      "network_configs": [
+        {
+          "name": "les-miserables",
+          "gml_filename": "les-miserables",
+          "ground_truth": false,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": null
+        },
+        {
+          "name": "c-elegans-neural-network",
+          "gml_filename": "c-elegans-neural-network",
+          "ground_truth": false,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": null
+        },
+        {
+          "name": "c-elegans-metabolic",
+          "gml_filename": "c-elegans-metabolic",
+          "ground_truth": false,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": null
+        }
+      ]
+    },
+    {
+      "name": "05_aM_davgL",
+      "directory": "/home/j.bonacho/nova-fct-thesis-experimental-pipeline/src/pipeline/config/real_world_runners/../../../../networks/real-world/without-ground-truth",
+      "network_configs": [
+        {
+          "name": "dolphins",
+          "gml_filename": "dolphins",
+          "ground_truth": false,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": null
+        },
+        {
+          "name": "email-urv",
+          "gml_filename": "email-urv",
+          "ground_truth": false,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": null
+        },
+        {
+          "name": "co-authorships-in-network-science",
+          "gml_filename": "co-authorships-in-network-science",
+          "ground_truth": false,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": null
+        }
+      ]
+    },
+    {
+      "name": "06_aM_davgM",
+      "directory": "/home/j.bonacho/nova-fct-thesis-experimental-pipeline/src/pipeline/config/real_world_runners/../../../../networks/real-world/without-ground-truth",
+      "network_configs": [
+        {
+          "name": "jazz-musicians",
+          "gml_filename": "jazz-musicians",
+          "ground_truth": false,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": null
+        }
+      ]
+    }
+  ]
+}

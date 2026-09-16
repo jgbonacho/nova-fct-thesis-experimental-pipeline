@@ -32,6 +32,10 @@ EXECUTION_MODE_COL = "Execution Mode"
 LAPLACIAN_COL = "Laplacian"
 GAMMA_COL = "Gamma"
 KERR_COL = "|K'-K|/K"
+SIGNED_KERR_COL = "(K'-K)/K"
+NODE_COVERAGE_COL = "Node Coverage"
+K_PAIR_COL = "K' | K"
+N_SPARSIFIED_N_COL = "N | Sparsified N"
 ONMI_COL = "ONMI"
 OMEGA_COL = "Omega"
 FADDIS_RUNTIME_COL = "FADDIS Runtime"
@@ -64,24 +68,29 @@ NETWORK_RE = re.compile(r"n(?P<n>\d+)mu(?P<mu>\d*\.?\d+)on(?P<on>\d+)om(?P<om>\d
 
 def plot_variation_set_results(results_dir: str, variation_parameter: str, input_filename: str = "_results.csv"):
     """
-    Processes the results of a variation set experiment, computes summary statistics, and generates plots.
+    Process a variation-set experiment, compute summary statistics, and generate plots.
 
     Parameters:
         results_dir : (str)
-            Directory containing the experiment results, organized in subdirectories for each network instance.
+            Directory containing one subdirectory per network instance.
         variation_parameter : (str)
-            The network property to vary in the experiment.
+            Network property varied in the experiment.
         input_filename : (str, optional)
-            The name of the CSV file containing the results for each network instance.
+            Name of the CSV file containing the results for each network instance.
             Default is "_results.csv".
 
     Saves:
-        - A CSV file with the raw results for all instances and variants, named "{variation_parameter}_results.csv".
-        - A CSV file with summary statistics for each variant, named "{variation_parameter}_summary.csv".
-        - A CSV file with the best variant per affinity design, named "{variation_parameter}_best_variants_by_affinity.csv".
-        - A CSV file with the best variant per parameter, named "{variation_parameter}_best_variants_by_parameter.csv".
-        - A CSV file with the best variant per affinity design and parameter, named "{variation_parameter}_best_variants_by_parameter_affinity.csv".
-        - Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter.
+        - Raw results in "{variation_parameter}_results.csv".
+        - Summary statistics in "{variation_parameter}_summary.csv".
+        - Best variants by parameter in "{variation_parameter}_best_by_param.csv".
+        - Best variants by affinity design in "{variation_parameter}_best_by_affinity.csv".
+        - Best variants by parameter and affinity design in
+          "{variation_parameter}_best_by_param_affinity.csv".
+        - ONMI, Omega, relative K error, and FADDIS runtime plots in PDF and PNG formats.
+
+    Notes:
+        The signed relative K error is derived from "K' | K". Node coverage is derived
+        from "N | Sparsified N" when that source column is available; otherwise it is NaN.
     """
 
     rows = []
@@ -92,7 +101,15 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
         results_df = _read_csv(results_csv_path)
         has_faddis_runtime = FADDIS_RUNTIME_COL in results_df.columns
 
-        for col in [GAMMA_COL, KERR_COL, ONMI_COL, OMEGA_COL]:
+        # Derive the signed K error and, when available, node coverage from the existing paired columns.
+        results_df[SIGNED_KERR_COL] = results_df[K_PAIR_COL].apply(_compute_signed_relative_k_error)
+
+        if N_SPARSIFIED_N_COL in results_df.columns:
+            results_df[NODE_COVERAGE_COL] = results_df[N_SPARSIFIED_N_COL].apply(_compute_node_coverage)
+        else:
+            results_df[NODE_COVERAGE_COL] = float("nan")
+
+        for col in [GAMMA_COL, KERR_COL, SIGNED_KERR_COL, NODE_COVERAGE_COL, ONMI_COL, OMEGA_COL]:
             results_df[col] = pd.to_numeric(results_df[col], errors="coerce")
 
         if has_faddis_runtime:
@@ -112,6 +129,8 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
                 ONMI_COL: pd.to_numeric(res[ONMI_COL], errors="coerce"),
                 OMEGA_COL: pd.to_numeric(res[OMEGA_COL], errors="coerce"),
                 KERR_COL: pd.to_numeric(res[KERR_COL], errors="coerce"),
+                SIGNED_KERR_COL: pd.to_numeric(res[SIGNED_KERR_COL], errors="coerce"),
+                NODE_COVERAGE_COL: pd.to_numeric(res[NODE_COVERAGE_COL], errors="coerce"),
             }
 
             if has_faddis_runtime:
@@ -139,6 +158,14 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
         "Relative Error |K'-K|/K Results": (KERR_COL, results_as_json),
         "Mean Relative Error |K'-K|/K": (KERR_COL, "mean"),
         "Sample Std Relative Error |K'-K|/K": (KERR_COL, lambda s: s.std(ddof=1)),
+
+        "Signed Relative Error (K'-K)/K Results": (SIGNED_KERR_COL, results_as_json),
+        "Mean Signed Relative Error (K'-K)/K": (SIGNED_KERR_COL, "mean"),
+        "Sample Std Signed Relative Error (K'-K)/K": (SIGNED_KERR_COL, lambda s: s.std(ddof=1)),
+
+        "Node Coverage Results": (NODE_COVERAGE_COL, results_as_json),
+        "Mean Node Coverage": (NODE_COVERAGE_COL, "mean"),
+        "Sample Std Node Coverage": (NODE_COVERAGE_COL, lambda s: s.std(ddof=1)),
     }
 
     if FADDIS_RUNTIME_COL in raw_df.columns:
@@ -161,6 +188,10 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
         "Sample Std Omega",
         "Mean Relative Error |K'-K|/K",
         "Sample Std Relative Error |K'-K|/K",
+        "Mean Signed Relative Error (K'-K)/K",
+        "Sample Std Signed Relative Error (K'-K)/K",
+        "Mean Node Coverage",
+        "Sample Std Node Coverage",
         "Mean FADDIS Runtime",
         "Sample Std FADDIS Runtime",
     ]:
@@ -203,15 +234,15 @@ def plot_variation_set_results(results_dir: str, variation_parameter: str, input
 
 def _iter_sorted_dirs(directory: str) -> list[Path]:
     """
-    Iterate over sorted directories in a given directory.
+    Return the immediate subdirectories of a directory in sorted order.
 
     Parameters:
         directory : (str)
-            Directory to iterate over.
+            Directory whose subdirectories will be listed.
 
     Returns:
-        list : (list[Path])
-            A list of Path objects representing the sorted directories within the given directory.
+        directories : (list[Path])
+            Sorted list of immediate subdirectories.
     """
     return sorted(
         [path for path in Path(directory).iterdir() if path.is_dir()],
@@ -221,15 +252,19 @@ def _iter_sorted_dirs(directory: str) -> list[Path]:
 
 def _parse_network_name(network_name: str):
     """
-    Parse a network name to extract its properties.
+    Parse a network directory name into its network properties.
 
     Parameters:
         network_name : (str)
-            The name of the network.
+            Name of the network directory.
 
     Returns:
-        dict : (dict)
-            A dictionary containing the network properties.
+        properties : (dict | None)
+            Parsed n, mu, on, om, and instance values, or None when the name does not
+            match the expected format.
+
+    Notes:
+        Expected format example: "n1000mu0.1on200om2inst1".
     """
 
     m = NETWORK_RE.fullmatch(network_name)
@@ -248,15 +283,15 @@ def _parse_network_name(network_name: str):
 
 def _read_csv(csv_path: str) -> pd.DataFrame:
     """
-    Read a CSV file.
+    Read a results CSV file and normalize its column names.
 
     Parameters:
         csv_path : (str)
-            The path to the CSV file.
+            Path to the CSV file.
 
     Returns:
-        pd.DataFrame : (pd.DataFrame)
-            A DataFrame containing the CSV data.
+        df : (pd.DataFrame)
+            DataFrame containing the CSV data with stripped column names.
     """
 
     df = pd.read_csv(csv_path, sep=",", engine="python")
@@ -264,17 +299,57 @@ def _read_csv(csv_path: str) -> pd.DataFrame:
     return df
 
 
+def _compute_signed_relative_k_error(value) -> float:
+    """
+    Compute the signed relative error of the detected number of communities.
+
+    Parameters:
+        value : (object)
+            Value formatted as "K' | K", where K' is the detected number of communities
+            and K is the ground-truth number of communities.
+
+    Returns:
+        signed_relative_error : (float)
+            Value of (K' - K) / K, or NaN when the input cannot be parsed or K is zero.
+    """
+    try:
+        k_pred, k_true = [float(v.strip()) for v in str(value).split("|", 1)]
+        return (k_pred - k_true) / k_true if k_true != 0 else float("nan")
+    except (TypeError, ValueError):
+        return float("nan")
+
+
+def _compute_node_coverage(value) -> float:
+    """
+    Compute the fraction of original nodes retained after sparsification.
+
+    Parameters:
+        value : (object)
+            Value formatted as "N | Sparsified N".
+
+    Returns:
+        node_coverage : (float)
+            Value of Sparsified N / N, or NaN when the input cannot be parsed or N is zero.
+    """
+    try:
+        n, sparsified_n = [float(v.strip()) for v in str(value).split("|", 1)]
+        return sparsified_n / n if n != 0 else float("nan")
+    except (TypeError, ValueError):
+        return float("nan")
+
+
 def _build_variant_name(row: dict[str, str]) -> str:
     """
-    Build a variant name from the row dictionary.
+    Build the normalized variant name for a results row.
 
     Parameters:
         row : (dict[str, str])
-            A dictionary representing a row from the CSV file.
+            Dictionary representing one row from the results CSV.
 
     Returns:
         variant_name : (str)
-            The variant name.
+            Variant name composed of the zero-padded ID, affinity design, execution mode,
+            and gamma value.
     """
 
     variant_id = str(row[ID_COL]).strip().zfill(3)
@@ -289,15 +364,16 @@ def _build_variant_name(row: dict[str, str]) -> str:
 
 def results_as_json(series: pd.Series) -> str:
     """
-    Convert a pandas Series of results to a JSON string, handling NaN values appropriately.
+    Convert a pandas Series of numeric results to a JSON string.
 
     Parameters:
         series : (pd.Series)
-            A pandas Series containing the results.
+            Series containing the result values.
 
     Returns:
         json_str : (str)
-            A JSON string representation of the results.
+            JSON string containing values rounded to six decimal places, with NaN values
+            represented as null.
     """
 
     values = [None if pd.isna(x) else round(float(x), 6) for x in series.tolist()]
@@ -309,16 +385,10 @@ def _select_best_candidate_with_pareto_and_parsimony(
         onmi_col: str,
         omega_col: str,
         kerr_col: str,
-        runtime_col: str | None = None,
+        runtime_col: str = None,
 ) -> pd.Series:
     """
-    Select one candidate using Pareto-based acceptability and parsimony.
-
-    Selection strategy:
-        1. Retain candidates with acceptable ONMI, Omega, and relative error of K.
-        2. Among acceptable candidates, prefer the candidate with the lowest runtime.
-        3. Use ONMI, Omega, relative error, and variant name as deterministic tie-breakers.
-        4. If no candidate is jointly acceptable, fall back to the original quality ranking.
+    Select one candidate using tolerance-based acceptability and runtime parsimony.
 
     Parameters:
         df : (pd.DataFrame)
@@ -328,14 +398,19 @@ def _select_best_candidate_with_pareto_and_parsimony(
         omega_col : (str)
             Name of the Omega column to maximize.
         kerr_col : (str)
-            Name of the relative error of K column to minimize.
+            Name of the absolute relative K error column to minimize.
         runtime_col : (str | None, optional)
-            Name of the runtime column used for parsimony.
-            Default is None.
+            Name of the runtime column used for parsimony. Default is None.
 
     Returns:
         best_candidate : (pd.Series)
-            The selected candidate.
+            Selected candidate.
+
+    Notes:
+        Candidates within the configured ONMI, Omega, and K-error tolerances are retained.
+        Among acceptable candidates, lower runtime is preferred when available, followed
+        by ONMI, Omega, K error, and variant name. If no candidate is jointly acceptable,
+        the function falls back to ONMI, Omega, K error, and variant-name ordering.
     """
 
     valid_df = df.dropna(subset=[onmi_col, omega_col, kerr_col]).copy()
@@ -402,10 +477,10 @@ def _select_best_candidates_by_group(
         onmi_col: str,
         omega_col: str,
         kerr_col: str,
-        runtime_col: str | None = None,
+        runtime_col: str = None,
 ) -> pd.DataFrame:
     """
-    Select one candidate per group using Pareto-based acceptability and parsimony.
+    Select one candidate per group using the common selection procedure.
 
     Parameters:
         df : (pd.DataFrame)
@@ -417,10 +492,9 @@ def _select_best_candidates_by_group(
         omega_col : (str)
             Name of the Omega column to maximize.
         kerr_col : (str)
-            Name of the relative error of K column to minimize.
+            Name of the absolute relative K error column to minimize.
         runtime_col : (str | None, optional)
-            Name of the runtime column used for parsimony.
-            Default is None.
+            Name of the runtime column used for parsimony. Default is None.
 
     Returns:
         selected_df : (pd.DataFrame)
@@ -447,20 +521,19 @@ def _select_best_variants_by_variation_parameter(df: pd.DataFrame, variation_par
     """
     Select the best variant for each value of the variation parameter.
 
-    Selection strategy:
-        1. Pareto-based acceptability for ONMI, Omega, and relative error of K.
-        2. Runtime-based parsimony among acceptable candidates.
-        3. Original quality ranking as fallback.
-
     Parameters:
         df : (pd.DataFrame)
             DataFrame containing the summary results for the variation set.
         variation_parameter : (str)
-            The network property that was varied in the experiment.
+            Network property varied in the experiment.
 
     Returns:
-        pd.DataFrame : (pd.DataFrame)
-            DataFrame containing the best variant selected for each value of the variation parameter.
+        selected_df : (pd.DataFrame)
+            DataFrame containing one selected variant for each variation-parameter value.
+
+    Notes:
+        Selection uses mean ONMI, mean Omega, mean absolute relative K error, and mean
+        FADDIS runtime through the common acceptability-and-parsimony procedure.
     """
 
     return _select_best_candidates_by_group(
@@ -475,23 +548,21 @@ def _select_best_variants_by_variation_parameter(df: pd.DataFrame, variation_par
 
 def _select_best_variants_by_affinity_design(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Select the best variant for each affinity design.
-
-    Selection strategy:
-        1. Pareto-based acceptability for ONMI, Omega, and relative error of K.
-        2. Runtime-based parsimony among acceptable candidates.
-        3. Original quality ranking as fallback.
+    Select the best variant for each affinity design across the variation set.
 
     Parameters:
         df : (pd.DataFrame)
             DataFrame containing the summary results for the variation set.
 
     Returns:
-        pd.DataFrame : (pd.DataFrame)
-            DataFrame containing the best variant selected for each affinity design.
+        selected_df : (pd.DataFrame)
+            DataFrame containing one selected variant for each affinity design.
 
     Notes:
-        The selection is computed across all values of the variation parameter.
+        Metrics are first aggregated across variation-parameter values for each affinity
+        design and variant. Selection uses overall mean ONMI, Omega, absolute relative
+        K error, and FADDIS runtime. Signed K error and node coverage are retained as
+        reported statistics but are not used in the selection criterion.
     """
 
     agg_dict = {
@@ -507,6 +578,21 @@ def _select_best_variants_by_affinity_design(df: pd.DataFrame) -> pd.DataFrame:
         ),
         "Overall Sample Std Relative Error |K'-K|/K": (
             "Mean Relative Error |K'-K|/K",
+            lambda s: s.std(ddof=1),
+        ),
+
+        "Overall Mean Signed Relative Error (K'-K)/K": (
+            "Mean Signed Relative Error (K'-K)/K",
+            "mean",
+        ),
+        "Overall Sample Std Signed Relative Error (K'-K)/K": (
+            "Mean Signed Relative Error (K'-K)/K",
+            lambda s: s.std(ddof=1),
+        ),
+
+        "Overall Mean Node Coverage": ("Mean Node Coverage", "mean"),
+        "Overall Sample Std Node Coverage": (
+            "Mean Node Coverage",
             lambda s: s.std(ddof=1),
         ),
     }
@@ -533,6 +619,10 @@ def _select_best_variants_by_affinity_design(df: pd.DataFrame) -> pd.DataFrame:
         "Overall Sample Std Omega",
         "Overall Mean Relative Error |K'-K|/K",
         "Overall Sample Std Relative Error |K'-K|/K",
+        "Overall Mean Signed Relative Error (K'-K)/K",
+        "Overall Sample Std Signed Relative Error (K'-K)/K",
+        "Overall Mean Node Coverage",
+        "Overall Sample Std Node Coverage",
         "Overall Mean FADDIS Runtime",
         "Overall Sample Std FADDIS Runtime",
     ]:
@@ -553,6 +643,21 @@ def _select_best_variants_by_variation_parameter_and_affinity_design(
         df: pd.DataFrame,
         variation_parameter: str,
 ) -> pd.DataFrame:
+    """
+    Select and order the best variant for each parameter value and affinity design.
+
+    Parameters:
+        df : (pd.DataFrame)
+            DataFrame containing the summary results for the variation set.
+        variation_parameter : (str)
+            Network property varied in the experiment.
+
+    Returns:
+        selected_df : (pd.DataFrame)
+            DataFrame containing one selected variant per parameter-value/affinity-design
+            group, ordered within each parameter value by the common ranking procedure.
+    """
+
     selected_df = _select_best_candidates_by_group(
         df=df,
         group_columns=[variation_parameter, AFFINITY_DESIGN_COL],
@@ -590,8 +695,34 @@ def _order_candidates_with_pareto_and_parsimony(
         onmi_col: str,
         omega_col: str,
         kerr_col: str,
-        runtime_col: str | None = None,
+        runtime_col: str = None,
 ) -> pd.DataFrame:
+    """
+    Order candidates using tolerance-based acceptability and runtime parsimony.
+
+    Parameters:
+        df : (pd.DataFrame)
+            DataFrame containing candidates to order.
+        onmi_col : (str)
+            Name of the ONMI column to maximize.
+        omega_col : (str)
+            Name of the Omega column to maximize.
+        kerr_col : (str)
+            Name of the absolute relative K error column to minimize.
+        runtime_col : (str | None, optional)
+            Name of the runtime column used for parsimony. Default is None.
+
+    Returns:
+        ordered_df : (pd.DataFrame)
+            Candidates ordered with acceptable candidates first, followed by fallback
+            candidates.
+
+    Notes:
+        Acceptable candidates are ordered by runtime when available, then ONMI, Omega,
+        K error, and variant name. Fallback candidates are ordered by ONMI, Omega,
+        K error, and variant name.
+    """
+
     valid_df = df.dropna(subset=[onmi_col, omega_col, kerr_col]).copy()
 
     if valid_df.empty:
@@ -653,7 +784,7 @@ def _order_candidates_with_pareto_and_parsimony(
 
 def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
     """
-    Generate plots for the variation set results.
+    Generate metric plots against the selected variation parameter.
 
     Parameters:
         results_dir : (str)
@@ -661,10 +792,16 @@ def _plot_results(results_dir: str, df: pd.DataFrame, variation_parameter: str):
         df : (pd.DataFrame)
             DataFrame containing the summary results for the variation set.
         variation_parameter : (str)
-            The network property that was varied in the experiment, used for labeling the plots.
+            Network property used on the x-axis.
 
     Saves:
-        Plots of ONMI, Omega, relative error of K and FADDIS Runtime against the variation parameter.
+        - All-variant plots as "{variation_parameter}_all_variants.pdf" and PNG.
+        - Best-by-affinity plots as
+          "{variation_parameter}_best_variants_by_affinity_design.pdf" and PNG.
+
+    Notes:
+        Each figure shows mean ONMI, mean Omega, mean absolute relative K error, and,
+        when available, mean FADDIS runtime.
     """
 
     best_variants_df = _select_best_variants_by_affinity_design(df)

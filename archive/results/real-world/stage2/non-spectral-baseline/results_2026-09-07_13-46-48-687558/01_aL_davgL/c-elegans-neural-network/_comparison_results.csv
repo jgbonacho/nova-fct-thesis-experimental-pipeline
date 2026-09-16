@@ -1,0 +1,4 @@
+Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+FADDIS,c-elegans-neural-network,Yes,-,Default,LAPIN-off,0.003132,0.05,148,0.8,-,-,-,0.008164,0.241704,0.276013
+SLPA,c-elegans-neural-network,Yes,"[0, 1, 2, 3, 4]",-,-,-,-,-,-,21,0.1,-,0.1066718770048098 ± 0.10831820640494765,0.02302892445759322 ± 0.03479589195888527,3.533196
+CFinder,c-elegans-neural-network,Yes,-,-,-,-,-,-,-,-,-,5,0.239105,0.200210,0.059007

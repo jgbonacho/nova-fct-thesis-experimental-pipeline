@@ -1,5 +1,7 @@
 from dataclasses import dataclass, field
 
+import numpy as np
+
 
 @dataclass
 class IntrinsicMetrics:
@@ -21,3 +23,30 @@ class IntrinsicMetrics:
     conductance: float = field(default=None, metadata={"label": "Conductance"})
     fuzzy_modularity: float = field(default=None, metadata={"label": "Fuzzy-Modularity"})
     conductance_bn: float = field(default=None, metadata={"label": "Conductance-BN"})
+
+
+def labels_to_membership_matrix(
+        predicted_labels: list[list[int]],
+        k_predicted: int
+) -> np.ndarray:
+    """
+    Convert overlapping community labels to a binary membership matrix.
+
+    Parameters:
+        predicted_labels : (list[list[int]])
+            Predicted community labels for each node.
+        k_predicted : (int)
+            Number of predicted communities.
+
+    Returns:
+        U : (np.ndarray, shape[n,k])
+            Binary membership matrix.
+    """
+
+    U = np.zeros((len(predicted_labels), k_predicted))
+
+    for node, labels in enumerate(predicted_labels):
+        for label in labels:
+            U[node, label] = 1.0
+
+    return U

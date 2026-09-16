@@ -65,7 +65,7 @@ def main(
             networks_base_dir=synthetic_runner.SYNTHETIC_NETWORKS_BASE_DIR,
             results_base_dir=synthetic_runner.RESULTS_BASE_DIR,
             network_family_configs=synthetic_runner.load_network_family_configs(synthetic_runner.CONFIG_DIR),
-            number_of_seeds=3
+            number_of_seeds=5
         )
 
     if execute_synthetic_networks_non_spectral_comparison_experiments:
@@ -74,7 +74,7 @@ def main(
             results_base_dir=synthetic_runner.RESULTS_BASE_DIR,
             network_family_configs=synthetic_runner.load_network_family_configs(synthetic_runner.CONFIG_DIR),
             thresholds=synthetic_runner.load_thresholds(synthetic_runner.CONFIG_DIR),
-            number_of_seeds=3,
+            number_of_seeds=5,
         )
 
     # Real-World Networks Experiments
@@ -92,7 +92,8 @@ def main(
         run_real_world_networks_spectral_comparison_experiments(
             results_base_dir=real_world_runner.RESULTS_BASE_DIR,
             network_family_configs=real_world_runner.load_network_family_configs(real_world_runner.CONFIG_DIR),
-            number_of_seeds=3
+            thresholds=real_world_runner.load_thresholds(real_world_runner.CONFIG_DIR),
+            number_of_seeds=5
         )
 
     if execute_real_world_networks_non_spectral_comparison_experiments:
@@ -100,7 +101,7 @@ def main(
             results_base_dir=real_world_runner.RESULTS_BASE_DIR,
             network_family_configs=real_world_runner.load_network_family_configs(real_world_runner.CONFIG_DIR),
             thresholds=real_world_runner.load_thresholds(real_world_runner.CONFIG_DIR),
-            number_of_seeds=3
+            number_of_seeds=5
         )
 
 

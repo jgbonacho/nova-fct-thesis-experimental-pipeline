@@ -1,0 +1,3 @@
+Algorithm,Network,Seeds,Affinity Design,Execution Mode,gamma (FADDIS),m (NJW+FCM),e (NJW+FCM),t_max (NJW+FCM),fi (NJW+FCM),Modularity,Conductance,FADDIS Runtime
+FADDIS,c-elegans-metabolic,-,Default,LAPIN-off,0.8,-,-,-,-,0.339523,0.351648,0.892994
+NJW+FCM,c-elegans-metabolic,"[0, 1, 2, 3, 4]",Default,LAPIN-off,-,2,1.000000e-05,100,0.1,-0.008364456637707667 ± 0.0025403438027339397,0.5384615384615385 ± 0.2808833628231621,2.431699

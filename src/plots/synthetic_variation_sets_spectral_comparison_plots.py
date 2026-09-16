@@ -92,12 +92,12 @@ def plot_spectral_comparison_variation_set_results(
     """
     Process spectral-comparison results for a variation set and generate summary plots.
 
-    FADDIS scalar metric values and the mean component of NJW+FCM
-    "mean ± sample standard deviation" values are aggregated across network
-    instances for each value of the variation parameter. Sample standard
-    deviations across network instances and reported within-instance standard
-    deviations across stochastic executions, when available, are both shown
-    as error bars in the figures.
+    FADDIS scalar metric values and the mean component of NJW+FCM values formatted
+    as "mean ± sample standard deviation" are aggregated across network instances
+    for each value of the variation parameter. Sample standard deviations across
+    network instances and reported within-instance standard deviations across
+    stochastic executions, when available, are both shown as error bars in the
+    figures.
 
     Parameters:
         results_dir : (str)
@@ -112,12 +112,15 @@ def plot_spectral_comparison_variation_set_results(
     Saves:
         - A CSV file containing the parsed per-network algorithm results:
           "{variation_parameter}_spectral_comparison_results.csv".
-        - A CSV file containing the aggregated results by variation parameter
-          and algorithm:
+        - A CSV file containing the aggregated results by variation parameter and
+          algorithm:
           "{variation_parameter}_spectral_comparison_summary.csv".
-        - A PDF containing plots of mean ONMI, mean Omega,
-          mean Fuzzy-Modularity, and mean Conductance-BN:
+        - A PDF containing plots of mean ONMI, mean Omega, mean Fuzzy-Modularity,
+          and mean Conductance-BN:
           "{variation_parameter}_spectral_algorithms.pdf".
+
+    Returns:
+        None
     """
 
     _validate_variation_parameter(variation_parameter)
@@ -235,14 +238,23 @@ def _compute_summary(
         variation_parameter: str,
 ) -> pd.DataFrame:
     """
-    Aggregate the per-network metric means by variation parameter and algorithm.
+    Aggregate per-network metric means by variation parameter and algorithm.
 
-    For NJW+FCM, each source CSV cell can already represent a mean and sample
-    standard deviation across seeds. Only the source mean is used in the
-    algorithm curve. The sample standard deviation across network instances
-    and the reported within-network standard deviation across stochastic
-    executions are retained separately and both used as figure error bars when
-    available.
+    For NJW+FCM, each source CSV cell can represent a mean and sample standard
+    deviation across seeds. Only the source mean is used in the algorithm curve.
+    The sample standard deviation across network instances and the reported
+    within-network standard deviation across stochastic executions are retained
+    separately and both used as figure error bars when available.
+
+    Parameters:
+        raw_df : (pd.DataFrame)
+            Dataframe containing the parsed per-network comparison results.
+        variation_parameter : (str)
+            Network property varied in the experiment.
+
+    Returns:
+        summary_df : (pd.DataFrame)
+            Aggregated results grouped by variation-parameter value and algorithm.
     """
 
     aggregation = {
@@ -309,7 +321,20 @@ def _plot_results(
         summary_df: pd.DataFrame,
         variation_parameter: str,
 ) -> None:
-    """Plot the four aggregated spectral-comparison metrics."""
+    """
+    Plot the aggregated spectral-comparison metrics.
+
+    Parameters:
+        results_dir : (str)
+            Directory in which the generated figures are saved.
+        summary_df : (pd.DataFrame)
+            Aggregated comparison results.
+        variation_parameter : (str)
+            Network property represented on the x-axis.
+
+    Returns:
+        None
+    """
 
     algorithms = _ordered_algorithms(summary_df[ALGORITHM_COL])
     algorithm_markers = {
@@ -481,7 +506,17 @@ def _plot_results(
 
 
 def _iter_sorted_dirs(directory: str) -> list[Path]:
-    """Return the immediate subdirectories sorted by name."""
+    """
+    Return the immediate subdirectories sorted by name.
+
+    Parameters:
+        directory : (str)
+            Directory containing the network-instance subdirectories.
+
+    Returns:
+        directories : (list[Path])
+            Immediate subdirectories sorted by name.
+    """
 
     return sorted(
         [
@@ -493,8 +528,19 @@ def _iter_sorted_dirs(directory: str) -> list[Path]:
     )
 
 
-def _parse_network_name(network_name: str) -> dict[str, int | float] | None:
-    """Parse an LFR network name into its variation properties."""
+def _parse_network_name(network_name: str) -> dict[str, int]:
+    """
+    Parse an LFR network name into its variation properties.
+
+    Parameters:
+        network_name : (str)
+            LFR network name to parse.
+
+    Returns:
+        properties : (dict | None)
+            Parsed network properties, or None when the network name does not match
+            the expected format.
+    """
 
     match = NETWORK_RE.fullmatch(network_name)
     if match is None:
@@ -511,7 +557,17 @@ def _parse_network_name(network_name: str) -> dict[str, int | float] | None:
 
 
 def _read_csv(csv_path: str) -> pd.DataFrame:
-    """Read a result CSV and normalize its column names."""
+    """
+    Read a result CSV file and normalize its column names.
+
+    Parameters:
+        csv_path : (str)
+            Path to the input CSV file.
+
+    Returns:
+        dataframe : (pd.DataFrame)
+            Loaded dataframe with normalized column names.
+    """
 
     dataframe = pd.read_csv(csv_path, sep=",", engine="python")
     dataframe.columns = [
@@ -521,8 +577,19 @@ def _read_csv(csv_path: str) -> pd.DataFrame:
     return dataframe
 
 
-def _find_runtime_column(dataframe: pd.DataFrame) -> str | None:
-    """Return the first supported runtime column found in the dataframe."""
+def _find_runtime_column(dataframe: pd.DataFrame) -> str:
+    """
+    Return the first supported runtime column found in the dataframe.
+
+    Parameters:
+        dataframe : (pd.DataFrame)
+            Dataframe containing the comparison results.
+
+    Returns:
+        runtime_column : (str | None)
+            Name of the first supported runtime column, or None if no supported
+            runtime column is present.
+    """
 
     for runtime_column in RUNTIME_INPUT_COLS:
         if runtime_column in dataframe.columns:
@@ -535,12 +602,16 @@ def _parse_mean_and_std(value) -> tuple[float, float]:
     """
     Parse either a scalar value or a "mean ± sample standard deviation" value.
 
+    Parameters:
+        value :
+            Value to parse.
+
     Returns:
         mean : (float)
-            Parsed scalar or mean component.
+            Parsed scalar value or mean component.
         sample_std : (float)
-            Parsed sample-standard-deviation component, or NaN when the input
-            contains only one scalar value.
+            Parsed sample standard deviation, or NaN when the input contains only
+            one scalar value.
     """
 
     if pd.isna(value):
@@ -562,13 +633,34 @@ def _parse_mean_and_std(value) -> tuple[float, float]:
 
 
 def _reported_std_col(metric_col: str) -> str:
-    """Build the raw-data column name for a reported within-network std."""
+    """
+    Build the raw-data column name for a reported within-network standard deviation.
+
+    Parameters:
+        metric_col : (str)
+            Metric column name.
+
+    Returns:
+        reported_std_col : (str)
+            Column name used to store the reported within-network standard
+            deviation.
+    """
 
     return f"Reported Std {metric_col}"
 
 
 def _results_as_json(series: pd.Series) -> str:
-    """Convert numeric result values into a JSON list."""
+    """
+    Convert numeric result values into a JSON list.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing numeric result values.
+
+    Returns:
+        results_json : (str)
+            JSON representation of the finite numeric values.
+    """
 
     values = [
         None
@@ -580,7 +672,17 @@ def _results_as_json(series: pd.Series) -> str:
 
 
 def _algorithm_categorical(series: pd.Series) -> pd.Categorical:
-    """Create a categorical algorithm column with a deterministic order."""
+    """
+    Create an algorithm categorical with a deterministic order.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing algorithm names.
+
+    Returns:
+        categorical : (pd.Series)
+            Categorical series using the preferred deterministic algorithm order.
+    """
 
     observed_algorithms = [
         str(algorithm)
@@ -601,7 +703,17 @@ def _algorithm_categorical(series: pd.Series) -> pd.Categorical:
 
 
 def _ordered_algorithms(series: pd.Series) -> list[str]:
-    """Return observed algorithms in the preferred deterministic order."""
+    """
+    Return observed algorithms in the preferred deterministic order.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing algorithm names.
+
+    Returns:
+        algorithms : (list[str])
+            Observed algorithm names in deterministic order.
+    """
 
     observed = {
         str(algorithm)
@@ -621,7 +733,20 @@ def _ordered_algorithms(series: pd.Series) -> list[str]:
 
 
 def _validate_variation_parameter(variation_parameter: str) -> None:
-    """Validate that the requested variation parameter is supported."""
+    """
+    Validate that the requested variation parameter is supported.
+
+    Parameters:
+        variation_parameter : (str)
+            Variation parameter to validate.
+
+    Returns:
+        None
+
+    Raises:
+        ValueError:
+            If the variation parameter is not supported.
+    """
 
     if variation_parameter not in VARIATION_PARAMETER_LIMITS:
         raise ValueError(
@@ -634,7 +759,8 @@ if __name__ == "__main__":
     # Boundary variation set.
     for folders in [
         ("spectral-baseline", "results_2026-07-28_01-15-27-987757"),
-        ("spectral-baseline", "results_2026-08-23_22-59-23-685832")
+        ("spectral-baseline", "results_2026-08-23_22-59-23-685832"),
+        ("spectral-baseline", "results_2026-09-08_08-06-16-941587")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
@@ -649,7 +775,8 @@ if __name__ == "__main__":
     # Membership variation set.
     for folders in [
         ("spectral-baseline", "results_2026-07-28_03-11-14-484538"),
-        ("spectral-baseline", "results_2026-08-24_01-42-24-752338")
+        ("spectral-baseline", "results_2026-08-24_01-42-24-752338"),
+        ("spectral-baseline", "results_2026-09-08_11-07-56-669992")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
@@ -664,7 +791,8 @@ if __name__ == "__main__":
     # Overlap variation set.
     for folders in [
         ("spectral-baseline", "results_2026-07-28_05-06-56-584925"),
-        ("spectral-baseline", "results_2026-08-24_08-08-27-013832")
+        ("spectral-baseline", "results_2026-08-24_08-08-27-013832"),
+        ("spectral-baseline", "results_2026-09-08_14-40-22-439247"),
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(

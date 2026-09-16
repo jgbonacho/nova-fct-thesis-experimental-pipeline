@@ -1,2 +1,2 @@
-Affinity Design,Variant,Overall Mean ONMI,Overall Sample Std ONMI,Overall Mean Omega,Overall Sample Std Omega,Overall Mean Relative Error |K'-K|/K,Overall Sample Std Relative Error |K'-K|/K
-default,006_default_lapin-off_$\gamma0.9$,0.574855,0.260847,0.607059,0.216705,0.090122,0.037651
+Affinity Design,Variant,Overall Mean ONMI,Overall Sample Std ONMI,Overall Mean Omega,Overall Sample Std Omega,Overall Mean Relative Error |K'-K|/K,Overall Sample Std Relative Error |K'-K|/K,Overall Mean Signed Relative Error (K'-K)/K,Overall Sample Std Signed Relative Error (K'-K)/K,Overall Mean Node Coverage,Overall Sample Std Node Coverage
+default,006_default_lapin-off_$\gamma0.9$,0.574855,0.260847,0.607059,0.216705,0.090122,0.037651,0.011291,0.096745,,

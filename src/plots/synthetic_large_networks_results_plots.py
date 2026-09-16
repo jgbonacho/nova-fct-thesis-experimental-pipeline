@@ -50,23 +50,25 @@ NETWORK_RE = re.compile(
 
 def plot_results_by_network(results_dir: str, input_filename: str = "_results.csv"):
     """
-    Process the results by network setting and generate plots.
-
-    The x-axis is the network configuration without the instance number.
-    The instance number is used to compute mean and sample standard deviation.
+    Process synthetic large-network results by network setting and generate summary outputs.
 
     Parameters:
         results_dir : (str)
-            Directory containing the experiment results.
-            It can contain network folders directly or family/network folders.
+            Directory containing the experiment results. Network result folders may be
+            located directly under this directory or inside family subdirectories.
         input_filename : (str, optional)
-            The name of the CSV file containing the results for each network instance.
+            Name of the CSV file containing the results for each network instance.
             Default is "_results.csv".
 
     Saves:
-        - A CSV file with the raw results for all instances and variants, named "network_results.csv".
-        - A CSV file with summary statistics for each network setting and variant, named "network_results_summary.csv".
-        - Plots of ONMI, Omega, relative error of K and FADDIS Runtime, saved as PDF files.
+        - Raw results for all instances and variants in "network_results.csv".
+        - Summary statistics for each network setting and variant in "network_summary.csv".
+        - ONMI, Omega, relative K error, and FADDIS runtime plots in both PDF and PNG formats.
+
+    Notes:
+        The x-axis uses the network setting without the instance number. Results from
+        different instances of the same setting are aggregated using the mean and sample
+        standard deviation.
     """
 
     rows = []
@@ -179,21 +181,21 @@ def plot_results_by_network(results_dir: str, input_filename: str = "_results.cs
 
 def _iter_network_result_dirs(results_dir: str, input_filename: str) -> list[Path]:
     """
-    Find all network result directories containing the input results CSV.
-
-    This works both when:
-        - results_dir directly contains network folders;
-        - results_dir contains family/network folders.
+    Find all network result directories containing the specified results CSV.
 
     Parameters:
         results_dir : (str)
             Directory containing the experiment results.
         input_filename : (str)
-            Results CSV filename.
+            Name of the results CSV file to locate.
 
     Returns:
         network_result_dirs : (list[Path])
-            List of network result directories.
+            Sorted list of directories containing the specified results CSV.
+
+    Notes:
+        The recursive search supports both direct network folders and
+        family/network folder structures.
     """
 
     return sorted(
@@ -204,18 +206,18 @@ def _iter_network_result_dirs(results_dir: str, input_filename: str) -> list[Pat
 
 def _parse_network_name(network_name: str):
     """
-    Parse a network name to extract its properties.
-
-    Example:
-        n2000_K50_f0.1_om3_inst2
+    Parse a network directory name into its network properties.
 
     Parameters:
         network_name : (str)
-            The name of the network.
+            Name of the network directory.
 
     Returns:
         properties : (dict | None)
-            A dictionary containing the network properties, or None if the name does not match.
+            Parsed network properties, or None when the name does not match the expected format.
+
+    Notes:
+        Expected format example: "n2000_K50_f0.1_om3_inst2".
     """
 
     m = NETWORK_RE.fullmatch(network_name)
@@ -236,16 +238,16 @@ def _build_network_setting(properties: dict) -> str:
     """
     Build the network setting name without the instance number.
 
-    Example:
-        n2000_K50_f0.1_om3
-
     Parameters:
         properties : (dict)
             Parsed network properties.
 
     Returns:
         network_setting : (str)
-            Network setting without instance number.
+            Network setting containing n, K, f, and om, without the instance number.
+
+    Notes:
+        Example output: "n2000_K50_f0.1_om3".
     """
 
     return (
@@ -258,15 +260,15 @@ def _build_network_setting(properties: dict) -> str:
 
 def _read_csv(csv_path: str) -> pd.DataFrame:
     """
-    Read a CSV file.
+    Read a results CSV file and normalize its column names.
 
     Parameters:
         csv_path : (str)
-            The path to the CSV file.
+            Path to the CSV file.
 
     Returns:
         df : (pd.DataFrame)
-            A DataFrame containing the CSV data.
+            DataFrame containing the CSV data with stripped column names.
     """
 
     df = pd.read_csv(csv_path, sep=",", engine="python")
@@ -276,15 +278,16 @@ def _read_csv(csv_path: str) -> pd.DataFrame:
 
 def _build_variant_name(row: dict[str, str]) -> str:
     """
-    Build a variant name from the row dictionary.
+    Build the normalized variant name for a results row.
 
     Parameters:
         row : (dict[str, str])
-            A dictionary representing a row from the CSV file.
+            Dictionary representing one row from the results CSV.
 
     Returns:
         variant_name : (str)
-            The variant name.
+            Variant name composed of the zero-padded ID, affinity design, execution mode,
+            and gamma value.
     """
 
     variant_id = str(row[ID_COL]).strip().zfill(3)
@@ -297,15 +300,16 @@ def _build_variant_name(row: dict[str, str]) -> str:
 
 def results_as_json(series: pd.Series) -> str:
     """
-    Convert a pandas Series of results to a JSON string, handling NaN values appropriately.
+    Convert a pandas Series of numeric results to a JSON string.
 
     Parameters:
         series : (pd.Series)
-            A pandas Series containing the results.
+            Series containing the result values.
 
     Returns:
         json_str : (str)
-            A JSON string representation of the results.
+            JSON string containing values rounded to six decimal places, with NaN values
+            represented as null.
     """
 
     values = [None if pd.isna(x) else round(float(x), 6) for x in series.tolist()]
@@ -314,16 +318,21 @@ def results_as_json(series: pd.Series) -> str:
 
 def _plot_results_by_network(results_dir: str, df: pd.DataFrame):
     """
-    Generate plots using the network setting as the x-axis.
+    Generate metric plots using the network setting as the x-axis.
 
     Parameters:
         results_dir : (str)
             Directory where the plots will be saved.
         df : (pd.DataFrame)
-            DataFrame containing summary results.
+            DataFrame containing the summary results by network setting and variant.
 
     Saves:
-        PDF plots in the results directory.
+        - "network_results_all_variants.pdf".
+        - "network_results_all_variants.png".
+
+    Notes:
+        The plots show mean ONMI, mean Omega, mean relative K error, and, when available,
+        mean FADDIS runtime for all variants.
     """
 
     plot_variants = [
