@@ -1,0 +1,9 @@
+[
+ {
+    "name": "citeseer",
+    "gml_filename": "citeseer",
+    "ground_truth": true,
+    "overlapping_ground_truth": false,
+    "ground_truth_attr": "gt"
+  }
+]

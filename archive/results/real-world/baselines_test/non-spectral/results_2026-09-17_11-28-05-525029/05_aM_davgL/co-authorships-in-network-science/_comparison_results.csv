@@ -1,0 +1,4 @@
+Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),K' | K,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+FADDIS,co-authorships-in-network-science,Yes,-,Default,LAPIN-off,0.003946,0.05,189,0.8,-,-,-,22,0.060129,0.025253,1.163124
+SLPA,co-authorships-in-network-science,Yes,"[0, 1, 2, 3, 4]",-,-,-,-,-,-,21,0.1,-,34.2 ± 2.3874672772626644,0.7430080498084475 ± 0.020835797504863165,0.02798497798497799 ± 0.006055671701886824,1.510616
+CFinder,co-authorships-in-network-science,Yes,-,-,-,-,-,-,-,-,-,5,35,0.628198,0.032051,0.015589

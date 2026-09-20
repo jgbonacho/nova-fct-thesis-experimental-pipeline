@@ -1,4 +1,0 @@
-Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-FADDIS,les-miserables,Yes,-,Default,LAPIN-off,0.000859,0.05,38,0.8,-,-,-,0.066224,0.099808,0.034141
-SLPA,les-miserables,Yes,"[0, 1, 2, 3, 4]",-,-,-,-,-,-,21,0.1,-,0.3300460350920702 ± 0.13518104825810626,0.05106245677525954 ± 0.03947339295415838,0.468063
-CFinder,les-miserables,Yes,-,-,-,-,-,-,-,-,-,5,0.482628,0.094444,0.003567

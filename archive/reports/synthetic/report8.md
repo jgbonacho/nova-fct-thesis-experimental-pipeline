@@ -14,8 +14,6 @@
     - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-1)
 - [Overlap Variation Set](#overlap-variation-set)
     - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-2)
-- [Size Variation Set](#size-variation-set)
-    - [Experience 5 (LAPIN-off + Extraction of K desired clusters) Results](#experience-5-lapin-off--extraction-of-k-desired-clusters-results-3)
 - [Hardware](#hardware)
 
 
@@ -108,9 +106,9 @@
 
 ### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/boundary_variation_set/lapin_and_laplacian/results_2026-06-17_16-17-14-278377/)
+[Open Folder](../../results/synthetic/validation/bvs/lapin_and_laplacian/results_2026-06-17_16-17-14-278377/)
 
-![Experience 5 Results](../../results/synthetic/boundary_variation_set/lapin_and_laplacian/results_2026-06-17_16-17-14-278377/mu_all_variants.png)
+![Experience 5 Results](../../results/synthetic/validation/bvs/lapin_and_laplacian/results_2026-06-17_16-17-14-278377/mu_all_variants.png)
 
 - **Observations**
     - "Best" laplacian: "Lsym"
@@ -121,9 +119,9 @@
 
 ### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/membership_variation_set/lapin_and_laplacian/results_2026-06-18_16-51-24-027093/)
+[Open Folder](../../results/synthetic/validation/mvs/lapin_and_laplacian/results_2026-06-18_16-51-24-027093/)
 
-![Experience 5 Results](../../results/synthetic/membership_variation_set/lapin_and_laplacian/results_2026-06-18_16-51-24-027093/om_all_variants.png)
+![Experience 5 Results](../../results/synthetic/validation/mvs/lapin_and_laplacian/results_2026-06-18_16-51-24-027093/om_all_variants.png)
 
 - **Observations**
     - "Best" laplacian: "Lsym"
@@ -134,9 +132,9 @@
 
 ### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/overlap_variation_set/lapin_and_laplacian/results_2026-06-19_21-09-49-051769/)
+[Open Folder](../../results/synthetic/validation/ovs/lapin_and_laplacian/results_2026-06-19_21-09-49-051769/)
 
-![Experience 5 Results](../../results/synthetic/overlap_variation_set/lapin_and_laplacian/results_2026-06-19_21-09-49-051769/on_all_variants.png)
+![Experience 5 Results](../../results/synthetic/validation/ovs/lapin_and_laplacian/results_2026-06-19_21-09-49-051769/on_all_variants.png)
 
 - **Observations**
     - "Best" laplacian: "Lsym"

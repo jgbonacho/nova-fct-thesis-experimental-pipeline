@@ -1,3 +1,0 @@
-Algorithm,Network,Seeds,Affinity Design,Execution Mode,gamma (FADDIS),m (NJW+FCM),e (NJW+FCM),t_max (NJW+FCM),fi (NJW+FCM),Modularity,Conductance,FADDIS Runtime
-FADDIS,les-miserables,-,Default,LAPIN-off,0.8,-,-,-,-,0.494916,0.130435,0.032993
-NJW+FCM,les-miserables,"[0, 1, 2, 3, 4]",Default,LAPIN-off,-,2,1.000000e-05,100,0.1,0.0021219542439084795 ± 0.011138098110636837,0.5989203778677463 ± 0.12661543723173443,0.039360

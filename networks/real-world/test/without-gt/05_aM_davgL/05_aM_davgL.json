@@ -1,0 +1,12 @@
+[
+    {
+        "name": "dolphins",
+        "gml_filename": "dolphins",
+        "ground_truth": false
+    },
+    {
+        "name": "co-authorships-in-network-science",
+        "gml_filename": "co-authorships-in-network-science",
+        "ground_truth": false
+    }
+]

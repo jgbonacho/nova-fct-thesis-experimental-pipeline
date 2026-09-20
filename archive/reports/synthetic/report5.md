@@ -93,9 +93,9 @@ eigenvalues_pos = np.argwhere(curr_eigenvalues > ZERO_BOUND).ravel()
 size_positive_eigenvalues = eigenvalues_pos.size
 ```
 
-[Open Folder](../../results/synthetic/size_variation_set/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/)
+[Open Folder](../../results/synthetic/validation/svs/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/)
 
-![Experience with numpy.linalg.eigh Results](../../results/synthetic/size_variation_set/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/n_all_variants.png)
+![Experience with numpy.linalg.eigh Results](../../results/synthetic/validation/svs/faddis_numpy_eigh/results_2026-05-01_22-11-08-231496/n_all_variants.png)
 
 
 
@@ -114,9 +114,9 @@ eigenvalues_pos = np.argwhere(curr_eigenvalues > ZERO_BOUND).ravel()
 size_positive_eigenvalues = eigenvalues_pos.size
 ```
 
-[Open Folder](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/)
+[Open Folder](../../results/synthetic/validation/svs/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/)
 
-![Experience with scipy.linalg.eigh (driver='evd') Results](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/n_all_variants.png)
+![Experience with scipy.linalg.eigh (driver='evd') Results](../../results/synthetic/validation/svs/faddis_scipy_eigh_evd/results_2026-05-01_19-11-52-478180/n_all_variants.png)
 
 
 
@@ -136,9 +136,9 @@ size_positive_eigenvalues = curr_eigenvalues.size
 eigenvalues_pos = np.argsort(curr_eigenvalues)[::-1]
 ```
 
-[Open Folder](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/)
+[Open Folder](../../results/synthetic/validation/svs/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/)
 
-![Experience with scipy.linalg.eigh (driver='evr') Results](../../results/synthetic/size_variation_set/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_all_variants.png)
+![Experience with scipy.linalg.eigh (driver='evr') Results](../../results/synthetic/validation/svs/faddis_scipy_eigh_evr/results_2026-05-01_16-12-18-640998/n_all_variants.png)
 
 
 

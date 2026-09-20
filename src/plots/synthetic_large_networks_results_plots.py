@@ -471,7 +471,8 @@ if __name__ == "__main__":
     plot_results_by_network(
         results_dir=os.path.join(
             RESULTS_BASE_DIR,
-            "updated_size_variation_set",
+            "validation",
+            "updated_svs",
             "experience9_cluster",
             "results_2026-05-06_17-17-41-795974"
         )
@@ -481,7 +482,8 @@ if __name__ == "__main__":
     plot_results_by_network(
         results_dir=os.path.join(
             RESULTS_BASE_DIR,
-            "updated_size_variation_set",
+            "validation",
+            "updated_svs",
             "experience9_cluster",
             "results_2026-05-07_00-32-30-551860"
         )
@@ -491,7 +493,8 @@ if __name__ == "__main__":
     plot_results_by_network(
         results_dir=os.path.join(
             RESULTS_BASE_DIR,
-            "updated_size_variation_set",
+            "validation",
+            "updated_svs",
             "experience9_cluster",
             "results_2026-05-09_00-35-20-804381"
         )

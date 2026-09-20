@@ -758,14 +758,13 @@ def _validate_variation_parameter(variation_parameter: str) -> None:
 if __name__ == "__main__":
     # Boundary variation set.
     for folders in [
-        ("spectral-baseline", "results_2026-07-28_01-15-27-987757"),
-        ("spectral-baseline", "results_2026-08-23_22-59-23-685832"),
-        ("spectral-baseline", "results_2026-09-08_08-06-16-941587")
+        ("spectral", "results_2026-09-17_01-27-15-558872")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
                 RESULTS_BASE_DIR,
-                "boundary_variation_set",
+                "baselines_test",
+                "bvs",
                 folders[0],
                 folders[1],
             ),
@@ -774,14 +773,13 @@ if __name__ == "__main__":
 
     # Membership variation set.
     for folders in [
-        ("spectral-baseline", "results_2026-07-28_03-11-14-484538"),
-        ("spectral-baseline", "results_2026-08-24_01-42-24-752338"),
-        ("spectral-baseline", "results_2026-09-08_11-07-56-669992")
+        ("spectral", "results_2026-09-17_03-03-36-370161")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
                 RESULTS_BASE_DIR,
-                "membership_variation_set",
+                "baselines_test",
+                "mvs",
                 folders[0],
                 folders[1],
             ),
@@ -790,14 +788,13 @@ if __name__ == "__main__":
 
     # Overlap variation set.
     for folders in [
-        ("spectral-baseline", "results_2026-07-28_05-06-56-584925"),
-        ("spectral-baseline", "results_2026-08-24_08-08-27-013832"),
-        ("spectral-baseline", "results_2026-09-08_14-40-22-439247"),
+        ("spectral", "results_2026-09-17_05-05-06-242932")
     ]:
         plot_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
                 RESULTS_BASE_DIR,
-                "overlap_variation_set",
+                "baselines_test",
+                "ovs",
                 folders[0],
                 folders[1],
             ),

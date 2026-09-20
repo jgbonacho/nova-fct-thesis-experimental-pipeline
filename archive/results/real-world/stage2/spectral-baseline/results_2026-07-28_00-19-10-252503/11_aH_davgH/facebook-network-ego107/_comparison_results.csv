@@ -1,3 +1,0 @@
-Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,gamma (FADDIS),m (NJW+FCM),e (NJW+FCM),t_max (NJW+FCM),fi (NJW+FCM),K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-FADDIS,facebook-network-ego107,Yes,-,Default,LAPIN-off,0.8,-,-,-,-,9 | 9,0,0.230173,0.275908,0.005402,0.045442,4.644939
-NJW+FCM,facebook-network-ego107,Yes,"[0, 1, 2]",Default,LAPIN-off,-,2,1.000000e-05,100,0.1,9.0 ± 0.0 | 9,0.0 ± 0.0,0.3088531658625547 ± 0.02543465115547844,0.5445960201430046 ± 0.0023947635206503924,0.4704036066770958 ± 0.0017653099389472093,0.020148826117525772 ± 9.837917292012631e-05,1.498701

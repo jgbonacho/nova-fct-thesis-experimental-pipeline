@@ -194,9 +194,9 @@
 
 ### Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/)
+[Open Folder](../../results/synthetic/validation/bvs/experience5_cluster_0/results_2026-04-19_12-06-10-999135/)
 
-![Experience 5 (Baseline) Results](../../results/synthetic/boundary_variation_set/experience5_cluster_0/results_2026-04-19_12-06-10-999135/mu_all_variants.png)
+![Experience 5 (Baseline) Results](../../results/synthetic/validation/bvs/experience5_cluster_0/results_2026-04-19_12-06-10-999135/mu_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -244,9 +244,9 @@
 
 ### Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/)
+[Open Folder](../../results/synthetic/validation/mvs/experience5_cluster_0/results_2026-04-19_18-21-44-389254/)
 
-![Experience 5 (Baseline) Results](../../results/synthetic/membership_variation_set/experience5_cluster_0/results_2026-04-19_18-21-44-389254/om_all_variants.png)
+![Experience 5 (Baseline) Results](../../results/synthetic/validation/mvs/experience5_cluster_0/results_2026-04-19_18-21-44-389254/om_all_variants.png)
 
 - **Observations**
     - "Best" variants
@@ -291,9 +291,9 @@
 
 ### Experience 5 (Baseline) (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/)
+[Open Folder](../../results/synthetic/validation/ovs/experience5_cluster_0/results_2026-04-19_22-29-26-629180/)
 
-![Experience 5 (Baseline) Results](../../results/synthetic/overlap_variation_set/experience5_cluster_0/results_2026-04-19_22-29-26-629180/on_all_variants.png)
+![Experience 5 (Baseline) Results](../../results/synthetic/validation/ovs/experience5_cluster_0/results_2026-04-19_22-29-26-629180/on_all_variants.png)
 
 - **Observations**
     - "Best" variants

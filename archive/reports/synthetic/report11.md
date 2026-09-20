@@ -33,7 +33,7 @@
 ## FADDIS versus SLPA versus CFinder
 
 1. Select the networks:
-   - LFR boundary-set networks.
+   - LFR boundary-test-set networks.
 
 2. Configure each method as follows:
 
@@ -41,7 +41,7 @@
 
    - Construct the affinity matrix:
      - Default affinity matrix, i.e., the adjacency matrix;
-     - Alternative best-performing affinity design IP ($\beta=0$).
+     - Alternative best-observed affinity design IP ($\beta=0$).
    - Do not apply sparsification;
    - Use the LAPIN-off execution mode;
    - Set the threshold $\tau$;
@@ -118,7 +118,7 @@
 - Seeds:
 
 $$
-   [0, 1, 2]
+   [0, 1, 2, 3, 4]
 $$
 
 
@@ -137,21 +137,21 @@ $$
 
 ### Boundary Variation Set
 
-- [Results](../../results/synthetic/boundary_variation_set/non-spectral-baseline/results_2026-08-24_00-16-27-690861/mu_non_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/boundary_variation_set/non-spectral-baseline/results_2026-08-24_00-16-27-690861/mu_non_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/baselines_test/bvs/non-spectral/results_2026-09-17_02-14-19-694023/mu_non_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/baselines_test/bvs/non-spectral/results_2026-09-17_02-14-19-694023/mu_non_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/boundary_variation_set/non-spectral-baseline/results_2026-08-24_00-16-27-690861/mu_non_spectral_algorithms.png)
+![Plots](../../results/synthetic/baselines_test/bvs/non-spectral/results_2026-09-17_02-14-19-694023/mu_non_spectral_algorithms.png)
 
 ### Membership Variation Set
 
-- [Results](../../results/synthetic/membership_variation_set/non-spectral-baseline/results_2026-08-24_03-06-42-888725/om_non_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/membership_variation_set/non-spectral-baseline/results_2026-08-24_03-06-42-888725/om_non_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/baselines_test/mvs/non-spectral/results_2026-09-17_03-55-34-401994/om_non_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/baselines_test/mvs/non-spectral/results_2026-09-17_03-55-34-401994/om_non_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/membership_variation_set/non-spectral-baseline/results_2026-08-24_03-06-42-888725/om_non_spectral_algorithms.png)
+![Plots](../../results/synthetic/baselines_test/mvs/non-spectral/results_2026-09-17_03-55-34-401994/om_non_spectral_algorithms.png)
 
 ### Overlap Variation Set
 
-- [Results](../../results/synthetic/overlap_variation_set/non-spectral-baseline/results_2026-08-24_09-10-00-342077/on_non_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/overlap_variation_set/non-spectral-baseline/results_2026-08-24_09-10-00-342077/on_non_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/baselines_test/ovs/non-spectral/results_2026-09-17_05-43-17-622005/on_non_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/baselines_test/ovs/non-spectral/results_2026-09-17_05-43-17-622005/on_non_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/overlap_variation_set/non-spectral-baseline/results_2026-08-24_09-10-00-342077/on_non_spectral_algorithms.png)
+![Plots](../../results/synthetic/baselines_test/ovs/non-spectral/results_2026-09-17_05-43-17-622005/on_non_spectral_algorithms.png)

@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
+from matplotlib.ticker import MultipleLocator
 
 # Base directory for results.
 RESULTS_BASE_DIR = os.path.join(
@@ -15,7 +16,7 @@ RESULTS_BASE_DIR = os.path.join(
     'archive',
     'results',
     'real-world',
-    'stage2'
+    'baselines_test'
 )
 
 # Result CSV column names.
@@ -23,6 +24,8 @@ ALGORITHM_COL = "Algorithm"
 NETWORK_COL = "Network"
 OVERLAPPING_COL = "Overlapping?"
 KERR_COL = "|K'-K|/K"
+K_PRED_COL = "K'"
+K_PAIR_INPUT_COL = "K' | K"
 
 AMI_COL = "AMI"
 F_MEASURE_COL = "F-measure"
@@ -52,6 +55,7 @@ ALGORITHM_ORDER = ("FADDIS", "NJW+FCM")
 # Metrics applicable to each ground-truth type.
 NON_OVERLAPPING_METRICS = (
     KERR_COL,
+    K_PRED_COL,
     AMI_COL,
     F_MEASURE_COL,
     ARI_COL,
@@ -65,6 +69,7 @@ NON_OVERLAPPING_METRICS = (
 
 OVERLAPPING_METRICS = (
     KERR_COL,
+    K_PRED_COL,
     ONMI_COL,
     OMEGA_COL,
     FUZZY_MODULARITY_COL,
@@ -113,6 +118,7 @@ ALL_METRICS = tuple(dict.fromkeys(
 # Human-readable y-axis labels.
 METRIC_LABELS = {
     KERR_COL: r"Mean Relative Error $|K'-K|/K$",
+    K_PRED_COL: r"Mean $K'$",
     AMI_COL: "Mean AMI",
     F_MEASURE_COL: "Mean F-measure",
     ARI_COL: "Mean ARI",
@@ -229,12 +235,18 @@ def plot_real_world_spectral_comparison_results(
             for metric_col in applicable_metrics:
                 if metric_col == RUNTIME_COL:
                     source_col = runtime_input_col
+                elif metric_col == K_PRED_COL:
+                    source_col = K_PAIR_INPUT_COL
                 else:
                     source_col = metric_col
 
                 if source_col is None or source_col not in results_df.columns:
                     metric_mean = float("nan")
                     metric_reported_std = float("nan")
+                elif metric_col == K_PRED_COL:
+                    metric_mean, metric_reported_std = _parse_predicted_k(
+                        result[source_col]
+                    )
                 else:
                     metric_mean, metric_reported_std = _parse_mean_and_std(
                         result[source_col]
@@ -456,6 +468,20 @@ def _plot_ground_truth_group(
     if not available_metrics:
         return
 
+    # When no extrinsic metric is available, also show the estimated number
+    # of communities K' obtained from the "K' | K" input column.
+    intrinsic_metrics = (
+        {FUZZY_MODULARITY_COL, CONDUCTANCE_BN_COL}
+        if overlapping == "Yes"
+        else {MODULARITY_COL, CONDUCTANCE_COL}
+    )
+    if (
+            all(metric_col in intrinsic_metrics for metric_col in available_metrics)
+            and f"Mean {K_PRED_COL}" in plot_df.columns
+            and plot_df[f"Mean {K_PRED_COL}"].notna().any()
+    ):
+        available_metrics.append(K_PRED_COL)
+
     network_order_df = (
         plot_df[[NETWORK_COL, NETWORK_ORDER_COL]]
         .drop_duplicates()
@@ -587,7 +613,6 @@ def _plot_ground_truth_group(
     plt.close(fig)
 
 
-
 def _create_metric_axes(
         number_of_metrics: int,
         row_height: float,
@@ -701,6 +726,9 @@ def _set_metric_limits(
 
     if metric_col in metrics_bounded_between_zero_and_one:
         axis.set_ylim(0.0, 1.0)
+    elif metric_col == K_PRED_COL:
+        axis.set_ylim(bottom=0.0)
+        axis.yaxis.set_major_locator(MultipleLocator(1))
     elif metric_col in metrics_with_nonnegative_values:
         axis.set_ylim(bottom=0.0)
     elif metric_col in {AMI_COL, ARI_COL, MODULARITY_COL, FUZZY_MODULARITY_COL}:
@@ -789,7 +817,6 @@ def _resolve_network_name(
             return network
 
     return result_file.parent.name
-
 
 
 def _resolve_overlapping_value(result: pd.Series) -> str:
@@ -976,6 +1003,16 @@ def _parse_mean_and_std(value) -> tuple[float, float]:
     return float(mean), float("nan")
 
 
+def _parse_predicted_k(value) -> tuple[float, float]:
+    """Parse K' from a value formatted as "K' | K"."""
+
+    if pd.isna(value):
+        return float("nan"), float("nan")
+
+    predicted_k_text = str(value).split("|", maxsplit=1)[0].strip()
+    return _parse_mean_and_std(predicted_k_text)
+
+
 def _reported_std_col(metric_col: str) -> str:
     """
     Build the raw-data column name for a reported within-network standard deviation.
@@ -1076,11 +1113,9 @@ def _ordered_algorithms(series: pd.Series) -> list[str]:
 
 if __name__ == "__main__":
     for folders, unsupervised in [
-        ##(("spectral-baseline", "results_2026-07-28_00-19-10-252503"), False),
-        ##(("spectral-baseline", "results_2026-07-28_19-09-24-292455"), False),
-        ##(("spectral-baseline", "results_2026-07-28_19-24-47-069592"), False),
-        (("spectral-baseline", "results_2026-09-07_13-30-26-221010"), False),
-        (("spectral-baseline", "results_2026-09-07_13-46-35-376221"), True),
+        (("spectral", "results_2026-09-17_11-23-42-219739"), False),
+        (("spectral", "results_2026-09-17_11-28-03-041717"), True),
+        (("spectral", "results_2026-09-17_11-30-36-204976"), True),
     ]:
         plot_real_world_spectral_comparison_results(
             results_dir=os.path.join(

@@ -778,15 +778,13 @@ def _validate_variation_parameter(variation_parameter: str) -> None:
 if __name__ == "__main__":
     # Boundary variation set.
     for folders in [
-        ##("non-spectral-baseline", "results_2026-07-28_01-46-34-011408"),
-        ##("non-spectral-baseline", "results_2026-07-28_21-40-44-641538"),
-        ##("non-spectral-baseline", "results_2026-08-24_00-16-27-690861"),
-        ("non-spectral-baseline", "results_2026-09-08_09-41-14-464594"),
+        ("non-spectral", "results_2026-09-17_02-14-19-694023"),
     ]:
         plot_non_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
                 RESULTS_BASE_DIR,
-                "boundary_variation_set",
+                "baselines_test",
+                "bvs",
                 folders[0],
                 folders[1],
             ),
@@ -795,15 +793,13 @@ if __name__ == "__main__":
 
     # Membership variation set.
     for folders in [
-        ##("non-spectral-baseline", "results_2026-07-28_03-46-32-410742"),
-        ##("non-spectral-baseline", "results_2026-07-28_20-49-14-846861"),
-        ##("non-spectral-baseline", "results_2026-08-24_03-06-42-888725"),
-        ("non-spectral-baseline", "results_2026-09-08_12-51-02-999129"),
+        ("non-spectral", "results_2026-09-17_03-55-34-401994"),
     ]:
         plot_non_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
                 RESULTS_BASE_DIR,
-                "membership_variation_set",
+                "baselines_test",
+                "mvs",
                 folders[0],
                 folders[1],
             ),
@@ -812,15 +808,13 @@ if __name__ == "__main__":
 
     # Overlap variation set.
     for folders in [
-        ##("non-spectral-baseline", "results_2026-07-28_05-32-06-791368"),
-        ##("non-spectral-baseline", "results_2026-07-28_19-54-57-827213"),
-        ##("non-spectral-baseline", "results_2026-08-24_09-10-00-342077"),
-        ("non-spectral-baseline", "results_2026-09-08_15-55-44-576508"),
+        ("non-spectral", "results_2026-09-17_05-43-17-622005"),
     ]:
         plot_non_spectral_comparison_variation_set_results(
             results_dir=os.path.join(
                 RESULTS_BASE_DIR,
-                "overlap_variation_set",
+                "baselines_test",
+                "ovs",
                 folders[0],
                 folders[1],
             ),

@@ -1,0 +1,4 @@
+Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),K' | K,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
+FADDIS,jazz-musicians,Yes,-,Default,LAPIN-off,0.003132,0.05,99,0.8,-,-,-,5,0.012230,0.155018,0.103007
+SLPA,jazz-musicians,Yes,"[0, 1, 2, 3, 4]",-,-,-,-,-,-,21,0.1,-,2.8 ± 0.8366600265340756,0.3399431327577979 ± 0.07615839450183333,0.0596037304349112 ± 0.04022039584680942,3.679633
+CFinder,jazz-musicians,Yes,-,-,-,-,-,-,-,-,-,5,4,0.013589,0.004271,0.641148

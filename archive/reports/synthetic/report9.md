@@ -180,11 +180,11 @@ $$
 
 ### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/boundary_variation_set/affinity_designs/results_2026-06-17_23-22-22-871630/)
+[Open Folder](../../results/synthetic/validation/bvs/affinity_designs/results_2026-06-17_23-22-22-871630/)
 
-![Experience 5 Results](../../results/synthetic/boundary_variation_set/affinity_designs/results_2026-06-17_23-22-22-871630/mu_best_variants_by_affinity_design.png)
+![Experience 5 Results](../../results/synthetic/validation/bvs/affinity_designs/results_2026-06-17_23-22-22-871630/mu_best_variants_by_affinity_design.png)
 
-[Best Affinity/Parameter Results](../../results/synthetic/boundary_variation_set/affinity_designs/results_2026-06-17_23-22-22-871630/mu_best_by_param_affinity.csv)
+[Best Affinity/Parameter Results](../../results/synthetic/validation/bvs/affinity_designs/results_2026-06-17_23-22-22-871630/mu_best_by_param_affinity.csv)
 
 - **Observations**
     - The *default affinity* can be overcome.
@@ -195,11 +195,11 @@ $$
 
 ### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/membership_variation_set/affinity_designs/results_2026-06-18_19-56-33-609075/)
+[Open Folder](../../results/synthetic/validation/mvs/affinity_designs/results_2026-06-18_19-56-33-609075/)
 
-![Experience 5 Results](../../results/synthetic/membership_variation_set/affinity_designs/results_2026-06-18_19-56-33-609075/om_best_variants_by_affinity_design.png)
+![Experience 5 Results](../../results/synthetic/validation/mvs/affinity_designs/results_2026-06-18_19-56-33-609075/om_best_variants_by_affinity_design.png)
 
-[Best Affinity/Parameter Results](../../results/synthetic/membership_variation_set/affinity_designs/results_2026-06-18_19-56-33-609075/om_best_by_param_affinity.csv)
+[Best Affinity/Parameter Results](../../results/synthetic/validation/mvs/affinity_designs/results_2026-06-18_19-56-33-609075/om_best_by_param_affinity.csv)
 
 - **Observations**
     - The *default affinity* can be overcome.
@@ -210,11 +210,11 @@ $$
 
 ### Experience 5 (LAPIN-off + Extraction of K desired clusters) Results
 
-[Open Folder](../../results/synthetic/overlap_variation_set/affinity_designs/results_2026-06-19_23-01-34-957749/)
+[Open Folder](../../results/synthetic/validation/ovs/affinity_designs/results_2026-06-19_23-01-34-957749/)
 
-![Experience 5 Results](../../results/synthetic/overlap_variation_set/affinity_designs/results_2026-06-19_23-01-34-957749/on_best_variants_by_affinity_design.png)
+![Experience 5 Results](../../results/synthetic/validation/ovs/affinity_designs/results_2026-06-19_23-01-34-957749/on_best_variants_by_affinity_design.png)
 
-[Best Affinity/Parameter Results](../../results/synthetic/overlap_variation_set/affinity_designs/results_2026-06-19_23-01-34-957749/on_best_by_param_affinity.csv)
+[Best Affinity/Parameter Results](../../results/synthetic/validation/ovs/affinity_designs/results_2026-06-19_23-01-34-957749/on_best_by_param_affinity.csv)
 
 - **Observations**
     - The *default affinity* can be overcome.

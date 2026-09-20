@@ -955,7 +955,7 @@ if __name__ == "__main__":
         ("affinity_designs", "results_2026-06-17_23-22-22-871630")
     ]:
         plot_variation_set_results(
-            results_dir=os.path.join(RESULTS_BASE_DIR, "boundary_variation_set", folders[0], folders[1]),
+            results_dir=os.path.join(RESULTS_BASE_DIR, "validation", "bvs", folders[0], folders[1]),
             variation_parameter=NETWORK_PROPERTY_MU
         )
 
@@ -978,7 +978,7 @@ if __name__ == "__main__":
         ("affinity_designs", "results_2026-06-18_19-56-33-609075")
     ]:
         plot_variation_set_results(
-            results_dir=os.path.join(RESULTS_BASE_DIR, "membership_variation_set", folders[0], folders[1]),
+            results_dir=os.path.join(RESULTS_BASE_DIR, "validation", "mvs", folders[0], folders[1]),
             variation_parameter=NETWORK_PROPERTY_OM
         )
 
@@ -1001,7 +1001,7 @@ if __name__ == "__main__":
         ("affinity_designs", "results_2026-06-19_23-01-34-957749")
     ]:
         plot_variation_set_results(
-            results_dir=os.path.join(RESULTS_BASE_DIR, "overlap_variation_set", folders[0], folders[1]),
+            results_dir=os.path.join(RESULTS_BASE_DIR, "validation", "ovs", folders[0], folders[1]),
             variation_parameter=NETWORK_PROPERTY_ON
         )
 
@@ -1027,6 +1027,6 @@ if __name__ == "__main__":
         ("experience8_cluster", "results_2026-05-03_21-25-59-359439"),
     ]:
         plot_variation_set_results(
-            results_dir=os.path.join(RESULTS_BASE_DIR, "size_variation_set", folders[0], folders[1]),
+            results_dir=os.path.join(RESULTS_BASE_DIR, "validation", "svs", folders[0], folders[1]),
             variation_parameter=NETWORK_PROPERTY_N
         )

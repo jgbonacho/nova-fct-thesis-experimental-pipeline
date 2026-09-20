@@ -1,3 +1,0 @@
-Algorithm,Network,Seeds,Affinity Design,Execution Mode,gamma (FADDIS),m (NJW+FCM),e (NJW+FCM),t_max (NJW+FCM),fi (NJW+FCM),Modularity,Conductance,FADDIS Runtime
-FADDIS,email-urv,-,Default,LAPIN-off,0.8,-,-,-,-,0.449559,0.316,3.831052
-NJW+FCM,email-urv,"[0, 1, 2, 3, 4]",Default,LAPIN-off,-,2,1.000000e-05,100,0.1,0.0 ± 0.0,1.0 ± 0.0,1.737020

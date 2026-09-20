@@ -83,9 +83,9 @@ sequence_of_matrices = []
 curr_eigenvalues, curr_eigenvectors = numpy.linalg.eig(Wt)
 ```
 
-[Open Folder](../../results/synthetic/size_variation_set/faddis_version_a_got/results_2026-04-20_08-40-19-143228/)
+[Open Folder](../../results/synthetic/validation/svs/faddis_version_a_got/results_2026-04-20_08-40-19-143228/)
 
-![Experience with FADDIS version-a (GOT) Results](../../results/synthetic/size_variation_set/faddis_version_a_got/results_2026-04-20_08-40-19-143228/n_all_variants.png)
+![Experience with FADDIS version-a (GOT) Results](../../results/synthetic/validation/svs/faddis_version_a_got/results_2026-04-20_08-40-19-143228/n_all_variants.png)
 
 
 
@@ -97,9 +97,9 @@ curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigsh(np.asarray(Wt), k=1, wh
 ```
 
 
-[Open Folder](../../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/)
+[Open Folder](../../results/synthetic/validation/svs/faddis_version_m/results_2026-04-26_00-05-03-708303/)
 
-![Experience with FADDIS version-m Results](../../results/synthetic/size_variation_set/faddis_version_m/results_2026-04-26_00-05-03-708303/n_all_variants.png)
+![Experience with FADDIS version-m Results](../../results/synthetic/validation/svs/faddis_version_m/results_2026-04-26_00-05-03-708303/n_all_variants.png)
 
 
 
@@ -110,9 +110,9 @@ curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigsh(np.asarray(Wt), k=1, wh
 curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigsh(np.asarray(Wt), k=10, which="LA")
 ```
 
-[Open Folder](../../results/synthetic/size_variation_set/faddis_version_a_top_10/results_2026-04-26_08-24-20-677914/)
+[Open Folder](../../results/synthetic/validation/svs/faddis_version_a_top_10/results_2026-04-26_08-24-20-677914/)
 
-![Experience with FADDIS version-a (Top-10) Results](../../results/synthetic/size_variation_set/faddis_version_a_top_10/results_2026-04-26_08-24-20-677914/n_all_variants.png)
+![Experience with FADDIS version-a (Top-10) Results](../../results/synthetic/validation/svs/faddis_version_a_top_10/results_2026-04-26_08-24-20-677914/n_all_variants.png)
 
 
 
@@ -123,9 +123,9 @@ curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigsh(np.asarray(Wt), k=10, w
 curr_eigenvalues, curr_eigenvectors = numpy.linalg.eigh(Wt)
 ```
 
-[Open Folder](../../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-30_00-23-38-440972/)
+[Open Folder](../../results/synthetic/validation/svs/faddis_version_a_improved/results_2026-04-30_00-23-38-440972/)
 
-![Experience with FADDIS version-a (Improved) Results](../../results/synthetic/size_variation_set/faddis_version_a_improved/results_2026-04-30_00-23-38-440972/n_all_variants.png)
+![Experience with FADDIS version-a (Improved) Results](../../results/synthetic/validation/svs/faddis_version_a_improved/results_2026-04-30_00-23-38-440972/n_all_variants.png)
 
 
 

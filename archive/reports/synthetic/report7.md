@@ -83,8 +83,6 @@
 | `n4000_K60_f0.2_om2` | 60 | 0.20 | 2 | 80 | 32 | 160 |
 | `n4000_K60_f0.2_om3` | 60 | 0.20 | 3 | 93 | 37 | 187 |
 
-Based on [Recommendations Document](../imgs/FADDIS_LFR_Recommendations%20.pdf).
-
 
 
 ## Scripts
@@ -137,21 +135,21 @@ Based on [Recommendations Document](../imgs/FADDIS_LFR_Recommendations%20.pdf).
 
 ### `n2000`
 
-[Open Folder](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-06_17-17-41-795974/)
+[Open Folder](../../results/synthetic/validation/updated_svs/experience9_cluster/results_2026-05-06_17-17-41-795974/)
 
-![Results](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-06_17-17-41-795974/network_results_all_variants.png)
+![Results](../../results/synthetic/validation/updated_svs/experience9_cluster/results_2026-05-06_17-17-41-795974/network_results_all_variants.png)
 
 ### `n3000`
 
-[Open Folder](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-07_00-32-30-551860/)
+[Open Folder](../../results/synthetic/validation/updated_svs/experience9_cluster/results_2026-05-07_00-32-30-551860/)
 
-![Results](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-07_00-32-30-551860/network_results_all_variants.png)
+![Results](../../results/synthetic/validation/updated_svs/experience9_cluster/results_2026-05-07_00-32-30-551860/network_results_all_variants.png)
 
 ### `n4000`
 
-[Open Folder](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/)
+[Open Folder](../../results/synthetic/validation/updated_svs/experience9_cluster/results_2026-05-09_00-35-20-804381/)
 
-![Results](../../results/synthetic/updated_size_variation_set/experience9_cluster/results_2026-05-09_00-35-20-804381/network_results_all_variants.png)
+![Results](../../results/synthetic/validation/updated_svs/experience9_cluster/results_2026-05-09_00-35-20-804381/network_results_all_variants.png)
 
 
 

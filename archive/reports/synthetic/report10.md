@@ -33,11 +33,11 @@
 ## FADDIS versus NJW+FCM
 
 1. Select the networks:
-   - LFR boundary-set networks.
+   - LFR boundary-test-set networks.
 
 2. Construct the affinity matrix:
    - Default affinity matrix, i.e., the adjacency matrix;
-   - Alternative best-performing affinity design IP ($\beta=0$).
+   - Alternative best-observed affinity design IP ($\beta=0$).
 
 3. Do not apply sparsification.
 
@@ -122,7 +122,7 @@
 - Seeds:
 
 $$
-   [0, 1, 2]
+   [0, 1, 2, 3, 4]
 $$
 
 
@@ -131,21 +131,21 @@ $$
 
 ### Boundary Variation Set
 
-- [Results](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-08-23_22-59-23-685832/mu_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-08-23_22-59-23-685832/mu_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/baselines_test/bvs/spectral/results_2026-09-17_01-27-15-558872/mu_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/baselines_test/bvs/spectral/results_2026-09-17_01-27-15-558872/mu_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/boundary_variation_set/spectral-baseline/results_2026-08-23_22-59-23-685832/mu_spectral_algorithms.png)
+![Plots](../../results/synthetic/baselines_test/bvs/spectral/results_2026-09-17_01-27-15-558872/mu_spectral_algorithms.png)
 
 ### Membership Variation Set
 
-- [Results](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-08-24_01-42-24-752338/om_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-08-24_01-42-24-752338/om_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/baselines_test/mvs/spectral/results_2026-09-17_03-03-36-370161/om_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/baselines_test/mvs/spectral/results_2026-09-17_03-03-36-370161/om_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/membership_variation_set/spectral-baseline/results_2026-08-24_01-42-24-752338/om_spectral_algorithms.png)
+![Plots](../../results/synthetic/baselines_test/mvs/spectral/results_2026-09-17_03-03-36-370161/om_spectral_algorithms.png)
 
 ### Overlap Variation Set
 
-- [Results](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-08-24_08-08-27-013832/on_spectral_comparison_results.csv)
-- [Summary](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-08-24_08-08-27-013832/on_spectral_comparison_summary.csv)
+- [Results](../../results/synthetic/baselines_test/ovs/spectral/results_2026-09-17_05-05-06-242932/on_spectral_comparison_results.csv)
+- [Summary](../../results/synthetic/baselines_test/ovs/spectral/results_2026-09-17_05-05-06-242932/on_spectral_comparison_summary.csv)
 
-![Plots](../../results/synthetic/overlap_variation_set/spectral-baseline/results_2026-08-24_08-08-27-013832/on_spectral_algorithms.png)
+![Plots](../../results/synthetic/baselines_test/ovs/spectral/results_2026-09-17_05-05-06-242932/on_spectral_algorithms.png)

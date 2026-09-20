@@ -62,9 +62,9 @@
 
 ### Extrinsic Results
 
-[Open Folder](../../results/synthetic/1_4_seen_networks/experience1_cluster/results_2026-04-04_18-01-39-080614)
+[Open Folder](../../results/synthetic/training/experience1_cluster/results_2026-04-04_18-01-39-080614)
 
-![](../../results/synthetic/1_4_seen_networks/experience1_cluster/results_2026-04-04_18-01-39-080614/_global_family_extrinsic_metrics_plots.png)
+![](../../results/synthetic/training/experience1_cluster/results_2026-04-04_18-01-39-080614/_global_family_extrinsic_metrics_plots.png)
 
 
 
@@ -93,9 +93,9 @@
 
 ### Extrinsic Results
 
-[Open Folder](../../results/synthetic/1_4_seen_networks/experience2_cluster/results_2026-04-05_09-07-19-011166)
+[Open Folder](../../results/synthetic/training/experience2_cluster/results_2026-04-05_09-07-19-011166)
 
-![](../../results/synthetic/1_4_seen_networks/experience2_cluster/results_2026-04-05_09-07-19-011166/_global_family_extrinsic_metrics_plots.png)
+![](../../results/synthetic/training/experience2_cluster/results_2026-04-05_09-07-19-011166/_global_family_extrinsic_metrics_plots.png)
 
 
 
@@ -124,9 +124,9 @@
 
 ### Extrinsic Results
 
-[Open Folder](../../results/synthetic/1_4_seen_networks/experience3_cluster/results_2026-04-06_22-28-25-819274)
+[Open Folder](../../results/synthetic/training/experience3_cluster/results_2026-04-06_22-28-25-819274)
 
-![](../../results/synthetic/1_4_seen_networks/experience3_cluster/results_2026-04-06_22-28-25-819274/_global_family_extrinsic_metrics_plots.png)
+![](../../results/synthetic/training/experience3_cluster/results_2026-04-06_22-28-25-819274/_global_family_extrinsic_metrics_plots.png)
 
 
 
@@ -155,9 +155,9 @@
 
 ### Extrinsic Results
 
-[Open Folder](../../results/synthetic/1_4_seen_networks/experience4_cluster/results_2026-04-07_07-18-02-169177)
+[Open Folder](../../results/synthetic/training/experience4_cluster/results_2026-04-07_07-18-02-169177)
 
-![](../../results/synthetic/1_4_seen_networks/experience4_cluster/results_2026-04-07_07-18-02-169177/_global_family_extrinsic_metrics_plots.png)
+![](../../results/synthetic/training/experience4_cluster/results_2026-04-07_07-18-02-169177/_global_family_extrinsic_metrics_plots.png)
 
 
 

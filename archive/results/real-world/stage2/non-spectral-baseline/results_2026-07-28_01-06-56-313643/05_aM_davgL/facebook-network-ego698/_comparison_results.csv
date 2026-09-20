@@ -1,3 +1,0 @@
-Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
-FADDIS,facebook-network-ego698,Yes,-,Default,LAPIN-off,0.000496,0.05,20,0.8,-,-,-,5 | 9,0.444444,0.315144,0.218169,0.011586
-SLPA,facebook-network-ego698,Yes,"[0, 1, 2]",-,-,-,-,-,-,21,0.1,-,2.6666666666666665 ± 0.5773502691896258 | 9,0.7037037037037037 ± 0.06415002990995845,0.21763277073736567 ± 0.1451190231159047,0.17952603022713212 ± 0.19869018874474292,0.200516

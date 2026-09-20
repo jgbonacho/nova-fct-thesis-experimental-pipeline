@@ -1,3 +1,0 @@
-Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
-FADDIS,socio-patterns-primary-school-day2,Yes,-,Default,LAPIN-off,0.001693,0.05,119,0.5,-,-,-,8 | 11,0.272727,0.425316,0.366430,0.239392
-SLPA,socio-patterns-primary-school-day2,Yes,"[0, 1, 2]",-,-,-,-,-,-,21,0.1,-,1.6666666666666667 ± 0.5773502691896257 | 11,0.8484848484848485 ± 0.05248638810814775,0.0629210670430458 ± 0.06514062953839148,0.06405986409586718 ± 0.09502668057163534,4.577656

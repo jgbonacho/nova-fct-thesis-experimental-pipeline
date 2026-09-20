@@ -1,3 +1,0 @@
-Algorithm,Network,Seeds,Affinity Design,Execution Mode,gamma (FADDIS),m (NJW+FCM),e (NJW+FCM),t_max (NJW+FCM),fi (NJW+FCM),Modularity,Conductance,FADDIS Runtime
-FADDIS,c-elegans-neural-network,-,Default,LAPIN-off,0.8,-,-,-,-,0.336044,0.350492,0.260264
-NJW+FCM,c-elegans-neural-network,"[0, 1, 2, 3, 4]",Default,LAPIN-off,-,2,1.000000e-05,100,0.1,0.0 ± 0.0,1.0 ± 0.0,0.099432

@@ -1,3 +1,0 @@
-Algorithm,Network,Seeds,Affinity Design,Execution Mode,gamma (FADDIS),m (NJW+FCM),e (NJW+FCM),t_max (NJW+FCM),fi (NJW+FCM),Modularity,Conductance,FADDIS Runtime
-FADDIS,co-authorships-in-network-science,-,Default,LAPIN-off,0.8,-,-,-,-,0.776184,0.037037,1.190516
-NJW+FCM,co-authorships-in-network-science,"[0, 1, 2, 3, 4]",Default,LAPIN-off,-,2,1.000000e-05,100,0.1,0.3351131678868464 ± 0.11262953138841832,0.17109508508227303 ± 0.019183658925340102,0.278753

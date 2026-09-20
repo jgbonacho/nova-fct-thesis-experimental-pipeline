@@ -1,3 +1,0 @@
-Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,epsilon (FADDIS),tau (FADDIS),k_max (FADDIS),gamma (FADDIS),t (SLPA),r (SLPA),k (CFinder),K' | K,|K'-K|/K,ONMI,Omega,FADDIS Runtime
-FADDIS,n1000mu0.2on200om2inst2,Yes,-,Default,LAPIN-off,4.884506e-05,0.05,500,0.8,-,-,-,28 | 28,0,0.734065,0.726288,11.345686
-SLPA,n1000mu0.2on200om2inst2,Yes,"[0, 1, 2]",-,-,-,-,-,-,21,0.1,-,28.0 ± 1.0 | 28,0.023809523809523808 ± 0.020619652471058063,0.900760705512099 ± 0.02193828785683479,0.9300434685363416 ± 0.015636219466900737,8.449255

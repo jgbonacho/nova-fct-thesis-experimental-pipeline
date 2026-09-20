@@ -1,0 +1,17 @@
+{
+  "network_families": [
+    {
+      "name": "05_aM_davgL",
+      "directory": "/home/j.bonacho/nova-fct-thesis-experimental-pipeline/src/pipeline/config/real_world_runners/../../../../networks/real-world/with-ground-truth",
+      "network_configs": [
+        {
+          "name": "facebook-network-ego3980",
+          "gml_filename": "facebook-network-ego3980",
+          "ground_truth": true,
+          "overlapping_ground_truth": true,
+          "ground_truth_attr": "circles"
+        }
+      ]
+    }
+  ]
+}

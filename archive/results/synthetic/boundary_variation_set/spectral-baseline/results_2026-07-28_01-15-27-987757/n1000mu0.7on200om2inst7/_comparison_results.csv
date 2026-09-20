@@ -1,3 +1,0 @@
-Algorithm,Network,Overlapping?,Seeds,Affinity Design,Execution Mode,gamma (FADDIS),m (NJW+FCM),e (NJW+FCM),t_max (NJW+FCM),fi (NJW+FCM),K' | K,|K'-K|/K,ONMI,Omega,Fuzzy-Modularity,Conductance-BN,FADDIS Runtime
-FADDIS,n1000mu0.7on200om2inst7,Yes,-,Default,LAPIN-off,0.8,-,-,-,-,26 | 26,0,0.010120,0.074786,0.007443,0.702606,10.048710
-NJW+FCM,n1000mu0.7on200om2inst7,Yes,"[0, 1, 2]",Default,LAPIN-off,-,2,1.000000e-05,100,0.1,26.0 ± 0.0 | 26,0.0 ± 0.0,0.0 ± 0.0,0.04047966375738434 ± 0.003101568077809741,8.052692256244445e-16 ± 3.198209918000977e-17,0.7066631686263661 ± 0.052593832687755616,0.943724
