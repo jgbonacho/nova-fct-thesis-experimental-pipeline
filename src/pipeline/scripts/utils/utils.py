@@ -404,3 +404,30 @@ def _int_to_roman(num: int) -> str:
         i += 1
 
     return roman_num
+
+
+def format_mean_and_sample_std_aux(values: list[int]) -> str:
+    """
+    Format the mean and sample standard deviation of a list of values.
+
+    Invalid values, including ``None`` and non-finite values, are ignored.
+    If only one valid value is available, the sample standard deviation is reported as zero.
+
+    Parameters:
+        values : (list[int])
+            List of values to summarize.
+
+    Returns:
+        str
+            Formatted string in the form ``"mean ± sample_std"``, or ``None`` if no valid values are available.
+    """
+
+    valid_values = [float(value) for value in values if value is not None and np.isfinite(float(value))]
+
+    if not valid_values:
+        return None
+
+    mean = float(np.mean(valid_values))
+    sample_std = (float(np.std(valid_values, ddof=1)) if len(valid_values) > 1 else 0.0)
+
+    return f"{mean} ± {sample_std}"

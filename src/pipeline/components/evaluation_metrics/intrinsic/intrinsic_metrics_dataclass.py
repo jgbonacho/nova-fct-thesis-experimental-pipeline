@@ -30,7 +30,7 @@ def labels_to_membership_matrix(
         k_predicted: int
 ) -> np.ndarray:
     """
-    Convert overlapping community labels to a binary membership matrix.
+    Convert overlapping community labels to a normalized membership matrix.
 
     Parameters:
         predicted_labels : (list[list[int]])
@@ -40,13 +40,16 @@ def labels_to_membership_matrix(
 
     Returns:
         U : (np.ndarray, shape[n,k])
-            Binary membership matrix.
+            Normalized membership matrix.
     """
 
     U = np.zeros((len(predicted_labels), k_predicted))
 
     for node, labels in enumerate(predicted_labels):
-        for label in labels:
-            U[node, label] = 1.0
+        if labels:
+            membership = 1.0 / len(labels)
+
+            for label in labels:
+                U[node, label] = membership
 
     return U

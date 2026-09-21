@@ -25,29 +25,8 @@
     "ground_truth_family": false,
     "networks": [
       {
-        "name": "dolphins",
-        "gml_filename": "dolphins",
-        "ground_truth": false
-      },
-      {
         "name": "email-urv",
         "gml_filename": "email-urv",
-        "ground_truth": false
-      },
-      {
-        "name": "co-authorships-in-network-science",
-        "gml_filename": "co-authorships-in-network-science",
-        "ground_truth": false
-      }
-    ]
-  },
-  {
-    "name": "06_aM_davgM",
-    "ground_truth_family": false,
-    "networks": [
-      {
-        "name": "jazz-musicians",
-        "gml_filename": "jazz-musicians",
         "ground_truth": false
       }
     ]

@@ -9,6 +9,7 @@ from pipeline.components.evaluation_metrics.computational.computational_metrics 
     get_computation_end_time, compute_computational_metrics
 from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics import compute_extrinsic_metrics, \
     compute_extrinsic_metrics_means_and_stds
+from pipeline.components.evaluation_metrics.extrinsic.extrinsic_metrics_dataclass import ExtrinsicMetrics
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics import compute_intrinsic_metrics, \
     compute_intrinsic_metrics_means_and_stds
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import labels_to_membership_matrix
@@ -19,7 +20,7 @@ from pipeline.scripts.utils.algorithm_dataclass import Algorithm
 from pipeline.scripts.utils.comparison_result_dataclass import ComparisonResult, initialize_comparison_results_file
 from pipeline.scripts.utils.networks_dataclasses import NetworkFamilyConfig
 from pipeline.scripts.utils.utils import create_results_dir, log_progress, create_network_results_dir, \
-    save_report_of_real_world_runner
+    save_report_of_real_world_runner, format_mean_and_sample_std_aux
 
 
 def run_real_world_networks_non_spectral_comparison_experiments(
@@ -73,7 +74,6 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                     ground_truth_labels = [[label] for label in ground_truth_labels]
             else:
                 network_config.overlapping_ground_truth = True
-                extrinsic_results = None
 
             # 1. Compute adjacency matrix A.
             A = compute_adjacency_matrix(graph)
@@ -125,6 +125,9 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                             k_predicted=k_predicted,
                             overlapping=network_config.overlapping_ground_truth
                         )
+                    else:
+                        extrinsic_results = ExtrinsicMetrics(diff_of_k=str(k_predicted))
+
                     intrinsic_results = compute_intrinsic_metrics(
                         graph=graph,
                         A=A,
@@ -160,6 +163,11 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                             k_predicted_results=k_predicted_results,
                             overlapping=network_config.overlapping_ground_truth
                         )
+                    else:
+                        extrinsic_results = ExtrinsicMetrics(
+                            diff_of_k=str(format_mean_and_sample_std_aux(k_predicted_results))
+                        )
+
                     intrinsic_results = compute_intrinsic_metrics_means_and_stds(
                         graph=graph,
                         A=A,
@@ -187,6 +195,9 @@ def run_real_world_networks_non_spectral_comparison_experiments(
                             k_predicted=k_predicted,
                             overlapping=network_config.overlapping_ground_truth
                         )
+                    else:
+                        extrinsic_results = ExtrinsicMetrics(diff_of_k=str(k_predicted))
+
                     intrinsic_results = compute_intrinsic_metrics(
                         graph=graph,
                         A=A,

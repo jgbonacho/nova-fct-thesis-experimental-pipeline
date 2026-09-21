@@ -99,7 +99,7 @@ def run_synthetic_networks_spectral_comparison_experiments(
                         # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
                         # Skipped
 
-                        # 5. Fine-tune the stop criterion for FADDIS.
+                        # 5. Set the stop criterion for FADDIS.
                         # Skipped
 
                         gamma = "-"
@@ -131,7 +131,8 @@ def run_synthetic_networks_spectral_comparison_experiments(
                             computational_results = compute_computational_metrics(start_time, end_time)
 
                         elif algorithm == Algorithm.NJW_FCM:
-                            seeds, fcm_m, fcm_error, fcm_max_iter, fi = list(range(number_of_seeds)), 2.0, 1e-5, 100, 0.1
+                            seeds, fcm_m, fcm_error, fcm_max_iter, fi = list(
+                                range(number_of_seeds)), 2.0, 1e-5, 100, 0.1
 
                             U_results, predicted_labels_results, k_predicted_results = [], [], []
                             for seed in range(number_of_seeds):

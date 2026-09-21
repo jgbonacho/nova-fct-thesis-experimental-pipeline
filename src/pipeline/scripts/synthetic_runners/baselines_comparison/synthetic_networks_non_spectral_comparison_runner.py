@@ -115,7 +115,7 @@ def run_synthetic_networks_non_spectral_comparison_experiments(
                     # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
                     # Skipped
 
-                    # 5. Fine-tune the stop criterion for FADDIS.
+                    # 5. Set the stop criterion for FADDIS.
                     (epsilon, tau, k_max) = set_stop_criterion(
                         graph_s.number_of_nodes(), network_family_config.name, thresholds
                     )
