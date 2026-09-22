@@ -122,11 +122,11 @@ def plot_non_spectral_comparison_interaction_variation_set_results(
             Default is "_comparison_results.csv".
 
     Saves:
-        - Parsed per-network algorithm results:
+        - A CSV file containing the parsed per-network algorithm results:
           "{variation_parameter}_x_{interaction_parameter}_non_spectral_comparison_results.csv".
-        - Aggregated interaction summary:
+        - A CSV file containing the aggregated interaction results:
           "{variation_parameter}_x_{interaction_parameter}_non_spectral_comparison_summary.csv".
-        - PDF and PNG interaction plots:
+        - PDF and PNG files containing the comparison plots:
           "{variation_parameter}_x_{interaction_parameter}_non_spectral_algorithms.*".
 
     Returns:
@@ -264,7 +264,26 @@ def _compute_summary(
         variation_parameter: str,
         interaction_parameter: str,
 ) -> pd.DataFrame:
-    """Aggregate per-network metric means by both LFR parameters and algorithm."""
+    """
+    Aggregate per-network metric results by both LFR parameters and algorithm.
+
+    Metric means are aggregated across network instances for each combination
+    of the variation parameter, interaction parameter, and algorithm. Sample
+    standard deviations across network instances and mean reported
+    within-instance standard deviations are retained separately.
+
+    Parameters:
+        raw_df : (pd.DataFrame)
+            Dataframe containing the parsed per-network comparison results.
+        variation_parameter : (str)
+            Network property represented on the x-axis.
+        interaction_parameter : (str)
+            Second varied network property represented by line style.
+
+    Returns:
+        summary_df : (pd.DataFrame)
+            Aggregated results grouped by both LFR parameters and algorithm.
+    """
 
     aggregation = {
         "#Instances": (NETWORK_PROPERTY_INST, "nunique"),
@@ -333,7 +352,22 @@ def _plot_results(
         variation_parameter: str,
         interaction_parameter: str,
 ) -> None:
-    """Plot the aggregated non-spectral interaction-comparison metrics."""
+    """
+    Plot the aggregated interaction-comparison metrics.
+
+    Parameters:
+        results_dir : (str)
+            Directory in which the generated figures are saved.
+        summary_df : (pd.DataFrame)
+            Dataframe containing the aggregated interaction-comparison results.
+        variation_parameter : (str)
+            Network property represented on the x-axis.
+        interaction_parameter : (str)
+            Second varied network property represented by line style.
+
+    Returns:
+        None
+    """
 
     algorithms = _ordered_algorithms(summary_df[ALGORITHM_COL])
     algorithm_markers = {
@@ -536,7 +570,28 @@ def _add_interaction_legends(
         interaction_values: list,
         interaction_line_styles: dict,
 ) -> None:
-    """Add separate algorithm and interaction-level legends inside one subplot."""
+    """
+    Add separate algorithm and interaction-level legends inside one subplot.
+
+    Parameters:
+        axis :
+            Matplotlib axis to which the legends are added.
+        algorithms : (list[str])
+            Ordered algorithm names represented in the subplot.
+        algorithm_markers : (dict[str, str])
+            Mapping from algorithm names to marker styles.
+        algorithm_colors : (dict[str, str])
+            Mapping from algorithm names to colours.
+        interaction_parameter : (str)
+            Network property represented by line style.
+        interaction_values : (list)
+            Ordered values of the interaction parameter.
+        interaction_line_styles : (dict)
+            Mapping from interaction values to line styles.
+
+    Returns:
+        None
+    """
 
     algorithm_handles = [
         Line2D(
@@ -594,7 +649,17 @@ def _add_interaction_legends(
 
 
 def _algorithm_colors(algorithms: list[str]) -> dict[str, str]:
-    """Map algorithms to colours from Matplotlib's active default colour cycle."""
+    """
+    Map algorithms to colours from Matplotlib's active default colour cycle.
+
+    Parameters:
+        algorithms : (list[str])
+            Ordered algorithm names.
+
+    Returns:
+        algorithm_colors : (dict[str, str])
+            Mapping from algorithm names to colours.
+    """
 
     colors = plt.rcParams["axes.prop_cycle"].by_key().get("color", [])
     if not colors:
@@ -609,8 +674,21 @@ def _algorithm_colors(algorithms: list[str]) -> dict[str, str]:
 def _numeric_error_values(
         dataframe: pd.DataFrame,
         column: str,
-) -> np.ndarray | None:
-    """Return a numeric error array, or None when the column has no values."""
+) -> np.ndarray:
+    """
+    Convert an error column to a numeric array when values are available.
+
+    Parameters:
+        dataframe : (pd.DataFrame)
+            Dataframe containing the error column.
+        column : (str)
+            Name of the error column.
+
+    Returns:
+        values : (np.ndarray | None)
+            Numeric error values with missing entries replaced by zero, or None
+            when the column is absent or contains only missing values.
+    """
 
     if column not in dataframe.columns:
         return None
@@ -627,7 +705,17 @@ def _numeric_error_values(
 
 
 def _dynamic_x_limits(values: list[float]) -> tuple[float, float]:
-    """Return compact x-axis limits around the observed interaction-set values."""
+    """
+    Compute compact x-axis limits around the observed parameter values.
+
+    Parameters:
+        values : (list[float])
+            Numeric values represented on the x-axis.
+
+    Returns:
+        limits : (tuple[float, float])
+            Lower and upper x-axis limits.
+    """
 
     numeric_values = np.asarray(values, dtype=float)
     minimum = float(np.min(numeric_values))
@@ -645,13 +733,35 @@ def _interaction_output_prefix(
         variation_parameter: str,
         interaction_parameter: str,
 ) -> str:
-    """Build the output prefix for a two-parameter interaction experiment."""
+    """
+    Build the output prefix for a two-parameter interaction experiment.
+
+    Parameters:
+        variation_parameter : (str)
+            Network property represented on the x-axis.
+        interaction_parameter : (str)
+            Second varied network property represented by line style.
+
+    Returns:
+        output_prefix : (str)
+            Output prefix identifying the two interaction parameters.
+    """
 
     return f"{variation_parameter}_x_{interaction_parameter}"
 
 
 def _format_parameter_value(value) -> str:
-    """Format one numeric interaction level compactly for the legend."""
+    """
+    Format one numeric interaction-parameter value for the legend.
+
+    Parameters:
+        value :
+            Numeric interaction-parameter value to format.
+
+    Returns:
+        formatted_value : (str)
+            Compact string representation of the parameter value.
+    """
 
     numeric_value = float(value)
 
@@ -662,7 +772,17 @@ def _format_parameter_value(value) -> str:
 
 
 def _iter_sorted_dirs(directory: str) -> list[Path]:
-    """Return the immediate subdirectories sorted by name."""
+    """
+    Return the immediate subdirectories sorted by name.
+
+    Parameters:
+        directory : (str)
+            Directory whose immediate subdirectories are returned.
+
+    Returns:
+        directories : (list[Path])
+            Immediate subdirectories sorted by name.
+    """
 
     return sorted(
         [
@@ -674,8 +794,19 @@ def _iter_sorted_dirs(directory: str) -> list[Path]:
     )
 
 
-def _parse_network_name(network_name: str) -> dict[str, float] | None:
-    """Parse an LFR network name into its variation properties."""
+def _parse_network_name(network_name: str) -> dict[str, float]:
+    """
+    Parse an LFR network name into its network properties.
+
+    Parameters:
+        network_name : (str)
+            LFR network name to parse.
+
+    Returns:
+        properties : (dict[str, float] | None)
+            Parsed network properties, or None when the network name does not
+            match the expected format.
+    """
 
     match = NETWORK_RE.fullmatch(network_name)
     if match is None:
@@ -692,7 +823,17 @@ def _parse_network_name(network_name: str) -> dict[str, float] | None:
 
 
 def _read_csv(csv_path: str) -> pd.DataFrame:
-    """Read a result CSV file and normalize its column names."""
+    """
+    Read a result CSV file and normalize its column names.
+
+    Parameters:
+        csv_path : (str)
+            Path to the input CSV file.
+
+    Returns:
+        dataframe : (pd.DataFrame)
+            Loaded dataframe with normalized column names.
+    """
 
     dataframe = pd.read_csv(csv_path, sep=",", engine="python")
     dataframe.columns = [
@@ -702,8 +843,19 @@ def _read_csv(csv_path: str) -> pd.DataFrame:
     return dataframe
 
 
-def _find_runtime_column(dataframe: pd.DataFrame) -> str | None:
-    """Return the first supported runtime column found in the dataframe."""
+def _find_runtime_column(dataframe: pd.DataFrame) -> str:
+    """
+    Return the first supported runtime column found in a dataframe.
+
+    Parameters:
+        dataframe : (pd.DataFrame)
+            Dataframe containing the comparison results.
+
+    Returns:
+        runtime_column : (str | None)
+            Name of the first supported runtime column, or None when no
+            supported runtime column is present.
+    """
 
     for runtime_column in RUNTIME_INPUT_COLS:
         if runtime_column in dataframe.columns:
@@ -713,7 +865,19 @@ def _find_runtime_column(dataframe: pd.DataFrame) -> str | None:
 
 
 def _parse_mean_and_std(value) -> tuple[float, float]:
-    """Parse either a scalar value or a 'mean ± sample standard deviation' value."""
+    """
+    Parse a scalar value or a mean and sample-standard-deviation value.
+
+    Parameters:
+        value :
+            Scalar value or string formatted as "mean ± sample standard
+            deviation".
+
+    Returns:
+        result : (tuple[float, float])
+            Parsed mean and sample standard deviation. The standard deviation is
+            NaN when the input contains only a scalar value.
+    """
 
     if pd.isna(value):
         return float("nan"), float("nan")
@@ -734,13 +898,33 @@ def _parse_mean_and_std(value) -> tuple[float, float]:
 
 
 def _reported_std_col(metric_col: str) -> str:
-    """Build the raw-data column name for a reported within-network std."""
+    """
+    Build the column name used for a reported within-network standard deviation.
+
+    Parameters:
+        metric_col : (str)
+            Metric column name.
+
+    Returns:
+        reported_std_col : (str)
+            Column name for the reported within-network standard deviation.
+    """
 
     return f"Reported Std {metric_col}"
 
 
 def _results_as_json(series: pd.Series) -> str:
-    """Convert numeric result values into a JSON list."""
+    """
+    Convert numeric result values into a JSON list.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing numeric result values.
+
+    Returns:
+        results_json : (str)
+            JSON representation of the result values.
+    """
 
     values = [
         None
@@ -752,7 +936,17 @@ def _results_as_json(series: pd.Series) -> str:
 
 
 def _algorithm_categorical(series: pd.Series) -> pd.Categorical:
-    """Create an algorithm categorical with a deterministic order."""
+    """
+    Create an algorithm categorical with a deterministic order.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing algorithm names.
+
+    Returns:
+        categorical : (pd.Categorical)
+            Ordered categorical containing the algorithm names.
+    """
 
     observed_algorithms = [
         str(algorithm)
@@ -773,7 +967,17 @@ def _algorithm_categorical(series: pd.Series) -> pd.Categorical:
 
 
 def _ordered_algorithms(series: pd.Series) -> list[str]:
-    """Return observed algorithms in the preferred deterministic order."""
+    """
+    Return observed algorithms in the preferred deterministic order.
+
+    Parameters:
+        series : (pd.Series)
+            Series containing algorithm names.
+
+    Returns:
+        algorithms : (list[str])
+            Observed algorithm names in deterministic order.
+    """
 
     observed = {
         str(algorithm)
@@ -796,7 +1000,18 @@ def _validate_interaction_parameters(
         variation_parameter: str,
         interaction_parameter: str,
 ) -> None:
-    """Validate the two parameters used in the interaction plot."""
+    """
+    Validate the two parameters used in an interaction plot.
+
+    Parameters:
+        variation_parameter : (str)
+            Network property represented on the x-axis.
+        interaction_parameter : (str)
+            Second varied network property represented by line style.
+
+    Returns:
+        None
+    """
 
     for parameter_name, parameter in (
             ("variation_parameter", variation_parameter),
