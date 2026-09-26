@@ -7,7 +7,9 @@ This folder contains the archived reports and experimental results produced thro
 - [`reports/`](./reports/) — Reports accompanying the different stages of the experimental study and their results.
 - [`results/`](./results/) — Complete archive of the experimental results, including reported and supplementary outputs.
 
-> **Note:** The `results/` directory contains the complete set of experimental outputs, including both results reported in the dissertation and supplementary results. The main results directly reported in the dissertation are identified below.
+> **Note:** The `results/` directory contains the complete set of experimental outputs, including both results reported in the dissertation and supplementary results.
+
+> **Note:** As the experimental study was developed incrementally, some archived reports and results may reflect earlier versions of the methodology, implementation, experimental configuration, or analysis, and may therefore contain information or results that were subsequently revised or superseded. The main results directly reported in the dissertation are identified below.
 
 ## Results Reported in the Dissertation
 
@@ -33,6 +35,9 @@ This folder contains the archived reports and experimental results produced thro
         - Overlap-Variation Set
             - [`Spectral Baselines`](./results/synthetic/baselines_test/ovs/spectral/results_2026-09-17_05-05-06-242932/)
             - [`Non-Spectral Baselines`](./results/synthetic/baselines_test/ovs/non-spectral/results_2026-09-17_05-43-17-622005/)
+        - Interaction-Variation Set
+            - [`Spectral Baselines`](./results/synthetic/baselines_test/ivs/spectral/results_2026-09-21_21-08-06-994183/)
+            - [`Non-Spectral Baselines`](./results/synthetic/baselines_test/ivs/non-spectral/results_2026-09-21_23-00-32-755248/)            
 - Real-World Networks
     - Evaluation and Comparison with Baseline Methods
         - [`Spectral Baselines`](./results/real-world/baselines_test/spectral/)
