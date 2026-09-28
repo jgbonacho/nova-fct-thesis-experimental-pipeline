@@ -1,6 +1,6 @@
 # NOVA FCT Thesis Experimental Pipeline
 
-This repository contains the source-code artifacts, network datasets and archived experimental results produced for the experimental pipeline and baseline comparisons.
+Developed in the context of the Master's thesis **Fuzzy Additive Spectral Clustering for Overlapping Community Detection: Affinity Construction and LAPIN Effects**, this repository contains the source-code artifacts, network datasets and archived experimental results produced for the experimental pipeline and baseline comparisons.
 
 ## Repository Structure
 
