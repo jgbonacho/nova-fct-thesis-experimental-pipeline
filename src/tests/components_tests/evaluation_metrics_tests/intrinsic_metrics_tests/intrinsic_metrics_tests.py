@@ -4,6 +4,7 @@ from unittest.mock import patch
 
 import networkx as nx
 import numpy as np
+
 from pipeline.components.evaluation_metrics.intrinsic import intrinsic_metrics as metrics_module
 from pipeline.components.evaluation_metrics.intrinsic.intrinsic_metrics_dataclass import IntrinsicMetrics
 

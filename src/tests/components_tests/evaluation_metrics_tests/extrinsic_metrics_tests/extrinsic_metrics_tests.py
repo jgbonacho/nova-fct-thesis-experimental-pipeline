@@ -5,6 +5,7 @@ from types import SimpleNamespace
 from unittest.mock import call, patch
 
 import networkx as nx
+
 from pipeline.components.evaluation_metrics.extrinsic import extrinsic_metrics as metrics_module
 from pipeline.components.evaluation_metrics.extrinsic import \
     extrinsic_metrics_for_non_overlapping_ground_truth as non_overlapping_module

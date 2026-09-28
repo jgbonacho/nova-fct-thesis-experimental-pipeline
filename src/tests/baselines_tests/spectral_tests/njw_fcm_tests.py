@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 
 import numpy as np
+
 import pipeline.baselines.spectral.njw_fcm as njw_fcm_module
 from pipeline.baselines.spectral.njw_fcm import apply_njw_fcm_defuzzification_rule, njw_fcm
 

@@ -27,7 +27,8 @@ def run_real_world_networks_spectral_comparison_experiments(
         results_base_dir: str,
         network_family_configs: list[NetworkFamilyConfig],
         thresholds: dict[str, float],
-        number_of_seeds: int
+        number_of_seeds: int,
+        overlapping_when_no_ground_truth = True
 ) -> str:
     """
     Run real-world networks spectral comparison experiments.
@@ -41,6 +42,9 @@ def run_real_world_networks_spectral_comparison_experiments(
             Dictionary containing threshold values, keyed by network name.
         number_of_seeds : (int)
             Total number of seeds to be processed.
+        overlapping_when_no_ground_truth : (bool, optional)
+            Consider overlapping communities for networks without ground truth; otherwise, consider non-overlapping communities.
+            Default is True.
 
     Returns:
         results_dir : (str)
@@ -70,7 +74,7 @@ def run_real_world_networks_spectral_comparison_experiments(
                     network_config=network_config
                 )
                 if not network_config.ground_truth:
-                    network_config.overlapping_ground_truth = True  # False
+                    network_config.overlapping_ground_truth = overlapping_when_no_ground_truth
 
                 for idx3, algorithm in enumerate(algorithms, 1):
                     log_progress(idx3, len(algorithms), algorithm.value, 3)
@@ -92,7 +96,7 @@ def run_real_world_networks_spectral_comparison_experiments(
                     gamma, seeds, fcm_m, fcm_error, fcm_max_iter, fi = "-", "-", "-", "-", "-", "-"
                     if algorithm == Algorithm.FADDIS:
 
-                        # 5. Fine-tune the stop criterion for FADDIS. & 6. Execute Algorithm.
+                        # 5. Set the stop criterion for FADDIS. & 6. Execute Algorithm.
                         if k is not None:
                             U = algorithm.execute_faddis(W=W, k=k)
                         else:

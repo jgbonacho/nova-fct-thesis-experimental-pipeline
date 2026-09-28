@@ -4,6 +4,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import networkx as nx
+
 from pipeline.components.loaders.synthetic_data_loader import load_lfr_benchmark_network, _read_edges_nse, \
     _read_memberships_nmc
 

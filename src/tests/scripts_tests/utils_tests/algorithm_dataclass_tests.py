@@ -3,6 +3,7 @@ from unittest.mock import patch
 
 import networkx as nx
 import numpy as np
+
 import pipeline.scripts.utils.algorithm_dataclass as algorithm_module
 from pipeline.scripts.utils.algorithm_dataclass import Algorithm
 

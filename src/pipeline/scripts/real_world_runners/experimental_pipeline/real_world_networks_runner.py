@@ -30,7 +30,8 @@ def run_real_world_networks_experiments(
         affinity_designs: dict[AffinityDesign, Callable[[np.ndarray], np.ndarray]],
         execution_modes: list[ExecutionMode],
         defuzzification_rules: list[DefuzzificationRule],
-        stop_criterion_until_k: bool = False
+        stop_criterion_until_k: bool = False,
+        overlapping_when_no_ground_truth: bool = True
 ) -> str:
     """
     Run real-world networks experiments.
@@ -51,6 +52,9 @@ def run_real_world_networks_experiments(
         stop_criterion_until_k : (bool, optional)
             Set the stop criterion of FADDIS for extracting k clusters.
             Default is False.
+        overlapping_when_no_ground_truth : (bool, optional)
+            Consider overlapping communities for networks without ground truth; otherwise, consider non-overlapping communities.
+            Default is True.
 
     Returns:
         results_dir : (str)
@@ -98,7 +102,7 @@ def run_real_world_networks_experiments(
                         # 4. If enabled, perform the LAPIN transformation on matrix Ws to produce the matrix Ln.
                         Ln = lapin(Ws) if execution_mode.apply_lapin else None
 
-                        # 5. Fine-tune the stop criterion for FADDIS.
+                        # 5. Set the stop criterion for FADDIS.
                         if not stop_criterion_until_k:
                             epsilon, tau, k_max = set_stop_criterion(
                                 graph.number_of_nodes(), network_config.name, thresholds
@@ -125,7 +129,8 @@ def run_real_world_networks_experiments(
                             current_defuzzification_rules = [None]
                         else:
                             # Networks without ground-truth.
-                            current_defuzzification_rules = defuzzification_rules + [None]
+                            current_defuzzification_rules = defuzzification_rules \
+                                if overlapping_when_no_ground_truth else [None]
 
                         for idx5, defuzzification_rule in enumerate(current_defuzzification_rules, 1):
                             log_progress(idx5, len(current_defuzzification_rules), str(defuzzification_rule), 1)

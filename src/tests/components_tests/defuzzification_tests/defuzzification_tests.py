@@ -1,6 +1,7 @@
 import unittest
 
 import numpy as np
+
 from pipeline.components.defuzzification.defuzzification import apply_defuzzification_rule
 
 

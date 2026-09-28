@@ -1,5 +1,4 @@
 import os.path
-import os.path
 from collections.abc import Callable
 
 import numpy as np

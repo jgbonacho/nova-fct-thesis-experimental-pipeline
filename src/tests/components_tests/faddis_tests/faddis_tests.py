@@ -3,6 +3,7 @@ import unittest
 from contextlib import redirect_stdout
 
 import numpy as np
+
 from pipeline.components.faddis.faddis import faddis
 
 

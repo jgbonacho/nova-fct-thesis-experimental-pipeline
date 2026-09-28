@@ -1,6 +1,7 @@
 import unittest
 
 import numpy as np
+
 from pipeline.components.lapin.lapin import lapin, ENTITY_BOUND
 
 

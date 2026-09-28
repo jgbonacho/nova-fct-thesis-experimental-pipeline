@@ -3,6 +3,7 @@ from unittest.mock import patch
 
 import networkx as nx
 import numpy as np
+
 from pipeline.components.loaders.adjacency_matrix import compute_adjacency_matrix, ensure_square_matrix, \
     ensure_symmetric_matrix, ensure_binary_matrix, ensure_zero_diagonal_matrix, set_zero_diagonal_matrix
 

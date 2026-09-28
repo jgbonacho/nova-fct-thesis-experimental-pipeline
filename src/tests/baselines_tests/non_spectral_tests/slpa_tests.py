@@ -3,6 +3,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import networkx as nx
+
 import pipeline.baselines.non_spectral.slpa as slpa_module
 from pipeline.baselines.non_spectral.slpa import _communities_to_labels, slpa
 

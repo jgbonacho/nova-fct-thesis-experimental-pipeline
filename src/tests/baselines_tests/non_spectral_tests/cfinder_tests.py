@@ -3,6 +3,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import networkx as nx
+
 import pipeline.baselines.non_spectral.cfinder as cfinder_module
 from pipeline.baselines.non_spectral.cfinder import _communities_to_labels, cfinder
 

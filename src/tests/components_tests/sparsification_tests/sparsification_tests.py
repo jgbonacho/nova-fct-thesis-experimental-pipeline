@@ -1,6 +1,7 @@
 import unittest
 
 import numpy as np
+
 from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
 from pipeline.components.sparsification.sparsification import _count_ground_truth_communities, \
     apply_global_threshold_sparsification

@@ -3,6 +3,7 @@ import unittest
 from unittest.mock import patch
 
 import networkx as nx
+
 from pipeline.components.loaders import real_world_data_loader as loader_module
 from pipeline.scripts.utils.networks_dataclasses import NetworkConfig
 

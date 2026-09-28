@@ -7,6 +7,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import numpy as np
+
 from pipeline.components.affinity_design.affinity_design_dataclass import AffinityDesign
 from pipeline.config.utils.defuzzification_rule_dataclass import DefuzzificationRule
 from pipeline.config.utils.execution_mode_dataclass import ExecutionMode

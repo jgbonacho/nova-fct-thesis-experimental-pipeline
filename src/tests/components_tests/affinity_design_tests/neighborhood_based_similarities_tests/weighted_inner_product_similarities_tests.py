@@ -1,6 +1,7 @@
 import unittest
 
 import numpy as np
+
 from pipeline.components.affinity_design.neighborhood_based_similarities.weighted_inner_product_similarities import \
     compute_ip, compute_cosip, _compute_weights_from_degrees
 

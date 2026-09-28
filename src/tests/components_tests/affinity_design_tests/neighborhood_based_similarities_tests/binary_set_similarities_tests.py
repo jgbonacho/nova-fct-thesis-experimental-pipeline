@@ -1,6 +1,7 @@
 import unittest
 
 import numpy as np
+
 from pipeline.components.affinity_design.neighborhood_based_similarities.binary_set_similarities import compute_kul, \
     compute_dice, compute_ochiai
 
